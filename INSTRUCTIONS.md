@@ -6,6 +6,15 @@
 3.  **Tally Prime**: Ensure Tally Prime is running with **Developer Mode** enabled on port **9000**.
     *   *Configuration > Advanced Configuration > Tally Prime Server / ODBC Port > 9000*
 
+## One-Time GitHub Pages Setup
+1.  Go to your GitHub repository settings.
+2.  Navigate to **Pages** in the sidebar.
+3.  Under **Build and deployment** > **Branch**:
+    *   Select **`gh-pages`** as the branch.
+    *   Select **`/(root)`** as the folder.
+    *   Click **Save**.
+4.  Your site will be live at `https://<username>.github.io/Bizstash/`.
+
 ## Initial Setup
 1.  Clone the repository:
     ```bash

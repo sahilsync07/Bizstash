@@ -141,7 +141,8 @@ async function parseVouchersAndAnalyze(masters) {
                                     ledgerBalances[ledgerName] = {
                                         balance: masters.ledgers[ledgerName].openingBalance || 0,
                                         billRefs: [],
-                                        group: rootGroup
+                                        group: rootGroup,
+                                        parent: masters.ledgers[ledgerName].parent // Capture immediate parent group (Line)
                                     };
                                 }
                                 ledgerBalances[ledgerName].balance += amount;
@@ -194,10 +195,11 @@ async function parseVouchersAndAnalyze(masters) {
 
         const record = {
             name,
+            parentGroup: data.parent, // Expose Line/Area Group
             balance: Math.abs(data.balance),
             status: buckets.daysOver90 > 0 ? 'Non-Performing' : 'Performing',
             buckets,
-            parentGroup: masters.ledgers[name]?.parent || 'Unknown'
+            billRefs: data.billRefs // Expose bill references for aging analysis
         };
 
         if (data.group === 'Sundry Debtors') debtors.push(record);
