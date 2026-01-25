@@ -71,12 +71,13 @@ async function runSync() {
 
         // 4. Process Data
         console.log('[Sync Engine] Processing Data...');
-        await processData();
+        const companyName = process.argv[2] || 'default_company';
+        await processData(companyName);
 
         // 5. Clean Up XMLs
-        console.log('[Sync Engine] Cleanup: Deleting XML files...');
-        await fs.emptyDir(XML_DIR);
-        console.log('[Sync Engine] XML files deleted securely.');
+        // console.log('[Sync Engine] Cleanup: Deleting XML files...');
+        // await fs.emptyDir(XML_DIR);
+        // console.log('[Sync Engine] XML files deleted securely.'); // Keep data for debugging until stable
 
         console.log('==========================================');
         console.log('   SYNC SUCCESSFUL');
@@ -87,7 +88,7 @@ async function runSync() {
         console.error('==========================================');
         console.error('   SYNC FAILED');
         console.error('==========================================');
-        console.error(error.message);
+        console.error(error.stack); // Print stack for easier debugging
         process.exit(1);
     }
 }
