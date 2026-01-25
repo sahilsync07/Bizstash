@@ -6,12 +6,12 @@ import {
 import {
   LayoutDashboard, TrendingUp, Users, Package, FileText,
   ArrowUpRight, ArrowDownRight, Search, Calendar, Menu, X,
-  ChevronRight, Wallet, CreditCard, DollarSign, Activity
+  ChevronRight, Wallet, CreditCard, DollarSign, Activity, Zap, MessageSquare, PieChart as PieIcon
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 // --- Constants & Config ---
-const COLORS = ['#10b981', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899'];
+const COLORS = ['#D9F575', '#C5C0F2', '#A3E635', '#FFA5A5', '#818CF8', '#F472B6'];
 
 // --- Utility Functions ---
 const formatCurrency = (val) =>
@@ -88,11 +88,11 @@ export default function App() {
   if (!data) return <ErrorScreen message="Could not load financial records." />;
 
   return (
-    <div className="flex h-screen bg-slate-50 text-slate-900 font-sans overflow-hidden">
+    <div className="flex h-screen bg-flux-light text-flux-text font-sans overflow-hidden">
       {/* Mobile Backdrop */}
       {isSidebarOpen && (
         <div
-          className="fixed inset-0 bg-black/50 z-20 md:hidden"
+          className="fixed inset-0 bg-black/60 z-20 md:hidden backdrop-blur-sm"
           onClick={() => setSidebarOpen(false)}
         />
       )}
@@ -116,15 +116,15 @@ export default function App() {
           isSidebarOpen={isSidebarOpen}
         />
 
-        <main className="flex-1 overflow-y-auto p-4 md:p-6 scroll-smooth">
-          <div className="max-w-7xl mx-auto space-y-6">
+        <main className="flex-1 overflow-y-auto p-4 md:p-8 scroll-smooth">
+          <div className="max-w-[1600px] mx-auto space-y-8">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeTab}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.2 }}
+                initial={{ opacity: 0, y: 10, scale: 0.98 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -10, scale: 0.98 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
               >
                 {activeTab === 'summary' && <SummaryDashboard data={data} onDrillDown={handleDrillDown} />}
                 {activeTab === 'sales' && <SalesAnalytics data={data.monthlyStats} />}
@@ -147,55 +147,62 @@ export default function App() {
 function Sidebar({ activeTab, setActiveTab, isOpen, toggle, companyName }) {
   const menuItems = [
     { id: 'summary', label: 'Dashboard', icon: LayoutDashboard },
-    { id: 'sales', label: 'Sales & Purchase', icon: TrendingUp },
+    { id: 'sales', label: 'Analysis', icon: PieIcon },
     { id: 'debtors', label: 'Receivables', icon: Wallet },
     { id: 'creditors', label: 'Payables', icon: CreditCard },
     { id: 'stocks', label: 'Inventory', icon: Package },
-    { id: 'overdues', label: 'Overdues', icon: Activity },
     { id: 'linemen', label: 'Linemen', icon: Users },
-    { id: 'ledger', label: 'Ledger Book', icon: FileText },
+    { id: 'ledger', label: 'Reports', icon: FileText },
   ];
 
   return (
     <motion.aside
-      animate={{ width: isOpen ? 260 : 80 }}
-      className={`bg-slate-900 text-slate-300 flex flex-col shadow-xl z-30 transition-all duration-300 absolute md:relative h-full ${isOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}`}
+      animate={{ width: isOpen ? 280 : 90 }}
+      className={`bg-flux-black text-slate-400 flex flex-col z-30 transition-all duration-300 absolute md:relative h-full rounded-r-[3rem] shadow-2xl ${isOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}`}
     >
-      <div className="h-16 flex items-center px-6 border-b border-slate-800">
-        <div className="h-8 w-8 bg-blue-600 rounded-lg flex items-center justify-center shrink-0">
-          <span className="text-white font-bold text-lg">T</span>
+      <div className="h-24 flex items-center px-8">
+        <div className="flex items-center gap-3">
+          <div className="h-10 w-10 text-flux-lime flex items-center justify-center">
+            <Zap size={32} fill="currentColor" />
+          </div>
+          {isOpen && <span className="font-bold text-white text-2xl tracking-tight">flux</span>}
         </div>
-        {isOpen && <span className="ml-3 font-bold text-white text-lg tracking-tight">Bizstash</span>}
       </div>
 
-      <nav className="flex-1 p-4 space-y-2 overflow-y-auto">
+      <div className="px-6 mb-6">
+        <button className="w-full bg-white text-flux-black rounded-full py-3 px-4 flex items-center justify-between font-bold shadow-lg shadow-white/5 hover:bg-gray-100 transition-colors">
+          <span className="flex items-center gap-2"><LayoutDashboard size={18} /> Dashboard</span>
+          <span className="bg-flux-lime text-flux-black text-xs px-2 py-0.5 rounded-full">3</span>
+        </button>
+      </div>
+
+      <nav className="flex-1 px-6 space-y-2 overflow-y-auto">
         {menuItems.map((item) => (
           <button
             key={item.id}
             onClick={() => { setActiveTab(item.id); if (window.innerWidth < 768) toggle(); }}
-            className={`w-full flex items-center p-3 rounded-xl transition-all duration-200 group ${activeTab === item.id
-              ? 'bg-blue-600/10 text-blue-400 shadow-sm ring-1 ring-blue-600/20'
-              : 'hover:bg-slate-800 hover:text-white'
+            className={`w-full flex items-center p-4 rounded-2xl transition-all duration-200 group relative overflow-hidden ${activeTab === item.id
+              ? 'text-white font-semibold'
+              : 'hover:text-white'
               }`}
           >
-            <item.icon size={22} className={`shrink-0 ${activeTab === item.id ? 'text-blue-500' : 'text-slate-500 group-hover:text-blue-400'}`} />
-            {isOpen && <span className="ml-3 font-medium text-sm whitespace-nowrap">{item.label}</span>}
-            {isOpen && activeTab === item.id && <ChevronRight size={14} className="ml-auto text-blue-500" />}
+            {activeTab === item.id && (
+              <motion.div layoutId="sidebar-active" className="absolute inset-0 bg-white/5 rounded-2xl" transition={{ type: "spring", bounce: 0.2, duration: 0.6 }} />
+            )}
+            <item.icon size={22} className={`shrink-0 z-10 ${activeTab === item.id ? 'text-flux-lime' : 'group-hover:text-flux-lime transition-colors'}`} />
+            {isOpen && <span className="ml-4 font-medium text-[15px] z-10">{item.label}</span>}
           </button>
         ))}
       </nav>
 
-      <div className="p-4 border-t border-slate-800">
-        <div className={`flex items-center p-2 rounded-lg bg-slate-800/50 ${!isOpen && 'justify-center'}`}>
-          <div className="h-8 w-8 rounded-full bg-slate-700 flex items-center justify-center shrink-0">
-            <Users size={14} className="text-slate-400" />
-          </div>
-          {isOpen && (
-            <div className="ml-3 overflow-hidden">
-              <p className="text-xs font-medium text-white truncate">Active Profile</p>
-              <p className="text-[10px] text-slate-500 truncate">{companyName || 'Loading...'}</p>
-            </div>
-          )}
+      <div className="p-6 mt-auto">
+        <div className="bg-gradient-to-br from-flux-lime to-[#A3E635] p-5 rounded-3xl text-flux-black relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-24 h-24 bg-white/20 rounded-full blur-2xl -mr-10 -mt-10"></div>
+          <h4 className="font-bold text-lg relative z-10">Pro Plan</h4>
+          <p className="text-xs font-medium opacity-80 mb-4 relative z-10 line-clamp-1">{companyName}</p>
+          <button className="w-full bg-flux-black text-white text-xs font-bold py-2.5 rounded-xl hover:bg-opacity-90 transition-opacity relative z-10">
+            Upgrade Now
+          </button>
         </div>
       </div>
     </motion.aside>
@@ -204,39 +211,44 @@ function Sidebar({ activeTab, setActiveTab, isOpen, toggle, companyName }) {
 
 // --- Header ---
 function Header({ companies, selectedCompany, onSelectCompany, toggleSidebar, isSidebarOpen }) {
-  // Format last sync time relative
-  const lastSync = selectedCompany?.lastUpdated
-    ? new Date(selectedCompany.lastUpdated).toLocaleString('en-IN', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })
-    : 'Never';
+  const currentDate = new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
 
   return (
-    <header className="h-16 bg-white/80 backdrop-blur-md border-b border-slate-200 px-6 flex justify-between items-center sticky top-0 z-20">
+    <header className="h-24 px-8 flex justify-between items-center sticky top-0 z-20 bg-flux-light/80 backdrop-blur-xl">
       <div className="flex items-center gap-4">
-        <button onClick={toggleSidebar} className="p-2 hover:bg-slate-100 rounded-lg text-slate-600 md:hidden">
+        <button onClick={toggleSidebar} className="p-3 bg-white hover:bg-gray-50 rounded-full text-flux-black md:hidden shadow-sm transition-transform active:scale-95">
           {isSidebarOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
 
-        {/* Company Switcher */}
-        <div className="flex flex-col">
-          <div className="flex items-center gap-2">
-            <select
-              value={selectedCompany?.id || ''}
-              onChange={(e) => onSelectCompany(e.target.value)}
-              className="bg-transparent font-bold text-slate-800 outline-none cursor-pointer hover:bg-slate-100 rounded px-1 -ml-1 transition-colors"
-            >
-              {companies.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
-            </select>
-          </div>
-          <p className="text-[10px] text-slate-400 font-medium ml-0.5">Last Sync: {lastSync}</p>
+        <div className="hidden md:block">
+          <h1 className="text-3xl font-bold text-flux-black">Health Overview</h1>
+          <p className="text-flux-text-dim text-sm font-medium">Take control of your financial health today!</p>
         </div>
       </div>
 
-      <div className="flex items-center gap-4">
-        <div className="md:flex hidden items-center bg-slate-100 rounded-full px-4 py-1.5 border border-slate-200">
-          <Search size={14} className="text-slate-400 mr-2" />
-          <input type="text" placeholder="Search..." className="bg-transparent border-none outline-none text-sm text-slate-600 w-32 focus:w-48 transition-all" />
+      <div className="flex items-center gap-4 md:gap-6">
+        <div className="hidden md:flex items-center bg-white rounded-full px-5 py-3 shadow-sm border-2 border-transparent focus-within:border-flux-lime/50 transition-all w-80">
+          <Search size={18} className="text-flux-text-dim mr-3" />
+          <input type="text" placeholder="Search..." className="bg-transparent border-none outline-none text-sm text-flux-black w-full placeholder:text-flux-text-dim font-medium" />
         </div>
-        <div className="h-8 w-8 rounded-full bg-slate-200 animate-pulse"></div>
+
+        <div className="flex items-center gap-3 bg-white rounded-full p-1.5 pr-5 shadow-sm cursor-pointer hover:shadow-md transition-all">
+          <div className="h-10 w-10 rounded-full bg-flux-purple/30 overflow-hidden border-2 border-white">
+            <img src="https://ui-avatars.com/api/?name=Admin+User&background=C5C0F2&color=1C1C1E" alt="User" />
+          </div>
+          <div className="flex flex-col">
+            <span className="text-xs font-bold text-flux-black">{selectedCompany?.name || 'Select Company'}</span>
+            <span className="text-[10px] text-flux-text-dim font-medium">{currentDate}</span>
+          </div>
+          <select
+            value={selectedCompany?.id || ''}
+            onChange={(e) => onSelectCompany(e.target.value)}
+            className="absolute inset-0 opacity-0 cursor-pointer"
+          >
+            {companies.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
+          </select>
+          <ChevronRight size={14} className="text-flux-text-dim ml-auto" />
+        </div>
       </div>
     </header>
   );
@@ -262,27 +274,27 @@ function SummaryDashboard({ data, onDrillDown }) {
   ];
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       {/* KPI Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <KpiCard title="Total Revenue" value={totalSales} trend="+12.5%" color="emerald" icon={TrendingUp} />
-        <KpiCard title="Total Expenses" value={totalPurchase} trend="+4.2%" color="blue" icon={Activity} />
-        <KpiCard title="Receivables" value={totalDebtors} trend="-2.1%" color="orange" icon={Wallet} />
-        <KpiCard title="Payables" value={totalCreditors} trend="0.0%" color="rose" icon={CreditCard} />
+        <KpiCard title="Total Revenue" value={totalSales} trend="+12.5%" icon={ArrowUpRight} accent="lime" />
+        <KpiCard title="Total Expenses" value={totalPurchase} trend="+4.2%" icon={Activity} accent="purple" />
+        <KpiCard title="Receivables" value={totalDebtors} trend="-2.1%" icon={Wallet} accent="blue" />
+        <KpiCard title="Payables" value={totalCreditors} trend="0.0%" icon={CreditCard} accent="rose" />
       </div>
 
       {/* Main Charts Row */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Main Area Chart */}
-        <div className="lg:col-span-2 bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
-          <div className="flex justify-between items-center mb-6">
+        <div className="lg:col-span-2 bg-white p-8 rounded-[2rem] shadow-sm">
+          <div className="flex justify-between items-center mb-8">
             <div>
-              <h3 className="text-lg font-bold text-slate-800">Income vs Expense</h3>
-              <p className="text-sm text-slate-500">Monthly financial performance</p>
+              <h3 className="text-xl font-bold text-flux-black">Income vs Expense</h3>
+              <p className="text-sm text-flux-text-dim mt-1">Monthly financial performance</p>
             </div>
-            <div className="flex gap-2">
-              <span className="flex items-center text-xs text-emerald-600 font-medium"><div className="w-2 h-2 rounded-full bg-emerald-500 mr-1" /> Sales</span>
-              <span className="flex items-center text-xs text-blue-600 font-medium"><div className="w-2 h-2 rounded-full bg-blue-500 mr-1" /> Purchase</span>
+            <div className="flex gap-3">
+              <span className="flex items-center text-xs font-bold text-flux-black bg-flux-lime/20 px-3 py-1.5 rounded-full"><div className="w-2 h-2 rounded-full bg-flux-lime mr-2" /> Sales</span>
+              <span className="flex items-center text-xs font-bold text-flux-black bg-flux-purple/20 px-3 py-1.5 rounded-full"><div className="w-2 h-2 rounded-full bg-flux-purple mr-2" /> Purchase</span>
             </div>
           </div>
           <div className="h-[300px]">
@@ -290,61 +302,62 @@ function SummaryDashboard({ data, onDrillDown }) {
               <AreaChart data={chartData} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
                 <defs>
                   <linearGradient id="colorSales" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#10b981" stopOpacity={0.1} />
-                    <stop offset="95%" stopColor="#10b981" stopOpacity={0} />
+                    <stop offset="5%" stopColor="#D9F575" stopOpacity={0.4} />
+                    <stop offset="95%" stopColor="#D9F575" stopOpacity={0} />
                   </linearGradient>
                   <linearGradient id="colorPur" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.1} />
-                    <stop offset="95%" stopColor="#3b82f6" stopOpacity={0} />
+                    <stop offset="5%" stopColor="#C5C0F2" stopOpacity={0.4} />
+                    <stop offset="95%" stopColor="#C5C0F2" stopOpacity={0} />
                   </linearGradient>
                 </defs>
-                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
-                <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fill: '#94a3b8', fontSize: 12 }} dy={10} />
-                <YAxis axisLine={false} tickLine={false} tick={{ fill: '#94a3b8', fontSize: 12 }} tickFormatter={(value) => `₹${value / 1000}k`} />
+                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#E5E7EB" strokeOpacity={0.5} />
+                <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fill: '#9CA3AF', fontSize: 12, fontWeight: 500 }} dy={10} />
+                <YAxis axisLine={false} tickLine={false} tick={{ fill: '#9CA3AF', fontSize: 12, fontWeight: 500 }} tickFormatter={(value) => `₹${value / 1000}k`} />
                 <RechartsTooltip content={<CustomTooltip />} />
-                <Area type="monotone" dataKey="Sales" stroke="#10b981" fillOpacity={1} fill="url(#colorSales)" strokeWidth={2} />
-                <Area type="monotone" dataKey="Purchase" stroke="#3b82f6" fillOpacity={1} fill="url(#colorPur)" strokeWidth={2} />
+                <Area type="monotone" dataKey="Sales" stroke="#A3E635" fillOpacity={1} fill="url(#colorSales)" strokeWidth={3} />
+                <Area type="monotone" dataKey="Purchase" stroke="#818CF8" fillOpacity={1} fill="url(#colorPur)" strokeWidth={3} />
               </AreaChart>
             </ResponsiveContainer>
           </div>
         </div>
 
         {/* Side Pie Chart */}
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex flex-col">
-          <h3 className="text-lg font-bold text-slate-800 mb-2">Liability Ratio</h3>
-          <p className="text-sm text-slate-500 mb-6">Receivables vs Payables</p>
-          <div className="flex-1 min-h-[220px]">
+        <div className="bg-flux-black p-8 rounded-[2rem] shadow-xl flex flex-col relative overflow-hidden text-white">
+          <div className="absolute top-0 right-0 w-32 h-32 bg-flux-purple/20 rounded-full blur-3xl -mr-10 -mt-10"></div>
+          <h3 className="text-xl font-bold mb-1 relative z-10">Liability Ratio</h3>
+          <p className="text-sm text-gray-400 mb-8 relative z-10">Receivables vs Payables</p>
+          <div className="flex-1 min-h-[220px] relative z-10">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
-                <Pie data={pieData} cx="50%" cy="50%" innerRadius={60} outerRadius={80} paddingAngle={5} dataKey="value">
-                  {pieData.map((entry, index) => <Cell key={`cell-${index}`} fill={index === 0 ? '#f97316' : '#f43f5e'} />)}
+                <Pie data={pieData} cx="50%" cy="50%" innerRadius={60} outerRadius={80} paddingAngle={5} dataKey="value" stroke="none">
+                  {pieData.map((entry, index) => <Cell key={`cell-${index}`} fill={index === 0 ? '#D9F575' : '#C5C0F2'} />)}
                 </Pie>
-                <RechartsTooltip formatter={(value) => formatCurrency(value)} />
-                <Legend verticalAlign="bottom" height={36} />
+                <RechartsTooltip formatter={(value) => formatCurrency(value)} contentStyle={{ borderRadius: '12px', border: 'none' }} />
+                <Legend verticalAlign="bottom" height={36} iconType="circle" />
               </PieChart>
             </ResponsiveContainer>
           </div>
-          <div className="mt-4 grid grid-cols-2 gap-4 text-center">
-            <div>
-              <p className="text-xs text-slate-400">Total Receivables</p>
-              <p className="font-bold text-orange-500">{formatCurrency(totalDebtors)}</p>
+          <div className="mt-6 grid grid-cols-2 gap-4 text-center">
+            <div className="bg-white/10 rounded-2xl p-3 backdrop-blur-sm">
+              <p className="text-[10px] text-gray-300 uppercase tracking-wider mb-1">Receivables</p>
+              <p className="font-bold text-flux-lime text-sm lg:text-base">{formatCurrency(totalDebtors)}</p>
             </div>
-            <div>
-              <p className="text-xs text-slate-400">Total Payables</p>
-              <p className="font-bold text-rose-500">{formatCurrency(totalCreditors)}</p>
+            <div className="bg-white/10 rounded-2xl p-3 backdrop-blur-sm">
+              <p className="text-[10px] text-gray-300 uppercase tracking-wider mb-1">Payables</p>
+              <p className="font-bold text-flux-purple text-sm lg:text-base">{formatCurrency(totalCreditors)}</p>
             </div>
           </div>
         </div>
       </div>
 
       {/* Bottom Lists Row */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <ListBox
           title="Top 5 Outstanding Debtors"
           items={data.debtors.slice(0, 5)}
           type="money"
           icon={ArrowUpRight}
-          color="text-orange-600"
+          accent="orange"
           onDataClick={onDrillDown}
         />
         <ListBox
@@ -352,7 +365,7 @@ function SummaryDashboard({ data, onDrillDown }) {
           items={data.stocks.slice(0, 5).map(s => ({ name: s.name, balance: s.revenue, sub: s.qtySold + ' units' }))}
           type="money"
           icon={Package}
-          color="text-emerald-600"
+          accent="lime"
         />
       </div>
     </div>
@@ -370,34 +383,37 @@ function SalesAnalytics({ data }) {
   }));
 
   return (
-    <div className="space-y-6">
-      <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 h-[400px] flex flex-col">
-        <h3 className="text-lg font-bold text-slate-800 mb-6 shrink-0">Monthly Volume Analysis</h3>
+    <div className="space-y-8">
+      <div className="bg-white p-8 rounded-[2rem] shadow-sm h-[450px] flex flex-col">
+        <div className="flex justify-between items-center mb-8">
+          <h3 className="text-xl font-bold text-flux-black">Monthly Volume Analysis</h3>
+          <button className="bg-gray-100 p-2 rounded-full hover:bg-gray-200 transition-colors"><Calendar size={20} className="text-gray-500" /></button>
+        </div>
         <div className="flex-1 min-h-0">
           <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={chartData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
-              <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
-              <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fill: '#64748b' }} />
-              <YAxis axisLine={false} tickLine={false} tick={{ fill: '#64748b' }} tickFormatter={(v) => `₹${v / 1000}k`} />
-              <RechartsTooltip cursor={{ fill: '#f8fafc' }} content={<CustomTooltip />} />
-              <Legend wrapperStyle={{ paddingTop: '20px' }} />
-              <Bar dataKey="Sales" fill="#10b981" radius={[4, 4, 0, 0]} maxBarSize={40} />
-              <Bar dataKey="Purchase" fill="#3b82f6" radius={[4, 4, 0, 0]} maxBarSize={40} />
+            <BarChart data={chartData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }} barGap={8}>
+              <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#E5E7EB" />
+              <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fill: '#9CA3AF', fontWeight: 500 }} dy={10} />
+              <YAxis axisLine={false} tickLine={false} tick={{ fill: '#9CA3AF', fontWeight: 500 }} tickFormatter={(v) => `₹${v / 1000}k`} />
+              <RechartsTooltip cursor={{ fill: '#F3F4F6', radius: 8 }} content={<CustomTooltip />} />
+              <Legend wrapperStyle={{ paddingTop: '20px' }} iconType="circle" />
+              <Bar dataKey="Sales" fill="#D9F575" radius={[8, 8, 8, 8]} maxBarSize={50} />
+              <Bar dataKey="Purchase" fill="#C5C0F2" radius={[8, 8, 8, 8]} maxBarSize={50} />
             </BarChart>
           </ResponsiveContainer>
         </div>
       </div>
 
-      <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+      <div className="bg-white rounded-[2rem] shadow-sm overflow-hidden border border-gray-100">
         <DataTable
           headers={['Month', 'Total Sales', 'Total Purchase', 'Net Profit/Loss']}
           rows={Object.keys(data).sort().map(k => {
             const net = data[k].sales - data[k].purchase;
             return [
-              <span className="font-semibold text-slate-700">{formatMonth(k)}</span>,
-              <span className="text-emerald-600 font-medium">{formatCurrency(data[k].sales)}</span>,
-              <span className="text-blue-600 font-medium">{formatCurrency(data[k].purchase)}</span>,
-              <span className={`font-bold ${net >= 0 ? 'text-emerald-600' : 'text-rose-600'}`}>{formatCurrency(net)}</span>
+              <span className="font-bold text-flux-black">{formatMonth(k)}</span>,
+              <span className="text-flux-black font-medium">{formatCurrency(data[k].sales)}</span>,
+              <span className="text-flux-text-dim font-medium">{formatCurrency(data[k].purchase)}</span>,
+              <span className={`font-bold px-3 py-1 rounded-full text-xs ${net >= 0 ? 'bg-flux-lime/20 text-flux-black' : 'bg-red-100 text-red-600'}`}>{formatCurrency(net)}</span>
             ]
           })}
         />
@@ -411,36 +427,38 @@ function PartyAnalytics({ data, type, color, onDrillDown }) {
   const total = data.length;
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className={`bg-white p-6 rounded-2xl shadow-sm border-l-4 ${color === 'orange' ? 'border-orange-500' : 'border-rose-500'}`}>
-          <p className="text-slate-500 text-sm font-medium">Total Balance</p>
-          <h3 className="text-2xl font-bold text-slate-800 mt-1">{formatCurrency(data.reduce((a, b) => a + b.balance, 0))}</h3>
+        <div className="bg-white p-8 rounded-[2rem] shadow-sm relative overflow-hidden group">
+          <div className={`absolute top-0 left-0 w-2 h-full ${type === 'Debtors' ? 'bg-orange-400' : 'bg-rose-400'} group-hover:w-full transition-all duration-500 opacity-10`}></div>
+          <p className="text-flux-text-dim text-sm font-medium relative z-10">Total Balance</p>
+          <h3 className="text-3xl font-bold text-flux-black mt-2 relative z-10">{formatCurrency(data.reduce((a, b) => a + b.balance, 0))}</h3>
         </div>
-        <div className="bg-white p-6 rounded-2xl shadow-sm border-l-4 border-slate-300">
-          <p className="text-slate-500 text-sm font-medium">Total Parties</p>
-          <h3 className="text-2xl font-bold text-slate-800 mt-1">{total}</h3>
+        <div className="bg-white p-8 rounded-[2rem] shadow-sm border border-gray-100">
+          <p className="text-flux-text-dim text-sm font-medium">Total Parties</p>
+          <h3 className="text-3xl font-bold text-flux-black mt-2">{total}</h3>
         </div>
-        <div className="bg-white p-6 rounded-2xl shadow-sm border-l-4 border-red-500">
-          <p className="text-slate-500 text-sm font-medium">High Risk (&gt;90 Days)</p>
-          <h3 className="text-2xl font-bold text-red-600 mt-1">{highRisk} <span className="text-sm font-normal text-slate-400">parties</span></h3>
+        <div className="bg-white p-8 rounded-[2rem] shadow-sm border border-gray-100 relative">
+          <div className="absolute top-4 right-4 text-red-100"><Activity size={48} /></div>
+          <p className="text-flux-text-dim text-sm font-medium">High Risk (&gt;90 Days)</p>
+          <h3 className="text-3xl font-bold text-red-500 mt-2">{highRisk} <span className="text-sm font-normal text-gray-400">parties</span></h3>
         </div>
       </div>
 
-      <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
-        <div className="p-6 border-b border-slate-100 flex justify-between items-center">
-          <h3 className="font-bold text-lg text-slate-800">{type} List</h3>
-          <span className="text-xs bg-slate-100 px-2 py-1 rounded text-slate-500">Sorted by Balance</span>
+      <div className="bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden">
+        <div className="p-8 border-b border-gray-100 flex justify-between items-center">
+          <h3 className="font-bold text-xl text-flux-black">{type} List</h3>
+          <span className="text-xs bg-flux-light px-3 py-1.5 rounded-full text-flux-text-dim font-medium">Sorted by Balance</span>
         </div>
         <DataTable
           headers={['Party Name', 'Balance', '< 30 Days', '30-90 Days', '> 90 Days']}
           onRowClick={(row) => onDrillDown(row[0])}
           rows={data.map(p => [
             p.name,
-            <span className="font-bold text-slate-700">{formatCurrency(p.balance)}</span>,
-            <span className="text-slate-500">{formatCurrency(p.buckets.days30)}</span>,
+            <span className="font-bold text-flux-black">{formatCurrency(p.balance)}</span>,
+            <span className="text-gray-400">{formatCurrency(p.buckets.days30)}</span>,
             <span className="text-orange-500 font-medium">{formatCurrency(p.buckets.days60 + p.buckets.days90)}</span>,
-            <span className={`font-bold ${p.buckets.daysOver90 > 0 ? 'text-red-600' : 'text-slate-300'}`}>{formatCurrency(p.buckets.daysOver90)}</span>
+            <span className={`font-bold ${p.buckets.daysOver90 > 0 ? 'text-red-500' : 'text-gray-200'}`}>{formatCurrency(p.buckets.daysOver90)}</span>
           ])}
         />
       </div>
@@ -459,15 +477,9 @@ function InventoryAnalytics({ data }) {
 
   // Charts Data
   const movementData = [
-    { name: 'Fast Moving', value: data.filter(d => d.movement === 'Fast').length, color: '#10b981' },
-    { name: 'Slow Moving', value: data.filter(d => d.movement === 'Slow').length, color: '#f59e0b' },
-    { name: 'Non-Moving', value: data.filter(d => d.movement === 'Non-Moving').length, color: '#ef4444' }
-  ];
-
-  const abcData = [
-    { name: 'Class A (High Value)', value: data.filter(d => d.class === 'A').length, color: '#3b82f6' },
-    { name: 'Class B (Med Value)', value: data.filter(d => d.class === 'B').length, color: '#8b5cf6' },
-    { name: 'Class C (Low Value)', value: data.filter(d => d.class === 'C').length, color: '#94a3b8' }
+    { name: 'Fast', value: data.filter(d => d.movement === 'Fast').length, color: '#D9F575' },
+    { name: 'Slow', value: data.filter(d => d.movement === 'Slow').length, color: '#C5C0F2' },
+    { name: 'Non-Moving', value: data.filter(d => d.movement === 'Non-Moving').length, color: '#FFA5A5' }
   ];
 
   const filteredData = data.filter(item => {
@@ -477,80 +489,80 @@ function InventoryAnalytics({ data }) {
   });
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       {/* KPIs */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <KpiCard title="Total Stock Valuation" value={totalStockValue} trend="Assets" color="emerald" icon={Package} />
-        <KpiCard title="Dead Stock Value" value={deadStockValue} trend="Risk" color="rose" icon={Activity} />
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex flex-col justify-between">
+        <KpiCard title="Total Stock Valuation" value={totalStockValue} trend="Assets" icon={Package} accent="lime" />
+        <KpiCard title="Dead Stock Value" value={deadStockValue} trend="Risk" icon={Activity} accent="rose" />
+        <div className="bg-flux-dark p-8 rounded-[2rem] shadow-sm text-white flex flex-col justify-between relative overflow-hidden">
+          <div className="absolute -right-4 -top-4 w-24 h-24 bg-flux-lime rounded-full blur-3xl opacity-20"></div>
           <div>
-            <p className="text-slate-500 text-sm font-medium">Top Revenue Generator</p>
-            <h3 className="text-lg font-bold text-slate-800 mt-1 truncate">{topItem?.name || 'N/A'}</h3>
+            <p className="text-gray-400 text-sm font-medium">Top Revenue Generator</p>
+            <h3 className="text-xl font-bold text-white mt-1 truncate">{topItem?.name || 'N/A'}</h3>
           </div>
-          <p className="text-2xl font-bold text-blue-600 mt-2">{formatCurrency(topItem?.revenue || 0)}</p>
+          <p className="text-3xl font-bold text-flux-lime mt-4">{formatCurrency(topItem?.revenue || 0)}</p>
         </div>
       </div>
 
       {/* Charts Row */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Movement Composition */}
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex flex-col items-center">
-          <h3 className="text-lg font-bold text-slate-800 mb-4 w-full">Stock Movement Analysis</h3>
+        <div className="bg-white p-8 rounded-[2rem] shadow-sm border border-gray-100 flex flex-col items-center">
+          <h3 className="text-xl font-bold text-flux-black mb-4 w-full">Stock Movement</h3>
           <div className="w-full h-[250px]">
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
-                <Pie data={movementData} cx="50%" cy="50%" innerRadius={60} outerRadius={80} paddingAngle={5} dataKey="value">
+                <Pie data={movementData} cx="50%" cy="50%" innerRadius={60} outerRadius={80} paddingAngle={5} dataKey="value" stroke="none">
                   {movementData.map((entry, index) => <Cell key={index} fill={entry.color} />)}
                 </Pie>
-                <RechartsTooltip />
-                <Legend verticalAlign="bottom" height={36} />
+                <RechartsTooltip contentStyle={{ borderRadius: '12px', border: 'none' }} />
+                <Legend verticalAlign="bottom" height={36} iconType="circle" />
               </PieChart>
             </ResponsiveContainer>
           </div>
         </div>
 
-        {/* ABC Analysis */}
-        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex flex-col items-center">
-          <h3 className="text-lg font-bold text-slate-800 mb-4 w-full">ABC Classification</h3>
-          <div className="w-full h-[250px]">
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={abcData} layout="vertical" margin={{ top: 5, right: 30, left: 40, bottom: 5 }}>
-                <XAxis type="number" hide />
-                <YAxis dataKey="name" type="category" width={110} tick={{ fontSize: 10 }} />
-                <Bar dataKey="value" radius={[0, 4, 4, 0]} barSize={20}>
-                  {abcData.map((entry, index) => <Cell key={index} fill={entry.color} />)}
-                </Bar>
-                <RechartsTooltip />
-              </BarChart>
-            </ResponsiveContainer>
+        {/* List Preview */}
+        <div className="bg-white p-8 rounded-[2rem] shadow-sm border border-gray-100 flex flex-col">
+          <h3 className="text-xl font-bold text-flux-black mb-4">Quick Stats</h3>
+          <div className="space-y-4">
+            {movementData.map(m => (
+              <div key={m.name} className="flex items-center justify-between p-4 rounded-xl bg-gray-50">
+                <div className="flex items-center gap-3">
+                  <div className={`w-3 h-3 rounded-full`} style={{ backgroundColor: m.color }}></div>
+                  <span className="font-medium text-flux-black">{m.name} items</span>
+                </div>
+                <span className="font-bold text-lg">{m.value}</span>
+              </div>
+            ))}
           </div>
         </div>
       </div>
 
       {/* Detailed Table */}
-      <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden flex flex-col h-[500px]">
-        <div className="p-4 border-b border-slate-100 flex justify-between items-center bg-slate-50 gap-4">
-          <h3 className="font-bold text-slate-800">Detailed Stock Report</h3>
+      <div className="bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden flex flex-col h-[600px]">
+        <div className="p-6 border-b border-gray-100 flex flex-wrap justify-between items-center bg-white gap-4">
+          <h3 className="font-bold text-xl text-flux-black">Detailed Stock Report</h3>
 
           <div className="flex items-center gap-4 flex-1 justify-end">
             {/* Search */}
-            <div className="flex items-center bg-white border border-slate-200 rounded-lg px-3 py-1.5 focus-within:ring-2 focus-within:ring-blue-500/20 transition-all max-w-sm w-full">
-              <Search size={16} className="text-slate-400 mr-2" />
+            <div className="flex items-center bg-gray-50 rounded-full px-4 py-2 border border-transparent focus-within:border-flux-lime/50 transition-all max-w-sm w-full">
+              <Search size={16} className="text-gray-400 mr-2" />
               <input
                 type="text"
                 placeholder="Search Item..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="bg-transparent border-none outline-none text-sm text-slate-700 w-full"
+                className="bg-transparent border-none outline-none text-sm text-flux-black w-full"
               />
             </div>
             {/* Filter Tabs */}
-            <div className="flex bg-white rounded-lg border border-slate-200 p-1 shrink-0">
+            <div className="flex bg-gray-100 rounded-full p-1 shrink-0">
               {['all', 'Fast', 'Slow', 'Non-Moving'].map(f => (
                 <button
                   key={f}
                   onClick={() => setFilter(f)}
-                  className={`px-3 py-1 text-xs font-bold rounded-md capitalize transition-colors ${filter === f ? 'bg-slate-800 text-white' : 'text-slate-500 hover:bg-slate-50'}`}
+                  className={`px-4 py-1.5 text-xs font-bold rounded-full capitalize transition-all ${filter === f ? 'bg-white text-flux-black shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}
                 >
                   {f}
                 </button>
@@ -561,15 +573,14 @@ function InventoryAnalytics({ data }) {
 
         <div className="flex-1 overflow-auto">
           <DataTable
-            headers={['Item Name', 'Inward', 'Outward', 'Closing Qty', 'Valuation', 'Class', 'Status']}
+            headers={['Item Name', 'In', 'Out', 'Closing', 'Valuation', 'Status']}
             rows={filteredData.map(item => [
-              <span className="font-medium text-slate-700">{item.name}</span>,
-              <span className="text-slate-500">{item.inwardQty}</span>,
-              <span className="text-slate-500">{item.outwardQty}</span>,
-              <span className="font-bold text-slate-800">{item.closingQty}</span>,
-              <span className="font-bold text-emerald-600">{formatCurrency(item.closingValue)}</span>,
-              <span className={`text-xs px-2 py-0.5 rounded font-bold border ${item.class === 'A' ? 'bg-blue-50 text-blue-600 border-blue-200' : item.class === 'B' ? 'bg-purple-50 text-purple-600 border-purple-200' : 'bg-slate-50 text-slate-500 border-slate-200'}`}>Class {item.class}</span>,
-              <span className={`text-xs font-bold ${item.movement === 'Fast' ? 'text-emerald-500' : item.movement === 'Slow' ? 'text-orange-500' : 'text-red-500'}`}>{item.movement}</span>
+              <span className="font-medium text-flux-black">{item.name}</span>,
+              <span className="text-gray-400">{item.inwardQty}</span>,
+              <span className="text-gray-400">{item.outwardQty}</span>,
+              <span className="font-bold text-flux-black">{item.closingQty}</span>,
+              <span className="font-bold text-flux-lime text-shadow-sm bg-flux-black/5 px-2 py-0.5 rounded">{formatCurrency(item.closingValue)}</span>,
+              <span className={`text-xs font-bold px-2 py-1 rounded-full ${item.movement === 'Fast' ? 'bg-flux-lime/20 text-flux-text' : item.movement === 'Slow' ? 'bg-flux-purple/20 text-flux-text' : 'bg-red-100 text-red-500'}`}>{item.movement}</span>
             ])}
           />
         </div>
@@ -591,23 +602,17 @@ function LedgerView({ data, initialLedger }) {
   const viewData = useMemo(() => {
     if (!selectedLedger) return [];
 
-    // Filter & Transform
+    // Filter & Transform logic remains same...
     const txns = data.transactions
       .filter(t => t.ledgers.some(l => l.name === selectedLedger))
       .map(t => {
         const entry = t.ledgers.find(l => l.name === selectedLedger);
         if (!entry) return null;
-
-        // Smart Particulars: Find ledger with opposite sign (Dr vs Cr) to identify the true source/dest
-        // This prevents showing other co-parties in a compound voucher (e.g. multiple credits in one receipt)
         let other = t.ledgers.find(l =>
           l.name !== selectedLedger &&
           ((entry.amount > 0 && l.amount < 0) || (entry.amount < 0 && l.amount > 0))
         );
-
-        // Fallback: If no opposite found (rare), just take the first different ledger
         if (!other) other = t.ledgers.find(l => l.name !== selectedLedger);
-
         return {
           date: t.date,
           particulars: other ? other.name : t.type,
@@ -622,7 +627,6 @@ function LedgerView({ data, initialLedger }) {
       .filter(r => r.date >= startDate.replaceAll('-', '') && r.date <= endDate.replaceAll('-', ''))
       .sort((a, b) => a.date.localeCompare(b.date));
 
-    // Running Balance (using opening if avail)
     let bal = data.ledgerOpenings?.[selectedLedger]?.openingBalance || 0;
     return txns.map(r => {
       bal += r.signed;
@@ -634,12 +638,12 @@ function LedgerView({ data, initialLedger }) {
   const closing = viewData.length > 0 ? viewData[viewData.length - 1].balance : 0;
 
   return (
-    <div className="bg-white rounded-2xl shadow-sm border border-slate-100 flex flex-col h-[calc(100vh-140px)]">
-      <div className="p-4 border-b border-slate-100 flex flex-wrap gap-4 items-end bg-slate-50/50 rounded-t-2xl">
+    <div className="bg-white rounded-[2rem] shadow-sm flex flex-col h-[calc(100vh-140px)] overflow-hidden border border-gray-100">
+      <div className="p-6 border-b border-gray-100 flex flex-wrap gap-4 items-end bg-gray-50/50">
         <div className="flex-1 min-w-[200px]">
-          <label className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1 block">Ledger Account</label>
+          <label className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1 block">Ledger Account</label>
           <select
-            className="w-full bg-white border border-slate-200 text-slate-700 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 p-2.5 shadow-sm"
+            className="w-full bg-white border-0 ring-1 ring-gray-200 text-flux-black text-sm rounded-xl focus:ring-2 focus:ring-flux-lime p-3 font-semibold"
             value={selectedLedger}
             onChange={e => setSelectedLedger(e.target.value)}
           >
@@ -648,70 +652,49 @@ function LedgerView({ data, initialLedger }) {
           </select>
         </div>
         <div>
-          <label className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1 block">From</label>
-          <input type="date" value={startDate} onChange={e => setStartDate(e.target.value)} className="bg-white border border-slate-200 text-slate-700 text-sm rounded-lg p-2.5 shadow-sm" />
+          <label className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1 block">From</label>
+          <input type="date" value={startDate} onChange={e => setStartDate(e.target.value)} className="bg-white ring-1 ring-gray-200 text-flux-black text-sm rounded-xl p-3 border-0" />
         </div>
         <div>
-          <label className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1 block">To</label>
-          <input type="date" value={endDate} onChange={e => setEndDate(e.target.value)} className="bg-white border border-slate-200 text-slate-700 text-sm rounded-lg p-2.5 shadow-sm" />
+          <label className="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1 block">To</label>
+          <input type="date" value={endDate} onChange={e => setEndDate(e.target.value)} className="bg-white ring-1 ring-gray-200 text-flux-black text-sm rounded-xl p-3 border-0" />
         </div>
-        <div className="flex items-center h-10 pb-1">
-          <input type="checkbox" checked={showRunBal} onChange={e => setShowRunBal(e.target.checked)} className="w-4 h-4 text-blue-600 rounded focus:ring-blue-500 border-gray-300" />
-          <span className="ml-2 text-sm text-slate-600 font-medium">Running Bal</span>
+        <div className="flex items-center h-12 pb-1">
+          <input type="checkbox" checked={showRunBal} onChange={e => setShowRunBal(e.target.checked)} className="w-5 h-5 text-flux-lime rounded focus:ring-flux-lime border-gray-300" />
+          <span className="ml-2 text-sm text-flux-black font-bold">Running Bal</span>
         </div>
       </div>
 
       <div className="flex-1 overflow-auto">
         <table className="min-w-full text-sm text-left">
-          <thead className="bg-slate-50 text-slate-500 font-semibold sticky top-0 z-10 shadow-sm">
+          <thead className="bg-gray-50 text-gray-500 font-bold sticky top-0 z-10">
             <tr>
-              <th className="px-6 py-3 w-32">Date</th>
-              <th className="px-6 py-3">Particulars</th>
-              <th className="px-6 py-3 w-32">Vch Type</th>
-              <th className="px-6 py-3 w-24 text-right">Debit</th>
-              <th className="px-6 py-3 w-24 text-right">Credit</th>
-              {showRunBal && <th className="px-6 py-3 w-32 text-right">Balance</th>}
+              <th className="px-8 py-4 w-32 rounded-l-xl">Date</th>
+              <th className="px-8 py-4">Particulars</th>
+              <th className="px-8 py-4 w-32">Type</th>
+              <th className="px-8 py-4 w-32 text-right">Debit</th>
+              <th className="px-8 py-4 w-32 text-right">Credit</th>
+              {showRunBal && <th className="px-8 py-4 w-40 text-right rounded-r-xl">Balance</th>}
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-100">
+          <tbody className="divide-y divide-gray-100">
             {viewData.map((row, i) => (
-              <tr key={i} className="hover:bg-slate-50/80 transition-colors group">
-                <td className="px-6 py-3 font-mono text-slate-500 text-xs">{formatDate(row.date)}</td>
-                <td className="px-6 py-3 font-medium text-slate-700 group-hover:text-blue-700 cursor-pointer">{row.particulars}</td>
-                <td className="px-6 py-3 text-slate-400 italic text-xs">{row.type}</td>
-                <td className="px-6 py-3 text-right text-slate-700">{row.debit ? formatCurrency(row.debit) : '-'}</td>
-                <td className="px-6 py-3 text-right text-slate-700">{row.credit ? formatCurrency(row.credit) : '-'}</td>
+              <tr key={i} className="hover:bg-flux-lime/5 transition-colors group">
+                <td className="px-8 py-4 font-mono text-gray-400 text-xs">{formatDate(row.date)}</td>
+                <td className="px-8 py-4 font-bold text-flux-black group-hover:text-black cursor-pointer">{row.particulars}</td>
+                <td className="px-8 py-4 text-gray-400 text-xs uppercase tracking-wide">{row.type}</td>
+                <td className="px-8 py-4 text-right text-flux-black font-medium">{row.debit ? formatCurrency(row.debit) : '-'}</td>
+                <td className="px-8 py-4 text-right text-flux-text font-medium">{row.credit ? formatCurrency(row.credit) : '-'}</td>
                 {showRunBal && (
-                  <td className={`px-6 py-3 text-right font-mono text-xs font-bold ${row.balance < 0 ? 'text-emerald-600' : 'text-slate-600'}`}>
+                  <td className={`px-8 py-4 text-right font-mono text-xs font-bold ${row.balance < 0 ? 'text-flux-black bg-flux-lime/20 rounded-lg' : 'text-gray-500'}`}>
                     {formatCurrency(Math.abs(row.balance))} {row.balance < 0 ? 'Cr' : 'Dr'}
                   </td>
                 )}
               </tr>
             ))}
-            {viewData.length === 0 && <tr><td colSpan={6} className="p-8 text-center text-slate-400">No transactions found</td></tr>}
+            {viewData.length === 0 && <tr><td colSpan={6} className="p-12 text-center text-gray-300 font-bold text-xl">Select a ledger to view transactions</td></tr>}
           </tbody>
         </table>
-      </div>
-
-      <div className="p-4 bg-slate-50 border-t border-slate-200 flex justify-end gap-8 text-sm font-bold text-slate-700">
-        <div className="flex flex-col items-end">
-          <span className="text-xs text-slate-400 font-normal uppercase">Measurements</span>
-          <span>{viewData.length} Vouchers</span>
-        </div>
-        <div className="flex flex-col items-end">
-          <span className="text-xs text-slate-400 font-normal uppercase">Total Debit</span>
-          <span className="text-slate-800">{formatCurrency(totals.dr)}</span>
-        </div>
-        <div className="flex flex-col items-end">
-          <span className="text-xs text-slate-400 font-normal uppercase">Total Credit</span>
-          <span className="text-slate-800">{formatCurrency(totals.cr)}</span>
-        </div>
-        <div className="flex flex-col items-end pl-4 border-l border-slate-300">
-          <span className="text-xs text-slate-400 font-normal uppercase">Closing Balance</span>
-          <span className={`text-lg ${closing < 0 ? 'text-emerald-600' : 'text-rose-600'}`}>
-            {formatCurrency(Math.abs(closing))} {closing < 0 ? 'Cr' : 'Dr'}
-          </span>
-        </div>
       </div>
     </div>
   )
@@ -719,56 +702,55 @@ function LedgerView({ data, initialLedger }) {
 
 // --- Shared Generic Components ---
 
-// --- Shared Generic Components ---
-
-function KpiCard({ title, value, trend, color, icon: Icon }) {
-  const colorMap = {
-    emerald: 'text-emerald-600 bg-emerald-50',
-    blue: 'text-blue-600 bg-blue-50',
-    orange: 'text-orange-600 bg-orange-50',
-    rose: 'text-rose-600 bg-rose-50',
-  };
+function KpiCard({ title, value, trend, accent = 'lime', icon: Icon }) {
+  const accentColors = {
+    lime: 'bg-flux-lime text-flux-black',
+    purple: 'bg-flux-purple text-flux-black',
+    blue: 'bg-blue-100 text-blue-700',
+    rose: 'bg-rose-100 text-rose-700',
+    orange: 'bg-orange-100 text-orange-700'
+  }
 
   return (
-    <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-shadow">
-      <div className="flex justify-between items-start mb-4">
-        <div className={`p-3 rounded-xl ${colorMap[color]} bg-opacity-50`}>
+    <div className="bg-white p-6 pb-8 rounded-[2rem] shadow-sm border border-gray-100 hover:shadow-lg transition-all duration-300 group">
+      <div className="flex justify-between items-start mb-6">
+        <div className={`p-3.5 rounded-2xl ${accentColors[accent]} bg-opacity-100 transition-transform group-hover:scale-110 duration-300`}>
           <Icon size={24} />
         </div>
-        <span className={`text-xs font-bold px-2 py-1 rounded-full ${trend.startsWith('+') ? 'bg-emerald-100 text-emerald-700' : 'bg-rose-100 text-rose-700'}`}>
+        <span className={`text-xs font-extrabold px-3 py-1.5 rounded-full ${trend.startsWith('+') ? 'bg-flux-lime/30 text-emerald-800' : 'bg-red-100 text-red-700'}`}>
           {trend}
         </span>
       </div>
       <div>
-        <p className="text-slate-500 text-sm font-medium">{title}</p>
-        <h3 className="text-2xl font-bold text-slate-800 mt-1">{formatCurrency(value)}</h3>
+        <p className="text-gray-400 text-sm font-bold mb-1">{title}</p>
+        <h3 className="text-3xl font-bold text-flux-black tracking-tight">{formatCurrency(value)}</h3>
       </div>
     </div>
   )
 }
 
-function ListBox({ title, items, icon: Icon, color, onDataClick }) {
+function ListBox({ title, items, icon: Icon, accent = 'lime', onDataClick }) {
   return (
-    <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex flex-col">
-      <div className="flex items-center gap-2 mb-6">
-        <div className="p-2 bg-slate-50 rounded-lg text-slate-400"><Icon size={18} /></div>
-        <h3 className="font-bold text-slate-800">{title}</h3>
+    <div className="bg-white p-8 rounded-[2rem] shadow-sm border border-gray-100 flex flex-col h-full">
+      <div className="flex items-center gap-3 mb-6">
+        <div className={`p-2.5 rounded-xl ${accent === 'lime' ? 'bg-flux-lime text-flux-black' : 'bg-orange-100 text-orange-600'}`}><Icon size={20} /></div>
+        <h3 className="font-bold text-xl text-flux-black">{title}</h3>
       </div>
       <div className="space-y-4 flex-1">
         {items.map((item, i) => (
           <div
             key={i}
             onClick={() => onDataClick && onDataClick(item.name)}
-            className={`flex justify-between items-center p-3 rounded-lg border border-transparent ${onDataClick ? 'hover:bg-slate-50 hover:border-slate-100 cursor-pointer' : ''}`}
+            className={`flex justify-between items-center p-4 rounded-2xl border border-transparent transition-all ${onDataClick ? 'hover:bg-gray-50 hover:border-gray-200 cursor-pointer hover:shadow-sm' : ''}`}
           >
-            <div className="flex items-center gap-3 overflow-hidden">
-              <span className="text-xs font-bold text-slate-300 w-4">0{i + 1}</span>
+            <div className="flex items-center gap-4 overflow-hidden">
+              <span className="text-xs font-bold text-gray-300 w-6">0{i + 1}</span>
               <div className="truncate">
-                <p className="text-sm font-medium text-slate-700 truncate">{item.name}</p>
-                {item.sub && <p className="text-xs text-slate-400">{item.sub}</p>}
+                <p className="text-base font-bold text-flux-black truncate mb-0.5">{item.name}</p>
+                {item.sub && <p className="text-xs text-gray-400 font-medium">{item.sub}</p>}
               </div>
             </div>
-            <span className={`text-sm font-bold whitespace-nowrap ${color}`}>{formatCurrency(item.balance)}</span>
+            <span className={`text-sm font-bold whitespace-nowrap bg-gray-50 px-3 py-1.5 rounded-lg`}>{formatCurrency(item.balance)}</span>
           </div>
         ))}
       </div>
@@ -837,34 +819,34 @@ function OverdueTable({ data }) {
   });
 
   return (
-    <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden flex flex-col h-[calc(100vh-140px)]">
-      <div className="p-4 border-b border-slate-100 flex flex-wrap justify-between items-center gap-4 bg-slate-50">
-        <h3 className="font-bold text-slate-800">Bill-wise Payables Analysis</h3>
+    <div className="bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden flex flex-col h-[calc(100vh-140px)]">
+      <div className="p-6 border-b border-gray-100 flex flex-wrap justify-between items-center gap-4 bg-gray-50/50">
+        <h3 className="font-bold text-xl text-flux-black">Bill-wise Payables Analysis</h3>
 
         {/* Search Bar */}
-        <div className="flex items-center bg-white border border-slate-200 rounded-lg px-3 py-1.5 focus-within:ring-2 focus-within:ring-blue-500/20 transition-all flex-1 max-w-sm">
-          <Search size={16} className="text-slate-400 mr-2" />
+        <div className="flex items-center bg-white border border-gray-200 rounded-xl px-4 py-2 focus-within:ring-2 focus-within:ring-flux-lime/50 transition-all flex-1 max-w-sm">
+          <Search size={18} className="text-gray-400 mr-2" />
           <input
             type="text"
             placeholder="Search Party or Bill No..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="bg-transparent border-none outline-none text-sm text-slate-700 w-full placeholder:text-slate-400"
+            className="bg-transparent border-none outline-none text-sm text-flux-black w-full placeholder:text-gray-400 font-medium"
           />
           {searchTerm && (
-            <button onClick={() => setSearchTerm('')} className="ml-2 text-slate-400 hover:text-slate-600">
+            <button onClick={() => setSearchTerm('')} className="ml-2 text-gray-400 hover:text-gray-600">
               <X size={14} />
             </button>
           )}
         </div>
 
         {/* Filter Tabs */}
-        <div className="flex bg-white rounded-lg border border-slate-200 p-1">
+        <div className="flex bg-white rounded-xl border border-gray-200 p-1">
           {['all', 'overdue', 'due'].map(f => (
             <button
               key={f}
               onClick={() => setFilter(f)}
-              className={`px-3 py-1 text-xs font-bold rounded-md capitalize transition-colors ${filter === f ? 'bg-slate-800 text-white' : 'text-slate-500 hover:bg-slate-50'}`}
+              className={`px-4 py-1.5 text-xs font-bold rounded-lg capitalize transition-colors ${filter === f ? 'bg-flux-black text-white shadow-sm' : 'text-gray-500 hover:bg-gray-50'}`}
             >
               {f}
             </button>
@@ -875,119 +857,18 @@ function OverdueTable({ data }) {
         <DataTable
           headers={['Party Name', 'Bill No', 'Bill Date', 'Status', 'Due Date', 'Amount', 'Overdue By']}
           rows={filtered.map(b => [
-            <span className="font-medium text-slate-700">{b.party}</span>,
-            <span className="font-mono text-xs text-slate-600">{b.billNo}</span>,
-            <span className="font-mono text-xs text-slate-500">{b.billDate.toLocaleDateString('en-GB')}</span>,
-            <span className={`text-xs px-2 py-1 rounded-full font-bold ${b.status === 'Overdue' ? 'bg-red-100 text-red-700' : 'bg-emerald-100 text-emerald-700'}`}>{b.status}</span>,
-            <span className="font-mono text-xs text-slate-400">
+            <span className="font-bold text-flux-black">{b.party}</span>,
+            <span className="font-mono text-xs text-gray-500 bg-gray-100 px-2 py-1 rounded">{b.billNo}</span>,
+            <span className="font-mono text-xs text-gray-400">{b.billDate.toLocaleDateString('en-GB')}</span>,
+            <span className={`text-xs px-2 py-1 rounded-full font-bold ${b.status === 'Overdue' ? 'bg-red-100 text-red-600' : 'bg-flux-lime/20 text-emerald-700'}`}>{b.status}</span>,
+            <span className="font-mono text-xs text-gray-400">
               {new Date(b.billDate.getTime() + (getCreditDays(b.party) * 86400000)).toLocaleDateString('en-GB')}
             </span>,
-            <span className="font-bold">{formatCurrency(b.amount)}</span>,
-            <span className={`text-xs font-bold ${b.overdueDays > 0 ? 'text-red-500' : 'text-slate-300'}`}>{b.overdueDays > 0 ? `${b.overdueDays} Days` : '-'}</span>
+            <span className="font-bold text-flux-black">{formatCurrency(b.amount)}</span>,
+            <span className={`text-xs font-bold ${b.overdueDays > 0 ? 'text-red-500' : 'text-gray-300'}`}>{b.overdueDays > 0 ? `${b.overdueDays} Days` : '-'}</span>
           ])}
         />
       </div>
-    </div>
-  )
-}
-
-function DataTable({ headers, rows, onRowClick }) {
-  return (
-    <>
-      {/* Desktop/Tablet View (Table) */}
-      <div className="hidden md:block overflow-x-auto">
-        <table className="min-w-full text-sm text-left">
-          <thead className="bg-slate-50 text-slate-500 font-semibold border-b border-slate-100">
-            <tr>
-              {headers.map((h, i) => <th key={i} className="px-6 py-4">{h}</th>)}
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-slate-100">
-            {rows.map((row, i) => (
-              <tr
-                key={i}
-                onClick={() => onRowClick && onRowClick(row.map(c => c.props?.children || c))}
-                className={onRowClick ? 'hover:bg-blue-50/50 cursor-pointer transition-colors' : ''}
-              >
-                {row.map((cell, j) => <td key={j} className="px-6 py-4 text-slate-700">{cell}</td>)}
-              </tr>
-            ))}
-            {rows.length === 0 && (
-              <tr>
-                <td colSpan={headers.length} className="px-6 py-8 text-center text-slate-400">
-                  No records found matching criteria.
-                </td>
-              </tr>
-            )}
-          </tbody>
-        </table>
-      </div>
-
-      {/* Mobile View (Cards) */}
-      <div className="md:hidden space-y-4 p-4 bg-slate-50">
-        {rows.map((row, i) => (
-          <div
-            key={i}
-            onClick={() => onRowClick && onRowClick(row.map(c => c.props?.children || c))}
-            className={`bg-white rounded-xl p-4 shadow-sm border border-slate-100 flex flex-col gap-3 ${onRowClick ? 'active:bg-slate-50' : ''}`}
-          >
-            {/* First Column is usually the Title (Party Name / Item Name) */}
-            <div className="border-b border-slate-100 pb-2 mb-1">
-              <h4 className="font-bold text-slate-800 text-base">{row[0]}</h4>
-            </div>
-
-            {/* Rest of the columns as Key-Value pairs */}
-            <div className="grid grid-cols-2 gap-y-3 gap-x-2">
-              {row.slice(1).map((cell, j) => (
-                <div key={j} className="flex flex-col">
-                  <span className="text-[10px] uppercase font-bold text-slate-400">{headers[j + 1]}</span>
-                  <span className="text-sm text-slate-700 font-medium break-all">{cell}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        ))}
-        {rows.length === 0 && (
-          <div className="text-center py-8 text-slate-400">No records found.</div>
-        )}
-      </div>
-    </>
-  )
-}
-
-const CustomTooltip = ({ active, payload, label }) => {
-  if (active && payload && payload.length) {
-    return (
-      <div className="bg-slate-800 text-white text-xs p-3 rounded-lg shadow-xl border border-slate-700">
-        <p className="font-bold mb-2 text-slate-300">{label}</p>
-        {payload.map((entry, index) => (
-          <div key={index} className="flex items-center gap-2 mb-1">
-            <div className="w-2 h-2 rounded-full" style={{ backgroundColor: entry.color }} />
-            <span className="text-slate-400">{entry.name}:</span>
-            <span className="font-mono font-bold">{formatCurrency(entry.value)}</span>
-          </div>
-        ))}
-      </div>
-    );
-  }
-  return null;
-};
-
-function LoadingScreen() {
-  return (
-    <div className="flex items-center justify-center h-screen bg-slate-50 flex-col gap-4">
-      <div className="w-16 h-16 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
-      <p className="text-slate-500 font-medium animate-pulse">Synchronizing Ledger Data...</p>
-    </div>
-  )
-}
-
-function ErrorScreen({ message }) {
-  return (
-    <div className="flex items-center justify-center h-screen bg-slate-50 flex-col gap-4">
-      <X size={48} className="text-red-500" />
-      <h2 className="text-xl font-bold text-slate-800">Connection Failed</h2>
-      <p className="text-slate-500">{message || "Could not retrieve financial records. Please ensure standard Tally XML sync is active."}</p>
     </div>
   )
 }
@@ -1026,7 +907,7 @@ function LinemanView({ data, onDrillDown }) {
       const parties = data.filter(d => {
         if (!d.parentGroup) return false;
         const group = d.parentGroup.toUpperCase();
-        return config.lines.some(l => group.includes(l)); // removed toUpperCase() since lines are already CAPS
+        return config.lines.some(l => group.includes(l));
       });
 
       const totalDue = parties.reduce((acc, curr) => acc + curr.balance, 0);
@@ -1039,33 +920,33 @@ function LinemanView({ data, onDrillDown }) {
   const activeData = selectedLineman ? linemanData.find(l => l.name === selectedLineman) : null;
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       {/* Linemen Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {linemanData.map((agent, i) => (
           <div
             key={i}
             onClick={() => setSelectedLineman(agent.name)}
-            className={`bg-white p-6 rounded-2xl shadow-sm border border-slate-100 cursor-pointer transition-all hover:shadow-md ${selectedLineman === agent.name ? 'ring-2 ring-blue-500 ring-offset-2' : ''}`}
+            className={`bg-white p-6 rounded-[2rem] shadow-sm border border-gray-100 cursor-pointer transition-all hover:shadow-lg hover:-translate-y-1 ${selectedLineman === agent.name ? 'ring-2 ring-flux-lime ring-offset-2' : ''}`}
           >
             <div className="flex items-center gap-4 mb-4">
               <div className={`h-12 w-12 rounded-full ${agent.color} flex items-center justify-center text-white font-bold text-lg shadow-sm`}>
                 {agent.name.charAt(0)}
               </div>
               <div className="overflow-hidden">
-                <h3 className="font-bold text-slate-800 truncate">{agent.name}</h3>
-                <p className="text-xs text-slate-500">{agent.parties.length} Parties</p>
+                <h3 className="font-bold text-flux-black truncate">{agent.name}</h3>
+                <p className="text-xs text-gray-500 font-medium">{agent.parties.length} Parties</p>
               </div>
             </div>
 
             <div className="space-y-2">
               <div className="flex justify-between items-center text-sm">
-                <span className="text-slate-500">Total Due</span>
-                <span className="font-bold text-slate-700">{formatCurrency(agent.totalDue)}</span>
+                <span className="text-gray-400 font-medium">Total Due</span>
+                <span className="font-bold text-flux-black">{formatCurrency(agent.totalDue)}</span>
               </div>
               <div className="flex justify-between items-center text-sm">
-                <span className="text-slate-500">High Risk</span>
-                <span className={`font-bold ${agent.highRisk > 0 ? 'text-red-600' : 'text-slate-500'}`}>{agent.highRisk}</span>
+                <span className="text-gray-400 font-medium">High Risk</span>
+                <span className={`font-bold ${agent.highRisk > 0 ? 'text-red-500' : 'text-gray-300'}`}>{agent.highRisk}</span>
               </div>
             </div>
           </div>
@@ -1075,35 +956,35 @@ function LinemanView({ data, onDrillDown }) {
       {/* Detail View */}
       {activeData && (
         <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden"
+          initial={{ opacity: 0, y: 10, scale: 0.98 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          className="bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden"
         >
-          <div className="p-6 border-b border-slate-100 flex justify-between items-center bg-slate-50/50">
+          <div className="p-8 border-b border-gray-100 flex justify-between items-center bg-gray-50/50">
             <div>
-              <h3 className="font-bold text-lg text-slate-800">{activeData.name}'s Area</h3>
-              <p className="text-sm text-slate-500 mt-1">
+              <h3 className="font-bold text-xl text-flux-black">{activeData.name}'s Area</h3>
+              <p className="text-sm text-gray-400 mt-1 font-medium">
                 Covering: {activeData.lines.join(', ')}
               </p>
             </div>
             <div className="text-right">
-              <p className="text-xs uppercase font-bold text-slate-400">Total Outstanding</p>
-              <p className="text-2xl font-bold text-emerald-600">{formatCurrency(activeData.totalDue)}</p>
+              <p className="text-xs uppercase font-bold text-gray-400">Total Outstanding</p>
+              <p className="text-3xl font-bold text-flux-lime text-shadow-sm">{formatCurrency(activeData.totalDue)}</p>
             </div>
           </div>
 
           <DataTable
             headers={['Group / Line', 'Party Name', 'Balance', 'Status', 'Action']}
             rows={activeData.parties.sort((a, b) => b.balance - a.balance).map(p => [
-              <span className="text-xs font-bold bg-slate-100 text-slate-500 px-2 py-1 rounded inline-block">{p.parentGroup}</span>,
-              <span className="font-medium text-slate-700">{p.name}</span>,
-              <span className="font-bold text-slate-700">{formatCurrency(p.balance)}</span>,
-              <span className={`text-xs px-2 py-1 rounded-full font-bold ${p.status === 'Non-Performing' ? 'bg-red-100 text-red-700' : 'bg-emerald-100 text-emerald-700'}`}>
+              <span className="text-xs font-bold bg-gray-100 text-gray-500 px-2 py-1 rounded inline-block">{p.parentGroup}</span>,
+              <span className="font-bold text-flux-black">{p.name}</span>,
+              <span className="font-medium text-flux-black">{formatCurrency(p.balance)}</span>,
+              <span className={`text-xs px-2 py-1 rounded-full font-bold ${p.status === 'Non-Performing' ? 'bg-red-100 text-red-700' : 'bg-flux-lime/20 text-emerald-700'}`}>
                 {p.status}
               </span>,
               <button
                 onClick={(e) => { e.stopPropagation(); onDrillDown(p.name); }}
-                className="text-xs bg-blue-50 text-blue-600 px-3 py-1.5 rounded hover:bg-blue-100 font-medium transition-colors"
+                className="text-xs bg-flux-black/5 text-flux-black px-3 py-1.5 rounded-lg hover:bg-flux-black hover:text-white font-bold transition-all"
               >
                 View Ledger
               </button>
@@ -1114,3 +995,84 @@ function LinemanView({ data, onDrillDown }) {
     </div>
   )
 }
+
+function LoadingScreen() {
+  return (
+    <div className="flex items-center justify-center h-screen bg-flux-light flex-col gap-6">
+      <div className="relative">
+        <div className="w-16 h-16 border-4 border-flux-lime/30 border-t-flux-lime rounded-full animate-spin"></div>
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="w-8 h-8 bg-white rounded-full"></div>
+        </div>
+      </div>
+      <p className="text-flux-text-dim font-bold animate-pulse tracking-wide">INITIALIZING FLUX...</p>
+    </div>
+  )
+}
+
+function ErrorScreen({ message }) {
+  return (
+    <div className="flex items-center justify-center h-screen bg-flux-light flex-col gap-6">
+      <div className="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center text-red-500 mb-2">
+        <X size={40} />
+      </div>
+      <div className="text-center">
+        <h2 className="text-2xl font-bold text-flux-black mb-2">Connection Failed</h2>
+        <p className="text-flux-text-dim max-w-md">{message || "Could not retrieve financial records. Please ensure standard Tally XML sync is active."}</p>
+      </div>
+      <button onClick={() => window.location.reload()} className="px-6 py-2 bg-flux-black text-white rounded-full font-bold text-sm hover:scale-105 transition-transform">
+        Retry Connection
+      </button>
+    </div>
+  )
+}
+
+function DataTable({ headers, rows, onRowClick }) {
+  return (
+    <div className="w-full overflow-x-auto">
+      <table className="w-full text-left border-collapse">
+        <thead>
+          <tr className="border-b border-gray-100">
+            {headers.map((h, i) => (
+              <th key={i} className="p-4 text-sm font-bold text-gray-400 uppercase tracking-wider whitespace-nowrap bg-gray-50/50 first:pl-8 last:pr-8">{h}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody className="divide-y divide-gray-50">
+          {rows.map((row, i) => (
+            <tr key={i} onClick={() => onRowClick && onRowClick(row)} className={`group transition-colors ${onRowClick ? 'hover:bg-blue-50/30 cursor-pointer' : ''}`}>
+              {row.map((cell, j) => (
+                <td key={j} className="p-4 text-sm first:pl-8 last:pr-8 whitespace-nowrap">{cell}</td>
+              ))}
+            </tr>
+          ))}
+          {rows.length === 0 && (
+            <tr>
+              <td colSpan={headers.length} className="p-8 text-center text-gray-400 font-medium">
+                No records found matching criteria.
+              </td>
+            </tr>
+          )}
+        </tbody>
+      </table>
+    </div>
+  )
+}
+
+const CustomTooltip = ({ active, payload, label }) => {
+  if (active && payload && payload.length) {
+    return (
+      <div className="bg-flux-black text-white p-4 rounded-xl shadow-xl border border-white/10">
+        <p className="text-sm font-bold mb-2 text-gray-400">{label}</p>
+        {payload.map((p, i) => (
+          <div key={i} className="flex items-center gap-2 mb-1 last:mb-0">
+            <div className="w-2 h-2 rounded-full" style={{ backgroundColor: p.color }}></div>
+            <span className="text-xs font-medium">{p.name}: </span>
+            <span className="text-sm font-bold">{formatCurrency(p.value)}</span>
+          </div>
+        ))}
+      </div>
+    );
+  }
+  return null;
+};

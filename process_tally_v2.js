@@ -64,6 +64,18 @@ async function parseVouchersAndAnalyze(masters) {
     const stockStats = {};
     const ledgerBalances = {};
 
+    // Pre-fill ledgerBalances with all Debtors/Creditors from masters to ensure those with no transactions are included
+    Object.values(masters.ledgers).forEach(l => {
+        if (l.rootGroup === 'Sundry Debtors' || l.rootGroup === 'Sundry Creditors') {
+            ledgerBalances[l.name] = {
+                balance: l.openingBalance || 0,
+                billRefs: [],
+                group: l.rootGroup,
+                parent: l.parent
+            };
+        }
+    });
+
     // Detailed Transactions for Ledger View
     // Structure: items: [ { date, ledgers: [ { name, amount } ], type, number } ]
     // This allows re-constructing the view.
@@ -102,6 +114,22 @@ async function parseVouchersAndAnalyze(masters) {
                     // Stock Stats logic remains for Dashboard
                     entries.forEach(item => {
                         const amt = Math.abs(parseFloat(item.AMOUNT || 0));
+
+                        let qty = 0;
+                        const qtyRaw = item.BILLEDQTY || '';
+                        // Try standard parsing
+                        qty = parseFloat(qtyRaw);
+
+                        // If NaN, try regex extraction
+                        if (isNaN(qty) && qtyRaw) {
+                            const match = qtyRaw.match(/[\d\.]+/);
+                            if (match) qty = parseFloat(match[0]);
+                        }
+                        if (isNaN(qty)) qty = 0;
+                        qty = Math.abs(qty);
+
+
+
                         const vType = v.VOUCHERTYPENAME.toLowerCase();
 
                         // FIX: Added 'tax invoice' to catch Sales vouchers that are renamed
