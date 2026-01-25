@@ -42,7 +42,7 @@ export default function App() {
   const [targetLedger, setTargetLedger] = useState('');
 
   useEffect(() => {
-    fetch(`/data/${COMPANY_NAME}/data.json`)
+    fetch(`${import.meta.env.BASE_URL}data/${COMPANY_NAME}/data.json`)
       .then(res => res.json())
       .then(d => {
         setData(d.analysis);
