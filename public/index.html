@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tally Dashboard</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 20px; background: #f4f4f9; }
+        h1 { color: #333; }
+        .card { background: white; padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+        .stat-box { background: #fff; padding: 20px; border-radius: 8px; text-align: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .stat-value { font-size: 2em; font-weight: bold; color: #2c3e50; }
+        .stat-label { color: #7f8c8d; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #eee; }
+        th { background: #f8f9fa; }
+    </style>
+</head>
+<body>
+    <h1>Tally Data Dashboard</h1>
+    
+    <div class="stats-grid" id="stats">
+        <div class="stat-box">Loading...</div>
+    </div>
+
+    <div class="card">
+        <h2>Recent Vouchers</h2>
+        <table id="voucherTable">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Type</th>
+                    <th>Number</th>
+                    <th>Party</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <script>
+        async function loadDashboard() {
+            try {
+                const statsRes = await fetch('/api/dashboard/stats');
+                const stats = await statsRes.json();
+                
+                const statsContainer = document.getElementById('stats');
+                statsContainer.innerHTML = `
+                    <div class="stat-box"><div class="stat-value">${stats.counts.total}</div><div class="stat-label">Total Vouchers</div></div>
+                    <div class="stat-box"><div class="stat-value">${stats.counts.sales}</div><div class="stat-label">Sales</div></div>
+                    <div class="stat-box"><div class="stat-value">${stats.counts.purchases}</div><div class="stat-label">Purchases</div></div>
+                    <div class="stat-box"><div class="stat-value">${stats.counts.receipts}</div><div class="stat-label">Receipts</div></div>
+                `;
+
+                const vouchersRes = await fetch('/api/vouchers');
+                const vouchers = await vouchersRes.json(); // Fetch all for table (limit in UI)
+                const tbody = document.querySelector('#voucherTable tbody');
+                
+                vouchers.slice(0, 50).forEach(v => {
+                    const row = document.createElement('tr');
+                    
+                    // Basic amount heuristic if amount is 0/undefined
+                    let amount = v.amount || 0;
+                    if (amount === 0 && v.ledgerEntries && v.ledgerEntries.length > 0) {
+                         const max = v.ledgerEntries.reduce((m, e) => Math.max(m, Math.abs(e.amount)), 0);
+                         amount = max;
+                    }
+
+                    row.innerHTML = `
+                        <td>${v.date}</td>
+                        <td>${v.type}</td>
+                        <td>${v.number}</td>
+                        <td>${v.partyName || '-'}</td>
+                        <td>${amount.toFixed(2)}</td>
+                    `;
+                    tbody.appendChild(row);
+                });
+
+            } catch (err) {
+                console.error(err);
+                document.getElementById('stats').innerHTML = 'Error loading data.';
+            }
+        }
+
+        loadDashboard();
+    </script>
+</body>
+</html>
