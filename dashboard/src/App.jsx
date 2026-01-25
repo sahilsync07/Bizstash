@@ -95,6 +95,7 @@ export default function App() {
                 {activeTab === 'debtors' && <PartyAnalytics data={data.debtors} type="Debtors" color="orange" onDrillDown={handleDrillDown} />}
                 {activeTab === 'creditors' && <PartyAnalytics data={data.creditors} type="Creditors" color="rose" onDrillDown={handleDrillDown} />}
                 {activeTab === 'stocks' && <InventoryAnalytics data={data.stocks} />}
+                {activeTab === 'linemen' && <LinemenView data={data.debtors} onDrillDown={handleDrillDown} />}
                 {activeTab === 'ledger' && <LedgerView data={data} initialLedger={targetLedger} />}
               </motion.div>
             </AnimatePresence>
@@ -113,6 +114,7 @@ function Sidebar({ activeTab, setActiveTab, isOpen, toggle }) {
     { id: 'debtors', label: 'Receivables', icon: Wallet },
     { id: 'creditors', label: 'Payables', icon: CreditCard },
     { id: 'stocks', label: 'Inventory', icon: Package },
+    { id: 'linemen', label: 'Linemen Areas', icon: Users },
     { id: 'ledger', label: 'Ledger Book', icon: FileText },
   ];
 
@@ -671,4 +673,163 @@ function ErrorScreen() {
       <p className="text-slate-500">Could not retrieve financial records. Please ensure standard Tally XML sync is active.</p>
     </div>
   )
+}
+
+// --- Linemen / Agent View ---
+function LinemenView({ data, onDrillDown }) {
+  const [selectedAgent, setSelectedAgent] = useState(null);
+
+  // Configuration from User Request
+  // We use lowercase matchers to find Tally Groups containing these strings
+  const AGENT_CONFIG = {
+    'Sushant [Bobby]': {
+      matchers: ['tikiri', 'jk', 'durgi', 'kalyan'],
+      color: 'blue'
+    },
+    'Dulamani Sahu': {
+      matchers: ['balimela', 'gudari', 'parlakhemunidi', 'muniguda', 'phlbani', 'phulbaani', 'phulbani'],
+      color: 'emerald'
+    },
+    'Aparna': {
+      matchers: ['rayagda', 'rayagada'],
+      color: 'rose'
+    },
+    'Raju': {
+      matchers: ['jeypur', 'parvatipuram', 'parvathipuram', 'koraput', 'srikakulam'],
+      color: 'orange'
+    }
+  };
+
+  // Group Data by Agent
+  const agentData = useMemo(() => {
+    const stats = {};
+    Object.keys(AGENT_CONFIG).forEach(agent => {
+      stats[agent] = {
+        name: agent,
+        balance: 0,
+        parties: 0,
+        highRisk: 0,
+        groups: {}, // { 'TIKIRI LINE': { balance: 0, debtors: [] } }
+        ...AGENT_CONFIG[agent]
+      };
+    });
+
+    // Bucket for unassigned
+    stats['Unassigned'] = { name: 'Unassigned', balance: 0, parties: 0, highRisk: 0, groups: {}, color: 'slate', matchers: [] };
+
+    data.forEach(d => {
+      const groupName = (d.parentGroup || '').toLowerCase();
+      let assignedTo = 'Unassigned';
+
+      // Find Agent
+      for (const [agent, config] of Object.entries(AGENT_CONFIG)) {
+        if (config.matchers.some(m => groupName.includes(m))) {
+          assignedTo = agent;
+          break;
+        }
+      }
+
+      // Aggregate
+      const agentStat = stats[assignedTo];
+      agentStat.balance += d.balance;
+      agentStat.parties += 1;
+      if (d.buckets?.daysOver90 > 0) agentStat.highRisk += 1;
+
+      // Group Details (Group by real Tally parent name)
+      const realGroupName = d.parentGroup || 'Unknown Group/Area';
+      if (!agentStat.groups[realGroupName]) {
+        agentStat.groups[realGroupName] = { name: realGroupName, balance: 0, debtors: [] };
+      }
+      agentStat.groups[realGroupName].balance += d.balance;
+      agentStat.groups[realGroupName].debtors.push(d);
+    });
+
+    return Object.values(stats).filter(s => s.parties > 0 || s.name !== 'Unassigned');
+  }, [data]);
+
+  if (selectedAgent) {
+    const agent = agentData.find(a => a.name === selectedAgent);
+    if (!agent) return <div>Agent Not Found</div>; // Safety check
+
+    return (
+      <div className="space-y-6">
+        <div className="flex items-center gap-4">
+          <button
+            onClick={() => setSelectedAgent(null)}
+            className="p-2 hover:bg-white rounded-lg text-slate-500 transition-colors bg-white border border-slate-200 shadow-sm"
+          >
+            <ArrowDownRight className="rotate-90 text-slate-600" />
+          </button>
+          <h2 className="text-xl font-bold text-slate-800">
+            {agent.name}'s Area <span className="text-slate-400 font-normal text-sm ml-2">({formatCurrency(agent.balance)})</span>
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {Object.values(agent.groups).sort((a, b) => b.balance - a.balance).map(group => (
+            <div key={group.name} className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+              <div className={`p-4 border-b border-gray-100 flex justify-between items-center bg-${agent.color}-50/30`}>
+                <h3 className="font-bold text-slate-700 text-sm uppercase">{group.name}</h3>
+                <span className={`font-bold text-${agent.color}-600`}>{formatCurrency(group.balance)}</span>
+              </div>
+              <div className="divide-y divide-slate-50 max-h-60 overflow-y-auto">
+                {group.debtors.sort((a, b) => b.balance - a.balance).map(bg => (
+                  <div
+                    key={bg.name}
+                    onClick={() => onDrillDown(bg.name)}
+                    className="px-4 py-3 flex justify-between items-center hover:bg-slate-50 cursor-pointer transition-colors"
+                  >
+                    <span className="text-sm text-slate-600 truncate max-w-[70%]">{bg.name}</span>
+                    <span className="text-xs font-medium text-slate-800">{formatCurrency(bg.balance)}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {agentData.map(agent => (
+        <div
+          key={agent.name}
+          onClick={() => setSelectedAgent(agent.name)}
+          className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-all cursor-pointer group"
+        >
+          <div className="flex justify-between items-start mb-6">
+            <div className={`p-3 rounded-xl bg-${agent.color}-50 text-${agent.color}-600`}>
+              <Users size={24} />
+            </div>
+            <div className="text-right">
+              <span className={`text-xs font-bold px-2 py-1 rounded-full bg-${agent.color}-50 text-${agent.color}-700`}>
+                {agent.parties} Areas
+              </span>
+            </div>
+          </div>
+
+          <h3 className="text-lg font-bold text-slate-800 mb-1 group-hover:text-blue-600 transition-colors">{agent.name}</h3>
+
+          <div className="mt-4 space-y-3">
+            <div className="flex justify-between items-center text-sm">
+              <span className="text-slate-500">Market Outstanding</span>
+              <span className="font-bold text-slate-700">{formatCurrency(agent.balance)}</span>
+            </div>
+            <div className="flex justify-between items-center text-sm">
+              <span className="text-slate-500">High Risk Clients</span>
+              <span className="font-bold text-rose-600">{agent.highRisk}</span>
+            </div>
+          </div>
+
+          <div className="mt-6 pt-4 border-t border-slate-50">
+            <p className="text-xs text-slate-400 line-clamp-1">
+              {Object.keys(agent.groups).map(g => g.replace('LINE', '').trim()).join(', ').substring(0, 40) + '...'}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
 }

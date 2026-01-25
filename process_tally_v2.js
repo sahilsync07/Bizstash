@@ -196,7 +196,8 @@ async function parseVouchersAndAnalyze(masters) {
             name,
             balance: Math.abs(data.balance),
             status: buckets.daysOver90 > 0 ? 'Non-Performing' : 'Performing',
-            buckets
+            buckets,
+            parentGroup: masters.ledgers[name]?.parent || 'Unknown'
         };
 
         if (data.group === 'Sundry Debtors') debtors.push(record);
