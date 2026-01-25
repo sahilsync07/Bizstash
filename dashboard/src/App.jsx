@@ -433,8 +433,18 @@ function LedgerView({ data, initialLedger }) {
       .filter(t => t.ledgers.some(l => l.name === selectedLedger))
       .map(t => {
         const entry = t.ledgers.find(l => l.name === selectedLedger);
-        const other = t.ledgers.find(l => l.name !== selectedLedger);
         if (!entry) return null;
+
+        // Smart Particulars: Find ledger with opposite sign (Dr vs Cr) to identify the true source/dest
+        // This prevents showing other co-parties in a compound voucher (e.g. multiple credits in one receipt)
+        let other = t.ledgers.find(l =>
+          l.name !== selectedLedger &&
+          ((entry.amount > 0 && l.amount < 0) || (entry.amount < 0 && l.amount > 0))
+        );
+
+        // Fallback: If no opposite found (rare), just take the first different ledger
+        if (!other) other = t.ledgers.find(l => l.name !== selectedLedger);
+
         return {
           date: t.date,
           particulars: other ? other.name : t.type,
