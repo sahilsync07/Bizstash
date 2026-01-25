@@ -196,9 +196,15 @@ async function parseVouchersAndAnalyze(masters) {
         const openBills = [];
         Object.entries(billMap).forEach(([billName, val]) => {
             if (Math.abs(val.amount) > 1) { // Only showing bills with > 1 unit currency outstanding
+                // val.date is a Date object. Convert to YYYYMMDD string for frontend.
+                const yyyy = val.date.getFullYear();
+                const mm = String(val.date.getMonth() + 1).padStart(2, '0');
+                const dd = String(val.date.getDate()).padStart(2, '0');
+                const dateString = `${yyyy}${mm}${dd}`;
+
                 openBills.push({
                     name: billName,
-                    date: val.date, // YYYYMMDD
+                    date: dateString,
                     amount: val.amount
                 });
             }
