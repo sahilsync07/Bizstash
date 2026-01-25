@@ -440,22 +440,129 @@ function PartyAnalytics({ data, type, color, onDrillDown }) {
 }
 
 function InventoryAnalytics({ data }) {
-  const topItems = data.slice(0, 20);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [filter, setFilter] = useState('all'); // all, fast, slow, non-moving
+
+  // KPI Calculations
+  const totalStockValue = data.reduce((acc, curr) => acc + (curr.closingValue || 0), 0);
+  const deadStockValue = data.filter(d => d.movement === 'Non-Moving').reduce((acc, curr) => acc + (curr.closingValue || 0), 0);
+  const topItem = data.sort((a, b) => b.revenue - a.revenue)[0];
+
+  // Charts Data
+  const movementData = [
+    { name: 'Fast Moving', value: data.filter(d => d.movement === 'Fast').length, color: '#10b981' },
+    { name: 'Slow Moving', value: data.filter(d => d.movement === 'Slow').length, color: '#f59e0b' },
+    { name: 'Non-Moving', value: data.filter(d => d.movement === 'Non-Moving').length, color: '#ef4444' }
+  ];
+
+  const abcData = [
+    { name: 'Class A (High Value)', value: data.filter(d => d.class === 'A').length, color: '#3b82f6' },
+    { name: 'Class B (Med Value)', value: data.filter(d => d.class === 'B').length, color: '#8b5cf6' },
+    { name: 'Class C (Low Value)', value: data.filter(d => d.class === 'C').length, color: '#94a3b8' }
+  ];
+
+  const filteredData = data.filter(item => {
+    const matchesSearch = item.name.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesFilter = filter === 'all' || item.movement.toLowerCase() === filter.toLowerCase();
+    return matchesSearch && matchesFilter;
+  });
 
   return (
     <div className="space-y-6">
-      <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 h-[500px] flex flex-col">
-        <h3 className="text-lg font-bold text-slate-800 mb-4 shrink-0">Top 20 Products by Revenue</h3>
-        <div className="flex-1 min-h-0">
-          <ResponsiveContainer width="100%" height="100%">
-            <BarChart layout="vertical" data={topItems} margin={{ top: 5, right: 30, left: 40, bottom: 5 }}>
-              <CartesianGrid strokeDasharray="3 3" horizontal={true} vertical={false} stroke="#f1f5f9" />
-              <XAxis type="number" hide />
-              <YAxis dataKey="name" type="category" width={150} tick={{ fontSize: 11, fill: '#64748b' }} />
-              <RechartsTooltip cursor={{ fill: '#f8fafc' }} content={<CustomTooltip />} />
-              <Bar dataKey="revenue" fill="#10b981" radius={[0, 4, 4, 0]} barSize={20} />
-            </BarChart>
-          </ResponsiveContainer>
+      {/* KPIs */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <KpiCard title="Total Stock Valuation" value={totalStockValue} trend="Assets" color="emerald" icon={Package} />
+        <KpiCard title="Dead Stock Value" value={deadStockValue} trend="Risk" color="rose" icon={Activity} />
+        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex flex-col justify-between">
+          <div>
+            <p className="text-slate-500 text-sm font-medium">Top Revenue Generator</p>
+            <h3 className="text-lg font-bold text-slate-800 mt-1 truncate">{topItem?.name || 'N/A'}</h3>
+          </div>
+          <p className="text-2xl font-bold text-blue-600 mt-2">{formatCurrency(topItem?.revenue || 0)}</p>
+        </div>
+      </div>
+
+      {/* Charts Row */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Movement Composition */}
+        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex flex-col items-center">
+          <h3 className="text-lg font-bold text-slate-800 mb-4 w-full">Stock Movement Analysis</h3>
+          <div className="w-full h-[250px]">
+            <ResponsiveContainer width="100%" height="100%">
+              <PieChart>
+                <Pie data={movementData} cx="50%" cy="50%" innerRadius={60} outerRadius={80} paddingAngle={5} dataKey="value">
+                  {movementData.map((entry, index) => <Cell key={index} fill={entry.color} />)}
+                </Pie>
+                <RechartsTooltip />
+                <Legend verticalAlign="bottom" height={36} />
+              </PieChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
+
+        {/* ABC Analysis */}
+        <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex flex-col items-center">
+          <h3 className="text-lg font-bold text-slate-800 mb-4 w-full">ABC Classification</h3>
+          <div className="w-full h-[250px]">
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart data={abcData} layout="vertical" margin={{ top: 5, right: 30, left: 40, bottom: 5 }}>
+                <XAxis type="number" hide />
+                <YAxis dataKey="name" type="category" width={110} tick={{ fontSize: 10 }} />
+                <Bar dataKey="value" radius={[0, 4, 4, 0]} barSize={20}>
+                  {abcData.map((entry, index) => <Cell key={index} fill={entry.color} />)}
+                </Bar>
+                <RechartsTooltip />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+        </div>
+      </div>
+
+      {/* Detailed Table */}
+      <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden flex flex-col h-[500px]">
+        <div className="p-4 border-b border-slate-100 flex justify-between items-center bg-slate-50 gap-4">
+          <h3 className="font-bold text-slate-800">Detailed Stock Report</h3>
+
+          <div className="flex items-center gap-4 flex-1 justify-end">
+            {/* Search */}
+            <div className="flex items-center bg-white border border-slate-200 rounded-lg px-3 py-1.5 focus-within:ring-2 focus-within:ring-blue-500/20 transition-all max-w-sm w-full">
+              <Search size={16} className="text-slate-400 mr-2" />
+              <input
+                type="text"
+                placeholder="Search Item..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="bg-transparent border-none outline-none text-sm text-slate-700 w-full"
+              />
+            </div>
+            {/* Filter Tabs */}
+            <div className="flex bg-white rounded-lg border border-slate-200 p-1 shrink-0">
+              {['all', 'Fast', 'Slow', 'Non-Moving'].map(f => (
+                <button
+                  key={f}
+                  onClick={() => setFilter(f)}
+                  className={`px-3 py-1 text-xs font-bold rounded-md capitalize transition-colors ${filter === f ? 'bg-slate-800 text-white' : 'text-slate-500 hover:bg-slate-50'}`}
+                >
+                  {f}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="flex-1 overflow-auto">
+          <DataTable
+            headers={['Item Name', 'Inward', 'Outward', 'Closing Qty', 'Valuation', 'Class', 'Status']}
+            rows={filteredData.map(item => [
+              <span className="font-medium text-slate-700">{item.name}</span>,
+              <span className="text-slate-500">{item.inwardQty}</span>,
+              <span className="text-slate-500">{item.outwardQty}</span>,
+              <span className="font-bold text-slate-800">{item.closingQty}</span>,
+              <span className="font-bold text-emerald-600">{formatCurrency(item.closingValue)}</span>,
+              <span className={`text-xs px-2 py-0.5 rounded font-bold border ${item.class === 'A' ? 'bg-blue-50 text-blue-600 border-blue-200' : item.class === 'B' ? 'bg-purple-50 text-purple-600 border-purple-200' : 'bg-slate-50 text-slate-500 border-slate-200'}`}>Class {item.class}</span>,
+              <span className={`text-xs font-bold ${item.movement === 'Fast' ? 'text-emerald-500' : item.movement === 'Slow' ? 'text-orange-500' : 'text-red-500'}`}>{item.movement}</span>
+            ])}
+          />
         </div>
       </div>
     </div>

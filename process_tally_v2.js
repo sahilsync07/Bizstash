@@ -104,17 +104,28 @@ async function parseVouchersAndAnalyze(masters) {
                         const vType = v.VOUCHERTYPENAME.toLowerCase();
 
                         // FIX: Added 'tax invoice' to catch Sales vouchers that are renamed
-                        if (vType.includes('sales') || vType.includes('tax invoice')) {
+                        if (vType.includes('sales') || vType.includes('tax invoice') || vType.includes('delivery note')) {
                             if (!monthlyStats[month]) monthlyStats[month] = { sales: 0, purchase: 0 };
                             monthlyStats[month].sales += amt;
 
-                            if (!stockStats[item.STOCKITEMNAME]) stockStats[item.STOCKITEMNAME] = { qty: 0, revenue: 0, lastSaleDate: voucherDate };
-                            stockStats[item.STOCKITEMNAME].qty += parseFloat(item.BILLEDQTY || 0);
-                            stockStats[item.STOCKITEMNAME].revenue += amt;
-                            if (voucherDate > stockStats[item.STOCKITEMNAME].lastSaleDate) stockStats[item.STOCKITEMNAME].lastSaleDate = voucherDate;
-                        } else if (vType.includes('purchase')) {
+                            // Outward
+                            if (!stockStats[item.STOCKITEMNAME]) stockStats[item.STOCKITEMNAME] = { qty: 0, revenue: 0, lastSaleDate: voucherDate, inwardQty: 0, inwardVal: 0, outwardQty: 0, outwardVal: 0 };
+                            stockStats[item.STOCKITEMNAME].outwardQty += qty;
+                            stockStats[item.STOCKITEMNAME].outwardVal += amt;
+                            stockStats[item.STOCKITEMNAME].revenue += amt; // Keep for legacy compatibility if needed
+
+                            if (voucherDate > stockStats[item.STOCKITEMNAME].lastSaleDate) {
+                                stockStats[item.STOCKITEMNAME].lastSaleDate = voucherDate;
+                            }
+
+                        } else if (vType.includes('purchase') || vType.includes('receipt note')) {
                             if (!monthlyStats[month]) monthlyStats[month] = { sales: 0, purchase: 0 };
                             monthlyStats[month].purchase += amt;
+
+                            // Inward
+                            if (!stockStats[item.STOCKITEMNAME]) stockStats[item.STOCKITEMNAME] = { qty: 0, revenue: 0, lastSaleDate: voucherDate, inwardQty: 0, inwardVal: 0, outwardQty: 0, outwardVal: 0 };
+                            stockStats[item.STOCKITEMNAME].inwardQty += qty;
+                            stockStats[item.STOCKITEMNAME].inwardVal += amt;
                         }
                     });
                 }
@@ -223,12 +234,45 @@ async function parseVouchersAndAnalyze(masters) {
         else creditors.push(record);
     });
 
-    const stocks = Object.entries(stockStats).map(([name, stats]) => ({
-        name,
-        qtySold: stats.qty,
-        revenue: stats.revenue,
-        analysis: differenceInDays(today, stats.lastSaleDate) < 60 ? 'Fast Moving' : 'Slow Moving'
-    }));
+    const stocks = Object.entries(stockStats).map(([name, stats]) => {
+        // Calculate Closing
+        const closingQty = (stats.openingQty || 0) + stats.inwardQty - stats.outwardQty;
+        // Simple Average Valuation
+        const totalInwardVal = (stats.openingValue || 0) + stats.inwardVal;
+        const totalInwardQty = (stats.openingQty || 0) + stats.inwardQty;
+        const avgRate = totalInwardQty > 0 ? totalInwardVal / totalInwardQty : 0;
+        const closingValue = closingQty * avgRate;
+
+        // Movement Analysis
+        const daysSinceSale = differenceInDays(today, stats.lastSaleDate);
+        let movement = 'Non-Moving';
+        if (daysSinceSale <= 30) movement = 'Fast';
+        else if (daysSinceSale <= 90) movement = 'Slow';
+
+        return {
+            name,
+            inwardQty: stats.inwardQty,
+            outwardQty: stats.outwardQty,
+            closingQty,
+            closingValue,
+            lastSaleDate: stats.lastSaleDate,
+            movement,
+            revenue: stats.revenue // for ABC sort
+        };
+    });
+
+    // ABC Analysis
+    stocks.sort((a, b) => b.revenue - a.revenue);
+    const totalRevenue = stocks.reduce((acc, s) => acc + s.revenue, 0);
+    let cumRevenue = 0;
+
+    stocks.forEach(s => {
+        cumRevenue += s.revenue;
+        const percentage = (cumRevenue / totalRevenue) * 100;
+        if (percentage <= 70) s.class = 'A';
+        else if (percentage <= 90) s.class = 'B';
+        else s.class = 'C';
+    });
 
     // Sort transactions by date descending for UI
     allTransactions.sort((a, b) => b.date.localeCompare(a.date));
