@@ -884,26 +884,65 @@ function OverdueTable({ data }) {
 
 function DataTable({ headers, rows, onRowClick }) {
   return (
-    <div className="overflow-x-auto">
-      <table className="min-w-full text-sm text-left">
-        <thead className="bg-slate-50 text-slate-500 font-semibold border-b border-slate-100">
-          <tr>
-            {headers.map((h, i) => <th key={i} className="px-6 py-4">{h}</th>)}
-          </tr>
-        </thead>
-        <tbody className="divide-y divide-slate-100">
-          {rows.map((row, i) => (
-            <tr
-              key={i}
-              onClick={() => onRowClick && onRowClick(row.map(c => c.props?.children || c))} // Extract text if react node
-              className={onRowClick ? 'hover:bg-blue-50/50 cursor-pointer transition-colors' : ''}
-            >
-              {row.map((cell, j) => <td key={j} className="px-6 py-4 text-slate-700">{cell}</td>)}
+    <>
+      {/* Desktop/Tablet View (Table) */}
+      <div className="hidden md:block overflow-x-auto">
+        <table className="min-w-full text-sm text-left">
+          <thead className="bg-slate-50 text-slate-500 font-semibold border-b border-slate-100">
+            <tr>
+              {headers.map((h, i) => <th key={i} className="px-6 py-4">{h}</th>)}
             </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+          </thead>
+          <tbody className="divide-y divide-slate-100">
+            {rows.map((row, i) => (
+              <tr
+                key={i}
+                onClick={() => onRowClick && onRowClick(row.map(c => c.props?.children || c))}
+                className={onRowClick ? 'hover:bg-blue-50/50 cursor-pointer transition-colors' : ''}
+              >
+                {row.map((cell, j) => <td key={j} className="px-6 py-4 text-slate-700">{cell}</td>)}
+              </tr>
+            ))}
+            {rows.length === 0 && (
+              <tr>
+                <td colSpan={headers.length} className="px-6 py-8 text-center text-slate-400">
+                  No records found matching criteria.
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
+
+      {/* Mobile View (Cards) */}
+      <div className="md:hidden space-y-4 p-4 bg-slate-50">
+        {rows.map((row, i) => (
+          <div
+            key={i}
+            onClick={() => onRowClick && onRowClick(row.map(c => c.props?.children || c))}
+            className={`bg-white rounded-xl p-4 shadow-sm border border-slate-100 flex flex-col gap-3 ${onRowClick ? 'active:bg-slate-50' : ''}`}
+          >
+            {/* First Column is usually the Title (Party Name / Item Name) */}
+            <div className="border-b border-slate-100 pb-2 mb-1">
+              <h4 className="font-bold text-slate-800 text-base">{row[0]}</h4>
+            </div>
+
+            {/* Rest of the columns as Key-Value pairs */}
+            <div className="grid grid-cols-2 gap-y-3 gap-x-2">
+              {row.slice(1).map((cell, j) => (
+                <div key={j} className="flex flex-col">
+                  <span className="text-[10px] uppercase font-bold text-slate-400">{headers[j + 1]}</span>
+                  <span className="text-sm text-slate-700 font-medium break-all">{cell}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+        {rows.length === 0 && (
+          <div className="text-center py-8 text-slate-400">No records found.</div>
+        )}
+      </div>
+    </>
   )
 }
 
