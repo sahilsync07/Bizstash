@@ -95,7 +95,7 @@ export default function App() {
                 {activeTab === 'debtors' && <PartyAnalytics data={data.debtors} type="Debtors" color="orange" onDrillDown={handleDrillDown} />}
                 {activeTab === 'creditors' && <PartyAnalytics data={data.creditors} type="Creditors" color="rose" onDrillDown={handleDrillDown} />}
                 {activeTab === 'stocks' && <InventoryAnalytics data={data.stocks} />}
-                {activeTab === 'linemen' && <LinemenView data={data.debtors} onDrillDown={handleDrillDown} />}
+                {activeTab === 'linemen' && <LinemanView data={data.debtors} onDrillDown={handleDrillDown} />}
                 {activeTab === 'ledger' && <LedgerView data={data} initialLedger={targetLedger} />}
               </motion.div>
             </AnimatePresence>
@@ -114,7 +114,7 @@ function Sidebar({ activeTab, setActiveTab, isOpen, toggle }) {
     { id: 'debtors', label: 'Receivables', icon: Wallet },
     { id: 'creditors', label: 'Payables', icon: CreditCard },
     { id: 'stocks', label: 'Inventory', icon: Package },
-    { id: 'linemen', label: 'Linemen Areas', icon: Users },
+    { id: 'linemen', label: 'Linemen', icon: Users },
     { id: 'ledger', label: 'Ledger Book', icon: FileText },
   ];
 
@@ -675,161 +675,125 @@ function ErrorScreen() {
   )
 }
 
-// --- Linemen / Agent View ---
-function LinemenView({ data, onDrillDown }) {
-  const [selectedAgent, setSelectedAgent] = useState(null);
+// --- Lineman View ---
+const LINEMEN_CONFIG = [
+  {
+    name: "Sushant [Bobby]",
+    lines: ["TIKIRI", "KASIPUR", "DURGI", "THERUBALI", "JK", "KALYAN SINGHPUR"],
+    color: "bg-blue-500"
+  },
+  {
+    name: "Dulamani Sahu",
+    lines: ["BALIMELA", "CHITROKUNDA", "MALKANGIRI", "GUDARI", "GUNUPUR", "PARLAKHIMUNDI", "MUNIGUDA", "B.CTC", "PHULBAANI"],
+    color: "bg-purple-500"
+  },
+  {
+    name: "Aparna",
+    lines: ["RAYAGADA", "LOCAL"],
+    color: "bg-pink-500"
+  },
+  {
+    name: "Raju",
+    lines: ["JEYPUR", "PARVATHIPURAM", "KORAPUT", "SRIKAKULAM"],
+    color: "bg-emerald-500"
+  }
+];
 
-  // Configuration from User Request
-  // We use lowercase matchers to find Tally Groups containing these strings
-  const AGENT_CONFIG = {
-    'Sushant [Bobby]': {
-      matchers: ['tikiri', 'jk', 'durgi', 'kalyan'],
-      color: 'blue'
-    },
-    'Dulamani Sahu': {
-      matchers: ['balimela', 'gudari', 'parlakhemunidi', 'muniguda', 'phlbani', 'phulbaani', 'phulbani'],
-      color: 'emerald'
-    },
-    'Aparna': {
-      matchers: ['rayagda', 'rayagada'],
-      color: 'rose'
-    },
-    'Raju': {
-      matchers: ['jeypur', 'parvatipuram', 'parvathipuram', 'koraput', 'srikakulam'],
-      color: 'orange'
-    }
-  };
+function LinemanView({ data, onDrillDown }) {
+  const [selectedLineman, setSelectedLineman] = useState(null);
 
-  // Group Data by Agent
-  const agentData = useMemo(() => {
-    const stats = {};
-    Object.keys(AGENT_CONFIG).forEach(agent => {
-      stats[agent] = {
-        name: agent,
-        balance: 0,
-        parties: 0,
-        highRisk: 0,
-        groups: {}, // { 'TIKIRI LINE': { balance: 0, debtors: [] } }
-        ...AGENT_CONFIG[agent]
-      };
+  const linemanData = useMemo(() => {
+    if (!data) return [];
+    return LINEMEN_CONFIG.map(config => {
+      // Find all debtors belonging to this Lineman's lines
+      const parties = data.filter(d => {
+        if (!d.parentGroup) return false;
+        const group = d.parentGroup.toUpperCase();
+        return config.lines.some(l => group.includes(l)); // removed toUpperCase() since lines are already CAPS
+      });
+
+      const totalDue = parties.reduce((acc, curr) => acc + curr.balance, 0);
+      const highRisk = parties.filter(p => p.buckets.daysOver90 > 0).length;
+
+      return { ...config, parties, totalDue, highRisk };
     });
-
-    // Bucket for unassigned
-    stats['Unassigned'] = { name: 'Unassigned', balance: 0, parties: 0, highRisk: 0, groups: {}, color: 'slate', matchers: [] };
-
-    data.forEach(d => {
-      const groupName = (d.parentGroup || '').toLowerCase();
-      let assignedTo = 'Unassigned';
-
-      // Find Agent
-      for (const [agent, config] of Object.entries(AGENT_CONFIG)) {
-        if (config.matchers.some(m => groupName.includes(m))) {
-          assignedTo = agent;
-          break;
-        }
-      }
-
-      // Aggregate
-      const agentStat = stats[assignedTo];
-      agentStat.balance += d.balance;
-      agentStat.parties += 1;
-      if (d.buckets?.daysOver90 > 0) agentStat.highRisk += 1;
-
-      // Group Details (Group by real Tally parent name)
-      const realGroupName = d.parentGroup || 'Unknown Group/Area';
-      if (!agentStat.groups[realGroupName]) {
-        agentStat.groups[realGroupName] = { name: realGroupName, balance: 0, debtors: [] };
-      }
-      agentStat.groups[realGroupName].balance += d.balance;
-      agentStat.groups[realGroupName].debtors.push(d);
-    });
-
-    return Object.values(stats).filter(s => s.parties > 0 || s.name !== 'Unassigned');
   }, [data]);
 
-  if (selectedAgent) {
-    const agent = agentData.find(a => a.name === selectedAgent);
-    if (!agent) return <div>Agent Not Found</div>; // Safety check
-
-    return (
-      <div className="space-y-6">
-        <div className="flex items-center gap-4">
-          <button
-            onClick={() => setSelectedAgent(null)}
-            className="p-2 hover:bg-white rounded-lg text-slate-500 transition-colors bg-white border border-slate-200 shadow-sm"
-          >
-            <ArrowDownRight className="rotate-90 text-slate-600" />
-          </button>
-          <h2 className="text-xl font-bold text-slate-800">
-            {agent.name}'s Area <span className="text-slate-400 font-normal text-sm ml-2">({formatCurrency(agent.balance)})</span>
-          </h2>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {Object.values(agent.groups).sort((a, b) => b.balance - a.balance).map(group => (
-            <div key={group.name} className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
-              <div className={`p-4 border-b border-gray-100 flex justify-between items-center bg-${agent.color}-50/30`}>
-                <h3 className="font-bold text-slate-700 text-sm uppercase">{group.name}</h3>
-                <span className={`font-bold text-${agent.color}-600`}>{formatCurrency(group.balance)}</span>
-              </div>
-              <div className="divide-y divide-slate-50 max-h-60 overflow-y-auto">
-                {group.debtors.sort((a, b) => b.balance - a.balance).map(bg => (
-                  <div
-                    key={bg.name}
-                    onClick={() => onDrillDown(bg.name)}
-                    className="px-4 py-3 flex justify-between items-center hover:bg-slate-50 cursor-pointer transition-colors"
-                  >
-                    <span className="text-sm text-slate-600 truncate max-w-[70%]">{bg.name}</span>
-                    <span className="text-xs font-medium text-slate-800">{formatCurrency(bg.balance)}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    );
-  }
+  const activeData = selectedLineman ? linemanData.find(l => l.name === selectedLineman) : null;
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {agentData.map(agent => (
-        <div
-          key={agent.name}
-          onClick={() => setSelectedAgent(agent.name)}
-          className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 hover:shadow-md transition-all cursor-pointer group"
+    <div className="space-y-6">
+      {/* Linemen Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {linemanData.map((agent, i) => (
+          <div
+            key={i}
+            onClick={() => setSelectedLineman(agent.name)}
+            className={`bg-white p-6 rounded-2xl shadow-sm border border-slate-100 cursor-pointer transition-all hover:shadow-md ${selectedLineman === agent.name ? 'ring-2 ring-blue-500 ring-offset-2' : ''}`}
+          >
+            <div className="flex items-center gap-4 mb-4">
+              <div className={`h-12 w-12 rounded-full ${agent.color} flex items-center justify-center text-white font-bold text-lg shadow-sm`}>
+                {agent.name.charAt(0)}
+              </div>
+              <div className="overflow-hidden">
+                <h3 className="font-bold text-slate-800 truncate">{agent.name}</h3>
+                <p className="text-xs text-slate-500">{agent.parties.length} Parties</p>
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <div className="flex justify-between items-center text-sm">
+                <span className="text-slate-500">Total Due</span>
+                <span className="font-bold text-slate-700">{formatCurrency(agent.totalDue)}</span>
+              </div>
+              <div className="flex justify-between items-center text-sm">
+                <span className="text-slate-500">High Risk</span>
+                <span className={`font-bold ${agent.highRisk > 0 ? 'text-red-600' : 'text-slate-500'}`}>{agent.highRisk}</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Detail View */}
+      {activeData && (
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden"
         >
-          <div className="flex justify-between items-start mb-6">
-            <div className={`p-3 rounded-xl bg-${agent.color}-50 text-${agent.color}-600`}>
-              <Users size={24} />
+          <div className="p-6 border-b border-slate-100 flex justify-between items-center bg-slate-50/50">
+            <div>
+              <h3 className="font-bold text-lg text-slate-800">{activeData.name}'s Area</h3>
+              <p className="text-sm text-slate-500 mt-1">
+                Covering: {activeData.lines.join(', ')}
+              </p>
             </div>
             <div className="text-right">
-              <span className={`text-xs font-bold px-2 py-1 rounded-full bg-${agent.color}-50 text-${agent.color}-700`}>
-                {agent.parties} Areas
-              </span>
+              <p className="text-xs uppercase font-bold text-slate-400">Total Outstanding</p>
+              <p className="text-2xl font-bold text-emerald-600">{formatCurrency(activeData.totalDue)}</p>
             </div>
           </div>
 
-          <h3 className="text-lg font-bold text-slate-800 mb-1 group-hover:text-blue-600 transition-colors">{agent.name}</h3>
-
-          <div className="mt-4 space-y-3">
-            <div className="flex justify-between items-center text-sm">
-              <span className="text-slate-500">Market Outstanding</span>
-              <span className="font-bold text-slate-700">{formatCurrency(agent.balance)}</span>
-            </div>
-            <div className="flex justify-between items-center text-sm">
-              <span className="text-slate-500">High Risk Clients</span>
-              <span className="font-bold text-rose-600">{agent.highRisk}</span>
-            </div>
-          </div>
-
-          <div className="mt-6 pt-4 border-t border-slate-50">
-            <p className="text-xs text-slate-400 line-clamp-1">
-              {Object.keys(agent.groups).map(g => g.replace('LINE', '').trim()).join(', ').substring(0, 40) + '...'}
-            </p>
-          </div>
-        </div>
-      ))}
+          <DataTable
+            headers={['Group / Line', 'Party Name', 'Balance', 'Status', 'Action']}
+            rows={activeData.parties.sort((a, b) => b.balance - a.balance).map(p => [
+              <span className="text-xs font-bold bg-slate-100 text-slate-500 px-2 py-1 rounded inline-block">{p.parentGroup}</span>,
+              <span className="font-medium text-slate-700">{p.name}</span>,
+              <span className="font-bold text-slate-700">{formatCurrency(p.balance)}</span>,
+              <span className={`text-xs px-2 py-1 rounded-full font-bold ${p.status === 'Non-Performing' ? 'bg-red-100 text-red-700' : 'bg-emerald-100 text-emerald-700'}`}>
+                {p.status}
+              </span>,
+              <button
+                onClick={(e) => { e.stopPropagation(); onDrillDown(p.name); }}
+                className="text-xs bg-blue-50 text-blue-600 px-3 py-1.5 rounded hover:bg-blue-100 font-medium transition-colors"
+              >
+                View Ledger
+              </button>
+            ])}
+          />
+        </motion.div>
+      )}
     </div>
-  );
+  )
 }
