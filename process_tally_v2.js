@@ -56,6 +56,7 @@ async function parseMasters() {
 
 async function parseVouchersAndAnalyze(masters) {
     const vouchersDir = path.join(XML_DIR, 'vouchers');
+    await fs.ensureDir(vouchersDir); // Ensure directory exists to prevent ENOENT
     const files = await fs.readdir(vouchersDir);
     const voucherXmls = files.filter(f => f.endsWith('.xml'));
 
