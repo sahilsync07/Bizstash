@@ -256,6 +256,31 @@ async function main() {
         }
     };
 
+    // --- Update Company Index (companies.json) ---
+    const companiesFile = path.join(__dirname, 'dashboard', 'public', 'data', 'companies.json');
+    let companies = [];
+    try {
+        if (fs.existsSync(companiesFile)) {
+            companies = await fs.readJson(companiesFile);
+        }
+    } catch (e) {
+        // ignore error, start fresh
+    }
+
+    // Remove existing entry for this company if exists
+    companies = companies.filter(c => c.id !== COMPANY_NAME);
+
+    // Add updated entry
+    companies.push({
+        id: COMPANY_NAME,
+        name: COMPANY_NAME.replace(/_/g, ' '), // Human readable name
+        lastUpdated: new Date().toISOString()
+    });
+
+    await fs.writeJson(companiesFile, companies, { spaces: 2 });
+    console.log(`Updated Company Index: ${companies.length} companies registered.`);
+
+    // --- Save Company Data ---
     const outputFile = path.join(OUTPUT_DIR, 'data.json');
     // Using simple writeJson might fail with massive transactions array (e.g. 50MB+).
     // But for 2-3k vouchers it's fine.

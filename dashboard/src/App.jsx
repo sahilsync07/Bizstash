@@ -12,7 +12,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 // --- Constants & Config ---
 const COLORS = ['#10b981', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899'];
-const COMPANY_NAME = 'default_company';
 
 // --- Utility Functions ---
 const formatCurrency = (val) =>
@@ -41,8 +40,31 @@ export default function App() {
   const [isSidebarOpen, setSidebarOpen] = useState(true);
   const [targetLedger, setTargetLedger] = useState('');
 
+  const [companies, setCompanies] = useState([]);
+  const [selectedCompany, setSelectedCompany] = useState(null);
+
+  // 1. Fetch Company List
   useEffect(() => {
-    fetch(`${import.meta.env.BASE_URL}data/${COMPANY_NAME}/data.json`)
+    fetch(`${import.meta.env.BASE_URL}data/companies.json`)
+      .then(res => res.json())
+      .then(list => {
+        setCompanies(list);
+        if (list.length > 0) setSelectedCompany(list[list.length - 1]); // Default to latest
+        else setLoading(false); // No companies found
+      })
+      .catch(err => {
+        console.error("Failed to load company index", err);
+        // Fallback to default if index missing
+        setSelectedCompany({ id: 'default_company', name: 'Default Company' });
+      });
+  }, []);
+
+  // 2. Fetch Data when Company Changes
+  useEffect(() => {
+    if (!selectedCompany) return;
+
+    setLoading(true);
+    fetch(`${import.meta.env.BASE_URL}data/${selectedCompany.id}/data.json`)
       .then(res => res.json())
       .then(d => {
         setData(d.analysis);
@@ -51,8 +73,9 @@ export default function App() {
       .catch(err => {
         console.error("Failed to load data", err);
         setLoading(false);
+        setData(null);
       });
-  }, []);
+  }, [selectedCompany]);
 
   const handleDrillDown = (ledgerName) => {
     setTargetLedger(ledgerName);
@@ -60,7 +83,8 @@ export default function App() {
   };
 
   if (loading) return <LoadingScreen />;
-  if (!data) return <ErrorScreen />;
+  if (!data && companies.length === 0) return <ErrorScreen message="No Companies Found. Please run sync script." />;
+  if (!data) return <ErrorScreen message="Could not load financial records." />;
 
   return (
     <div className="flex h-screen bg-slate-50 text-slate-900 font-sans overflow-hidden">
@@ -70,12 +94,15 @@ export default function App() {
         setActiveTab={setActiveTab}
         isOpen={isSidebarOpen}
         toggle={() => setSidebarOpen(!isSidebarOpen)}
+        companyName={selectedCompany?.name}
       />
 
       {/* Main Content */}
       <div className="flex-1 flex flex-col overflow-hidden relative">
         <Header
-          companyName={COMPANY_NAME}
+          companies={companies}
+          selectedCompany={selectedCompany}
+          onSelectCompany={(id) => setSelectedCompany(companies.find(c => c.id === id))}
           toggleSidebar={() => setSidebarOpen(!isSidebarOpen)}
           isSidebarOpen={isSidebarOpen}
         />
@@ -108,7 +135,7 @@ export default function App() {
 }
 
 // --- Sidebar ---
-function Sidebar({ activeTab, setActiveTab, isOpen, toggle }) {
+function Sidebar({ activeTab, setActiveTab, isOpen, toggle, companyName }) {
   const menuItems = [
     { id: 'summary', label: 'Dashboard', icon: LayoutDashboard },
     { id: 'sales', label: 'Sales & Purchase', icon: TrendingUp },
@@ -156,8 +183,8 @@ function Sidebar({ activeTab, setActiveTab, isOpen, toggle }) {
           </div>
           {isOpen && (
             <div className="ml-3 overflow-hidden">
-              <p className="text-xs font-medium text-white truncate">Admin User</p>
-              <p className="text-[10px] text-slate-500 truncate">Default Company</p>
+              <p className="text-xs font-medium text-white truncate">Active Profile</p>
+              <p className="text-[10px] text-slate-500 truncate">{companyName || 'Loading...'}</p>
             </div>
           )}
         </div>
@@ -167,18 +194,34 @@ function Sidebar({ activeTab, setActiveTab, isOpen, toggle }) {
 }
 
 // --- Header ---
-function Header({ companyName, toggleSidebar, isSidebarOpen }) {
+function Header({ companies, selectedCompany, onSelectCompany, toggleSidebar, isSidebarOpen }) {
+  // Format last sync time relative
+  const lastSync = selectedCompany?.lastUpdated
+    ? new Date(selectedCompany.lastUpdated).toLocaleString('en-IN', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })
+    : 'Never';
+
   return (
     <header className="h-16 bg-white/80 backdrop-blur-md border-b border-slate-200 px-6 flex justify-between items-center sticky top-0 z-20">
       <div className="flex items-center gap-4">
         <button onClick={toggleSidebar} className="p-2 hover:bg-slate-100 rounded-lg text-slate-600 md:hidden">
           {isSidebarOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
-        <div className="flex items-center gap-2">
-          <h2 className="text-sm font-semibold text-slate-500 uppercase tracking-widest hidden md:block">Financial Year</h2>
-          <span className="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-700 text-xs font-bold border border-emerald-200">2024-2026</span>
+
+        {/* Company Switcher */}
+        <div className="flex flex-col">
+          <div className="flex items-center gap-2">
+            <select
+              value={selectedCompany?.id || ''}
+              onChange={(e) => onSelectCompany(e.target.value)}
+              className="bg-transparent font-bold text-slate-800 outline-none cursor-pointer hover:bg-slate-100 rounded px-1 -ml-1 transition-colors"
+            >
+              {companies.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
+            </select>
+          </div>
+          <p className="text-[10px] text-slate-400 font-medium ml-0.5">Last Sync: {lastSync}</p>
         </div>
       </div>
+
       <div className="flex items-center gap-4">
         <div className="md:flex hidden items-center bg-slate-100 rounded-full px-4 py-1.5 border border-slate-200">
           <Search size={14} className="text-slate-400 mr-2" />
@@ -784,12 +827,12 @@ function LoadingScreen() {
   )
 }
 
-function ErrorScreen() {
+function ErrorScreen({ message }) {
   return (
     <div className="flex items-center justify-center h-screen bg-slate-50 flex-col gap-4">
       <X size={48} className="text-red-500" />
       <h2 className="text-xl font-bold text-slate-800">Connection Failed</h2>
-      <p className="text-slate-500">Could not retrieve financial records. Please ensure standard Tally XML sync is active.</p>
+      <p className="text-slate-500">{message || "Could not retrieve financial records. Please ensure standard Tally XML sync is active."}</p>
     </div>
   )
 }
