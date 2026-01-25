@@ -193,13 +193,24 @@ async function parseVouchersAndAnalyze(masters) {
             else buckets.daysOver90 += Math.abs(val.amount);
         });
 
+        const openBills = [];
+        Object.entries(billMap).forEach(([billName, val]) => {
+            if (Math.abs(val.amount) > 1) { // Only showing bills with > 1 unit currency outstanding
+                openBills.push({
+                    name: billName,
+                    date: val.date, // YYYYMMDD
+                    amount: val.amount
+                });
+            }
+        });
+
         const record = {
             name,
             parentGroup: data.parent, // Expose Line/Area Group
             balance: Math.abs(data.balance),
             status: buckets.daysOver90 > 0 ? 'Non-Performing' : 'Performing',
             buckets,
-            billRefs: data.billRefs // Expose bill references for aging analysis
+            openBills: openBills.sort((a, b) => a.date.localeCompare(b.date)) // Replace raw billRefs with processed openBills
         };
 
         if (data.group === 'Sundry Debtors') debtors.push(record);

@@ -620,49 +620,34 @@ function ListBox({ title, items, icon: Icon, color, onDataClick }) {
 // --- Creditor Config ---
 const getCreditDays = (partyName) => {
   const lower = partyName.toLowerCase();
+
+  // Explicit Paragon check (or if group checking becomes available later)
   if (lower.includes('paragon')) return 30;
+
   if (lower.includes('action') || lower.includes('cubix')) return 60;
-  return 60; // Default
+
+  return 60; // Default for all others
 };
 
 function OverdueTable({ data }) {
   const [filter, setFilter] = useState('all'); // all, overdue, due
+  const [searchTerm, setSearchTerm] = useState('');
 
   const bills = useMemo(() => {
     const all = [];
     data.forEach(party => {
-      // Check if billRefs exist (they might not if using old data)
-      if (!party.billRefs) return;
+      // Use new 'openBills' structure which has netted amounts
+      if (!party.openBills) return;
 
-      party.billRefs.forEach(bill => {
-        // Only consider pending bills (amount != 0)
-        // Note: billRefs in Tally often include cleared ones if not filtered properly backend side.
-        // Assuming process_tally_v2 only passed open bills?
-        // process_tally_v2 logic accumulates billRefs from 'BILLALLOCATIONS.LIST'. 
-        // Real overdue requires matching credits vs debits. 
-        // Simplified approach: If bill amount is outstanding (which we can't fully know from just the list without matching).
-        // However, usually Tally XML 'OS' statement gives final bills. Voucher dump gives ALL bills.
-        // We are using Voucher dump.
-        // If we strictly follow the user request: "party name, billdate, status, total amount, overdue amount".
-        // The current backend logic sums up everything. 
-        // We might need to filter for `bill.amount > 0`? No, bill amount is fixed.
-        // Re-reading process_tally_v2: We accumulate `ledgerBalances[ledgerName].billRefs`.
-        // This list includes ALL bill refs found in the vouchers parsed.
-        // This effectively means we have a history of bills, not just outstanding ones.
-        // BUT, usually we only fetch "Open" bills if we filter for "Outstanding" in Tally export.
-        // Our fetch script fetches "Vouchers".
-        // This is a known complexity. Without "Bill-wise details" export, reconstruction is hard.
-        // However, for the purpose of this task (which is a "view all bills mode"), showing all is likely expected, 
-        // OR the user assumes we have only pending bills.
-        // Let's assume we show what we have and calculate status.
+      party.openBills.forEach(bill => {
+        // Date parsing: 'YYYYMMDD' from backend
+        // Note: process_tally_v2 ensures bill.date IS a string YYYYMMDD
+        const dateStr = bill.date;
+        const y = dateStr.substring(0, 4);
+        const m = dateStr.substring(4, 6);
+        const d = dateStr.substring(6, 8);
+        const bDate = new Date(`${y}-${m}-${d}`);
 
-        // Date parsing: 'YYYYMMDD'
-        const billDateStr = bill.date instanceof Date ? bill.date.toISOString().slice(0, 10).replace(/-/g, '') : bill.date;
-        // bill.date in JSON comes as "2024-04-23T..." if it was a Date object serialized?
-        // process_tally_v2: `const voucherDate = parse(dateStr, 'yyyyMMdd', new Date());` -> Date Object.
-        // So in JSON it will be ISO string.
-
-        const bDate = new Date(bill.date);
         const creditDays = getCreditDays(party.name);
         const dueDate = new Date(bDate);
         dueDate.setDate(dueDate.getDate() + creditDays);
@@ -673,23 +658,48 @@ function OverdueTable({ data }) {
 
         all.push({
           party: party.name,
+          billNo: bill.name,
           billDate: bDate,
           amount: bill.amount,
           status: isOverdue ? 'Overdue' : 'Due',
-          overdueDays: isOverdue ? daysOver : 0,
-          details: bill
+          overdueDays: isOverdue ? daysOver : 0
         });
       });
     });
     return all.sort((a, b) => b.amount - a.amount);
   }, [data]);
 
-  const filtered = filter === 'all' ? bills : bills.filter(b => b.status.toLowerCase() === filter);
+  const filtered = bills.filter(b => {
+    const matchesStatus = filter === 'all' ? true : b.status.toLowerCase() === filter;
+    const matchesSearch = searchTerm === '' ? true :
+      (b.party.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        b.billNo.toLowerCase().includes(searchTerm.toLowerCase()));
+    return matchesStatus && matchesSearch;
+  });
 
   return (
     <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden flex flex-col h-[calc(100vh-140px)]">
-      <div className="p-4 border-b border-slate-100 flex justify-between items-center bg-slate-50">
+      <div className="p-4 border-b border-slate-100 flex flex-wrap justify-between items-center gap-4 bg-slate-50">
         <h3 className="font-bold text-slate-800">Bill-wise Payables Analysis</h3>
+
+        {/* Search Bar */}
+        <div className="flex items-center bg-white border border-slate-200 rounded-lg px-3 py-1.5 focus-within:ring-2 focus-within:ring-blue-500/20 transition-all flex-1 max-w-sm">
+          <Search size={16} className="text-slate-400 mr-2" />
+          <input
+            type="text"
+            placeholder="Search Party or Bill No..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="bg-transparent border-none outline-none text-sm text-slate-700 w-full placeholder:text-slate-400"
+          />
+          {searchTerm && (
+            <button onClick={() => setSearchTerm('')} className="ml-2 text-slate-400 hover:text-slate-600">
+              <X size={14} />
+            </button>
+          )}
+        </div>
+
+        {/* Filter Tabs */}
         <div className="flex bg-white rounded-lg border border-slate-200 p-1">
           {['all', 'overdue', 'due'].map(f => (
             <button
@@ -704,9 +714,10 @@ function OverdueTable({ data }) {
       </div>
       <div className="flex-1 overflow-auto">
         <DataTable
-          headers={['Party Name', 'Bill Date', 'Status', 'Due Date', 'Amount', 'Overdue By']}
+          headers={['Party Name', 'Bill No', 'Bill Date', 'Status', 'Due Date', 'Amount', 'Overdue By']}
           rows={filtered.map(b => [
             <span className="font-medium text-slate-700">{b.party}</span>,
+            <span className="font-mono text-xs text-slate-600">{b.billNo}</span>,
             <span className="font-mono text-xs text-slate-500">{b.billDate.toLocaleDateString('en-GB')}</span>,
             <span className={`text-xs px-2 py-1 rounded-full font-bold ${b.status === 'Overdue' ? 'bg-red-100 text-red-700' : 'bg-emerald-100 text-emerald-700'}`}>{b.status}</span>,
             <span className="font-mono text-xs text-slate-400">
