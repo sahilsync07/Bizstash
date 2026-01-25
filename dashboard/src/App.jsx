@@ -37,7 +37,8 @@ export default function App() {
   const [activeTab, setActiveTab] = useState('summary');
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [isSidebarOpen, setSidebarOpen] = useState(true);
+  // Default to closed on mobile (< 768px), open on desktop
+  const [isSidebarOpen, setSidebarOpen] = useState(window.innerWidth >= 768);
   const [targetLedger, setTargetLedger] = useState('');
 
   const [companies, setCompanies] = useState([]);
@@ -88,6 +89,14 @@ export default function App() {
 
   return (
     <div className="flex h-screen bg-slate-50 text-slate-900 font-sans overflow-hidden">
+      {/* Mobile Backdrop */}
+      {isSidebarOpen && (
+        <div
+          className="fixed inset-0 bg-black/50 z-20 md:hidden"
+          onClick={() => setSidebarOpen(false)}
+        />
+      )}
+
       {/* Sidebar */}
       <Sidebar
         activeTab={activeTab}
