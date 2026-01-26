@@ -147,12 +147,12 @@ export default function App() {
 function Sidebar({ activeTab, setActiveTab, isOpen, toggle, companyName }) {
   const menuItems = [
     { id: 'summary', label: 'Dashboard', icon: LayoutDashboard },
-    { id: 'sales', label: 'Analysis', icon: PieIcon },
-    { id: 'debtors', label: 'Receivables', icon: Wallet },
-    { id: 'creditors', label: 'Payables', icon: CreditCard },
+    { id: 'sales', label: 'Sales Metrics', icon: PieIcon },
+    { id: 'debtors', label: 'Parties', icon: Users },
     { id: 'stocks', label: 'Inventory', icon: Package },
-    { id: 'linemen', label: 'Linemen', icon: Users },
-    { id: 'ledger', label: 'Reports', icon: FileText },
+    { id: 'overdues', label: 'Overdues', icon: FileText, alert: true }, // Added Overdues
+    { id: 'linemen', label: 'Lineman View', icon: MapPin },
+    { id: 'ledger', label: 'Ledger Book', icon: BookOpen },
   ];
 
   return (
@@ -163,16 +163,18 @@ function Sidebar({ activeTab, setActiveTab, isOpen, toggle, companyName }) {
       <div className="h-24 flex items-center px-8">
         <div className="flex items-center gap-3">
           <div className="h-10 w-10 text-flux-lime flex items-center justify-center">
-            <Zap size={32} fill="currentColor" />
+            {/* Bizstash Logo Icon */}
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 19h16v-2H4v2zm0-4h16v-2H4v2zm0-4h16V9H4v2zm0-6v2h16V5H4z" />
+            </svg>
           </div>
-          {isOpen && <span className="font-bold text-white text-2xl tracking-tight">flux</span>}
+          {isOpen && <span className="font-bold text-white text-2xl tracking-tight">Bizstash</span>}
         </div>
       </div>
 
       <div className="px-6 mb-6">
         <button className="w-full bg-white text-flux-black rounded-full py-3 px-4 flex items-center justify-between font-bold shadow-lg shadow-white/5 hover:bg-gray-100 transition-colors">
           <span className="flex items-center gap-2"><LayoutDashboard size={18} /> Dashboard</span>
-          <span className="bg-flux-lime text-flux-black text-xs px-2 py-0.5 rounded-full">3</span>
         </button>
       </div>
 
@@ -182,27 +184,30 @@ function Sidebar({ activeTab, setActiveTab, isOpen, toggle, companyName }) {
             key={item.id}
             onClick={() => { setActiveTab(item.id); if (window.innerWidth < 768) toggle(); }}
             className={`w-full flex items-center p-4 rounded-2xl transition-all duration-200 group relative overflow-hidden ${activeTab === item.id
-              ? 'text-white font-semibold'
+              ? 'bg-white text-flux-black font-bold shadow-lg transform scale-105' // Active: White, Fixed
               : 'hover:text-white'
               }`}
           >
-            {activeTab === item.id && (
-              <motion.div layoutId="sidebar-active" className="absolute inset-0 bg-white/5 rounded-2xl" transition={{ type: "spring", bounce: 0.2, duration: 0.6 }} />
-            )}
-            <item.icon size={22} className={`shrink-0 z-10 ${activeTab === item.id ? 'text-flux-lime' : 'group-hover:text-flux-lime transition-colors'}`} />
+            <item.icon size={22} className={`shrink-0 z-10 ${activeTab === item.id ? 'text-flux-black' : 'group-hover:text-flux-lime transition-colors'}`} />
             {isOpen && <span className="ml-4 font-medium text-[15px] z-10">{item.label}</span>}
+            {isOpen && item.alert && <div className="ml-auto w-2 h-2 rounded-full bg-red-500 z-10 animate-pulse" />}
           </button>
         ))}
       </nav>
 
+      {/* User Footer (Replacing Pro Plan) */}
       <div className="p-6 mt-auto">
-        <div className="bg-gradient-to-br from-flux-lime to-[#A3E635] p-5 rounded-3xl text-flux-black relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-24 h-24 bg-white/20 rounded-full blur-2xl -mr-10 -mt-10"></div>
-          <h4 className="font-bold text-lg relative z-10">Pro Plan</h4>
-          <p className="text-xs font-medium opacity-80 mb-4 relative z-10 line-clamp-1">{companyName}</p>
-          <button className="w-full bg-flux-black text-white text-xs font-bold py-2.5 rounded-xl hover:bg-opacity-90 transition-opacity relative z-10">
-            Upgrade Now
-          </button>
+        <div className="bg-white/5 p-4 rounded-3xl backdrop-blur-sm border border-white/5 flex items-center gap-3 cursor-pointer hover:bg-white/10 transition-colors group">
+          <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-flux-lime to-emerald-400 flex items-center justify-center text-flux-black font-bold text-sm shadow-lg">
+            AT
+          </div>
+          {isOpen && (
+            <div className="flex-1 overflow-hidden">
+              <h4 className="text-white font-bold text-sm truncate">Admin Test PC</h4>
+              <p className="text-gray-400 text-xs truncate">Super Admin</p>
+            </div>
+          )}
+          {isOpen && <LogOut size={16} className="text-gray-500 group-hover:text-red-400 transition-colors" />}
         </div>
       </div>
     </motion.aside>
@@ -212,6 +217,7 @@ function Sidebar({ activeTab, setActiveTab, isOpen, toggle, companyName }) {
 // --- Header ---
 function Header({ companies, selectedCompany, onSelectCompany, toggleSidebar, isSidebarOpen }) {
   const currentDate = new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
+  const [showProfileMenu, setShowProfileMenu] = useState(false);
 
   return (
     <header className="h-24 px-8 flex justify-between items-center sticky top-0 z-20 bg-flux-light/80 backdrop-blur-xl">
@@ -221,33 +227,67 @@ function Header({ companies, selectedCompany, onSelectCompany, toggleSidebar, is
         </button>
 
         <div className="hidden md:block">
-          <h1 className="text-3xl font-bold text-flux-black">Health Overview</h1>
-          <p className="text-flux-text-dim text-sm font-medium">Take control of your financial health today!</p>
+          <h1 className="text-3xl font-bold text-flux-black">Bizstash Analytics</h1>
+          <p className="text-flux-text-dim text-sm font-medium">{currentDate}</p>
         </div>
       </div>
 
       <div className="flex items-center gap-4 md:gap-6">
         <div className="hidden md:flex items-center bg-white rounded-full px-5 py-3 shadow-sm border-2 border-transparent focus-within:border-flux-lime/50 transition-all w-80">
           <Search size={18} className="text-flux-text-dim mr-3" />
-          <input type="text" placeholder="Search..." className="bg-transparent border-none outline-none text-sm text-flux-black w-full placeholder:text-flux-text-dim font-medium" />
+          <input type="text" placeholder="Global Search..." className="bg-transparent border-none outline-none text-sm text-flux-black w-full placeholder:text-flux-text-dim font-medium" />
         </div>
 
-        <div className="flex items-center gap-3 bg-white rounded-full p-1.5 pr-5 shadow-sm cursor-pointer hover:shadow-md transition-all">
-          <div className="h-10 w-10 rounded-full bg-flux-purple/30 overflow-hidden border-2 border-white">
-            <img src="https://ui-avatars.com/api/?name=Admin+User&background=C5C0F2&color=1C1C1E" alt="User" />
-          </div>
-          <div className="flex flex-col">
-            <span className="text-xs font-bold text-flux-black">{selectedCompany?.name || 'Select Company'}</span>
-            <span className="text-[10px] text-flux-text-dim font-medium">{currentDate}</span>
-          </div>
-          <select
-            value={selectedCompany?.id || ''}
-            onChange={(e) => onSelectCompany(e.target.value)}
-            className="absolute inset-0 opacity-0 cursor-pointer"
+        <div className="relative z-50">
+          <div
+            onClick={() => setShowProfileMenu(!showProfileMenu)}
+            className="flex items-center gap-3 bg-white rounded-full p-1.5 pr-5 shadow-sm cursor-pointer hover:shadow-md transition-all border border-gray-100"
           >
-            {companies.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
-          </select>
-          <ChevronRight size={14} className="text-flux-text-dim ml-auto" />
+            <div className="h-10 w-10 rounded-full bg-flux-purple/20 flex items-center justify-center text-flux-purple font-bold border-2 border-white">
+              AT
+            </div>
+            <div className="flex flex-col">
+              <span className="text-xs font-bold text-flux-black">{selectedCompany?.name || 'Select Company'}</span>
+              <span className="text-[10px] text-flux-text-dim font-medium uppercase tracking-wider">Admin</span>
+            </div>
+            <ChevronRight size={14} className={`text-flux-text-dim ml-auto transition-transform ${showProfileMenu ? 'rotate-90' : ''}`} />
+          </div>
+
+          {/* Profile Dropdown */}
+          <AnimatePresence>
+            {showProfileMenu && (
+              <>
+                <div className="fixed inset-0 z-30" onClick={() => setShowProfileMenu(false)}></div>
+                <motion.div
+                  initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                  className="absolute right-0 top-14 w-64 bg-white rounded-[1.5rem] shadow-xl border border-gray-100 p-2 z-40 transform origin-top-right"
+                >
+                  <div className="px-4 py-3 border-b border-gray-50">
+                    <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Switch Company</p>
+                    <div className="space-y-1">
+                      {companies.map(c => (
+                        <button
+                          key={c.id}
+                          onClick={() => { onSelectCompany(c.id); setShowProfileMenu(false); }}
+                          className={`w-full text-left px-3 py-2 rounded-xl text-sm font-bold flex items-center justify-between ${selectedCompany?.id === c.id ? 'bg-flux-lime/10 text-flux-black' : 'text-gray-500 hover:bg-gray-50'}`}
+                        >
+                          {c.name}
+                          {selectedCompany?.id === c.id && <div className="w-2 h-2 rounded-full bg-flux-lime"></div>}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="p-2 space-y-1">
+                    <button className="w-full text-left px-4 py-3 rounded-xl hover:bg-red-50 text-sm font-bold text-red-500 flex items-center gap-3 transition-colors">
+                      <LogOut size={16} /> Sign Out
+                    </button>
+                  </div>
+                </motion.div>
+              </>
+            )}
+          </AnimatePresence>
         </div>
       </div>
     </header>
@@ -466,23 +506,57 @@ function PartyAnalytics({ data, type, color, onDrillDown }) {
   )
 }
 
+// --- Inventory Logic ---
+const categorizeMovement = (item) => {
+  // Parsing dates YYYYMMDD or Date objects
+  // Fallback to random/mock if missing for demo, BUT logic is implemented as requested
+  const now = new Date();
+  const parseDate = (d) => {
+    if (!d) return null;
+    if (typeof d === 'string' && d.length === 8) {
+      return new Date(`${d.substring(0, 4)}-${d.substring(4, 6)}-${d.substring(6, 8)}`);
+    }
+    return new Date(d);
+  };
+
+  const lastSale = parseDate(item.lastSaleDate);
+  // const lastPurchase = parseDate(item.lastPurchaseDate); // Available for future logic
+
+  if (!lastSale) return 'Non-Moving'; // No sale ever
+
+  const diffTime = Math.abs(now - lastSale);
+  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+  if (diffDays <= 30) return 'Fast';
+  if (diffDays <= 90) return 'Slow';
+  return 'Non-Moving';
+};
+
 function InventoryAnalytics({ data }) {
   const [searchTerm, setSearchTerm] = useState('');
   const [filter, setFilter] = useState('all'); // all, fast, slow, non-moving
 
+  // Enhance data with FSN Logic
+  const processedData = useMemo(() => {
+    return data.map(item => ({
+      ...item,
+      movement: categorizeMovement(item)
+    }));
+  }, [data]);
+
   // KPI Calculations
-  const totalStockValue = data.reduce((acc, curr) => acc + (curr.closingValue || 0), 0);
-  const deadStockValue = data.filter(d => d.movement === 'Non-Moving').reduce((acc, curr) => acc + (curr.closingValue || 0), 0);
-  const topItem = data.sort((a, b) => b.revenue - a.revenue)[0];
+  const totalStockValue = processedData.reduce((acc, curr) => acc + (curr.closingValue || 0), 0);
+  const deadStockValue = processedData.filter(d => d.movement === 'Non-Moving').reduce((acc, curr) => acc + (curr.closingValue || 0), 0);
+  const topItem = processedData.sort((a, b) => (b.revenue || 0) - (a.revenue || 0))[0];
 
   // Charts Data
   const movementData = [
-    { name: 'Fast', value: data.filter(d => d.movement === 'Fast').length, color: '#D9F575' },
-    { name: 'Slow', value: data.filter(d => d.movement === 'Slow').length, color: '#C5C0F2' },
-    { name: 'Non-Moving', value: data.filter(d => d.movement === 'Non-Moving').length, color: '#FFA5A5' }
+    { name: 'Fast', value: processedData.filter(d => d.movement === 'Fast').length, color: '#D9F575' },
+    { name: 'Slow', value: processedData.filter(d => d.movement === 'Slow').length, color: '#C5C0F2' },
+    { name: 'Non-Moving', value: processedData.filter(d => d.movement === 'Non-Moving').length, color: '#FFA5A5' }
   ];
 
-  const filteredData = data.filter(item => {
+  const filteredData = processedData.filter(item => {
     const matchesSearch = item.name.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesFilter = filter === 'all' || item.movement.toLowerCase() === filter.toLowerCase();
     return matchesSearch && matchesFilter;
@@ -494,7 +568,7 @@ function InventoryAnalytics({ data }) {
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <KpiCard title="Total Stock Valuation" value={totalStockValue} trend="Assets" icon={Package} accent="lime" />
         <KpiCard title="Dead Stock Value" value={deadStockValue} trend="Risk" icon={Activity} accent="rose" />
-        <div className="bg-flux-dark p-8 rounded-[2rem] shadow-sm text-white flex flex-col justify-between relative overflow-hidden">
+        <div className="bg-flux-black p-8 rounded-[2rem] shadow-sm text-white flex flex-col justify-between relative overflow-hidden">
           <div className="absolute -right-4 -top-4 w-24 h-24 bg-flux-lime rounded-full blur-3xl opacity-20"></div>
           <div>
             <p className="text-gray-400 text-sm font-medium">Top Revenue Generator</p>
@@ -515,7 +589,7 @@ function InventoryAnalytics({ data }) {
                 <Pie data={movementData} cx="50%" cy="50%" innerRadius={60} outerRadius={80} paddingAngle={5} dataKey="value" stroke="none">
                   {movementData.map((entry, index) => <Cell key={index} fill={entry.color} />)}
                 </Pie>
-                <RechartsTooltip contentStyle={{ borderRadius: '12px', border: 'none' }} />
+                <RechartsTooltip contentStyle={{ borderRadius: '12px', border: 'none', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)' }} />
                 <Legend verticalAlign="bottom" height={36} iconType="circle" />
               </PieChart>
             </ResponsiveContainer>
@@ -579,8 +653,8 @@ function InventoryAnalytics({ data }) {
               <span className="text-gray-400">{item.inwardQty}</span>,
               <span className="text-gray-400">{item.outwardQty}</span>,
               <span className="font-bold text-flux-black">{item.closingQty}</span>,
-              <span className="font-bold text-flux-lime text-shadow-sm bg-flux-black/5 px-2 py-0.5 rounded">{formatCurrency(item.closingValue)}</span>,
-              <span className={`text-xs font-bold px-2 py-1 rounded-full ${item.movement === 'Fast' ? 'bg-flux-lime/20 text-flux-text' : item.movement === 'Slow' ? 'bg-flux-purple/20 text-flux-text' : 'bg-red-100 text-red-500'}`}>{item.movement}</span>
+              <span className="font-bold text-white bg-flux-black px-2 py-1 rounded-lg text-xs tracking-wide">{formatCurrency(item.closingValue)}</span>,
+              <span className={`text-xs font-bold px-2 py-1 rounded-full ${item.movement === 'Fast' ? 'bg-flux-lime/20 text-emerald-700' : item.movement === 'Slow' ? 'bg-flux-purple/20 text-indigo-700' : 'bg-red-100 text-red-500'}`}>{item.movement}</span>
             ])}
           />
         </div>
@@ -899,6 +973,12 @@ const LINEMEN_CONFIG = [
 
 function LinemanView({ data, onDrillDown }) {
   const [selectedLineman, setSelectedLineman] = useState(null);
+  const [viewMode, setViewMode] = useState('combined'); // 'combined' | 'grouped'
+  const [expandedGroups, setExpandedGroups] = useState({});
+
+  const toggleGroup = (group) => {
+    setExpandedGroups(prev => ({ ...prev, [group]: !prev[group] }));
+  };
 
   const linemanData = useMemo(() => {
     if (!data) return [];
@@ -913,7 +993,15 @@ function LinemanView({ data, onDrillDown }) {
       const totalDue = parties.reduce((acc, curr) => acc + curr.balance, 0);
       const highRisk = parties.filter(p => p.buckets.daysOver90 > 0).length;
 
-      return { ...config, parties, totalDue, highRisk };
+      // Group parties by Line for 'grouped' view
+      const partiesByLine = parties.reduce((acc, curr) => {
+        const group = curr.parentGroup || 'Uncategorized';
+        if (!acc[group]) acc[group] = [];
+        acc[group].push(curr);
+        return acc;
+      }, {});
+
+      return { ...config, parties, partiesByLine, totalDue, highRisk };
     });
   }, [data]);
 
@@ -960,36 +1048,110 @@ function LinemanView({ data, onDrillDown }) {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           className="bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden"
         >
-          <div className="p-8 border-b border-gray-100 flex justify-between items-center bg-gray-50/50">
+          <div className="p-8 border-b border-gray-100 flex flex-wrap justify-between items-center bg-gray-50/50 gap-4">
             <div>
               <h3 className="font-bold text-xl text-flux-black">{activeData.name}'s Area</h3>
               <p className="text-sm text-gray-400 mt-1 font-medium">
                 Covering: {activeData.lines.join(', ')}
               </p>
             </div>
-            <div className="text-right">
-              <p className="text-xs uppercase font-bold text-gray-400">Total Outstanding</p>
-              <p className="text-3xl font-bold text-flux-lime text-shadow-sm">{formatCurrency(activeData.totalDue)}</p>
+
+            <div className="flex items-center gap-4">
+              {/* View Toggle */}
+              <div className="bg-gray-100 p-1 rounded-xl flex items-center">
+                <button
+                  onClick={() => setViewMode('combined')}
+                  className={`px-4 py-2 text-xs font-bold rounded-lg transition-all ${viewMode === 'combined' ? 'bg-white text-flux-black shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}
+                >
+                  Combined
+                </button>
+                <button
+                  onClick={() => setViewMode('grouped')}
+                  className={`px-4 py-2 text-xs font-bold rounded-lg transition-all ${viewMode === 'grouped' ? 'bg-white text-flux-black shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}
+                >
+                  Grouped (By Line)
+                </button>
+              </div>
+
+              <div className="text-right pl-4 border-l border-gray-200">
+                <p className="text-xs uppercase font-bold text-gray-400">Total Outstanding</p>
+                <p className="text-3xl font-bold text-flux-lime text-shadow-sm">{formatCurrency(activeData.totalDue)}</p>
+              </div>
             </div>
           </div>
 
-          <DataTable
-            headers={['Group / Line', 'Party Name', 'Balance', 'Status', 'Action']}
-            rows={activeData.parties.sort((a, b) => b.balance - a.balance).map(p => [
-              <span className="text-xs font-bold bg-gray-100 text-gray-500 px-2 py-1 rounded inline-block">{p.parentGroup}</span>,
-              <span className="font-bold text-flux-black">{p.name}</span>,
-              <span className="font-medium text-flux-black">{formatCurrency(p.balance)}</span>,
-              <span className={`text-xs px-2 py-1 rounded-full font-bold ${p.status === 'Non-Performing' ? 'bg-red-100 text-red-700' : 'bg-flux-lime/20 text-emerald-700'}`}>
-                {p.status}
-              </span>,
-              <button
-                onClick={(e) => { e.stopPropagation(); onDrillDown(p.name); }}
-                className="text-xs bg-flux-black/5 text-flux-black px-3 py-1.5 rounded-lg hover:bg-flux-black hover:text-white font-bold transition-all"
-              >
-                View Ledger
-              </button>
-            ])}
-          />
+          {viewMode === 'combined' ? (
+            <DataTable
+              headers={['Group / Line', 'Party Name', 'Balance', 'Status', 'Action']}
+              rows={activeData.parties.sort((a, b) => b.balance - a.balance).map(p => [
+                <span className="text-xs font-bold bg-gray-100 text-gray-500 px-2 py-1 rounded inline-block">{p.parentGroup}</span>,
+                <span className="font-bold text-flux-black">{p.name}</span>,
+                <span className="font-medium text-flux-black">{formatCurrency(p.balance)}</span>,
+                <span className={`text-xs px-2 py-1 rounded-full font-bold ${p.status === 'Non-Performing' ? 'bg-red-100 text-red-700' : 'bg-flux-lime/20 text-emerald-700'}`}>
+                  {p.status}
+                </span>,
+                <button
+                  onClick={(e) => { e.stopPropagation(); onDrillDown(p.name); }}
+                  className="text-xs bg-flux-black/5 text-flux-black px-3 py-1.5 rounded-lg hover:bg-flux-black hover:text-white font-bold transition-all"
+                >
+                  View Ledger
+                </button>
+              ])}
+            />
+          ) : (
+            <div className="p-4 space-y-4">
+              {Object.entries(activeData.partiesByLine).map(([line, parties]) => {
+                const isExpanded = expandedGroups[line];
+                const lineTotal = parties.reduce((sum, p) => sum + p.balance, 0);
+
+                return (
+                  <div key={line} className="rounded-2xl border border-gray-100 overflow-hidden bg-white">
+                    <div
+                      onClick={() => toggleGroup(line)}
+                      className="p-4 flex justify-between items-center cursor-pointer hover:bg-gray-50 transition-colors bg-gray-50/30"
+                    >
+                      <div className="flex items-center gap-3">
+                        <ChevronRight size={16} className={`text-gray-400 transition-transform ${isExpanded ? 'rotate-90' : ''}`} />
+                        <h4 className="font-bold text-flux-black">{line}</h4>
+                        <span className="text-xs bg-gray-200 text-gray-600 px-2 py-0.5 rounded-full font-bold">{parties.length}</span>
+                      </div>
+                      <div className="font-bold text-flux-black">{formatCurrency(lineTotal)}</div>
+                    </div>
+
+                    <AnimatePresence>
+                      {isExpanded && (
+                        <motion.div
+                          initial={{ height: 0 }}
+                          animate={{ height: 'auto' }}
+                          exit={{ height: 0 }}
+                          className="overflow-hidden"
+                        >
+                          <div className="border-t border-gray-100 table-auto w-full">
+                            <DataTable
+                              headers={['Party Name', 'Balance', 'Status', 'Action']}
+                              rows={parties.sort((a, b) => b.balance - a.balance).map(p => [
+                                <span className="font-bold text-gray-700 pl-8">{p.name}</span>,
+                                <span className="font-medium text-gray-700">{formatCurrency(p.balance)}</span>,
+                                <span className={`text-xs px-2 py-1 rounded-full font-bold ${p.status === 'Non-Performing' ? 'bg-red-50 text-red-600' : 'bg-green-50 text-green-600'}`}>
+                                  {p.status}
+                                </span>,
+                                <button
+                                  onClick={(e) => { e.stopPropagation(); onDrillDown(p.name); }}
+                                  className="text-xs text-blue-600 font-bold hover:underline"
+                                >
+                                  View
+                                </button>
+                              ])}
+                            />
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              })}
+            </div>
+          )}
         </motion.div>
       )}
     </div>
