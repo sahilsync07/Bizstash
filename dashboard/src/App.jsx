@@ -144,7 +144,7 @@ export default function App() {
                 {activeTab === 'debtors' && <PartyAnalytics data={data.debtors} type="Debtors" color="orange" onDrillDown={handleDrillDown} />}
                 {activeTab === 'creditors' && <PartyAnalytics data={data.creditors} type="Creditors" color="rose" onDrillDown={handleDrillDown} />}
                 {activeTab === 'stocks' && <InventoryAnalytics data={data.stocks} />}
-                {activeTab === 'linemen' && <LinemanView data={data.debtors} onDrillDown={handleDrillDown} />}
+                {activeTab === 'linemen' && <LinemanView data={data} onDrillDown={handleDrillDown} />}
                 {activeTab === 'overdues' && <OverdueTable data={data.creditors} />}
                 {activeTab === 'ledger' && <LedgerView data={data} initialLedger={targetLedger} />}
               </motion.div>
@@ -962,29 +962,6 @@ function OverdueTable({ data }) {
 }
 
 // --- Lineman View ---
-const LINEMEN_CONFIG = [
-  {
-    name: "Sushant [Bobby]",
-    lines: ["TIKIRI", "KASIPUR", "DURGI", "THERUBALI", "JK", "KALYAN SINGHPUR"],
-    color: "bg-blue-500"
-  },
-  {
-    name: "Dulamani Sahu",
-    lines: ["BALIMELA", "CHITROKUNDA", "MALKANGIRI", "GUDARI", "GUNUPUR", "PARLAKHIMUNDI", "MUNIGUDA", "B.CTC", "PHULBAANI"],
-    color: "bg-purple-500"
-  },
-  {
-    name: "Aparna",
-    lines: ["RAYAGADA", "LOCAL"],
-    color: "bg-pink-500"
-  },
-  {
-    name: "Raju",
-    lines: ["JEYPUR", "PARVATHIPURAM", "KORAPUT", "SRIKAKULAM"],
-    color: "bg-emerald-500"
-  }
-];
-
 function LinemanView({ data, onDrillDown }) {
   const [selectedLineman, setSelectedLineman] = useState(null);
   const [viewMode, setViewMode] = useState('combined'); // 'combined' | 'grouped'
@@ -994,11 +971,14 @@ function LinemanView({ data, onDrillDown }) {
     setExpandedGroups(prev => ({ ...prev, [group]: !prev[group] }));
   };
 
+  const linemanConfig = data.linemanConfig || []; // Read from data
+
   const linemanData = useMemo(() => {
-    if (!data) return [];
-    return LINEMEN_CONFIG.map(config => {
+    if (!data || !linemanConfig.length) return [];
+
+    return linemanConfig.map(config => {
       // Find all debtors belonging to this Lineman's lines
-      const parties = data.filter(d => {
+      const parties = data.debtors.filter(d => {
         if (!d.parentGroup) return false;
         const group = d.parentGroup.toUpperCase();
         return config.lines.some(l => group.includes(l));

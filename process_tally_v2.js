@@ -316,13 +316,35 @@ async function parseVouchersAndAnalyze(masters) {
     };
 }
 
+const LINEMEN_GLOBALS = {
+    // Default / Shared Config (Admin Test PC & SBE Rayagada)
+    'DEFAULT': [
+        { name: "Sushant [Bobby]", lines: ["TIKIRI", "KASIPUR", "DURGI", "THERUBALI", "JK", "KALYAN SINGHPUR"], color: "bg-blue-500" },
+        { name: "Dulamani Sahu", lines: ["BALIMELA", "CHITROKUNDA", "MALKANGIRI", "GUDARI", "GUNUPUR", "PARLAKHIMUNDI", "MUNIGUDA", "B.CTC", "PHULBAANI"], color: "bg-purple-500" },
+        { name: "Aparna", lines: ["RAYAGADA", "LOCAL"], color: "bg-pink-500" },
+        { name: "Raju", lines: ["JEYPUR", "PARVATHIPURAM", "KORAPUT", "SRIKAKULAM"], color: "bg-emerald-500" }
+    ],
+    'SBE_Rayagada': 'DEFAULT', // Uses Default
+    'Admin_Test_PC': 'DEFAULT', // Uses Default
+
+    // Placeholders for others - To be filled by User
+    'SE_Koraput': [],
+    'SF_SKLM': [],
+    'SBEM_Malkangiri': []
+};
+
 async function main() {
     console.log("Analyzing Tally Data...");
     const masters = await parseMasters();
     const analysis = await parseVouchersAndAnalyze(masters);
 
+    // Resolve Lineman Config
+    let linemanConfig = LINEMEN_GLOBALS[COMPANY_NAME] || [];
+    if (linemanConfig === 'DEFAULT') linemanConfig = LINEMEN_GLOBALS['DEFAULT'];
+
     const completeData = {
         meta: { companyName: COMPANY_NAME, lastUpdated: new Date().toISOString() },
+        linemanConfig: linemanConfig, // Injected Config
         analysis: {
             ...analysis,
             ledgerOpenings: masters.ledgers // Pass full ledger objects to get open balance
