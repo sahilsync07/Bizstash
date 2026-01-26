@@ -52,36 +52,20 @@ async function fetchCompanyRange() {
     console.log('Detecting Company Date Range from Tally...');
     const tdl = `
     <ENVELOPE>
-        <HEADER>
-            <TALLYREQUEST>Export Data</TALLYREQUEST>
-        </HEADER>
+        <HEADER><TALLYREQUEST>Export Data</TALLYREQUEST></HEADER>
         <BODY>
             <EXPORTDATA>
                 <REQUESTDESC>
-                    <REPORTNAME>CompanyRange</REPORTNAME>
+                    <REPORTNAME>List of Accounts</REPORTNAME>
                     <STATICVARIABLES>
                         <SVEXPORTFORMAT>$$SysName:XML</SVEXPORTFORMAT>
                     </STATICVARIABLES>
                     <TDL>
                         <TDLMESSAGE>
-                            <REPORT NAME="CompanyRange">
-                                <FORMS>CompanyRangeForm</FORMS>
-                            </REPORT>
-                            <FORM NAME="CompanyRangeForm">
-                                <PARTS>CompanyRangePart</PARTS>
-                            </FORM>
-                            <PART NAME="CompanyRangePart">
-                                <LINES>CompanyRangeLine</LINES>
-                            </PART>
-                            <LINE NAME="CompanyRangeLine">
-                                <FIELDS>StartField, EndField</FIELDS>
-                            </LINE>
-                            <FIELD NAME="StartField">
-                                <SET>$BooksFrom</SET>
-                            </FIELD>
-                            <FIELD NAME="EndField">
-                                <SET>$LastVoucherDate</SET>
-                            </FIELD>
+                            <COLLECTION NAME="CompanyRangeColl">
+                                <TYPE>Company</TYPE>
+                                <FETCH>BooksFrom, LastVoucherDate</FETCH>
+                            </COLLECTION>
                         </TDLMESSAGE>
                     </TDL>
                 </REQUESTDESC>
@@ -93,22 +77,21 @@ async function fetchCompanyRange() {
         const data = await fetchFromTally(tdl);
         if (!data) throw new Error("No data returned for Date Range");
 
-        // Case-insensitive Regex Extraction
-        const startMatch = data.match(/<StartField>(.*?)<\/StartField>/i);
-        const endMatch = data.match(/<EndField>(.*?)<\/EndField>/i);
+        // Extraction from Collection XML
+        const startMatch = data.match(/<BOOKSFROM>(.*?)<\/BOOKSFROM>/i);
+        const endMatch = data.match(/<LASTVOUCHERDATE>(.*?)<\/LASTVOUCHERDATE>/i);
 
         let start = startMatch ? startMatch[1] : null;
         let end = endMatch ? endMatch[1] : null;
 
         if (!start || !end) {
-            console.log("--- DEBUG: Tally Response for Range Query ---");
-            console.log(data);
-            console.log("-------------------------------------------");
+            console.log("--- TDL Range Result ---");
+            console.log(data.substring(0, 500));
         }
 
         if (start) {
             const year = parseInt(start.substring(0, 4));
-            if (year < 2000) start = '20000401';
+            if (year < 2000) start = '20240401';
         }
 
         console.log(`Company Range Detected: ${start} to ${end}`);
@@ -130,13 +113,11 @@ async function fetchVoucherStats(startDate, endDate) {
 
     const tdl = `
     <ENVELOPE>
-        <HEADER>
-            <TALLYREQUEST>Export Data</TALLYREQUEST>
-        </HEADER>
+        <HEADER><TALLYREQUEST>Export Data</TALLYREQUEST></HEADER>
         <BODY>
             <EXPORTDATA>
                 <REQUESTDESC>
-                    <REPORTNAME>VoucherTypeStats</REPORTNAME>
+                    <REPORTNAME>Standard Statistics</REPORTNAME>
                     <STATICVARIABLES>
                         <SVEXPORTFORMAT>$$SysName:XML</SVEXPORTFORMAT>
                         <SVFROMDATE>${fromStr}</SVFROMDATE>
@@ -144,28 +125,9 @@ async function fetchVoucherStats(startDate, endDate) {
                     </STATICVARIABLES>
                     <TDL>
                         <TDLMESSAGE>
-                            <REPORT NAME="VoucherTypeStats">
-                                <FORMS>VoucherTypeStatsForm</FORMS>
-                            </REPORT>
-                            <FORM NAME="VoucherTypeStatsForm">
-                                <PARTS>VoucherTypeStatsPart</PARTS>
-                            </FORM>
-                            <PART NAME="VoucherTypeStatsPart">
-                                <LINES>VoucherTypeStatsLine</LINES>
-                                <REPEAT>VoucherTypeStatsLine : VoucherStatsColl</REPEAT>
-                                <SCROLLED>Vertical</SCROLLED>
-                            </PART>
-                            <LINE NAME="VoucherTypeStatsLine">
-                                <FIELDS>VoucherTypeName, VoucherCount</FIELDS>
-                            </LINE>
-                            <FIELD NAME="VoucherTypeName">
-                                <SET>$Name</SET>
-                            </FIELD>
-                            <FIELD NAME="VoucherCount">
-                                <SET>$TotalVouchers</SET>
-                            </FIELD>
                             <COLLECTION NAME="VoucherStatsColl">
                                 <TYPE>VoucherType</TYPE>
+                                <FETCH>Name, TotalVouchers</FETCH>
                             </COLLECTION>
                         </TDLMESSAGE>
                     </TDL>
@@ -178,14 +140,15 @@ async function fetchVoucherStats(startDate, endDate) {
         const data = await fetchFromTally(tdl);
         if (!data) return {};
 
-        // Quick Parse of the stats XML
+        // Extraction from Collection XML
         const stats = {};
-        const nameMatches = [...data.matchAll(/<VoucherTypeName>(.*?)<\/VoucherTypeName>/g)];
-        const countMatches = [...data.matchAll(/<VoucherCount>(.*?)<\/VoucherCount>/g)];
+        const nameMatches = [...data.matchAll(/<NAME>(.*?)<\/NAME>/gi)];
+        const countMatches = [...data.matchAll(/<TOTALVOUCHERS>(.*?)<\/TOTALVOUCHERS>/gi)];
 
         nameMatches.forEach((match, i) => {
             const name = match[1];
-            const count = parseInt(countMatches[i]?.[1] || '0');
+            const countStr = countMatches[i]?.[1] || '0';
+            const count = parseInt(countStr.replace(/,/g, '')); // Handle potential thousand separators
             if (count > 0) stats[name] = count;
         });
 
