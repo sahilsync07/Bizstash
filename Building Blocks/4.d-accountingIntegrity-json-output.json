@@ -1,6 +1,9 @@
 {
   "totalDebit": 87864819.36,
   "totalCredit": 67651510.08,
-  "plNetAmount": 0,
-  "diff": 20213309.28
+  "plNetAmount": 6464632.57,
+  "plType": "Profit",
+  "openingBalanceDifference": 20213309.28,
+  "isBalanced": false,
+  "verificationNote": "UNBALANCED: Contains Opening Balance Difference"
 }
