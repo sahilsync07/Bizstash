@@ -226,7 +226,7 @@ function Sidebar({ activeTab, setActiveTab, isOpen, toggle, companyName }) {
               <path d="M4 19h16v-2H4v2zm0-4h16v-2H4v2zm0-4h16V9H4v2zm0-6v2h16V5H4z" />
             </svg>
           </div>
-          {isOpen && <span className="font-bold text-white text-2xl tracking-tight">Bizstash</span>}
+          {isOpen && <span className="font-bold text-white text-2xl tracking-tight">Slnp's Biz</span>}
         </div>
       </div>
 
