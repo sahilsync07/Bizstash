@@ -77,10 +77,10 @@ async function fetchCompanyRange() {
                                 <FIELDS>StartField, EndField</FIELDS>
                             </LINE>
                             <FIELD NAME="StartField">
-                                <SET>$BooksFrom:Company:##SVCurrentCompany</SET>
+                                <SET>$BooksFrom</SET>
                             </FIELD>
                             <FIELD NAME="EndField">
-                                <SET>$LastVoucherDate:Company:##SVCurrentCompany</SET>
+                                <SET>$LastVoucherDate</SET>
                             </FIELD>
                         </TDLMESSAGE>
                     </TDL>
@@ -93,16 +93,22 @@ async function fetchCompanyRange() {
         const data = await fetchFromTally(tdl);
         if (!data) throw new Error("No data returned for Date Range");
 
-        // Simple Regex Extraction to avoid creating another parser instance just for this
-        const startMatch = data.match(/<StartField>(.*?)<\/StartField>/);
-        const endMatch = data.match(/<EndField>(.*?)<\/EndField>/);
+        // Case-insensitive Regex Extraction
+        const startMatch = data.match(/<StartField>(.*?)<\/StartField>/i);
+        const endMatch = data.match(/<EndField>(.*?)<\/EndField>/i);
 
-        let start = startMatch ? startMatch[1] : null; // YYYYMMDD
-        let end = endMatch ? endMatch[1] : null;     // YYYYMMDD
+        let start = startMatch ? startMatch[1] : null;
+        let end = endMatch ? endMatch[1] : null;
+
+        if (!start || !end) {
+            console.log("--- DEBUG: Tally Response for Range Query ---");
+            console.log(data);
+            console.log("-------------------------------------------");
+        }
 
         if (start) {
             const year = parseInt(start.substring(0, 4));
-            if (year < 2000) start = '20000401'; // Sanity check
+            if (year < 2000) start = '20000401';
         }
 
         console.log(`Company Range Detected: ${start} to ${end}`);
@@ -111,7 +117,7 @@ async function fetchCompanyRange() {
             end: end ? parse(end, 'yyyyMMdd', new Date()) : new Date()
         };
     } catch (e) {
-        console.error("Failed to detect company range, falling back to defaults.", e.message);
+        console.error("Failed to detect company range.", e.message);
         return null;
     }
 }

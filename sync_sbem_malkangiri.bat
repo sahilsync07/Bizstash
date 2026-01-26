@@ -1,5 +1,5 @@
 @echo off
-cd /d "C:\Projects\Bizstash"
+cd /d "%~dp0"
 echo Pulling latest code...
 git pull origin main
 echo Starting Tally Sync for sbem-malkangiri...
