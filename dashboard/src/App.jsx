@@ -6,8 +6,8 @@ import {
 import {
   LayoutDashboard, TrendingUp, Users, Package, FileText,
   ArrowUpRight, ArrowDownRight, Search, Calendar, Menu, X,
-  ChevronRight, Wallet, CreditCard, DollarSign, Activity, Zap, MessageSquare, PieChart as PieIcon,
-  MapPin
+  ChevronRight, Wallet, CreditCard, DollarSign, Activity, Zap, MessageSquare, PieIcon,
+  MapPin, BookOpen, LogOut, User, Settings, Filter, Download, RefreshCw
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
