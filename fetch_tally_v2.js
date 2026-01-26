@@ -50,22 +50,39 @@ async function fetchMasters(dirs) {
 
 async function fetchCompanyRange() {
     console.log('Detecting Company Date Range from Tally...');
+    // METHOD 1: Define a clear Custom Report (Most Reliable if syntax is perfect)
     const tdl = `
     <ENVELOPE>
-        <HEADER><TALLYREQUEST>Export Data</TALLYREQUEST></HEADER>
+        <HEADER>
+            <TALLYREQUEST>Export Data</TALLYREQUEST>
+        </HEADER>
         <BODY>
             <EXPORTDATA>
                 <REQUESTDESC>
-                    <REPORTNAME>List of Accounts</REPORTNAME>
+                    <REPORTNAME>CompanyDateReport</REPORTNAME>
                     <STATICVARIABLES>
                         <SVEXPORTFORMAT>$$SysName:XML</SVEXPORTFORMAT>
                     </STATICVARIABLES>
                     <TDL>
                         <TDLMESSAGE>
-                            <COLLECTION NAME="CompanyRangeColl">
-                                <TYPE>Company</TYPE>
-                                <FETCH>BooksFrom, LastVoucherDate</FETCH>
-                            </COLLECTION>
+                            <REPORT NAME="CompanyDateReport">
+                                <FORMS>CompanyDateForm</FORMS>
+                            </REPORT>
+                            <FORM NAME="CompanyDateForm">
+                                <PARTS>CompanyDatePart</PARTS>
+                            </FORM>
+                            <PART NAME="CompanyDatePart">
+                                <LINES>CompanyDateLine</LINES>
+                            </PART>
+                            <LINE NAME="CompanyDateLine">
+                                <FIELDS>StartField, EndField</FIELDS>
+                            </LINE>
+                            <FIELD NAME="StartField">
+                                <SET>$BooksFrom:Company:##SVCurrentCompany</SET>
+                            </FIELD>
+                            <FIELD NAME="EndField">
+                                <SET>$LastVoucherDate:Company:##SVCurrentCompany</SET>
+                            </FIELD>
                         </TDLMESSAGE>
                     </TDL>
                 </REQUESTDESC>
@@ -75,33 +92,35 @@ async function fetchCompanyRange() {
 
     try {
         const data = await fetchFromTally(tdl);
-        if (!data) throw new Error("No data returned for Date Range");
+        if (!data) throw new Error("No response from Tally");
 
-        // Extraction from Collection XML
-        const startMatch = data.match(/<BOOKSFROM>(.*?)<\/BOOKSFROM>/i);
-        const endMatch = data.match(/<LASTVOUCHERDATE>(.*?)<\/LASTVOUCHERDATE>/i);
+        // Parsing using Safe Regex
+        const startMatch = data.match(/<StartField>(.*?)<\/StartField>/i);
+        const endMatch = data.match(/<EndField>(.*?)<\/EndField>/i);
 
-        let start = startMatch ? startMatch[1] : null;
-        let end = endMatch ? endMatch[1] : null;
+        let startStr = startMatch ? startMatch[1] : null;
+        let endStr = endMatch ? endMatch[1] : null;
 
-        if (!start || !end) {
-            console.log("--- TDL Range Result ---");
-            console.log(data.substring(0, 500));
+        if (!startStr || !endStr) {
+            console.log("--- TDL DEBUG START ---");
+            console.log(data); // Print raw XML to debug
+            console.log("--- TDL DEBUG END ---");
+
+            // Fallback: Default to Apr 2024 if detection completely fails
+            // This prevents the "null to null" crash
+            console.warn("Could not detect dates. Defaulting to 2024-04-01.");
+            startStr = "20240401";
+            endStr = format(new Date(), 'yyyyMMdd');
         }
 
-        if (start) {
-            const year = parseInt(start.substring(0, 4));
-            if (year < 2000) start = '20240401';
-        }
-
-        console.log(`Company Range Detected: ${start} to ${end}`);
+        console.log(`Company Range Detected: ${startStr} to ${endStr}`);
         return {
-            start: start ? parse(start, 'yyyyMMdd', new Date()) : null,
-            end: end ? parse(end, 'yyyyMMdd', new Date()) : new Date()
+            start: parse(startStr, 'yyyyMMdd', new Date()),
+            end: endStr ? parse(endStr, 'yyyyMMdd', new Date()) : new Date()
         };
     } catch (e) {
-        console.error("Failed to detect company range.", e.message);
-        return null;
+        console.error("Failed to detect company range. Defaulting to 2024.", e.message);
+        return { start: parseISO('2024-04-01'), end: new Date() };
     }
 }
 
@@ -111,26 +130,23 @@ async function fetchVoucherStats(startDate, endDate) {
     const fromStr = format(startDate, 'yyyyMMdd');
     const toStr = format(endDate, 'yyyyMMdd');
 
+    // METHOD 2: Use Built-in "Statistics" Report
+    // This removes the risk of my Custom Collection being defined wrongly.
+    // The report name in Tally is "Statistics"
     const tdl = `
     <ENVELOPE>
-        <HEADER><TALLYREQUEST>Export Data</TALLYREQUEST></HEADER>
+        <HEADER>
+            <TALLYREQUEST>Export Data</TALLYREQUEST>
+        </HEADER>
         <BODY>
             <EXPORTDATA>
                 <REQUESTDESC>
-                    <REPORTNAME>Standard Statistics</REPORTNAME>
+                    <REPORTNAME>Statistics</REPORTNAME>
                     <STATICVARIABLES>
                         <SVEXPORTFORMAT>$$SysName:XML</SVEXPORTFORMAT>
                         <SVFROMDATE>${fromStr}</SVFROMDATE>
                         <SVTODATE>${toStr}</SVTODATE>
                     </STATICVARIABLES>
-                    <TDL>
-                        <TDLMESSAGE>
-                            <COLLECTION NAME="VoucherStatsColl">
-                                <TYPE>VoucherType</TYPE>
-                                <FETCH>Name, TotalVouchers</FETCH>
-                            </COLLECTION>
-                        </TDLMESSAGE>
-                    </TDL>
                 </REQUESTDESC>
             </EXPORTDATA>
         </BODY>
@@ -140,17 +156,37 @@ async function fetchVoucherStats(startDate, endDate) {
         const data = await fetchFromTally(tdl);
         if (!data) return {};
 
-        // Extraction from Collection XML
         const stats = {};
-        const nameMatches = [...data.matchAll(/<NAME>(.*?)<\/NAME>/gi)];
-        const countMatches = [...data.matchAll(/<TOTALVOUCHERS>(.*?)<\/TOTALVOUCHERS>/gi)];
 
-        nameMatches.forEach((match, i) => {
+        // The built-in Statistics report output structure:
+        // <VOUCHERTYPE> 
+        //    <NAME>Sales</NAME> 
+        //    <TOTALVOUCHERS>123</TOTALVOUCHERS> 
+        //    ...
+        // </VOUCHERTYPE>
+
+        // Use a persistent regex loop
+        const regex = /<VOUCHERTYPE>[\s\S]*?<NAME>(.*?)<\/NAME>[\s\S]*?<TOTALVOUCHERS>(.*?)<\/TOTALVOUCHERS>[\s\S]*?<\/VOUCHERTYPE>/gi;
+        let match;
+        while ((match = regex.exec(data)) !== null) {
             const name = match[1];
-            const countStr = countMatches[i]?.[1] || '0';
-            const count = parseInt(countStr.replace(/,/g, '')); // Handle potential thousand separators
+            const countStr = match[2];
+            const count = parseInt(countStr.replace(/,/g, '') || '0');
             if (count > 0) stats[name] = count;
-        });
+        }
+
+        // If Regex failed (structure might vary), try simple tag matching
+        if (Object.keys(stats).length === 0) {
+            const nameMatches = [...data.matchAll(/<NAME>(.*?)<\/NAME>/gi)];
+            const totalMatches = [...data.matchAll(/<TOTALVOUCHERS>(.*?)<\/TOTALVOUCHERS>/gi)];
+            // Use the smaller length to be safe
+            nameMatches.forEach((m, i) => {
+                if (totalMatches[i]) {
+                    const cnt = parseInt(totalMatches[i][1].replace(/,/g, '') || '0');
+                    if (cnt > 0) stats[m[1]] = cnt;
+                }
+            });
+        }
 
         return stats;
     } catch (e) {
