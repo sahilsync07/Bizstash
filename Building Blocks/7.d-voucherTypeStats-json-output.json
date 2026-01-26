@@ -1,0 +1,12 @@
+{
+  "voucherTypeCounts": {
+    "Tax Invoice": 1568,
+    "Receipt": 1120,
+    "Contra": 179,
+    "Purchase": 602,
+    "Payment": 941,
+    "Journal": 126,
+    "Credit Note": 55
+  },
+  "totalVouchers": 4591
+}
