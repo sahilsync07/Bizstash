@@ -48,20 +48,174 @@ async function fetchMasters(dirs) {
     console.log(`Masters saved to ${filePath}`);
 }
 
+async function fetchCompanyRange() {
+    console.log('Detecting Company Date Range from Tally...');
+    const tdl = `
+    <ENVELOPE>
+        <HEADER>
+            <TALLYREQUEST>Export Data</TALLYREQUEST>
+        </HEADER>
+        <BODY>
+            <EXPORTDATA>
+                <REQUESTDESC>
+                    <REPORTNAME>CompanyRange</REPORTNAME>
+                    <STATICVARIABLES>
+                        <SVEXPORTFORMAT>$$SysName:XML</SVEXPORTFORMAT>
+                    </STATICVARIABLES>
+                    <TDL>
+                        <TDLMESSAGE>
+                            <REPORT NAME="CompanyRange">
+                                <FORMS>CompanyRangeForm</FORMS>
+                            </REPORT>
+                            <FORM NAME="CompanyRangeForm">
+                                <PARTS>CompanyRangePart</PARTS>
+                            </FORM>
+                            <PART NAME="CompanyRangePart">
+                                <LINES>CompanyRangeLine</LINES>
+                            </PART>
+                            <LINE NAME="CompanyRangeLine">
+                                <FIELDS>StartField, EndField</FIELDS>
+                            </LINE>
+                            <FIELD NAME="StartField">
+                                <SET>$BooksFrom:Company:##SVCurrentCompany</SET>
+                            </FIELD>
+                            <FIELD NAME="EndField">
+                                <SET>$LastVoucherDate:Company:##SVCurrentCompany</SET>
+                            </FIELD>
+                        </TDLMESSAGE>
+                    </TDL>
+                </REQUESTDESC>
+            </EXPORTDATA>
+        </BODY>
+    </ENVELOPE>`;
+
+    try {
+        const data = await fetchFromTally(tdl);
+        if (!data) throw new Error("No data returned for Date Range");
+
+        // Simple Regex Extraction to avoid creating another parser instance just for this
+        const startMatch = data.match(/<StartField>(.*?)<\/StartField>/);
+        const endMatch = data.match(/<EndField>(.*?)<\/EndField>/);
+
+        let start = startMatch ? startMatch[1] : null; // YYYYMMDD
+        let end = endMatch ? endMatch[1] : null;     // YYYYMMDD
+
+        if (start) {
+            const year = parseInt(start.substring(0, 4));
+            if (year < 2000) start = '20000401'; // Sanity check
+        }
+
+        console.log(`Company Range Detected: ${start} to ${end}`);
+        return {
+            start: start ? parse(start, 'yyyyMMdd', new Date()) : null,
+            end: end ? parse(end, 'yyyyMMdd', new Date()) : new Date()
+        };
+    } catch (e) {
+        console.error("Failed to detect company range, falling back to defaults.", e.message);
+        return null;
+    }
+}
+
+
+async function fetchVoucherStats(startDate, endDate) {
+    console.log('Fetching Voucher Statistics (Checksum) from Tally...');
+    const fromStr = format(startDate, 'yyyyMMdd');
+    const toStr = format(endDate, 'yyyyMMdd');
+
+    const tdl = `
+    <ENVELOPE>
+        <HEADER>
+            <TALLYREQUEST>Export Data</TALLYREQUEST>
+        </HEADER>
+        <BODY>
+            <EXPORTDATA>
+                <REQUESTDESC>
+                    <REPORTNAME>VoucherTypeStats</REPORTNAME>
+                    <STATICVARIABLES>
+                        <SVEXPORTFORMAT>$$SysName:XML</SVEXPORTFORMAT>
+                        <SVFROMDATE>${fromStr}</SVFROMDATE>
+                        <SVTODATE>${toStr}</SVTODATE>
+                    </STATICVARIABLES>
+                    <TDL>
+                        <TDLMESSAGE>
+                            <REPORT NAME="VoucherTypeStats">
+                                <FORMS>VoucherTypeStatsForm</FORMS>
+                            </REPORT>
+                            <FORM NAME="VoucherTypeStatsForm">
+                                <PARTS>VoucherTypeStatsPart</PARTS>
+                            </FORM>
+                            <PART NAME="VoucherTypeStatsPart">
+                                <LINES>VoucherTypeStatsLine</LINES>
+                                <REPEAT>VoucherTypeStatsLine : VoucherStatsColl</REPEAT>
+                                <SCROLLED>Vertical</SCROLLED>
+                            </PART>
+                            <LINE NAME="VoucherTypeStatsLine">
+                                <FIELDS>VoucherTypeName, VoucherCount</FIELDS>
+                            </LINE>
+                            <FIELD NAME="VoucherTypeName">
+                                <SET>$Name</SET>
+                            </FIELD>
+                            <FIELD NAME="VoucherCount">
+                                <SET>$TotalVouchers</SET>
+                            </FIELD>
+                            <COLLECTION NAME="VoucherStatsColl">
+                                <TYPE>VoucherType</TYPE>
+                            </COLLECTION>
+                        </TDLMESSAGE>
+                    </TDL>
+                </REQUESTDESC>
+            </EXPORTDATA>
+        </BODY>
+    </ENVELOPE>`;
+
+    try {
+        const data = await fetchFromTally(tdl);
+        if (!data) return {};
+
+        // Quick Parse of the stats XML
+        const stats = {};
+        const nameMatches = [...data.matchAll(/<VoucherTypeName>(.*?)<\/VoucherTypeName>/g)];
+        const countMatches = [...data.matchAll(/<VoucherCount>(.*?)<\/VoucherCount>/g)];
+
+        nameMatches.forEach((match, i) => {
+            const name = match[1];
+            const count = parseInt(countMatches[i]?.[1] || '0');
+            if (count > 0) stats[name] = count;
+        });
+
+        return stats;
+    } catch (e) {
+        console.error("Failed to fetch statistics for checksum:", e.message);
+        return {};
+    }
+}
+
 async function fetchVouchers(dirs) {
-    console.log('Fetching Vouchers (Full Range)...');
+    console.log('Fetching Vouchers...');
 
-    // Expanded Range based on user input (up to 2026)
-    // Starting back from 2023 just to be safe, or 2024 as verified.
-    // User mentioned screenshot data is Apr 2025 to Nov 2025. 
-    // We will cover 2024-04-01 to 2026-03-31 to be comprehensive.
+    // 1. Dynamic Range Detection
+    const range = await fetchCompanyRange();
 
-    let currentDate = parseISO('2024-04-01');
-    const endDate = parseISO('2026-03-31');
+    // Default Fallbacks if detection fails
+    // Fallback: Start from 2021 if cannot detect, End at Today
+    let currentDate = range?.start || parseISO('2021-04-01');
+    const endDate = range?.end || new Date(); // Default to today/now
+
+    // Sanity: If Tally returns empty end date (no vouchers?), use Today
+    if (!range?.end) console.log("Last voucher date not found, fetching up to today.");
+
+    console.log(`Syncing Period: ${format(currentDate, 'dd-MM-yyyy')} to ${format(endDate, 'dd-MM-yyyy')}`);
+
+    // Verification Counters
+    const downloadedCounts = {};
 
     while (!isAfter(currentDate, endDate)) {
         const fromDateStr = format(startOfMonth(currentDate), 'yyyyMMdd');
         const toDateStr = format(endOfMonth(currentDate), 'yyyyMMdd');
+
+        // Optimization: Don't fetch future months if end date is in current month
+        // But our while loop condition handles isAfter(currentDate, endDate)
+        // We just need to ensure we don't request 'future' beyond standard bounds if endDate is Today.
 
         console.log(`Fetching Vouchers for range: ${fromDateStr} to ${toDateStr}`);
 
@@ -95,6 +249,14 @@ async function fetchVouchers(dirs) {
                 const filePath = path.join(dirs.vouchers, filename);
                 await fs.writeFile(filePath, data);
                 console.log(`  Saved ${filename} (Size: ${data.length} bytes)`);
+
+                // -- CHECKSUM LOGIC --
+                // Count vouchers in this batch
+                const typeMatches = [...data.matchAll(/<VOUCHERTYPENAME>(.*?)<\/VOUCHERTYPENAME>/g)];
+                typeMatches.forEach(m => {
+                    const type = m[1];
+                    downloadedCounts[type] = (downloadedCounts[type] || 0) + 1;
+                });
             }
         }
 
@@ -102,6 +264,37 @@ async function fetchVouchers(dirs) {
         await new Promise(r => setTimeout(r, 50)); // Fast fetch
     }
     console.log('Voucher fetch complete.');
+
+    // --- VERIFICATION REPORT ---
+    console.log('\n--- DATA VERIFICATION REPORT ---');
+    const tallyStats = await fetchVoucherStats(range?.start || parseISO('2021-04-01'), endDate);
+
+    let allMatch = true;
+    console.log(`${'Voucher Type'.padEnd(25)} | ${'Tally (Source)'.padEnd(15)} | ${'Downloaded'.padEnd(15)} | ${'Status'}`);
+    console.log('-'.repeat(70));
+
+    // Combine keys
+    const allTypes = new Set([...Object.keys(downloadedCounts), ...Object.keys(tallyStats)]);
+
+    allTypes.forEach(type => {
+        const source = tallyStats[type] || 0;
+        const downloaded = downloadedCounts[type] || 0;
+        const match = source === downloaded;
+        if (!match) allMatch = false;
+
+        const status = match ? '✅ MATCH' : '❌ MISMATCH';
+        if (source > 0 || downloaded > 0) { // Only show active types
+            console.log(`${type.padEnd(25)} | ${source.toString().padEnd(15)} | ${downloaded.toString().padEnd(15)} | ${status}`);
+        }
+    });
+    console.log('-'.repeat(70));
+
+    if (allMatch) {
+        console.log('SUCCESS: All data fetched correctly with 100% integrity.');
+    } else {
+        console.warn('WARNING: Data Mismatch detected! Some vouchers might be missing or out of sync.');
+    }
+    console.log('--------------------------------\n');
 }
 
 async function main(companyName) {

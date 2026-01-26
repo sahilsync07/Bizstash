@@ -52,6 +52,8 @@ export default function App() {
   // Default to closed on mobile (< 768px), open on desktop
   const [isSidebarOpen, setSidebarOpen] = useState(window.innerWidth >= 768);
   const [targetLedger, setTargetLedger] = useState('');
+  const [targetLineman, setTargetLineman] = useState(null);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const [companies, setCompanies] = useState([]);
   const [selectedCompany, setSelectedCompany] = useState(null);
@@ -90,6 +92,53 @@ export default function App() {
       });
   }, [selectedCompany]);
 
+  // 3. Search Indexing
+  const searchIndex = useMemo(() => {
+    if (!data) return [];
+
+    const index = [];
+
+    // Ledgers
+    (data.ledgersList || []).forEach(name => {
+      index.push({ id: `ledger-${name}`, name, type: 'Ledger', icon: BookOpen });
+    });
+
+    // Debtors
+    (data.debtors || []).forEach(d => {
+      index.push({ id: `debtor-${d.name}`, name: d.name, type: 'Party (Debtor)', icon: Users, meta: d.balance });
+    });
+
+    // Creditors
+    (data.creditors || []).forEach(c => {
+      index.push({ id: `creditor-${c.name}`, name: c.name, type: 'Party (Creditor)', icon: Users, meta: c.balance });
+    });
+
+    // Linemen
+    (data.linemanConfig || []).forEach(l => {
+      index.push({ id: `lineman-${l.name}`, name: l.name, type: 'Lineman', icon: MapPin });
+    });
+
+    return index;
+  }, [data]);
+
+  const searchResults = useMemo(() => {
+    if (!searchQuery || searchQuery.length < 2) return [];
+    const q = searchQuery.toLowerCase();
+    return searchIndex
+      .filter(item => item.name.toLowerCase().includes(q))
+      .slice(0, 8);
+  }, [searchIndex, searchQuery]);
+
+  const handleSearchResultClick = (item) => {
+    setSearchQuery('');
+    if (item.type.includes('Ledger') || item.type.includes('Party')) {
+      handleDrillDown(item.name);
+    } else if (item.type === 'Lineman') {
+      setTargetLineman(item.name);
+      setActiveTab('linemen');
+    }
+  };
+
   const handleDrillDown = (ledgerName) => {
     setTargetLedger(ledgerName);
     setActiveTab('ledger');
@@ -127,6 +176,10 @@ export default function App() {
           onSelectCompany={(id) => setSelectedCompany(companies.find(c => c.id === id))}
           toggleSidebar={() => setSidebarOpen(!isSidebarOpen)}
           isSidebarOpen={isSidebarOpen}
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+          searchResults={searchResults}
+          onSearchResultClick={handleSearchResultClick}
         />
 
         <main className="flex-1 overflow-y-auto p-4 md:p-8 scroll-smooth">
@@ -144,7 +197,7 @@ export default function App() {
                 {activeTab === 'debtors' && <PartyAnalytics data={data.debtors} type="Debtors" color="orange" onDrillDown={handleDrillDown} />}
                 {activeTab === 'creditors' && <PartyAnalytics data={data.creditors} type="Creditors" color="rose" onDrillDown={handleDrillDown} />}
                 {activeTab === 'stocks' && <InventoryAnalytics data={data.stocks} />}
-                {activeTab === 'linemen' && <LinemanView data={data} onDrillDown={handleDrillDown} />}
+                {activeTab === 'linemen' && <LinemanView data={data} initialLineman={targetLineman} onDrillDown={handleDrillDown} />}
                 {activeTab === 'overdues' && <OverdueTable data={data.creditors} />}
                 {activeTab === 'ledger' && <LedgerView data={data} initialLedger={targetLedger} />}
               </motion.div>
@@ -216,16 +269,17 @@ function Sidebar({ activeTab, setActiveTab, isOpen, toggle, companyName }) {
 }
 
 // --- Header ---
-function Header({ title, companies, selectedCompany, onSelectCompany, toggleSidebar, isSidebarOpen }) {
+function Header({ title, companies, selectedCompany, onSelectCompany, toggleSidebar, isSidebarOpen, searchQuery, setSearchQuery, searchResults, onSearchResultClick }) {
   const currentDate = new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
   const [showProfileMenu, setShowProfileMenu] = useState(false);
 
   const getSyncStatus = (dateStr) => {
     if (!dateStr) return 'Not Synced';
     const diff = new Date() - new Date(dateStr);
-    const hours = Math.floor(diff / (1000 * 60 * 60));
-    if (hours < 1) return 'Synced Just Now';
-    return `Synced ${hours}h ago`;
+    const m = Math.floor(diff / (1000 * 60));
+    const hours = Math.floor(m / 60);
+    if (hours < 1) return `${m}m ago`;
+    return `${hours}h ago`;
   };
 
   return (
@@ -241,10 +295,54 @@ function Header({ title, companies, selectedCompany, onSelectCompany, toggleSide
         </div>
       </div>
 
-      <div className="flex items-center gap-4 md:gap-6">
-        <div className="hidden md:flex items-center bg-white rounded-full px-5 py-3 shadow-sm border-2 border-transparent focus-within:border-flux-lime/50 transition-all w-80">
-          <Search size={18} className="text-flux-text-dim mr-3" />
-          <input type="text" placeholder="Global Search..." className="bg-transparent border-none outline-none text-sm text-flux-black w-full placeholder:text-flux-text-dim font-medium" />
+      <div className="flex items-center gap-4 md:gap-6 flex-1 justify-end">
+        {/* Search Bar with Results Dropdown */}
+        <div className="hidden md:flex relative group max-w-md w-full ml-8">
+          <div className="flex items-center bg-white rounded-full px-5 py-3 shadow-sm border-2 border-transparent focus-within:border-flux-lime/50 transition-all w-full">
+            <Search size={18} className="text-flux-text-dim mr-3" />
+            <input
+              type="text"
+              placeholder="Search Ledger, Party, Lineman..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="bg-transparent border-none outline-none text-sm text-flux-black w-full placeholder:text-flux-text-dim font-medium"
+            />
+          </div>
+
+          <AnimatePresence>
+            {searchResults.length > 0 && (
+              <motion.div
+                initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                className="absolute top-14 left-0 right-0 bg-white rounded-[1.5rem] shadow-2xl border border-gray-100 p-2 z-50 overflow-hidden"
+              >
+                <div className="max-h-[400px] overflow-y-auto">
+                  {searchResults.map((item) => (
+                    <button
+                      key={item.id}
+                      onClick={() => onSearchResultClick(item)}
+                      className="w-full text-left px-4 py-3 rounded-xl hover:bg-flux-lime/10 transition-colors flex items-center gap-4 group"
+                    >
+                      <div className="h-10 w-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 group-hover:bg-white group-hover:text-flux-lime transition-colors">
+                        <item.icon size={18} />
+                      </div>
+                      <div className="flex flex-col">
+                        <span className="text-sm font-bold text-flux-black">{item.name}</span>
+                        <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider">{item.type}</span>
+                      </div>
+                      {item.meta !== undefined && (
+                        <div className="ml-auto text-xs font-bold text-flux-black">
+                          {formatCurrency(item.meta)}
+                        </div>
+                      )}
+                      <ChevronRight size={14} className="text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </button>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
 
         <div className="relative z-50">
@@ -253,10 +351,10 @@ function Header({ title, companies, selectedCompany, onSelectCompany, toggleSide
             className="flex items-center gap-3 bg-white rounded-full p-1.5 pr-5 shadow-sm cursor-pointer hover:shadow-md transition-all border border-gray-100"
           >
             <div className="h-10 w-10 rounded-full bg-flux-purple/20 flex items-center justify-center text-flux-purple font-bold border-2 border-white">
-              AT
+              {selectedCompany?.name?.substring(0, 2).toUpperCase() || 'BC'}
             </div>
             <div className="flex flex-col">
-              <span className="text-xs font-bold text-flux-black">{selectedCompany?.name || 'Select Company'}</span>
+              <span className="text-xs font-bold text-flux-black max-w-[120px] truncate">{selectedCompany?.name || 'Select Company'}</span>
               <span className="text-[10px] text-flux-text-dim font-medium uppercase tracking-wider">{getSyncStatus(selectedCompany?.lastUpdated)}</span>
             </div>
             <ChevronRight size={14} className={`text-flux-text-dim ml-auto transition-transform ${showProfileMenu ? 'rotate-90' : ''}`} />
@@ -303,15 +401,18 @@ function Header({ title, companies, selectedCompany, onSelectCompany, toggleSide
 
 // --- Dashboard Component ---
 function SummaryDashboard({ data, onDrillDown }) {
-  // Current Month Logic
-  const today = new Date();
-  const currentMonthKey = today.getFullYear().toString() + (today.getMonth() + 1).toString().padStart(2, '0');
+  // Sort available months (descending)
+  const availableMonths = Object.keys(data.monthlyStats).sort().reverse();
+  const [selectedMonth, setSelectedMonth] = useState(availableMonths[0] || '');
 
-  const currentMonthData = data.monthlyStats[currentMonthKey] || { sales: 0, purchase: 0 };
+  // fallback if no data
+  const currentMonthData = data.monthlyStats[selectedMonth] || { sales: 0, purchase: 0 };
   const totalSales = currentMonthData.sales;
   const totalPurchase = currentMonthData.purchase;
 
-  // Outstanding is cumulative, so taking total balance is correct for "Receivables/Payables"
+  // Outstanding is cumulative (Balance Sheet item), so it doesn't depend on selected month flow
+  // BUT user might expect it to? Usually BS is "as of date". 
+  // For now, keeping Debtors/Creditors as "Current Total" (Real-time).
   const totalDebtors = data.debtors.reduce((acc, curr) => acc + curr.balance, 0);
   const totalCreditors = data.creditors.reduce((acc, curr) => acc + curr.balance, 0);
 
@@ -329,12 +430,32 @@ function SummaryDashboard({ data, onDrillDown }) {
 
   return (
     <div className="space-y-8">
+      {/* Month Selector Header */}
+      <div className="flex justify-between items-center">
+        <div>
+          <h2 className="text-2xl font-bold text-flux-black">Financial Overview</h2>
+          <p className="text-sm text-flux-text-dim">Snapshot for {formatMonth(selectedMonth)}</p>
+        </div>
+        <div className="bg-white rounded-xl shadow-sm border border-gray-100 px-4 py-2 flex items-center gap-3">
+          <Calendar size={18} className="text-flux-lime" />
+          <select
+            value={selectedMonth}
+            onChange={(e) => setSelectedMonth(e.target.value)}
+            className="bg-transparent border-none outline-none font-bold text-flux-black cursor-pointer text-sm"
+          >
+            {availableMonths.map(m => (
+              <option key={m} value={m}>{formatMonth(m)}</option>
+            ))}
+          </select>
+        </div>
+      </div>
+
       {/* KPI Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <KpiCard title="Total Revenue" value={totalSales} trend="+12.5%" icon={ArrowUpRight} accent="lime" />
-        <KpiCard title="Total Expenses" value={totalPurchase} trend="+4.2%" icon={Activity} accent="purple" />
-        <KpiCard title="Receivables" value={totalDebtors} trend="-2.1%" icon={Wallet} accent="blue" />
-        <KpiCard title="Payables" value={totalCreditors} trend="0.0%" icon={CreditCard} accent="rose" />
+        <KpiCard title="Total Revenue" value={totalSales} trend="Selected Month" icon={ArrowUpRight} accent="lime" />
+        <KpiCard title="Total Expenses" value={totalPurchase} trend="Selected Month" icon={Activity} accent="purple" />
+        <KpiCard title="Receivables" value={totalDebtors} trend="Total Outstanding" icon={Wallet} accent="blue" />
+        <KpiCard title="Payables" value={totalCreditors} trend="Total Outstanding" icon={CreditCard} accent="rose" />
       </div>
 
       {/* Main Charts Row */}
@@ -691,7 +812,13 @@ function LedgerView({ data, initialLedger }) {
     if (!selectedLedger) return [];
 
     // Filter & Transform logic remains same...
-    const txns = data.transactions
+    // Correct Running Balance Logic:
+    // 1. Get ALL transactions for this ledger (sorted).
+    // 2. Split into "Before Period" and "In Period".
+    // 3. Calculate "Opening Balance" as Master Opening + Sum(Before Period).
+    // 4. Calculate Running Balance for "In Period".
+
+    const allLedgerTxns = data.transactions
       .filter(t => t.ledgers.some(l => l.name === selectedLedger))
       .map(t => {
         const entry = t.ledgers.find(l => l.name === selectedLedger);
@@ -712,15 +839,42 @@ function LedgerView({ data, initialLedger }) {
         };
       })
       .filter(Boolean)
-      .filter(r => r.date >= startDate.replaceAll('-', '') && r.date <= endDate.replaceAll('-', ''))
       .sort((a, b) => a.date.localeCompare(b.date));
 
-    let bal = data.ledgerOpenings?.[selectedLedger]?.openingBalance || 0;
-    return txns.map(r => {
-      bal += r.signed;
-      return { ...r, balance: bal };
+    // Date Strings for comparison
+    const startStr = startDate.replaceAll('-', '');
+    const endStr = endDate.replaceAll('-', '');
+
+    // derived from Masters
+    const masterOpening = data.ledgerOpenings?.[selectedLedger]?.openingBalance || 0;
+
+    // Calculate sum of transactions BEFORE start date
+    const prevTxns = allLedgerTxns.filter(r => r.date < startStr);
+    const prevBalanceEffect = prevTxns.reduce((sum, r) => sum + r.signed, 0);
+
+    // Effective Opening Balance for the Table
+    let runningBal = masterOpening + prevBalanceEffect;
+
+    // Filter for View
+    const visibleTxns = allLedgerTxns.filter(r => r.date >= startStr && r.date <= endStr);
+
+    const rows = visibleTxns.map(r => {
+      runningBal += r.signed;
+      return { ...r, balance: runningBal };
     });
-  }, [selectedLedger, startDate, endDate]);
+
+    // Add explicit Opening Balance Row
+    const openingRow = {
+      date: startStr,
+      particulars: 'Opening Balance',
+      type: '',
+      debit: 0,
+      credit: 0,
+      balance: masterOpening + prevBalanceEffect // Balance as of Start Date
+    };
+
+    return [openingRow, ...rows];
+  }, [selectedLedger, startDate, endDate, data]);
 
   const totals = viewData.reduce((acc, curr) => ({ dr: acc.dr + curr.debit, cr: acc.cr + curr.credit }), { dr: 0, cr: 0 });
   const closing = viewData.length > 0 ? viewData[viewData.length - 1].balance : 0;
@@ -962,8 +1116,12 @@ function OverdueTable({ data }) {
 }
 
 // --- Lineman View ---
-function LinemanView({ data, onDrillDown }) {
-  const [selectedLineman, setSelectedLineman] = useState(null);
+function LinemanView({ data, onDrillDown, initialLineman }) {
+  const [selectedLineman, setSelectedLineman] = useState(initialLineman || null);
+
+  useEffect(() => {
+    if (initialLineman) setSelectedLineman(initialLineman);
+  }, [initialLineman]);
   const [viewMode, setViewMode] = useState('combined'); // 'combined' | 'grouped'
   const [expandedGroups, setExpandedGroups] = useState({});
 
