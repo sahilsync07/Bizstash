@@ -173,18 +173,14 @@ function Sidebar({ activeTab, setActiveTab, isOpen, toggle, companyName }) {
         </div>
       </div>
 
-      <div className="px-6 mb-6">
-        <button className="w-full bg-white text-flux-black rounded-full py-3 px-4 flex items-center justify-between font-bold shadow-lg shadow-white/5 hover:bg-gray-100 transition-colors">
-          <span className="flex items-center gap-2"><LayoutDashboard size={18} /> Dashboard</span>
-        </button>
-      </div>
+
 
       <nav className="flex-1 px-6 space-y-2 overflow-y-auto">
         {menuItems.map((item) => (
           <button
             key={item.id}
             onClick={() => { setActiveTab(item.id); if (window.innerWidth < 768) toggle(); }}
-            className={`w-full flex items-center p-4 rounded-2xl transition-all duration-200 group relative overflow-hidden ${activeTab === item.id
+            className={`w-full flex items-center p-4 rounded-full transition-all duration-200 group relative overflow-hidden ${activeTab === item.id
               ? 'bg-white text-flux-black font-bold shadow-lg transform scale-105' // Active: White, Fixed
               : 'hover:text-white'
               }`}
