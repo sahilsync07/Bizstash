@@ -1,0 +1,21 @@
+{
+  "companyName": {
+    "_": "M/S.SRI BRUNDABANA ENTERPRISES - (2024-25)",
+    "$": {
+      "TYPE": "String"
+    }
+  },
+  "fromDate": {
+    "_": "20250401",
+    "$": {
+      "TYPE": "Date"
+    }
+  },
+  "toDate": {
+    "_": "20251122",
+    "$": {
+      "TYPE": "Date"
+    }
+  },
+  "voucherQty": 4591
+}
