@@ -4,7 +4,19 @@ const xml2js = require('xml2js');
 const { parse, differenceInDays, parseISO, isWithinInterval } = require('date-fns');
 
 const COMPANY_NAME = process.argv[2] || 'default_company';
-const XML_DIR = path.join(__dirname, 'tally_data', 'xml');
+let XML_DIR = path.join(__dirname, 'tally_data', 'xml');
+
+// Try to find company-specific XML directory
+if (COMPANY_NAME && COMPANY_NAME !== 'default_company') {
+    const specificDir = path.join(__dirname, 'tally_data', 'xml', COMPANY_NAME);
+    if (fs.existsSync(specificDir)) {
+        console.log(`[Process] Using specific XML directory: ${specificDir}`);
+        XML_DIR = specificDir;
+    } else {
+        console.log(`[Process] Specific XML directory not found, using shared default: ${XML_DIR}`);
+    }
+}
+
 const OUTPUT_DIR = path.join(__dirname, 'dashboard', 'public', 'data', COMPANY_NAME);
 
 fs.ensureDirSync(OUTPUT_DIR);

@@ -3,11 +3,19 @@ const path = require('path');
 const { fetchAll } = require('./fetch_tally_v2');
 const { processData } = require('./process_tally_v2');
 
-const XML_DIR = path.join(__dirname, 'tally_data', 'xml');
+const companyName = process.argv[2] || 'default_company';
+
+// Determine XML Directory based on company name
+// Must match logic in fetch_tally_v2 and process_tally_v2
+let relativePath = 'xml';
+if (companyName && companyName !== 'default_company') {
+    relativePath = path.join('xml', companyName);
+}
+const XML_DIR = path.join(__dirname, 'tally_data', relativePath);
 const PROCESSED_DATA_DIR = path.join(__dirname, 'dashboard', 'public', 'data');
 
 async function cleanXmlDirectory() {
-    console.log('[Sync Engine] Cleaning previous XML data...');
+    console.log(`[Sync Engine] Cleaning previous XML data in ${XML_DIR}...`);
     try {
         await fs.emptyDir(XML_DIR);
         console.log('[Sync Engine] XML cleanup successful.');
@@ -58,20 +66,16 @@ async function runSync() {
 
         // 2. Fetch from Tally
         console.log('[Sync Engine] Starting Data Fetch...');
-        // We need to handle connection errors from axios here.
-        // fetchAll catches its own errors but returns nothing explicitly on error?
-        // Let's check fetch_tally_v2.js. It returns console.error but doesn't throw.
-        // We should improve fetch_tally_v2 to throw or return status, but for now
-        // we can check if masters.xml is created as a proxy for success.
 
-        await fetchAll();
+        await fetchAll(companyName); // Pass company name to fetch into specific folder
 
         // 3. Verify Data
         await verifyDataFetch();
 
         // 4. Process Data
         console.log('[Sync Engine] Processing Data...');
-        const companyName = process.argv[2] || 'default_company';
+        // processData reads process.argv[2] internally, so we don't strictly need to pass it
+        // but passing it would be cleaner if refactored. For now, it works as is.
         await processData(companyName);
 
         // 5. Clean Up XMLs
