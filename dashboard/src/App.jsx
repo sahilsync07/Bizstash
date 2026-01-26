@@ -33,6 +33,17 @@ const formatMonth = (yyyymm) => {
   return date.toLocaleString('default', { month: 'short', year: '2-digit' });
 };
 
+// --- Menu Configuration ---
+const MENU_ITEMS = [
+  { id: 'summary', label: 'Dashboard', icon: LayoutDashboard },
+  { id: 'sales', label: 'Sales Metrics', icon: PieIcon },
+  { id: 'debtors', label: 'Parties', icon: Users },
+  { id: 'stocks', label: 'Inventory', icon: Package },
+  { id: 'overdues', label: 'Overdues', icon: FileText, alert: true },
+  { id: 'linemen', label: 'Lineman View', icon: MapPin },
+  { id: 'ledger', label: 'Ledger Book', icon: BookOpen },
+];
+
 // --- Main Application Component ---
 export default function App() {
   const [activeTab, setActiveTab] = useState('summary');
@@ -110,6 +121,7 @@ export default function App() {
       {/* Main Content */}
       <div className="flex-1 flex flex-col overflow-hidden relative">
         <Header
+          title={MENU_ITEMS.find(i => i.id === activeTab)?.label || 'Dashboard'}
           companies={companies}
           selectedCompany={selectedCompany}
           onSelectCompany={(id) => setSelectedCompany(companies.find(c => c.id === id))}
@@ -146,15 +158,7 @@ export default function App() {
 
 // --- Sidebar ---
 function Sidebar({ activeTab, setActiveTab, isOpen, toggle, companyName }) {
-  const menuItems = [
-    { id: 'summary', label: 'Dashboard', icon: LayoutDashboard },
-    { id: 'sales', label: 'Sales Metrics', icon: PieIcon },
-    { id: 'debtors', label: 'Parties', icon: Users },
-    { id: 'stocks', label: 'Inventory', icon: Package },
-    { id: 'overdues', label: 'Overdues', icon: FileText, alert: true }, // Added Overdues
-    { id: 'linemen', label: 'Lineman View', icon: MapPin },
-    { id: 'ledger', label: 'Ledger Book', icon: BookOpen },
-  ];
+  // Uses global MENU_ITEMS
 
   return (
     <motion.aside
@@ -176,7 +180,7 @@ function Sidebar({ activeTab, setActiveTab, isOpen, toggle, companyName }) {
 
 
       <nav className="flex-1 px-6 space-y-2 overflow-y-auto">
-        {menuItems.map((item) => (
+        {MENU_ITEMS.map((item) => (
           <button
             key={item.id}
             onClick={() => { setActiveTab(item.id); if (window.innerWidth < 768) toggle(); }}
@@ -212,9 +216,17 @@ function Sidebar({ activeTab, setActiveTab, isOpen, toggle, companyName }) {
 }
 
 // --- Header ---
-function Header({ companies, selectedCompany, onSelectCompany, toggleSidebar, isSidebarOpen }) {
+function Header({ title, companies, selectedCompany, onSelectCompany, toggleSidebar, isSidebarOpen }) {
   const currentDate = new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
   const [showProfileMenu, setShowProfileMenu] = useState(false);
+
+  const getSyncStatus = (dateStr) => {
+    if (!dateStr) return 'Not Synced';
+    const diff = new Date() - new Date(dateStr);
+    const hours = Math.floor(diff / (1000 * 60 * 60));
+    if (hours < 1) return 'Synced Just Now';
+    return `Synced ${hours}h ago`;
+  };
 
   return (
     <header className="h-24 px-8 flex justify-between items-center sticky top-0 z-20 bg-flux-light/80 backdrop-blur-xl">
@@ -224,7 +236,7 @@ function Header({ companies, selectedCompany, onSelectCompany, toggleSidebar, is
         </button>
 
         <div className="hidden md:block">
-          <h1 className="text-3xl font-bold text-flux-black">Bizstash Analytics</h1>
+          <h1 className="text-3xl font-bold text-flux-black">{title}</h1>
           <p className="text-flux-text-dim text-sm font-medium">{currentDate}</p>
         </div>
       </div>
@@ -245,7 +257,7 @@ function Header({ companies, selectedCompany, onSelectCompany, toggleSidebar, is
             </div>
             <div className="flex flex-col">
               <span className="text-xs font-bold text-flux-black">{selectedCompany?.name || 'Select Company'}</span>
-              <span className="text-[10px] text-flux-text-dim font-medium uppercase tracking-wider">Admin</span>
+              <span className="text-[10px] text-flux-text-dim font-medium uppercase tracking-wider">{getSyncStatus(selectedCompany?.lastUpdated)}</span>
             </div>
             <ChevronRight size={14} className={`text-flux-text-dim ml-auto transition-transform ${showProfileMenu ? 'rotate-90' : ''}`} />
           </div>
@@ -259,27 +271,25 @@ function Header({ companies, selectedCompany, onSelectCompany, toggleSidebar, is
                   initial={{ opacity: 0, y: 10, scale: 0.95 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                  className="absolute right-0 top-14 w-64 bg-white rounded-[1.5rem] shadow-xl border border-gray-100 p-2 z-40 transform origin-top-right"
+                  className="absolute right-0 top-14 w-72 bg-white rounded-[1.5rem] shadow-xl border border-gray-100 p-2 z-40 transform origin-top-right"
                 >
-                  <div className="px-4 py-3 border-b border-gray-50">
+                  <div className="px-4 py-3">
                     <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">Switch Company</p>
                     <div className="space-y-1">
                       {companies.map(c => (
                         <button
                           key={c.id}
                           onClick={() => { onSelectCompany(c.id); setShowProfileMenu(false); }}
-                          className={`w-full text-left px-3 py-2 rounded-xl text-sm font-bold flex items-center justify-between ${selectedCompany?.id === c.id ? 'bg-flux-lime/10 text-flux-black' : 'text-gray-500 hover:bg-gray-50'}`}
+                          className={`w-full text-left px-3 py-2 rounded-xl text-sm font-bold flex items-center justify-between group ${selectedCompany?.id === c.id ? 'bg-flux-lime/10 text-flux-black' : 'text-gray-500 hover:bg-gray-50'}`}
                         >
-                          {c.name}
+                          <div className="flex flex-col">
+                            <span>{c.name}</span>
+                            <span className="text-[10px] text-gray-400 font-medium">{c.lastUpdated ? new Date(c.lastUpdated).toLocaleString() : 'Never'}</span>
+                          </div>
                           {selectedCompany?.id === c.id && <div className="w-2 h-2 rounded-full bg-flux-lime"></div>}
                         </button>
                       ))}
                     </div>
-                  </div>
-                  <div className="p-2 space-y-1">
-                    <button className="w-full text-left px-4 py-3 rounded-xl hover:bg-red-50 text-sm font-bold text-red-500 flex items-center gap-3 transition-colors">
-                      <LogOut size={16} /> Sign Out
-                    </button>
                   </div>
                 </motion.div>
               </>
@@ -293,8 +303,15 @@ function Header({ companies, selectedCompany, onSelectCompany, toggleSidebar, is
 
 // --- Dashboard Component ---
 function SummaryDashboard({ data, onDrillDown }) {
-  const totalSales = Object.values(data.monthlyStats).reduce((acc, curr) => acc + curr.sales, 0);
-  const totalPurchase = Object.values(data.monthlyStats).reduce((acc, curr) => acc + curr.purchase, 0);
+  // Current Month Logic
+  const today = new Date();
+  const currentMonthKey = today.getFullYear().toString() + (today.getMonth() + 1).toString().padStart(2, '0');
+
+  const currentMonthData = data.monthlyStats[currentMonthKey] || { sales: 0, purchase: 0 };
+  const totalSales = currentMonthData.sales;
+  const totalPurchase = currentMonthData.purchase;
+
+  // Outstanding is cumulative, so taking total balance is correct for "Receivables/Payables"
   const totalDebtors = data.debtors.reduce((acc, curr) => acc + curr.balance, 0);
   const totalCreditors = data.creditors.reduce((acc, curr) => acc + curr.balance, 0);
 
