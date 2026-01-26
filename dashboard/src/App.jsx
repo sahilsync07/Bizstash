@@ -6,7 +6,8 @@ import {
 import {
   LayoutDashboard, TrendingUp, Users, Package, FileText,
   ArrowUpRight, ArrowDownRight, Search, Calendar, Menu, X,
-  ChevronRight, Wallet, CreditCard, DollarSign, Activity, Zap, MessageSquare, PieChart as PieIcon
+  ChevronRight, Wallet, CreditCard, DollarSign, Activity, Zap, MessageSquare, PieChart as PieIcon,
+  MapPin
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -1167,7 +1168,7 @@ function LoadingScreen() {
           <div className="w-8 h-8 bg-white rounded-full"></div>
         </div>
       </div>
-      <p className="text-flux-text-dim font-bold animate-pulse tracking-wide">INITIALIZING FLUX...</p>
+      <p className="text-flux-text-dim font-bold animate-pulse tracking-wide">INITIALIZING BIZSTASH...</p>
     </div>
   )
 }
