@@ -73,3 +73,25 @@ This plan defines the remaining "Building Blocks" required to satisfy the **Mini
     - `7.b-voucherTypeStats-xml-output.xml`
     - `7.c-voucherTypeStats-processor.js`
     - `7.d-voucherTypeStats-json-output.json`
+
+### 📊 Block 8: Balance Sheet Integrity
+**Goal**: Verify high-level financial position (Assets/Liabilities).
+- **Data to Fetch**:
+    - Primary Group Balances:
+        - Capital Account
+        - Loans (Liability)
+        - Current Liabilities
+        - Fixed Assets
+        - Investments
+        - Current Assets
+    - Ledger Balance:
+        - Profit & Loss A/c
+    - System Calculated:
+        - Difference in opening balances (if accessible via group/ledger or calculated)
+- **Verification Strategy**: Match these values against the user's Tally screenshot.
+- **Files**:
+    - `8.a-balanceSheet-runner.bat`
+    - `8.b-balanceSheet-xml-output.xml`
+    - `8.c-balanceSheet-processor.js`
+    - `8.d-balanceSheet-json-output.json`
+
