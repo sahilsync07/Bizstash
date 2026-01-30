@@ -2,7 +2,7 @@ const axios = require('axios');
 const fs = require('fs-extra');
 const path = require('path');
 const crypto = require('crypto');
-const { format, addMonths, startOfMonth, endOfMonth, isAfter, parseISO, parse } = require('date-fns');
+const { format, addMonths, startOfMonth, endOfMonth, isAfter, parseISO } = require('date-fns');
 
 const TALLY_URL = 'http://localhost:9000';
 
@@ -49,14 +49,8 @@ async function fetchMasters(dirs) {
 }
 
 async function fetchCompanyRange() {
-    console.log('Detecting Company Data & Voucher Count from Tally...');
-
-    // METHOD: Dynamic TDL Report to fetch System Variables & Collection Count
-    // We define a transient report that extracts:
-    // 1. Current Company Name (##SVCurrentCompany)
-    // 2. Current Financial Year From (##SVFromDate)
-    // 3. Current Financial Year To (##SVToDate)
-    // 4. Total Vouchers ($$NumItems:AllVoucherColl)
+    console.log('Detecting Company Date Range from Tally...');
+    // METHOD 1: Define a clear Custom Report (Most Reliable if syntax is perfect)
     const tdl = `
     <ENVELOPE>
         <HEADER>
@@ -65,45 +59,30 @@ async function fetchCompanyRange() {
         <BODY>
             <EXPORTDATA>
                 <REQUESTDESC>
-                    <REPORTNAME>CompanySummary</REPORTNAME>
+                    <REPORTNAME>CompanyDateReport</REPORTNAME>
                     <STATICVARIABLES>
                         <SVEXPORTFORMAT>$$SysName:XML</SVEXPORTFORMAT>
                     </STATICVARIABLES>
                     <TDL>
                         <TDLMESSAGE>
-                            <REPORT NAME="CompanySummary">
-                                <FORMS>CompanySummaryForm</FORMS>
+                            <REPORT NAME="CompanyDateReport">
+                                <FORMS>CompanyDateForm</FORMS>
                             </REPORT>
-                            <FORM NAME="CompanySummaryForm">
-                                <PARTS>CompanySummaryPart</PARTS>
+                            <FORM NAME="CompanyDateForm">
+                                <PARTS>CompanyDatePart</PARTS>
                             </FORM>
-                            <PART NAME="CompanySummaryPart">
-                                <LINES>CompanySummaryLine</LINES>
+                            <PART NAME="CompanyDatePart">
+                                <LINES>CompanyDateLine</LINES>
                             </PART>
-                            <LINE NAME="CompanySummaryLine">
-                                <FIELDS>CmpNameFld, FromDateFld, ToDateFld, TotalVchFld</FIELDS>
+                            <LINE NAME="CompanyDateLine">
+                                <FIELDS>StartField, EndField</FIELDS>
                             </LINE>
-
-                            <FIELD NAME="CmpNameFld">
-                                <SET>##SVCurrentCompany</SET>
-                                <XMLTAG>CURRENTCOMPANY</XMLTAG>
+                            <FIELD NAME="StartField">
+                                <SET>$BooksFrom:Company:##SVCurrentCompany</SET>
                             </FIELD>
-                            <FIELD NAME="FromDateFld">
-                                <SET>##SVFromDate</SET>
-                                <XMLTAG>FINANCIALYEARFROM</XMLTAG>
+                            <FIELD NAME="EndField">
+                                <SET>$LastVoucherDate:Company:##SVCurrentCompany</SET>
                             </FIELD>
-                            <FIELD NAME="ToDateFld">
-                                <SET>##SVToDate</SET>
-                                <XMLTAG>FINANCIALYEARTO</XMLTAG>
-                            </FIELD>
-                            <FIELD NAME="TotalVchFld">
-                                <SET>$$NumItems:AllVoucherColl</SET>
-                                <XMLTAG>TOTALVOUCHERCOUNT</XMLTAG>
-                            </FIELD>
-
-                            <COLLECTION NAME="AllVoucherColl">
-                                <TYPE>Voucher</TYPE>
-                            </COLLECTION>
                         </TDLMESSAGE>
                     </TDL>
                 </REQUESTDESC>
@@ -115,44 +94,33 @@ async function fetchCompanyRange() {
         const data = await fetchFromTally(tdl);
         if (!data) throw new Error("No response from Tally");
 
-        // Parse extracted data
-        const cmpMatch = data.match(/<CURRENTCOMPANY>(.*?)<\/CURRENTCOMPANY>/i);
-        const fromMatch = data.match(/<FINANCIALYEARFROM>(.*?)<\/FINANCIALYEARFROM>/i);
-        const toMatch = data.match(/<FINANCIALYEARTO>(.*?)<\/FINANCIALYEARTO>/i);
-        const countMatch = data.match(/<TOTALVOUCHERCOUNT>(.*?)<\/TOTALVOUCHERCOUNT>/i);
+        // Parsing using Safe Regex
+        const startMatch = data.match(/<StartField>(.*?)<\/StartField>/i);
+        const endMatch = data.match(/<EndField>(.*?)<\/EndField>/i);
 
-        const currentCompany = cmpMatch ? cmpMatch[1] : "Unknown";
-        const startStr = fromMatch ? fromMatch[1] : null;
-        const endStr = toMatch ? toMatch[1] : null;
-        const totalVouchers = countMatch ? parseInt(countMatch[1]) : 0;
-
-        // Logging for visibility
-        console.log(`\n--- TALLY CONNECTED ---`);
-        console.log(`Company      : ${currentCompany}`);
-        console.log(`Period       : ${startStr} to ${endStr}`);
-        console.log(`Total Vouchers: ${totalVouchers}`);
-        console.log(`-----------------------\n`);
+        let startStr = startMatch ? startMatch[1] : null;
+        let endStr = endMatch ? endMatch[1] : null;
 
         if (!startStr || !endStr) {
+            console.log("--- TDL DEBUG START ---");
+            console.log(data); // Print raw XML to debug
+            console.log("--- TDL DEBUG END ---");
+
+            // Fallback: Default to Apr 2024 if detection completely fails
+            // This prevents the "null to null" crash
             console.warn("Could not detect dates. Defaulting to 2024-04-01.");
-            return {
-                companyName: currentCompany,
-                start: parse(new Date().getFullYear() + '0401', 'yyyyMMdd', new Date()), // rough fallback
-                end: new Date(),
-                totalCnt: totalVouchers
-            };
+            startStr = "20240401";
+            endStr = format(new Date(), 'yyyyMMdd');
         }
 
+        console.log(`Company Range Detected: ${startStr} to ${endStr}`);
         return {
-            companyName: currentCompany,
             start: parse(startStr, 'yyyyMMdd', new Date()),
-            end: parse(endStr, 'yyyyMMdd', new Date()),
-            totalCnt: totalVouchers
+            end: endStr ? parse(endStr, 'yyyyMMdd', new Date()) : new Date()
         };
-
     } catch (e) {
-        console.error("Failed to detect company range/info.", e.message);
-        return { start: parseISO('2024-04-01'), end: new Date(), totalCnt: 0, companyName: "Error" };
+        console.error("Failed to detect company range. Defaulting to 2024.", e.message);
+        return { start: parseISO('2024-04-01'), end: new Date() };
     }
 }
 
@@ -231,15 +199,15 @@ async function fetchVouchers(dirs) {
     console.log('Fetching Vouchers...');
 
     // 1. Dynamic Range Detection
-    const { companyName, start, end, totalCnt } = await fetchCompanyRange();
+    const range = await fetchCompanyRange();
 
     // Default Fallbacks if detection fails
     // Fallback: Start from 2021 if cannot detect, End at Today
-    let currentDate = start || parseISO('2021-04-01');
-    const endDate = end || new Date(); // Default to today/now
+    let currentDate = range?.start || parseISO('2021-04-01');
+    const endDate = range?.end || new Date(); // Default to today/now
 
     // Sanity: If Tally returns empty end date (no vouchers?), use Today
-    if (!end) console.log("Last voucher date not found, fetching up to today.");
+    if (!range?.end) console.log("Last voucher date not found, fetching up to today.");
 
     console.log(`Syncing Period: ${format(currentDate, 'dd-MM-yyyy')} to ${format(endDate, 'dd-MM-yyyy')}`);
 
