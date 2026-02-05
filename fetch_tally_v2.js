@@ -2,16 +2,22 @@ const axios = require('axios');
 const fs = require('fs-extra');
 const path = require('path');
 const crypto = require('crypto');
+const http = require('http'); // Added http module
 const { format, addMonths, startOfMonth, endOfMonth, isAfter, parseISO, parse } = require('date-fns');
 
 const TALLY_URL = 'http://localhost:9000';
+const agent = new http.Agent({ keepAlive: false }); // Disable keep-alive
 
 // Note: DATA_DIR is now derived in main/fetchAll
 
 async function fetchFromTally(tdl) {
     try {
         const response = await axios.post(TALLY_URL, tdl, {
-            headers: { 'Content-Type': 'text/xml' }
+            headers: {
+                'Content-Type': 'text/xml',
+                'Connection': 'close' // Force close connection like curl
+            },
+            httpAgent: agent
         });
         return response.data;
     } catch (error) {
@@ -49,9 +55,10 @@ async function fetchMasters(dirs) {
 }
 
 async function fetchCompanyRange() {
-    console.log('Detecting Company Date Range from Tally via Collection (Building Block 1.a Logic)...');
+    console.log('Detecting Company Date Range from Tally via Collection (Hybrid Logic)...');
 
-    // METHOD: Export Collection of Type 'Company' (Matches 1.a-runner.bat)
+    // METHOD: Export Collection of Type 'Company'
+    // NOTE: Removed <COMPUTE>VoucherCount...</COMPUTE> because $$NumItems:Voucher caused TDL Error
     const tdl = `
     <ENVELOPE>
         <HEADER>
@@ -70,7 +77,6 @@ async function fetchCompanyRange() {
                         <COLLECTION NAME="BizStashCompanyStats">
                             <TYPE>Company</TYPE>
                             <FETCH>Name, BooksFrom, LastVoucherDate</FETCH>
-                            <COMPUTE>VoucherCount: $$NumItems:Voucher</COMPUTE>
                         </COLLECTION>
                     </TDLMESSAGE>
                 </TDL>
@@ -83,48 +89,43 @@ async function fetchCompanyRange() {
         if (!data) throw new Error("No response from Tally");
 
         // ROBUST PARSING: First isolate the COMPANY block
-        // This avoids matching <NAME> tags in Header/RequestDesc which caused issues before
         const companyBlockMatch = data.match(/<COMPANY[^>]*>([\s\S]*?)<\/COMPANY>/i);
 
         if (!companyBlockMatch) {
             console.warn("No <COMPANY> block found in response.");
-            // If Tally returns vouchers instead of company (weird case), log it.
             if (data.includes('<VOUCHER>')) console.warn("Received VOUCHER data instead of COMPANY data!");
-
             throw new Error("Invalid Tally Response: No Company Data");
         }
 
         const companyData = companyBlockMatch[1];
 
-        // Now extract fields from the isolated block
+        // Extract fields
         const nameMatch = companyData.match(/<NAME[^>]*>([^<]+)<\/NAME>/i);
         const startMatch = companyData.match(/<BOOKSFROM[^>]*>([^<]+)<\/BOOKSFROM>/i);
         const endMatch = companyData.match(/<LASTVOUCHERDATE[^>]*>([^<]+)<\/LASTVOUCHERDATE>/i);
-        const countMatch = companyData.match(/<VOUCHERCOUNT[^>]*>([^<]+)<\/VOUCHERCOUNT>/i);
 
-        let startStr = startMatch ? startMatch[1] : null;
-        let endStr = endMatch ? endMatch[1] : null;
-        let totalVouchers = countMatch ? parseInt(countMatch[1]) : 0;
         let companyNameDetected = nameMatch ? nameMatch[1] : "Unknown";
+        let startStr = startMatch ? startMatch[1] : "20240401"; // Default if missing
+        let endStr = endMatch ? endMatch[1] : format(new Date(), 'yyyyMMdd'); // Default to today
+
+        if (!startMatch) console.warn("Could not detect Start Date (BooksFrom). Defaulting.");
+        if (!endMatch) console.warn("Could not detect LastVoucherDate. Defaulting to Today.");
+
+        const startDate = parse(startStr, 'yyyyMMdd', new Date());
+        const endDate = parse(endStr, 'yyyyMMdd', new Date());
 
         console.log(`[Tally] Connected Company: ${companyNameDetected}`);
+        console.log(`Date Range: ${startStr} to ${endStr}`);
 
-        if (!startStr) {
-            console.warn("Could not detect Start Date (BooksFrom). Defaulting.");
-            startStr = "20240401";
-        }
-
-        // If LastVoucherDate is missing, it might mean 0 vouchers or Tally version issue.
-        // Fallback to today if missing.
-        if (!endStr) {
-            console.warn("Could not detect LastVoucherDate. Defaulting to Today.");
-            endStr = format(new Date(), 'yyyyMMdd');
-        }
+        // SAFE COUNT: Fetch statistics separately to avoid TDL error
+        console.log("Fetching exact voucher count via Statistics...");
+        const stats = await fetchVoucherStats(startDate, endDate);
+        const totalVouchers = Object.values(stats).reduce((sum, count) => sum + count, 0);
 
         console.log(`Company Range Detected: ${startStr} to ${endStr}. Total Vouchers: ${totalVouchers}`);
         return {
-            start: parse(startStr, 'yyyyMMdd', new Date()),
-            end: endStr ? parse(endStr, 'yyyyMMdd', new Date()) : new Date(),
+            start: startDate,
+            end: endDate,
             totalVouchers: totalVouchers
         };
 
@@ -252,7 +253,7 @@ async function fetchVouchers(dirs) {
                         <STATICVARIABLES>
                             <SVEXPORTFORMAT>$$SysName:XML</SVEXPORTFORMAT>
                             <SVFROMDATE>${fromDateStr}</SVFROMDATE>
-                            <SVTODATE>${toDateStr}</SVTODATE>
+                            <SVTODATE>${toStr}</SVTODATE>
                         </STATICVARIABLES>
                     </REQUESTDESC>
                 </EXPORTDATA>
