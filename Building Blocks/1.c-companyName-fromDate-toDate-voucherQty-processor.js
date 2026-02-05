@@ -17,26 +17,24 @@ async function processScript() {
         if (err) throw err;
 
         const data = result.ENVELOPE?.BODY?.DATA?.COLLECTION;
-        let vouchers = data?.VOUCHERSTATSCOLL || data?.VOUCHER || [];
-        if (!Array.isArray(vouchers)) vouchers = [vouchers];
-        // If empty or just one empty object
-        if (vouchers.length === 1 && !vouchers[0].DATE) vouchers = [];
+        let companies = data?.COMPANY || [];
+        if (!Array.isArray(companies)) companies = [companies];
 
-        const qty = vouchers.length;
-        let cmpName = "Unknown";
-        if (qty > 0) {
-            const v = vouchers[0];
-            cmpName = v.CMPNAME || v.COMPANYNAME || v.CMPINFO?.COMPANYNAME || "Unknown";
+        // Filter out empty entries if any
+        companies = companies.filter(c => c && c.NAME);
+
+        let selectedCompany = null;
+        if (companies.length > 0) {
+            // Default to the first one found
+            selectedCompany = companies[0];
+            // TODO: If logic requires matching a specific name, allow passing via args
         }
 
-        const dates = vouchers
-            .map(v => v.DATE || v.Date).filter(d => d).sort();
-
         const json = {
-            companyName: cmpName,
-            fromDate: dates[0] || null,
-            toDate: dates[dates.length - 1] || null,
-            voucherQty: qty
+            companyName: selectedCompany ? selectedCompany.NAME : "Unknown",
+            fromDate: selectedCompany ? selectedCompany.BOOKSFROM : null,
+            toDate: selectedCompany ? selectedCompany.LASTVOUCHERDATE : null,
+            voucherQty: selectedCompany ? parseInt(selectedCompany.VOUCHERCOUNT || '0') : 0
         };
 
         fs.writeFileSync(OUTPUT_JSON, JSON.stringify(json, null, 2));

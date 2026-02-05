@@ -3,12 +3,11 @@ setlocal EnableDelayedExpansion
 
 echo [1.a] Generating Payload...
 (
-echo ^<ENVELOPE^>
 echo     ^<HEADER^>
 echo         ^<VERSION^>1^</VERSION^>
 echo         ^<TALLYREQUEST^>Export^</TALLYREQUEST^>
 echo         ^<TYPE^>Collection^</TYPE^>
-echo         ^<ID^>VoucherStatsColl^</ID^>
+echo         ^<ID^>BizStashCompanyStats^</ID^>
 echo     ^</HEADER^>
 echo     ^<BODY^>
 echo         ^<DESC^>
@@ -17,10 +16,10 @@ echo                 ^<SVEXPORTFORMAT^>$$SysName:XML^</SVEXPORTFORMAT^>
 echo             ^</STATICVARIABLES^>
 echo             ^<TDL^>
 echo                 ^<TDLMESSAGE^>
-echo                     ^<COLLECTION NAME="VoucherStatsColl"^>
-echo                         ^<TYPE^>Voucher^</TYPE^>
-echo                         ^<FETCH^>Date^</FETCH^>
-echo                         ^<COMPUTE^>CompanyName: ##SVCurrentCompany^</COMPUTE^>
+echo                     ^<COLLECTION NAME="BizStashCompanyStats"^>
+echo                         ^<TYPE^>Company^</TYPE^>
+echo                         ^<FETCH^>Name, BooksFrom, LastVoucherDate^</FETCH^>
+echo                         ^<COMPUTE^>VoucherCount: $$NumItems:Voucher^</COMPUTE^>
 echo                     ^</COLLECTION^>
 echo                 ^</TDLMESSAGE^>
 echo             ^</TDL^>

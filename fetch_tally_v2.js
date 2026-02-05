@@ -2,7 +2,7 @@ const axios = require('axios');
 const fs = require('fs-extra');
 const path = require('path');
 const crypto = require('crypto');
-const { format, addMonths, startOfMonth, endOfMonth, isAfter, parseISO } = require('date-fns');
+const { format, addMonths, startOfMonth, endOfMonth, isAfter, parseISO, parse } = require('date-fns');
 
 const TALLY_URL = 'http://localhost:9000';
 
@@ -49,44 +49,32 @@ async function fetchMasters(dirs) {
 }
 
 async function fetchCompanyRange() {
-    console.log('Detecting Company Date Range from Tally...');
-    // METHOD 1: Define a clear Custom Report (Most Reliable if syntax is perfect)
+    console.log('Detecting Company Date Range from Tally via Collection (Building Block 1.a Logic)...');
+
+    // METHOD: Export Collection of Type 'Company' (Matches 1.a-runner.bat)
     const tdl = `
     <ENVELOPE>
         <HEADER>
-            <TALLYREQUEST>Export Data</TALLYREQUEST>
+            <VERSION>1</VERSION>
+            <TALLYREQUEST>Export</TALLYREQUEST>
+            <TYPE>Collection</TYPE>
+            <ID>BizStashCompanyStats</ID>
         </HEADER>
         <BODY>
-            <EXPORTDATA>
-                <REQUESTDESC>
-                    <REPORTNAME>CompanyDateReport</REPORTNAME>
-                    <STATICVARIABLES>
-                        <SVEXPORTFORMAT>$$SysName:XML</SVEXPORTFORMAT>
-                    </STATICVARIABLES>
-                    <TDL>
-                        <TDLMESSAGE>
-                            <REPORT NAME="CompanyDateReport">
-                                <FORMS>CompanyDateForm</FORMS>
-                            </REPORT>
-                            <FORM NAME="CompanyDateForm">
-                                <PARTS>CompanyDatePart</PARTS>
-                            </FORM>
-                            <PART NAME="CompanyDatePart">
-                                <LINES>CompanyDateLine</LINES>
-                            </PART>
-                            <LINE NAME="CompanyDateLine">
-                                <FIELDS>StartField, EndField</FIELDS>
-                            </LINE>
-                            <FIELD NAME="StartField">
-                                <SET>$BooksFrom:Company:##SVCurrentCompany</SET>
-                            </FIELD>
-                            <FIELD NAME="EndField">
-                                <SET>$LastVoucherDate:Company:##SVCurrentCompany</SET>
-                            </FIELD>
-                        </TDLMESSAGE>
-                    </TDL>
-                </REQUESTDESC>
-            </EXPORTDATA>
+            <DESC>
+                <STATICVARIABLES>
+                    <SVEXPORTFORMAT>$$SysName:XML</SVEXPORTFORMAT>
+                </STATICVARIABLES>
+                <TDL>
+                    <TDLMESSAGE>
+                        <COLLECTION NAME="BizStashCompanyStats">
+                            <TYPE>Company</TYPE>
+                            <FETCH>Name, BooksFrom, LastVoucherDate</FETCH>
+                            <COMPUTE>VoucherCount: $$NumItems:Voucher</COMPUTE>
+                        </COLLECTION>
+                    </TDLMESSAGE>
+                </TDL>
+            </DESC>
         </BODY>
     </ENVELOPE>`;
 
@@ -94,33 +82,55 @@ async function fetchCompanyRange() {
         const data = await fetchFromTally(tdl);
         if (!data) throw new Error("No response from Tally");
 
-        // Parsing using Safe Regex
-        const startMatch = data.match(/<StartField>(.*?)<\/StartField>/i);
-        const endMatch = data.match(/<EndField>(.*?)<\/EndField>/i);
+        // ROBUST PARSING: First isolate the COMPANY block
+        // This avoids matching <NAME> tags in Header/RequestDesc which caused issues before
+        const companyBlockMatch = data.match(/<COMPANY[^>]*>([\s\S]*?)<\/COMPANY>/i);
+
+        if (!companyBlockMatch) {
+            console.warn("No <COMPANY> block found in response.");
+            // If Tally returns vouchers instead of company (weird case), log it.
+            if (data.includes('<VOUCHER>')) console.warn("Received VOUCHER data instead of COMPANY data!");
+
+            throw new Error("Invalid Tally Response: No Company Data");
+        }
+
+        const companyData = companyBlockMatch[1];
+
+        // Now extract fields from the isolated block
+        const nameMatch = companyData.match(/<NAME[^>]*>([^<]+)<\/NAME>/i);
+        const startMatch = companyData.match(/<BOOKSFROM[^>]*>([^<]+)<\/BOOKSFROM>/i);
+        const endMatch = companyData.match(/<LASTVOUCHERDATE[^>]*>([^<]+)<\/LASTVOUCHERDATE>/i);
+        const countMatch = companyData.match(/<VOUCHERCOUNT[^>]*>([^<]+)<\/VOUCHERCOUNT>/i);
 
         let startStr = startMatch ? startMatch[1] : null;
         let endStr = endMatch ? endMatch[1] : null;
+        let totalVouchers = countMatch ? parseInt(countMatch[1]) : 0;
+        let companyNameDetected = nameMatch ? nameMatch[1] : "Unknown";
 
-        if (!startStr || !endStr) {
-            console.log("--- TDL DEBUG START ---");
-            console.log(data); // Print raw XML to debug
-            console.log("--- TDL DEBUG END ---");
+        console.log(`[Tally] Connected Company: ${companyNameDetected}`);
 
-            // Fallback: Default to Apr 2024 if detection completely fails
-            // This prevents the "null to null" crash
-            console.warn("Could not detect dates. Defaulting to 2024-04-01.");
+        if (!startStr) {
+            console.warn("Could not detect Start Date (BooksFrom). Defaulting.");
             startStr = "20240401";
+        }
+
+        // If LastVoucherDate is missing, it might mean 0 vouchers or Tally version issue.
+        // Fallback to today if missing.
+        if (!endStr) {
+            console.warn("Could not detect LastVoucherDate. Defaulting to Today.");
             endStr = format(new Date(), 'yyyyMMdd');
         }
 
-        console.log(`Company Range Detected: ${startStr} to ${endStr}`);
+        console.log(`Company Range Detected: ${startStr} to ${endStr}. Total Vouchers: ${totalVouchers}`);
         return {
             start: parse(startStr, 'yyyyMMdd', new Date()),
-            end: endStr ? parse(endStr, 'yyyyMMdd', new Date()) : new Date()
+            end: endStr ? parse(endStr, 'yyyyMMdd', new Date()) : new Date(),
+            totalVouchers: totalVouchers
         };
+
     } catch (e) {
-        console.error("Failed to detect company range. Defaulting to 2024.", e.message);
-        return { start: parseISO('2024-04-01'), end: new Date() };
+        console.error("Failed to detect company range via Collection.", e.message);
+        return { start: parseISO('2024-04-01'), end: new Date(), totalVouchers: 0 };
     }
 }
 
@@ -213,6 +223,12 @@ async function fetchVouchers(dirs) {
 
     // Verification Counters
     const downloadedCounts = {};
+    let totalDownloaded = 0;
+
+    // Initial Verification Check
+    if (range && range.totalVouchers > 0) {
+        console.log(`[Verification] Tally reports ${range.totalVouchers} total vouchers. Fetching...`);
+    }
 
     while (!isAfter(currentDate, endDate)) {
         const fromDateStr = format(startOfMonth(currentDate), 'yyyyMMdd');
@@ -261,6 +277,7 @@ async function fetchVouchers(dirs) {
                 typeMatches.forEach(m => {
                     const type = m[1];
                     downloadedCounts[type] = (downloadedCounts[type] || 0) + 1;
+                    totalDownloaded++;
                 });
             }
         }
@@ -293,6 +310,16 @@ async function fetchVouchers(dirs) {
         }
     });
     console.log('-'.repeat(70));
+
+    // Total Count Verification
+    if (range && range.totalVouchers !== undefined) {
+        if (totalDownloaded === range.totalVouchers) {
+            console.log(`[TOTAL CHECK] SUCCESS: Downloaded ${totalDownloaded} / ${range.totalVouchers} vouchers.`);
+        } else {
+            console.warn(`[TOTAL CHECK] MISMATCH: Downloaded ${totalDownloaded} but Tally reported ${range.totalVouchers}.`);
+            allMatch = false;
+        }
+    }
 
     if (allMatch) {
         console.log('SUCCESS: All data fetched correctly with 100% integrity.');
@@ -366,4 +393,4 @@ if (require.main === module) {
     main(company).catch(console.error);
 }
 
-module.exports = { fetchAll: main };
+module.exports = { fetchAll: main, fetchCompanyRange };
