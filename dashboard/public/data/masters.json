@@ -1,0 +1,6700 @@
+{
+  "ledgers": 1071,
+  "groups": 66,
+  "data": {
+    "ledgers": [
+      {
+        "name": "Profit &amp; Loss A/c",
+        "parent": "",
+        "ledgerGroup": "",
+        "openingBalance": -135199.71
+      },
+      {
+        "name": "222",
+        "parent": "Unsecured Loans",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "333",
+        "parent": "Unsecured Loans",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "444",
+        "parent": "Unsecured Loans",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "AAGAM POLYMERS,DELHI",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "AARAN F/W, KALIMELA",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": -37316
+      },
+      {
+        "name": "AASHIRVAAD F/W , PHULBANI",
+        "parent": "PHULBAANI LINE",
+        "ledgerGroup": "",
+        "openingBalance": -771
+      },
+      {
+        "name": "Aayush Footwear, Balimela",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": -20956
+      },
+      {
+        "name": "Abhimanyu Behera, Dambasara",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Aditya Variety Store, Mahendragada",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "A G ENTERPRISES",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "AGGARWAL &amp; CO.",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Ajanta Footwear, G.Udaygiri",
+        "parent": "PHULBAANI LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Ajarudin,Parvathipuram",
+        "parent": "Parvathipuram",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "AJAY SAHU, GORAKPUR",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": -47714
+      },
+      {
+        "name": "Ajit Enterprises",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Ajit Footwear, Kotagada",
+        "parent": "PHULBAANI LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Ajit Panigrahi,Sulipadar",
+        "parent": "KALYAN SINGHPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "AJIT, STAFF RGDA",
+        "parent": "STAFF",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Akash Footwaer, Dhumadangar(Bandhugaon)",
+        "parent": "Kotpeta Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "A.K Footwear, Tikiri",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": -10846
+      },
+      {
+        "name": "AKHIL F/W, K.SINGHPUR",
+        "parent": "KALYAN SINGHPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "A K Mandal, Laxmipur",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Akshya Kumar Nayak, Maribhata",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": -18946
+      },
+      {
+        "name": "ALOK BOOT HOUSE,KORUKONDA",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": -83
+      },
+      {
+        "name": "ALWIN F/W, KASIPUR",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Amarnath Sahu, Rgda",
+        "parent": "STAFF",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "AMBIKA FOOTWEAR PVT. LTD",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Ambika F/w Laxmipur",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": -2491
+      },
+      {
+        "name": "AMRIT ISSUE, CHITROKUNDA",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Ananda Behera, Jk",
+        "parent": "Jk Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Anata Mandinga, Damanganda",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Andhara Bank Current A/C",
+        "parent": "Bank Accounts",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Andhar Bhauti,Tambisuga",
+        "parent": "PHULBAANI LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "ANDHRA BANK CC A/C(N0-0724)",
+        "parent": "Bank OD A/c",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "ANITA RAO, NAGESWAR SIR WIFE",
+        "parent": "STAFF",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "ANKISH, STAFF RGDA",
+        "parent": "STAFF",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "ANKIT FOOTWEAR, MV-88",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": -18267
+      },
+      {
+        "name": "Antarjyami Patro, Kumliput",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": -9198
+      },
+      {
+        "name": "Anthu Mananngi, Dhamnagandha",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "ANUPAMA STAFF",
+        "parent": "STAFF",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Aparna Mallik,Staff Rgda",
+        "parent": "STAFF",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "APPA RAO, GOVINDPALI",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "A R C Limited",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 3485
+      },
+      {
+        "name": "ARIHANT ENTERPRISES, JEYPORE",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": -485273.66
+      },
+      {
+        "name": "Arihant Staff (Krushno)",
+        "parent": "STAFF",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Arun F/w, Chandragiri",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "A S Footwear, Rayagada",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": -22166
+      },
+      {
+        "name": "Asha Traders",
+        "parent": "Koraput",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "ASHOK KUMAR, CHATIKONA",
+        "parent": "MUNIGUDA &amp; B.CTC LINE",
+        "ledgerGroup": "",
+        "openingBalance": -6016
+      },
+      {
+        "name": "Ashok Kumar Patra",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "ASHOK SAHU (MANU FOOTWEAR), SARANGADA",
+        "parent": "PHULBAANI LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "ASHU FOOTWEAR",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "ASIAN SHOPPING CLUB",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Asish Footwear, Poteru",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": -3324
+      },
+      {
+        "name": "A. SUDHAKAR NILAMANI, GUMUDA",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "A TO Z F/W, B.CUTTACK",
+        "parent": "MUNIGUDA &amp; B.CTC LINE",
+        "ledgerGroup": "",
+        "openingBalance": -6341
+      },
+      {
+        "name": "Aurobindo Nayak, Jeypore",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Auto Walla Anil Monthly Expeens",
+        "parent": "STAFF",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "A Vishnu Kumar , Dorbada",
+        "parent": "KALYAN SINGHPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Avon International, WOODS",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": -1037.25
+      },
+      {
+        "name": "Ayyappa F/W",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Babu Footwear, Kotagada",
+        "parent": "PHULBAANI LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Babula F/w, Chalanguda(Kpt)",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": -7968
+      },
+      {
+        "name": "BABULA KUMBHAR, KASIPUR",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "BABULA PATRO, CHITROKUNDA",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": -3197
+      },
+      {
+        "name": "Babulu Bisoi",
+        "parent": "Koraput",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Bachpan &amp; Ahps Rayagada",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "BAIKUNTHA NAYAK, KASIPUR",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Bajrangi F/w, Nuagaon(Rinku)",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": -24005
+      },
+      {
+        "name": "Balaba Benia",
+        "parent": "KALYAN SINGHPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Balaji Footwear, Kasinagar",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": -32286
+      },
+      {
+        "name": "BALAJI F/W, RAYAGADA",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "BALAJI SHOES STORE, PHULBANI",
+        "parent": "PHULBAANI LINE",
+        "ledgerGroup": "",
+        "openingBalance": -62702
+      },
+      {
+        "name": "Balaram Nagabansa, Dangalodi",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Banamail Therubali",
+        "parent": "DURGI-KD-THERUBALI-JK LINE",
+        "ledgerGroup": "",
+        "openingBalance": -886
+      },
+      {
+        "name": "Bank Charges",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Bank Debit &amp; Credit",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Bank Interest",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "BANK LOAN 70 LAKHS",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Banmali Patro,Ramanaguda",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "BANSADHARA F/W, GUNUPUR",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "BARMAN &amp; SON&apos;S F/W, KALIMELA",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": -86
+      },
+      {
+        "name": "Barsa Saree House,Rayagada",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Barsha Store,Rayagada",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": -34112
+      },
+      {
+        "name": "Barun Kumar Biswakarma",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Barun Nayak,Talopanka",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "BARUN SAHU, DANGASILI",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": -19863
+      },
+      {
+        "name": "Basa",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Basant Behera, Meenajhola",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Basant Parida,Khumbhariput",
+        "parent": "Sundry Debtors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Basant Paridal,Dumadangar(Bandhugaon)",
+        "parent": "Sundry Debtors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "B.CH. KHADANGA, GUMUDA",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Behera Footwear, Rayagada",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Bhagaban Sahu, Tikiri(Ramesh)",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Bhagabat",
+        "parent": "Sundry Debtors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "BHAGIRATHI PANDA, RAMNAGUDA",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": -22463
+      },
+      {
+        "name": "Bhagirathi Sahu, Dangasili",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": -3
+      },
+      {
+        "name": "Bhumi Insentive",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "BIBHUTI BADIYA, MATHILI",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Bidhan Mallick, Mv-7",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "BIHARI F/W, MUNUGUDA",
+        "parent": "MUNIGUDA &amp; B.CTC LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Binati Kadraka,Staff",
+        "parent": "STAFF",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Biswanath Behera",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": -58506
+      },
+      {
+        "name": "Biswanath Postal",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Biswanath Staff",
+        "parent": "STAFF",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "B. Jena, Kuli",
+        "parent": "DURGI-KD-THERUBALI-JK LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "B.K INTERNATIONAL PVT.LTD",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 18438
+      },
+      {
+        "name": "B KOTESWAR",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "B.KRISHNA, BUDAGUDA",
+        "parent": "KALYAN SINGHPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "B. KUMAR, TIKIRI",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": -3973
+      },
+      {
+        "name": "B. LOKESWAR RAO, CHITROKUNDA",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": -35072
+      },
+      {
+        "name": "B.MANIKANTHA,KHANDAVA",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Boishnovi Cell Point, Jagarnathpur,K.Singhpur",
+        "parent": "KALYAN SINGHPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": -32771
+      },
+      {
+        "name": "BOMBAY F/W, TIKIRI",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": -270
+      },
+      {
+        "name": "BRAJA JENA,(RADU)GUDIABANDHA",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "B Raju Pattnaik,Champajodi",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": -15797
+      },
+      {
+        "name": "B. Santu, Rgda Staff",
+        "parent": "STAFF",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "B.S. NARAYANA, GUNUPUR",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "BUDHA HIMIRIKA, MALIGON",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Bulu F/w, Dumburunelly",
+        "parent": "DURGI-KD-THERUBALI-JK LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "BULU SAHU,MOHANA,PKD",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Capital Introduce",
+        "parent": "Capital Account",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "CARTON",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Cash",
+        "parent": "Cash-in-Hand",
+        "ledgerGroup": "",
+        "openingBalance": -355138
+      },
+      {
+        "name": "Cash Discount",
+        "parent": "Indirect Incomes",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Cash Discount Incentive",
+        "parent": "Indirect Incomes",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "CASH SALARY",
+        "parent": "Cash-in-Hand",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "CA SURESH,RAYAGADA",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": -65600
+      },
+      {
+        "name": "C.C. TV",
+        "parent": "Fixed Assets",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Cc Tv Camera Staff, Rayagada",
+        "parent": "Sundry Debtors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "C.C. TV. Expenses",
+        "parent": "Petty Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "CGST@",
+        "parent": "Duties &amp; Taxes",
+        "ledgerGroup": "",
+        "openingBalance": 1575421.76
+      },
+      {
+        "name": "Chabi Nayak, Nuapada",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "CHANCHALA FOOTWEAR, BADAMARIBHATA",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Chandan Enterprises Mahendragada",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "CHANDRA F/W, GUNUPUR",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Chandra Kariya , Laxmipur Jeerango",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": -1660
+      },
+      {
+        "name": "Chandu Traders ,Narayanpatana",
+        "parent": "Koraput",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Cheque Retrun Chargs",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Chini Footwear, Majhiguda",
+        "parent": "KALYAN SINGHPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": -10089
+      },
+      {
+        "name": "Chinna",
+        "parent": "DURGI-KD-THERUBALI-JK LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Chiranjivi F/w, Jk",
+        "parent": "Jk Line",
+        "ledgerGroup": "",
+        "openingBalance": -6468
+      },
+      {
+        "name": "CH ITISHREE DEVI",
+        "parent": "Sundry Debtors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "C.H Sorajini,Rayagada",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "City Elina",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "CMA Data",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Commission Paid",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Computer Accessories",
+        "parent": "Fixed Assets",
+        "ledgerGroup": "",
+        "openingBalance": -60128
+      },
+      {
+        "name": "Cooking &amp; Centring",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Credit Note",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "CUBIX FOOTWEAR",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 477953
+      },
+      {
+        "name": "Cushion Scheme Feb-23, March-23",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "DAMBURU BEHERA, TIKIRI",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "DAMBURU, RAYAGADA",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": -34263
+      },
+      {
+        "name": "Damo Khalasi",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": -100
+      },
+      {
+        "name": "DASAHARA MAMULI",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "DAS FOOTWEAR, K NUAGAON",
+        "parent": "PHULBAANI LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "DASH FOOTWEAR, RAYAGADA",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": -20312
+      },
+      {
+        "name": "Dayanidhi Sahukar, Kumbhuriput",
+        "parent": "Sundry Debtors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "DCS CHARGES",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "DEALERS CASH DISCOUNT",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "DEALER SCHEME",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "DEBABRAT F/W,KALIMELA",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": -56893
+      },
+      {
+        "name": "Debasish Acharjya, Staff",
+        "parent": "STAFF",
+        "ledgerGroup": "",
+        "openingBalance": 319000
+      },
+      {
+        "name": "DEBIT ENTRY RENEWAL",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "DEBIT NOTE",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "DEEBANDAR NAIK,BADAMARIBHATA",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": -21126
+      },
+      {
+        "name": "Deepankara Haldar, Mv-88",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": -7273
+      },
+      {
+        "name": "DELHI FOOTWEAR, MUNIGUDA",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "DELHI FOOTWEAR, TIKIRI",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "DELIGHT FOOTWEAR, VIZIANAGARAM",
+        "parent": "Parvathipuram",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "DEVRAJ  &amp; SONS (SONEJA)",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "DHANAJAYA BEHERA, RAYAGADA",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Dhanesti Nayak, K.Singhpur",
+        "parent": "KALYAN SINGHPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "DHANESWAR NAYAK, KASIPUR",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": -71252
+      },
+      {
+        "name": "DHARMARAJU, KUMAR DHAMINI",
+        "parent": "DURGI-KD-THERUBALI-JK LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "DHUTIKA NAIK, SUGER (KASIPUR)",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Dibakara Nayak",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "DILIP KUMAR CHOUHAN, K.SINGPUR",
+        "parent": "KALYAN SINGHPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": -26226
+      },
+      {
+        "name": "DILIP SAHU, NARAYANPATNA",
+        "parent": "Koraput",
+        "ledgerGroup": "",
+        "openingBalance": -8862
+      },
+      {
+        "name": "DINGAR SAHU, DURGI",
+        "parent": "DURGI-KD-THERUBALI-JK LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Dinobandhu Behera(Narsingh Behera),Rgda",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "DINOBANDHU CAR DRIVER,STAFF RGDA",
+        "parent": "STAFF",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Discount Al",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Discount Allowed",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Discount Received",
+        "parent": "Indirect Incomes",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "DISCOUNT RECEIVED FROM SWASTIK FOOTCARE",
+        "parent": "Indirect Incomes",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Discount Sales",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "D Jena, Kuli",
+        "parent": "DURGI-KD-THERUBALI-JK LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Dj Rayagada Staff",
+        "parent": "STAFF",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "D. MADHABA RAO, GUDARI",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "D.MINALU, GUDARI",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "D.M.O COM SUPERINTENDENT(DHH RAYAGADA)",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": -475
+      },
+      {
+        "name": "DOLAMANI, STAFF RGDA",
+        "parent": "STAFF",
+        "ledgerGroup": "",
+        "openingBalance": -57155
+      },
+      {
+        "name": "Doubt",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "D.RAMAKRISHNA,CHITRAKUNDA",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": -27701
+      },
+      {
+        "name": "Drawings",
+        "parent": "Capital Account",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Dr. V. L. N Raju",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "D SANTOSH KUMAR, RAYAGADA",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": -272134
+      },
+      {
+        "name": "D SANTOSH, STAFF",
+        "parent": "STAFF",
+        "ledgerGroup": "",
+        "openingBalance": -32000
+      },
+      {
+        "name": "D.SENAPATI, ANTAMADA",
+        "parent": "KALYAN SINGHPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": -38856
+      },
+      {
+        "name": "Dudhisthir Meleka, Kumbhariput",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Dulu Beni",
+        "parent": "MUNIGUDA &amp; B.CTC LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "DURGA FOOTWEAR, KASIPUR",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": -20277
+      },
+      {
+        "name": "Durga Madhab Store(Shri Ashok Ku. Hota), Kumuli",
+        "parent": "Jeypur",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Durga Shoe",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "DUSMANTH, RAMANAGUDA",
+        "parent": "Gunupur Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Elastrex Polymers Pvt Ltd.",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": -6561
+      },
+      {
+        "name": "ELASTREX POLYMERS PVT LTD, KERALA",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Electrical Accessories",
+        "parent": "Fixed Assets",
+        "ledgerGroup": "",
+        "openingBalance": -25890
+      },
+      {
+        "name": "Electricity Bill",
+        "parent": "Petty Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "E.M.G. F/W, JK",
+        "parent": "Jk Line",
+        "ledgerGroup": "",
+        "openingBalance": -42503
+      },
+      {
+        "name": "Empty Bag",
+        "parent": "Indirect Incomes",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "ESR FOOTWEAR, KORAPUT",
+        "parent": "Sundry Debtors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "ESWAR BEHERA, RAYAGADA",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": -91382
+      },
+      {
+        "name": "ESWAR SAHU, GORKHPUR",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": -619
+      },
+      {
+        "name": "Expenses",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Family Footwear,Parvathipuram",
+        "parent": "Parvathipuram",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Fancy Footwear, Baipariguda",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": -40922
+      },
+      {
+        "name": "Fashion Footwear",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Fashion F/w, TCR, Rayagada",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": -44
+      },
+      {
+        "name": "Fixed Assets",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Foot Fashion, Baipariguda",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": -27981
+      },
+      {
+        "name": "Foreign Footwear, Padampur",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Freight Charges",
+        "parent": "Direct Incomes",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Freight Expenses From Petty Cash",
+        "parent": "Petty Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Fright Reimbursement Incentive",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Fuel Expenses",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Fuel Expenses From Petty Cash",
+        "parent": "Petty Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "FUNCTION HALL",
+        "parent": "Duties &amp; Taxes",
+        "ledgerGroup": "",
+        "openingBalance": -50000
+      },
+      {
+        "name": "Furniture &amp; Fixtures",
+        "parent": "Fixed Assets",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Gagana Mishra Chandragiri",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Gandhi Behera",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": -15959
+      },
+      {
+        "name": "Ganesh",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "GANESH CLOTH STORE, RAYAGADA",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "GANESH FOOTWEAR &amp; GENERAL STORE , PARVATHIPURAM",
+        "parent": "Parvathipuram",
+        "ledgerGroup": "",
+        "openingBalance": 2
+      },
+      {
+        "name": "GANESH F/W, THERUBALI",
+        "parent": "MUNIGUDA &amp; B.CTC LINE",
+        "ledgerGroup": "",
+        "openingBalance": -1909
+      },
+      {
+        "name": "Ganesh Sports",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "GANGADHAR BAG, PAIKUPAKHAL",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "GAUTAM ENTERPRISES (JK PLASTIC)",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": -1
+      },
+      {
+        "name": "GAYA PRASAD SAHU, DONGASIL",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "GAYATRI VARIETY HOUSE, SIKARPAI",
+        "parent": "KALYAN SINGHPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Gayatri Variety Store",
+        "parent": "KALYAN SINGHPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": -3715
+      },
+      {
+        "name": "G CHANDRA, GUNUPUR",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": -28422.96
+      },
+      {
+        "name": "G Chinari, Kujendri",
+        "parent": "Gunupur Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "G Durga Rao, Maligaon",
+        "parent": "Jk Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "GEMBALI SRIKANT (GOWDAN RANT)",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "G. GURUNATHA , NARAYANPATNA",
+        "parent": "Koraput",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "GHASI KHONDRIA, SIKARPAI",
+        "parent": "KALYAN SINGHPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": -8535
+      },
+      {
+        "name": "GIRIDHARI JAL, CHATIKONA",
+        "parent": "MUNIGUDA &amp; B.CTC LINE",
+        "ledgerGroup": "",
+        "openingBalance": -54007
+      },
+      {
+        "name": "G.KAMESWEAR RAO, SIKARPAI",
+        "parent": "KALYAN SINGHPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": -899
+      },
+      {
+        "name": "G. Kiran Kumar, K. Sitapur",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "G Madhab Kumar, Sikarpai",
+        "parent": "KALYAN SINGHPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": -4926
+      },
+      {
+        "name": "G Murali Krishna, Bandhugaon",
+        "parent": "Sundry Debtors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "G. MURALI KRISHNA, DERIGAN",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": -22105
+      },
+      {
+        "name": "G. Nandi Babu, Chiti Money",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Godown Rent",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "GODWON EXT. SHED EXP",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "GOKUL FOOTWEAR PVT LTD, HARYANA",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "GOKUL MANDAL, MV-79",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": -65191
+      },
+      {
+        "name": "GOLDEN FOOT STEP (BHILAI)",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 10122
+      },
+      {
+        "name": "GOPINATH PONDA, GUNUPUR( TPONDA)",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": -20006
+      },
+      {
+        "name": "GOURANGA BISOI",
+        "parent": "Koraput",
+        "ledgerGroup": "",
+        "openingBalance": -25
+      },
+      {
+        "name": "GOURANGA BOLA, MV-79",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": -41697
+      },
+      {
+        "name": "Gourango , Serigumma",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "GOUTAM FOTWEAR, LAXMIPUR",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Govinda Reddy, Balda",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "G P N RAJU, KUNER",
+        "parent": "Parvathipuram",
+        "ledgerGroup": "",
+        "openingBalance": -11111
+      },
+      {
+        "name": "G.Ravi Kumar ( K.Sitapur )",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "GREAT INDIA ROADWAYS",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "G.S. Behera(Rayagada)",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": -220
+      },
+      {
+        "name": "G.S. BEHERA, TIKIRI",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "G. SEETA RAM METRO SHOES, JEYPORE",
+        "parent": "Jeypur",
+        "ledgerGroup": "",
+        "openingBalance": -133372
+      },
+      {
+        "name": "G.S MURTHY(SANDEEP), K.SINGPUR",
+        "parent": "KALYAN SINGHPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "G. SRINIVAS RAO, DERIGAN",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "GST PAID",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "G.Suryanarayana",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 13
+      },
+      {
+        "name": "GUDU F/W, GOBINDAPALI",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": -8
+      },
+      {
+        "name": "Gudu F/w, Tumubiribandaha",
+        "parent": "PHULBAANI LINE",
+        "ledgerGroup": "",
+        "openingBalance": -76
+      },
+      {
+        "name": "GUDULA NAGESWAR RAO, AKHUSING",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "G Venkant Ravana, Ramanaguda(Iridi)",
+        "parent": "Sundry Debtors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "HANUMAN F/W, GUNUPUR",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": -30776
+      },
+      {
+        "name": "HANUMAN F/W (T.PANDA), GUNUPUR",
+        "parent": "Gunupur Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "HAPPY FEET ENTERPRISES (RESTRO)",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "HAPPY RUBBER INDUSTRIES",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 114457
+      },
+      {
+        "name": "Harichandra Gouda,Ramogiri",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": -8271
+      },
+      {
+        "name": "Hari Durga, Chatikona",
+        "parent": "MUNIGUDA &amp; B.CTC LINE",
+        "ledgerGroup": "",
+        "openingBalance": -7025
+      },
+      {
+        "name": "HARI F/W, B.CUTTACK",
+        "parent": "MUNIGUDA &amp; B.CTC LINE",
+        "ledgerGroup": "",
+        "openingBalance": -5835
+      },
+      {
+        "name": "HARI PRADHAN, KHAIRAPUT",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": -29182
+      },
+      {
+        "name": "Hari-Rayagada",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Hari Shankar Panda,Dumadangar(Nilabadi)",
+        "parent": "Koraput",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "HEMANT BEHERA, RAYAGADA",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Hemant Rantalu, Meerabali",
+        "parent": "Sundry Debtors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Hemant Rayagada",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Hero Fincorp Ltd",
+        "parent": "Bank Accounts",
+        "ledgerGroup": "",
+        "openingBalance": -2931040.31
+      },
+      {
+        "name": "HERO FINCROP LTD PROCESING CHARGE",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "HERO INTEGRATED GST",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "HERO INTREST",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "HIRA FOOTWEAR, JK",
+        "parent": "Jk Line",
+        "ledgerGroup": "",
+        "openingBalance": -49108
+      },
+      {
+        "name": "HITESH LAB MANG",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "H.M &amp; Smc , Lakrish",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "H N Pani, Sandhubadi",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Honda Bike",
+        "parent": "Sundry Debtors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Hotel Breamland ( Soraj F/w ) Chandragiri",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "HOTEL LOTUS PARADISE",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "House Rant,Pkd",
+        "parent": "Sundry Debtors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "IGST",
+        "parent": "Duties &amp; Taxes",
+        "ledgerGroup": "",
+        "openingBalance": -1434607.31
+      },
+      {
+        "name": "Incentive Received",
+        "parent": "Indirect Incomes",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Incom Tax Paid",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Indusind Bank",
+        "parent": "Bank Accounts",
+        "ledgerGroup": "",
+        "openingBalance": -7825650
+      },
+      {
+        "name": "Indusind Bank Charges",
+        "parent": "Bank Accounts",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "INDUSLND BANK (PROSSESSING)",
+        "parent": "Bank Accounts",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Int. on CC Loan",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Invetor",
+        "parent": "Fixed Assets",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "ISWAR CHANDRA PANDU, KUBHARIPUT",
+        "parent": "Koraput",
+        "ledgerGroup": "",
+        "openingBalance": -3
+      },
+      {
+        "name": "Iswar Sahu Emaliguda",
+        "parent": "KALYAN SINGHPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "ITISHREE DEVI (INSURANCE PREMIUM)",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "I Visweswar Rao",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "JAGADISH NAYAK, KASIPUR",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "JAGADISH PRADHAN, BALIMELA",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": -38862
+      },
+      {
+        "name": "JAGAKALIA ENTERPRISES,K.Dhamuni",
+        "parent": "DURGI-KD-THERUBALI-JK LINE",
+        "ledgerGroup": "",
+        "openingBalance": -3006
+      },
+      {
+        "name": "JAGANATH F/W, THERUBALI",
+        "parent": "DURGI-KD-THERUBALI-JK LINE",
+        "ledgerGroup": "",
+        "openingBalance": -318
+      },
+      {
+        "name": "Jagannath Kumbhar, Kasipur",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": -249
+      },
+      {
+        "name": "JAGARNNATH KIRANI STOR, KHUMBHIKOTA",
+        "parent": "Sundry Debtors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "JAGDISH BANITI, PENDRIPANI",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": -24145
+      },
+      {
+        "name": "JAGDISH DAS, GUNUPUR",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "JAGILI F/W, PADAMPUR",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "JAI JAGNATH F/W , TITLAGARH",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 9
+      },
+      {
+        "name": "Jain Enterprises",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "JAI SHREE LAKSHMI POLYMERS",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 4887.7
+      },
+      {
+        "name": "JAI SHREE SALASAR ENTERPRISES, 4 WAY",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Jai Sri Mahalaxmi Enterprises",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Jana Priya Footwear, Vizianagaram",
+        "parent": "Parvathipuram",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Janapriya F/W",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Janapriya F/w, Vizianagram",
+        "parent": "Sundry Debtors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "JANRADHAN FOOTWEAR, KUMBHARIPUT",
+        "parent": "Koraput",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "JANVI COLLECTION, RAYAGADA",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": -2917
+      },
+      {
+        "name": "JAVILI LADIES CORNER , HADABHANGI",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "JAWAHAR HOSIERY FACTORY",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 39387
+      },
+      {
+        "name": "JAYADURGA ELECTRICALS, GUDARI",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": -54106
+      },
+      {
+        "name": "JAYAM ENTERPRISES, RAYAGADA",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "JAYANT TULO, THERUBALI",
+        "parent": "DURGI-KD-THERUBALI-JK LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "JAY JAGANNATH, RAYAGADA",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "JAY LAXMI F/W, PADAMPUR",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Jay Maa Durga F/w Raigada",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Jayshree Staff",
+        "parent": "STAFF",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Jeet F/w, Tikiri",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "J G P Bhavani",
+        "parent": "Fixed Assets",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "JINU,BADAPADA,PKD",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Jio Fi",
+        "parent": "Current Assets",
+        "ledgerGroup": "",
+        "openingBalance": -20094.7
+      },
+      {
+        "name": "Jitendra Kumar(Bishnu), Rayagada",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": -4435
+      },
+      {
+        "name": "Jitu F/w( Minu Gouda) R.Udaygiri",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "JITU KAUSHALY, THERUBALI",
+        "parent": "DURGI-KD-THERUBALI-JK LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "JIVAAKAW SRI HEALTH CARE RGDA",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "J Kadaraka,Mathalput(Damajodi)",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "J.K Plastic Industries",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 31501
+      },
+      {
+        "name": "J. Kumar,Gunupur(Bikrampur)",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": -75
+      },
+      {
+        "name": "JOYTI SWAMI, KASINAGAR",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "JUHI TRADERS, SIMILIGUDA",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": -22846
+      },
+      {
+        "name": "KAILASH KUMBHAR, KASIPUR",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Kailash Naik, Ukkamba",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "KAILASH NAYAK, MUKUNDPUR",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "KALIA F/W, KENDUGUDA",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": -19069
+      },
+      {
+        "name": "Kalipuja Pal, Mv - 79, Malkangiri",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "KALPANA STAFF",
+        "parent": "STAFF",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "KAMESWARI F/W, RAMANAGUDA",
+        "parent": "Gunupur Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Kanha F/w R.Udaygiri",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Kanhnu Footwear, Padampur",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": -23045
+      },
+      {
+        "name": "KANKAN KUMAR MONDAL, KALIMELA",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": -18583
+      },
+      {
+        "name": "Kanya Lal",
+        "parent": "DURGI-KD-THERUBALI-JK LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "KAPIL NAYAK, KASIPUR",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 12
+      },
+      {
+        "name": "Kartika Nayak,Banteji(Kasipur)",
+        "parent": "Kashipur Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "KARTIK GOUDA,K.SINGPUR",
+        "parent": "KALYAN SINGHPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Kasu Staff, Salery Act",
+        "parent": "STAFF",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "K.CHANDRA RAO, JAYPORE",
+        "parent": "Jeypur",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "K Dibakar,Rayagada",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Keerti F/w Padampur",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "K. Eswer Rao, Klonara",
+        "parent": "DURGI-KD-THERUBALI-JK LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "K &amp; G FASHION F/W, AMBADOLA",
+        "parent": "MUNIGUDA &amp; B.CTC LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "KGN (AAYAAN), PHULBANI",
+        "parent": "PHULBAANI LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "K.G.N. FOOTWEAR, PARVATHIPURAM",
+        "parent": "Parvathipuram",
+        "ledgerGroup": "",
+        "openingBalance": -465
+      },
+      {
+        "name": "K. GURUNATH, DAMBUSORA",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Khadanga Xerox Gumuda",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "KHADIM INDIA LTD",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": -453
+      },
+      {
+        "name": "KHAGAPATI KARKARIA, BHALUMASKA",
+        "parent": "KALYAN SINGHPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "KHAN F/W, TIKIRI",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "KHATTU SHYAM ENTERPRISES, (ADDOXY)",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "KHIRAMANI BEHERA, BISAM CUTTACK",
+        "parent": "MUNIGUDA &amp; B.CTC LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "KHIROD NAYAK, KASIPUR",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "KINJAL WALKWAYS",
+        "parent": "Sundry Debtors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Kiran F/w, Jimidipeta",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Kishore Chandra Patro",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "KISHORE FOOTWEAR, KALIMELA",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": -4757
+      },
+      {
+        "name": "KISHOR NAYAK, MUKUNDPUR",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": -4526
+      },
+      {
+        "name": "Kishor Pattnaik K Singpur",
+        "parent": "KALYAN SINGHPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "K.KAMASKHI",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "K KAMASKHI,STAFF RGDA",
+        "parent": "STAFF",
+        "ledgerGroup": "",
+        "openingBalance": -211
+      },
+      {
+        "name": "K.K Catrin Service",
+        "parent": "Sundry Debtors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "K. KHAGESWER RAO, BALDA",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "K Madhav Rao, Almanda",
+        "parent": "Koraput",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "K.NAGARAJU, SIKARPAI",
+        "parent": "KALYAN SINGHPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 7446
+      },
+      {
+        "name": "K N RAO (MURLI BROTHER), KOLNARA",
+        "parent": "Jk Line",
+        "ledgerGroup": "",
+        "openingBalance": -5
+      },
+      {
+        "name": "KODANDA BEHERA, RAYAGADA",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": -20487
+      },
+      {
+        "name": "Kodandarama Footwear,Battili",
+        "parent": "Gunupur Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Komal Naik",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "KONARK ENGINEERING &amp; EQUIPMENTS, RAYAGADA",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Konark Footwear, G.Udaygiri",
+        "parent": "PHULBAANI LINE",
+        "ledgerGroup": "",
+        "openingBalance": -920
+      },
+      {
+        "name": "Konark Patro, Ramanaguda",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "K. Ramnath",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Kranti Kumar, Durgi",
+        "parent": "MUNIGUDA &amp; B.CTC LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "KRISHNA F/W, CHITRAKUNDA",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Krishna F/w Khajuripada",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": -5456.1
+      },
+      {
+        "name": "Krishna Prasad, Rivalkona",
+        "parent": "KALYAN SINGHPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "K R J POLYMERS (SWASTIK)",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Krunshno Gouda, Derokona(Kasipur)",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": -20
+      },
+      {
+        "name": "K Sandeep Kumar, Dumburunelly",
+        "parent": "DURGI-KD-THERUBALI-JK LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "K. SANJIB RAO LADIES CORNER, HAHUBHANGI",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "K Santosh",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "K Simchal",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Kumada Gouda, Minakhunti",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "KUMAR FANCY, KOTTAPETA",
+        "parent": "Jk Line",
+        "ledgerGroup": "",
+        "openingBalance": -714
+      },
+      {
+        "name": "KUSHO , STAFF RGDA",
+        "parent": "STAFF",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "K Venkat Rao",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "K Venugopal, Jimiripeta",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": -413
+      },
+      {
+        "name": "K Veraprasad",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "K . VISU F/W, UKUMBA",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Kwality Foowear, G. Udayagiri",
+        "parent": "PHULBAANI LINE",
+        "ledgerGroup": "",
+        "openingBalance": -27121
+      },
+      {
+        "name": "Ladi Kishore Kumar (Bm) Security Deopiste Account",
+        "parent": "STAFF",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Ladi Kishore Staff Salary",
+        "parent": "STAFF",
+        "ledgerGroup": "",
+        "openingBalance": -6616
+      },
+      {
+        "name": "LADI SRINIVAS, KUMUTILPETA",
+        "parent": "Jk Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Lalita Naik, Maribhata",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": -5204
+      },
+      {
+        "name": "LAXMAN BEHERA, RAYAGADA",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": -33476
+      },
+      {
+        "name": "LAXMI BHAWANI F/W, PKD",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "LAXMI F/W, GUMUDA( DEVI PRASAD PANIGRAHI)",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "LAXMI GANAPATI LADIES CORNER, KASINAGER",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Laxmi Jhodia, Charnimaribhata",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "LAXMIKANTA BEHERA, RAYAGADA",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Laxmi Narayana Ladies Corner",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Life Insurance Premium",
+        "parent": "Investments",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Likhita Bangles, Rayagada",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Limma Babu,Minapai",
+        "parent": "Sundry Debtors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "LINGARAJ PANDA, GUNUPUR",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "LIPSA F/W, MUNIGUDA",
+        "parent": "MUNIGUDA &amp; B.CTC LINE",
+        "ledgerGroup": "",
+        "openingBalance": -468
+      },
+      {
+        "name": "L. K. Pradhan, Narayanpatna",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "L . K . RAO , GUDIABANDHA",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Loading &amp; Unloading Expenses",
+        "parent": "Petty Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Lokanatha Footwear, Mv-72",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": -27952
+      },
+      {
+        "name": "Loknath Patro",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Loknath Sahu, Kotraguda",
+        "parent": "PHULBAANI LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Loss on Theft",
+        "parent": "Direct Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "L Sailaja Rani, Serigum",
+        "parent": "KALYAN SINGHPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "LUCKY FOOT PRINT",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "LUKMAN ANSARI, GOVNDAPALI",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "LUNA CHOUDHURY, TIKIRI",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Maa Agni Ganga F/w Therubali ( Sujeet Saha )",
+        "parent": "DURGI-KD-THERUBALI-JK LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "MAA BANGARAMA F/W, JK",
+        "parent": "Jk Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "MAA BHAIRABI SHOE CENTER , MUNIGUDA",
+        "parent": "MUNIGUDA &amp; B.CTC LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Maa Damaldei, Khairaput(Ajay Kumar Sahu)",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": -351
+      },
+      {
+        "name": "MAA JAYA DURGA SHOE HOUSE, SIMILIGUDA",
+        "parent": "Jeypur",
+        "ledgerGroup": "",
+        "openingBalance": -36545
+      },
+      {
+        "name": "Maa Majhi Gouri Decoretor",
+        "parent": "Sundry Debtors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Maa Majhi Gouri F/w(Bishnu)",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "MAA MAJHIGOURI F/W(SHYAMALA), JK",
+        "parent": "Jk Line",
+        "ledgerGroup": "",
+        "openingBalance": -28802
+      },
+      {
+        "name": "Maa Majhi Gouri,Gudari",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": -37380
+      },
+      {
+        "name": "Maa Majhigouri Halement Shop, Rayagada",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": -2847
+      },
+      {
+        "name": "MAA MAJHIGOURI, KSINGHPUR",
+        "parent": "KALYAN SINGHPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "MAA MAJHIGOURI SPORTS &amp; F/W, KOLNARA",
+        "parent": "DURGI-KD-THERUBALI-JK LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Maa Majji Gouri F/w, Narayanpatna",
+        "parent": "Koraput",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Maa Mangala Decoretor",
+        "parent": "Sundry Debtors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "MAA MANGALA F/W, GUMUDA",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "MAA MANGALA GENERAL STORE, DURGI",
+        "parent": "DURGI-KD-THERUBALI-JK LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Maa Mangala, Rayagada(Sai Priya Nagar)",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Maa Rudrakali F/w, Phirangia",
+        "parent": "PHULBAANI LINE",
+        "ledgerGroup": "",
+        "openingBalance": -71433
+      },
+      {
+        "name": "MAA TARINI F/W, PADAMPUR",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "MAA TARINI LADIES CORNER, KASINAGAR",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": -10375
+      },
+      {
+        "name": "MADAMJI, RAYAGADA",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 3
+      },
+      {
+        "name": "Madeya Sirika, Badaallubadi",
+        "parent": "Sundry Debtors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Madhusudan Takira, Narayanpatna",
+        "parent": "Sundry Debtors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "MAGNET POLYMERS",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 346512.53
+      },
+      {
+        "name": "Mahalaxmi Bookstore,Geerango(Suriyam)",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": -12841
+      },
+      {
+        "name": "MAHALAXMI FANCY STORE,RAYAGADA(SAIPRIYA NAGAR)",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "MAHALAXMI LADIES CORNER, BALDA",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": -6187
+      },
+      {
+        "name": "Maha Laxmi Store, Kasipur",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": -342
+      },
+      {
+        "name": "MAHAVEER FOOTWEAR, JK",
+        "parent": "Jk Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Mahendra F/w, Nuapada",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": -44002
+      },
+      {
+        "name": "Mahendra Sahu",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Mahesh Enterprises",
+        "parent": "Sundry Debtors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Mahesh-Rayagada",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Maheswara Nayak, Dangasili",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": -10861
+      },
+      {
+        "name": "MAJHI GOURI FOOTWEAR, DURGI",
+        "parent": "DURGI-KD-THERUBALI-JK LINE",
+        "ledgerGroup": "",
+        "openingBalance": -29164
+      },
+      {
+        "name": "Majhi Kumar Pattnaik, K.Sighpur(Tadra)",
+        "parent": "KALYAN SINGHPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "MALI ANNA, RAYAGADA",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Malik Boot House, Balimela",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "MALKANGIRI GODOWN RANT",
+        "parent": "Direct Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "MANGULU F/W, B.CUTTACK",
+        "parent": "MUNIGUDA &amp; B.CTC LINE",
+        "ledgerGroup": "",
+        "openingBalance": -49361
+      },
+      {
+        "name": "Manikanta F/w",
+        "parent": "DURGI-KD-THERUBALI-JK LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "MANIK DAY, KHATAMETA",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": -5776
+      },
+      {
+        "name": "Manisri Sports",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "MANOJ SENAPATI, THERUBALI",
+        "parent": "DURGI-KD-THERUBALI-JK LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Manoranjan Maharana, Kotagada",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Mantosh Kumar, Koraput",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "MARUTI FOOTWEAR &amp; GENERAL STORES, PARVATIPURAM",
+        "parent": "Sundry Debtors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "MARUTI PLASTICS",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 290439
+      },
+      {
+        "name": "M Ashok,Tangiliguda",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": -2560
+      },
+      {
+        "name": "Mata Pita Enterprises, Nuapada",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "MATURU SHAKTI LADIES CORNER, KASINAGAR",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "MAYURI FOOT WEAR",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "M B Enterprises",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "M. D. FOOTWEAR, AGRA",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "MD HAJI, NABARANGAPUR",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": -746
+      },
+      {
+        "name": "M.D IBRAHIM KHAN,B.C ROAD,JK",
+        "parent": "Jk Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "M DILIP, SIKARPAI",
+        "parent": "KALYAN SINGHPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "MD. JUNED F/W, B. CUTTACK",
+        "parent": "MUNIGUDA &amp; B.CTC LINE",
+        "ledgerGroup": "",
+        "openingBalance": -16881
+      },
+      {
+        "name": "MD. MUMTAJ, JK",
+        "parent": "Jk Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "M.D Sports",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Medical Officer ,Gudari",
+        "parent": "Sundry Debtors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Member Secretry Phc New, Sikarpai",
+        "parent": "KALYAN SINGHPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "M Gopal Rao,Jangalpadu",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": -13176
+      },
+      {
+        "name": "Midul Day, Khatameta",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": -125
+      },
+      {
+        "name": "Milan Footwear, Pangam",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": -26606
+      },
+      {
+        "name": "MINI FOOTWEAR",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 192988
+      },
+      {
+        "name": "MIRZA STORE, PKD",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Miscellaneous Expenses",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Miscellaneous Expenses From Petty",
+        "parent": "Petty Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "MITHUN SAHU, TIKIRI",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Mithun Sardar, Kalimela",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": -15338
+      },
+      {
+        "name": "Mithun  Thakaar, Kudumulugumma",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": -24874
+      },
+      {
+        "name": "M.K. FOOTWEARS (STYLE HAWAI)",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 53059
+      },
+      {
+        "name": "M KOTESWAR RAO, HADUBHANGI.",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "M Maleswar Rao, Rayagada",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "M M FOOTWEAR, GUNUPUR(Jagadish)",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": -11553
+      },
+      {
+        "name": "M.M. F/W, GUDARI",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": -30555.25
+      },
+      {
+        "name": "M Murali,Penta",
+        "parent": "Jk Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Mobile Recharge Staff",
+        "parent": "Petty Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Mohan Kandhapani, Rayagada",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Mohan Pani,Rayagada",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "MOHAN SAHU, P.K.D",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "MOHINI BEHERA, RAYAGADA",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Monalisha Footwear, Phulbani",
+        "parent": "PHULBAANI LINE",
+        "ledgerGroup": "",
+        "openingBalance": -7176
+      },
+      {
+        "name": "Monikantha Genral Store, Rivalkona",
+        "parent": "KALYAN SINGHPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Monika Staff",
+        "parent": "STAFF",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Monthly,Qtrly &amp; Yearly Incentive",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "M Prakash Rao Therubali",
+        "parent": "DURGI-KD-THERUBALI-JK LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "M Rama Rao, Hadubhangi",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "M RAMU NAUDU, SESAKHAL",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "M. Ravi Kumar,Seskal",
+        "parent": "KALYAN SINGHPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "M. SANTOSH, RAMNAGUDA",
+        "parent": "Gunupur Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "M/S BOMBEY SHOES, KENDRAPADA",
+        "parent": "Sundry Debtors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "M/S PANKAJ PLASTIC",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "M/S PRITHIVI RAJ CLOTH STORE, SIKARPAI",
+        "parent": "KALYAN SINGHPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "M/S RAJESH FOOTWEAR, GUNUPUR",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "M/S. RANJAN SHOES &amp; HAWAI VARIETY STORE, PADAMPUR",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": -87684
+      },
+      {
+        "name": "M/S SANJAY FOOT WEAR, AMBODOLA",
+        "parent": "MUNIGUDA &amp; B.CTC LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "M/S S M TRADERS, MALKANGIRI",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": -133701
+      },
+      {
+        "name": "M/S SONEJA BOOT HOUSE , KORAPUT",
+        "parent": "Jeypur",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "M/S. SRI DURJODHAN PATI",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "M/s Sri Krishna Enterprises",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "M/S. SUBHAM AGENCY",
+        "parent": "Sundry Debtors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "M/S SURYA COLLECTION, RAYAGADA",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "M/S TARUN FOOTWEAR, KALIMELA",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": -63554
+      },
+      {
+        "name": "M/S UPENDRA BARMAN, KALIMELA",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": 32
+      },
+      {
+        "name": "M/S YUSUF FOOT WEAR, KOTAPAD",
+        "parent": "Koraput",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "MUNA BEHERA, RAYAGADA",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": -9864
+      },
+      {
+        "name": "MUNA DAS, THERUBALI",
+        "parent": "DURGI-KD-THERUBALI-JK LINE",
+        "ledgerGroup": "",
+        "openingBalance": -22440
+      },
+      {
+        "name": "Muna F/w, Khairput",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Muna Susila Dora, Padapede",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "MUNNA JAMAL, NARAYANPUR",
+        "parent": "KALYAN SINGHPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "MURALI DHARA KONDAGIRI, KERADA",
+        "parent": "Sundry Debtors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "MURALI FANCY, KOLNARA",
+        "parent": "DURGI-KD-THERUBALI-JK LINE",
+        "ledgerGroup": "",
+        "openingBalance": -5540
+      },
+      {
+        "name": "M Ventrawana,Kanagan(Nilabadi)",
+        "parent": "Koraput",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "NABANITA STAFF",
+        "parent": "STAFF",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "NAGESWAR BEHERA, RAYAGADA",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": -13569
+      },
+      {
+        "name": "NAKUL F/W , THERUBALI",
+        "parent": "DURGI-KD-THERUBALI-JK LINE",
+        "ledgerGroup": "",
+        "openingBalance": -50824
+      },
+      {
+        "name": "NALINI BIWAS , M.P.V-81",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "NARASINGHA BEHERA, RAYAGADA",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": -6246
+      },
+      {
+        "name": "NARASINGH NAYAK, TIKIRI",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": -9256
+      },
+      {
+        "name": "NAV DURGA ENTERPRISES (R.K F/W)",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Nayak Footwear,Phampuni.Jeypore",
+        "parent": "Jeypur",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Nayak Sir Staff",
+        "parent": "STAFF",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "NAYAK TRADERS, JEYPORE",
+        "parent": "Jeypur",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "N. Damburu , Polomaa",
+        "parent": "KALYAN SINGHPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": -3190
+      },
+      {
+        "name": "N Dilip Kumar, Mukudpur",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "New Genration Footpoint, Umerkote",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": -13419
+      },
+      {
+        "name": "NEW PARADISE, RAYAGADA",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "New Popular Shoes,Jeypur(Metro)",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "NEW RENUKA AGENCY",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": -12107
+      },
+      {
+        "name": "New Star F/W",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "NEXGEN FOOTWEAR PVT.LTD(AIRSON)",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "NEXGEN FOTWEAR",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "NEXUS VENTURE (R K TREDERS)",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Nigam Enterprises",
+        "parent": "Sundry Debtors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "NILACHAL DRESSES",
+        "parent": "Sundry Debtors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "NILACHAL GARMENTS &amp; TRADING",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "NILAMANI DURGA FOOTWERA, KASINAGAR",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Nilanchal Gouda Raigodo",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "NILANCHAL MOHANTY, KUDUMULUGUMMA",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": -2342
+      },
+      {
+        "name": "NIRAMALA INSENTIVE",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Niranjan Bisai",
+        "parent": "Koraput",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "NIRMALA PANI, STAFF",
+        "parent": "STAFF",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "NIRMAL HOWLADAL, MV-79",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": -19245
+      },
+      {
+        "name": "Nirupama Sports",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Nisha Sherlin Orphan",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "N Kavatha, Parvathipuram",
+        "parent": "Parvathipuram",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "N K Behera",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "N.MUNA (DRIVER), STAFF",
+        "parent": "STAFF",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "NRANJAN NIMALPURI, VIZANAGARM(KSINGPUR)",
+        "parent": "KALYAN SINGHPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "N STEPS, BOIPARIGUDA",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": -4964
+      },
+      {
+        "name": "N V R School, Rayagada",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "ODISHA TRADE CENTRE GAJAPATI JUNCTIIN, RAYAGADA",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Office Stationery From Petty Cash",
+        "parent": "Petty Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Om Maa Mangala Catering",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Omm Collection",
+        "parent": "Sundry Debtors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Omm Mattress",
+        "parent": "Sundry Debtors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "OMM TRADERS, MUNIGUDA",
+        "parent": "MUNIGUDA &amp; B.CTC LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "OM SAI FOOTWEAR(GULU), RAYAGADA",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": -42184
+      },
+      {
+        "name": "OM SAI SHANKAR ENTERPRISES",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": -40630
+      },
+      {
+        "name": "OM TRADERS  (J K PLASTIK)",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "One Lakhs Scheme",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "OVERDUE LPP/NORMAL INTREST",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Owner Travel Exp",
+        "parent": "Petty Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Packaging Expenses From Petty Cash",
+        "parent": "Petty Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Packing &amp; Transportating Expenses",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Padma Dresses, Gudari",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Padma Footwear, Dengaostha",
+        "parent": "PHULBAANI LINE",
+        "ledgerGroup": "",
+        "openingBalance": -10544
+      },
+      {
+        "name": "Padma Shoe Mart,Thagarapuvalasa",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Padmini , Gugugona",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "P.ANANDA RAO, GUDARI",
+        "parent": "Sundry Debtors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "PANDA FOOT WEAR, JK",
+        "parent": "Jk Line",
+        "ledgerGroup": "",
+        "openingBalance": -53131
+      },
+      {
+        "name": "PANKAJ TUNK, STAFF RGDA",
+        "parent": "STAFF",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Paragon Polymer Productc Pvt Ltd(Delhi)",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Paragon Polymer Products Ltd(West Bangal)",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Paragon Polymer Products Private Limited(Hydrabad)",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Paragon Polymer Products Pvt Ltd.",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 1309808.17
+      },
+      {
+        "name": "Paragon Polymer Products Pvt Ltd(Bangalore)",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 994924
+      },
+      {
+        "name": "PARAGON POLYMER PRODUCTS PVT LTD(HARYANA)",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 352309
+      },
+      {
+        "name": "Paragon Polymer Products Pvt.Ltd(Kerala)",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 217086
+      },
+      {
+        "name": "PARAGON POLYMER PRODUCTS PVT LTD, MEDAK (TELANGANA)",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "PARAGON POLYMER PRODUCTS PVT(TAMIL NADU)",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 447622
+      },
+      {
+        "name": "PARIS INTERNATIONAL",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Parvati F/w R.Udaygiri (Ramnarayan)",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "PAWAN SENAPATI , RAYAGADA",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": -47513
+      },
+      {
+        "name": "P. CHANDRASEKHAR RAO, KASINAGAR",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Petty Cash",
+        "parent": "Current Assets",
+        "ledgerGroup": "",
+        "openingBalance": 44500
+      },
+      {
+        "name": "P Goureswar,Pujariguda",
+        "parent": "KALYAN SINGHPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "P Gouri Shankar, Rayagada",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "PIKU SPORTS, AMBADOLA",
+        "parent": "MUNIGUDA &amp; B.CTC LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Pinku Ladies Corner Gumuda",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "P. K Mohapatra, Doraguda",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": -2103
+      },
+      {
+        "name": "P. MURALI KRISHNA, UKUMBA",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "P Narayan Murti Nivaangam, Pkd",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "POPULAR MOBILES",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "POPULAR RUBBER INDUSTRIES",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "POWER PRIME",
+        "parent": "Purchase Accounts",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Prabhakar F/w Chandiput",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "P Rabindra Kumar, Kuner",
+        "parent": "Parvathipuram",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "PRADEEP FOOTWEAR,DURGI(BHALERI)",
+        "parent": "DURGI-KD-THERUBALI-JK LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Pradeep Kumar Ratnalu, Sadhubadi",
+        "parent": "DURGI-KD-THERUBALI-JK LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Pradeep Mandal, Pendripani",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": -6231
+      },
+      {
+        "name": "Pradeep Sahu",
+        "parent": "KALYAN SINGHPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Praful Kumar Pandu,Dumadangara",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "PRAKASH TILLA, STAFF",
+        "parent": "STAFF",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "P RAMAKRISHNA AMALAPETA",
+        "parent": "DURGI-KD-THERUBALI-JK LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Prasad Footwear, Nandapur",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": -423
+      },
+      {
+        "name": "PRATAP F/W, RAYAGADA",
+        "parent": "Jk Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "P.Ravi , Kereda",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "P Ravi Kumar,Kuner",
+        "parent": "Parvathipuram",
+        "ledgerGroup": "",
+        "openingBalance": 1
+      },
+      {
+        "name": "PREMANDA KHANA,PANGAM",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": -13210
+      },
+      {
+        "name": "Preston India Pvt Ltd.",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "PRESTON INDIA PVT LTD, CUTTACK",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "PRESTON INDIA PVT LTD, HARYANA",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "PRESTON INDIA PVT LTD , KARNATAKA BANGALURU",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "PRIME",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Prime Shoes,Rayagada",
+        "parent": "Sundry Debtors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Prince Shoe (P) Ltd, Branch-2, Pkd",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "PRINCE SHOE (P) LTD,PARLAKHIMUNDI",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "PRINCE SHOES (P) LTD,RAYAGADA",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "PRINCE STORE, CHITRAKUNDA",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": -132019
+      },
+      {
+        "name": "Priyanshi Collection, Digapur",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Product Scheme Incentive",
+        "parent": "Indirect Incomes",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Project Reports",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "PROPERTY VALUATION  FEES",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "P SHANKAR RAO, RIVALKONA",
+        "parent": "KALYAN SINGHPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": -1301
+      },
+      {
+        "name": "P S Rao",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "P Srinivas Rao,Rayagada",
+        "parent": "Sundry Debtors",
+        "ledgerGroup": "",
+        "openingBalance": 66
+      },
+      {
+        "name": "P.TRINATA, KOTTAPETA",
+        "parent": "DURGI-KD-THERUBALI-JK LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Puja Garment (Delhi Footwear), Tikiri",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": -35636
+      },
+      {
+        "name": "Puja Mahanty, Boipariguda",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": -1631
+      },
+      {
+        "name": "PU-LION FOOTWEAR PRIVATE LIMITED",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 1198
+      },
+      {
+        "name": "PURCHASE@GST",
+        "parent": "Purchase Accounts",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Purna Chandra Behera",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "PURNA CHANDRA BEHERA, RAYAGADA",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Purna Chandra Damodar",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": -431
+      },
+      {
+        "name": "Purusottam Behera",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": -3
+      },
+      {
+        "name": "PUSPA FANCY, KUNDURA",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "P V Ramakrishana, Kuner",
+        "parent": "Parvathipuram",
+        "ledgerGroup": "",
+        "openingBalance": -8252
+      },
+      {
+        "name": "Rabindra, Kakriguma",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Rabindra Sahu, Khajuripada",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": -486
+      },
+      {
+        "name": "Radha F/w Raigada",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": -13373
+      },
+      {
+        "name": "Radha Krudhna , Gumma Main Road",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Radhakrushna F/w Padampur",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "RAGHUNATHA BEHERA, TIKIRI",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "RAHUL F/W, KALIMELA",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": -34342.25
+      },
+      {
+        "name": "Rahul Hiirika Staff",
+        "parent": "STAFF",
+        "ledgerGroup": "",
+        "openingBalance": -2054
+      },
+      {
+        "name": "RAJA FOOTWEAR, JANGENDI",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "RAJA F/W, MUNIGUDA",
+        "parent": "MUNIGUDA &amp; B.CTC LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "RAJENDRA BEHERA, MATHILI",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": -13610
+      },
+      {
+        "name": "Rajendra  Gouda, Raigada",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Rajesh Bidika,Tambalabai(Sankar Behera Staff)",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "RAJESH CHOUHAN, K.SINGHPUR",
+        "parent": "KALYAN SINGHPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "RAJESH F/W, GUNUPUR",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Rajesh General Store",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Rajesh Traders,Similiguda",
+        "parent": "Jeypur",
+        "ledgerGroup": "",
+        "openingBalance": -4997
+      },
+      {
+        "name": "Raj Footwear(Binod Sahu), Tikiri",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Raj Kumar Behera, Ramanaguda",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Raj Kumar Hantal, Jeypore",
+        "parent": "Jeypur",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "RAJU FOOTWEAR , AMBADOLA",
+        "parent": "MUNIGUDA &amp; B.CTC LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Raju Fotwear, Koraput",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "RAJU F/W , PKD",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "RAJU, KUNER",
+        "parent": "Srikakulam Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "RAJU STAFF",
+        "parent": "STAFF",
+        "ledgerGroup": "",
+        "openingBalance": -3000
+      },
+      {
+        "name": "RAJU TAILOR, CHALKHAMBA",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": -11933
+      },
+      {
+        "name": "RAKESH TRADERS",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": -389
+      },
+      {
+        "name": "Ramakrishna F/w &amp; General Stores,Battili",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "RAMAKRISHNA ,LAXMIPUR",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": -108262
+      },
+      {
+        "name": "Rama Naidu, Seskhal",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Ram Bilash Nayak Sunger",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Ramesh Chandra Bisoi,Laxmipur",
+        "parent": "Koraput",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "RAMESH CHANDRA KHADANGA, GUMUDA",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": -72530
+      },
+      {
+        "name": "Ramesh Dalopati, Serigumma",
+        "parent": "KALYAN SINGHPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": -14
+      },
+      {
+        "name": "RAMESH GENERAL STOE, DAMBASARA",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "RAMESH NAYAK, KASIPUR",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 9
+      },
+      {
+        "name": "RAMESH PALKA, STAFF RGDA",
+        "parent": "STAFF",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "RAMESH PANI, STAFF RGDA",
+        "parent": "STAFF",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Ramesh Pujari, Anta",
+        "parent": "Jeypur",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Ramesh Sahu (Jamuguda), Tikiri",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": -138949
+      },
+      {
+        "name": "Ramesh Sahukar,Laxminagar(Sikarpai)",
+        "parent": "KALYAN SINGHPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Ram Krishna, Derigaon",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Ram Krishna Sahu, Badhugaon",
+        "parent": "Koraput",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "RAMP POLYMERS PVT.LTD(HITWAY)",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 42014
+      },
+      {
+        "name": "R Ananda , Maligoan",
+        "parent": "KALYAN SINGHPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": -11
+      },
+      {
+        "name": "RANJAN DAS, CHATIKONA",
+        "parent": "MUNIGUDA &amp; B.CTC LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "RANJAN FOOTWEAR, GUMMA",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Ranjan Footwear, Kenduguda",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Ranjan Sahu, K,Singpur",
+        "parent": "KALYAN SINGHPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": -13998
+      },
+      {
+        "name": "RANJIT TULO, KENDUGUDA",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Rashmita Das, Ambaguda",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "RASIKA FOOTWEAR, KASHIPUR",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": -10252
+      },
+      {
+        "name": "Ratnakar Naik Dumerpadar",
+        "parent": "Kashipur Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Rayagada Computers",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Rejesh Behera, Tambalbadi",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": -147
+      },
+      {
+        "name": "RELIANCE CASH DISCOUNT",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "RELIANCE GIFT/POSM DISCOUNT",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "RELIANCE RETAIL LIMITED, WEST BENGAL",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "RELIANCE SCHEME",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "RELIANCE TOD DISCOUNT",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "RENUKA SHOE MART, GUNUPUR",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Repair &amp; Maintenance",
+        "parent": "Petty Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Retailer Meet  Disscont",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "RETAILERS SCHEME PARAGON",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "RETAIL SHOP EXP",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "RETAIL SHOP RANT",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "RETAL",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 660
+      },
+      {
+        "name": "Retal Meet Expesnces",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Return Goods Incentive",
+        "parent": "Indirect Incomes",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "R &amp; G Enterprises",
+        "parent": "Jeypur",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "R &amp; G ENTERPRISES, JEYPURE",
+        "parent": "Jeypur",
+        "ledgerGroup": "",
+        "openingBalance": -93159
+      },
+      {
+        "name": "RITHA GENRAL STORE, MINAJHOLA",
+        "parent": "DURGI-KD-THERUBALI-JK LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "R. K Footwear, Durgi",
+        "parent": "DURGI-KD-THERUBALI-JK LINE",
+        "ledgerGroup": "",
+        "openingBalance": -5835
+      },
+      {
+        "name": "R.K FOOTWEAR, JEYPORE",
+        "parent": "Jeypur",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "R K FOOTWEAR , PADAMPUR",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "R.K F/W- JK",
+        "parent": "Jk Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "R K TRADER , DELHI",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "R.L. F/W, GUDARI",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": -423
+      },
+      {
+        "name": "R N Variety, K Singpur",
+        "parent": "KALYAN SINGHPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Rockteach Engineer Laxmipur",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "ROSHON BISWAS , MV-79",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": -2954
+      },
+      {
+        "name": "ROUND OFF",
+        "parent": "Purchase Accounts",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "ROUND OFF-SALE",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "ROYAL FOOWEAR, JEYPORE",
+        "parent": "Jeypur",
+        "ledgerGroup": "",
+        "openingBalance": -3729
+      },
+      {
+        "name": "ROYAL F/W, PADAMPUR",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": -19323
+      },
+      {
+        "name": "R.R POLYPLAST PRIVATE LIMITED",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 257300
+      },
+      {
+        "name": "R.SATYANARAYAN, KASINAGAR",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "R. Srinu, Sandhubadi",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "R.S.S RAYAGADA",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "RUBAN FOOTWEAR COMPANY",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Ruhuni Huika, Kumariput",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "R U TRADERS",
+        "parent": "Sundry Debtors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SABITA FOOTWEAR, KOLNARA",
+        "parent": "DURGI-KD-THERUBALI-JK LINE",
+        "ledgerGroup": "",
+        "openingBalance": -33433
+      },
+      {
+        "name": "Sabita F/w, Kolanara",
+        "parent": "Sundry Debtors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SABITRI LADIES CORNER, RAMANAGUDA",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": -6
+      },
+      {
+        "name": "Sadar(by Slnp)",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Sadasiba Gouda,Kasipur",
+        "parent": "Kashipur Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Sagar General Store",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SAHADE NAIK, SORISHABAD",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SAHADEV NAYAK,KASIPUR",
+        "parent": "Sundry Debtors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SAHIL BHAI FOOTWEAR, GOVINDPALI",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SAHIL KUMAR",
+        "parent": "STAFF",
+        "ledgerGroup": "",
+        "openingBalance": 1330094
+      },
+      {
+        "name": "Sai F/w, Ribalkona",
+        "parent": "KALYAN SINGHPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": -4
+      },
+      {
+        "name": "Sai Gouri F/w, Kasturinagar",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Sai Goutam Glass &amp; Works, Rgda",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Sairam Fancy General and Footwear Sales, Kothapeta",
+        "parent": "Jk Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SAI RAM FANCY, KOTTAPETA",
+        "parent": "Jk Line",
+        "ledgerGroup": "",
+        "openingBalance": -54799
+      },
+      {
+        "name": "Sairam Footwear, Jk",
+        "parent": "Jk Line",
+        "ledgerGroup": "",
+        "openingBalance": -19504
+      },
+      {
+        "name": "Sai Ram Footwear, Mohana",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SAIRAM GENERAL STORE, KUJENDRI",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Sai Sagun F/w, Narayanpatna",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": -5300
+      },
+      {
+        "name": "Sai Shankar Fancy Store, Bandhugaon",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Sai Sports, R.Udaygiri",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Sai Steel Industries",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Sai  Suman Footwear, Mohana",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": -17108
+      },
+      {
+        "name": "Saiteja Footwear, Dambosara",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SALE@GST",
+        "parent": "Sales Accounts",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Sale of Scrap",
+        "parent": "Indirect Incomes",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Sales Discount",
+        "parent": "Sales Accounts",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Sales Tax Returen Charges",
+        "parent": "Duties &amp; Taxes",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SANDEEP GUDULA, KALYANSINGGPUR",
+        "parent": "KALYAN SINGHPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SANGAM JYOTI, KALYANSINGPUR",
+        "parent": "KALYAN SINGHPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": -31974
+      },
+      {
+        "name": "SANGEETA FANCY, B.CUTTACK",
+        "parent": "MUNIGUDA &amp; B.CTC LINE",
+        "ledgerGroup": "",
+        "openingBalance": -10424
+      },
+      {
+        "name": "Sangeeta Panigrahi, Staff",
+        "parent": "STAFF",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SANJAY FOOT WEAR, RAYAGADA",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": -733
+      },
+      {
+        "name": "SANJAY F/W, POTTERU",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": -2286
+      },
+      {
+        "name": "Sanjib Mandal, Karukonda",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SANTI ROY CHOUDHURY, KHAIRPUT",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": -42966
+      },
+      {
+        "name": "Santosh",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Santosh Footwear Sikarapai",
+        "parent": "KALYAN SINGHPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": -26304
+      },
+      {
+        "name": "Santosh Footwear, Umarkot",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SANTOSHI MATHA TRADERA, RAYAGADA",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Santoshi Panda, Jk(Panda F/w)",
+        "parent": "Jk Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SANTOSH KUMAR KISAN,VIJAYNAGAR(K.KINGPUR)",
+        "parent": "KALYAN SINGHPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Santosh Sports &amp; Enterprises, Ramanaguda",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": -19959
+      },
+      {
+        "name": "Santosh Variety Store, Nuapada",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": -52670
+      },
+      {
+        "name": "Sanyasiraju, Laxmipur",
+        "parent": "KALYAN SINGHPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SARADA PRASAD NANDI, KUDUMULUGUMA",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": -69781
+      },
+      {
+        "name": "SARASWATI BEHERA, RAYAGADA",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": -33232
+      },
+      {
+        "name": "SAROJ TRADERS (RATNEE DAS) ,THERUBALI",
+        "parent": "DURGI-KD-THERUBALI-JK LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SAROJ TRADERS, THERUBALI",
+        "parent": "DURGI-KD-THERUBALI-JK LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SASHANK CHOUDHURY, DURGI",
+        "parent": "DURGI-KD-THERUBALI-JK LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SASI REKHA LDS CRNR, GUDARI",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": -26738
+      },
+      {
+        "name": "SATISH COMPUTER",
+        "parent": "Sundry Debtors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SATYASAI FOOTWEAR, PADAMPUR",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SBI(ADB)-CC A/C",
+        "parent": "Bank Accounts",
+        "ledgerGroup": "",
+        "openingBalance": 4422558.33
+      },
+      {
+        "name": "S China, Parvathipuram",
+        "parent": "Parvathipuram",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SERVICE CHARGE",
+        "parent": "Direct Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "S Gouri",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SGST @",
+        "parent": "Duties &amp; Taxes",
+        "ledgerGroup": "",
+        "openingBalance": 1576423.01
+      },
+      {
+        "name": "Shakti Organisation,Rayagada",
+        "parent": "Sundry Debtors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SHALIMAR RUBBER INDUSTRIES",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": -27212
+      },
+      {
+        "name": "SHANKAR FOOTWEAR PVT LTD",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 3008
+      },
+      {
+        "name": "Shankar Shoe Mart",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Shiva Bag Zone",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Shiva F/w R.Udaygiri",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SHIVASISH MALL, PADAMPUR",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SHIVSHAKTHI TRADERS, RAYAGADA",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": -669
+      },
+      {
+        "name": "SHREE BALAJI INCORPORATION-HARYAN",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SHREE BALAJI POLYMERS (HITWAY)",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 285442
+      },
+      {
+        "name": "SHREE ENTERPISES, KORAPUT",
+        "parent": "Koraput",
+        "ledgerGroup": "",
+        "openingBalance": -3443679.72
+      },
+      {
+        "name": "SHREE ENTERPRISES, RAYAGADA",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 165050.74
+      },
+      {
+        "name": "Shree Fashion",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SHREE FOOT WEAR",
+        "parent": "Koraput",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SHREE FOOTWEAR,KORAPUT",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": -201486
+      },
+      {
+        "name": "SHREE F/W, SKLM",
+        "parent": "Parvathipuram",
+        "ledgerGroup": "",
+        "openingBalance": -1569967
+      },
+      {
+        "name": "SHREE GANESH TRADERS, JEYPORE",
+        "parent": "Jeypur",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SHREE JAGANNATH TRADIING, JEYPORE",
+        "parent": "Jeypur",
+        "ledgerGroup": "",
+        "openingBalance": -635400
+      },
+      {
+        "name": "SHREE MAHALAKSHMI FOOTWEAR &amp; GENERAL, RAJAM",
+        "parent": "Sundry Debtors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SHREE SALASAR UDYOG, HARYANA",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SHREE SHYAM FOOTWEAR",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Shree Shyam Industries",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SHRI MAHADEV INDUSTRIES",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SHRI MAHAVIRA TRADERS (J K PLASTIC)",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SHRI RAMDUT ENTERPRISES",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SHRI SAI FOOTCARE (FLOREX)",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SHUBHAM SALES (BAJAJ)",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SHUBHAN SALES (BAJAJ)",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Siba Chichuan, Hajaridanga",
+        "parent": "Bissam Cuttack",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Siba Putal, Khunipadar",
+        "parent": "KALYAN SINGHPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SIBU F/W, RAYAGADA",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": -2768
+      },
+      {
+        "name": "SIBU SAHA, MV-17",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Sigram Naik, Chandgiri",
+        "parent": "Kashipur Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SIMADRI KALPANA(S. GOURI), GUNUPUR",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": -13850
+      },
+      {
+        "name": "Simanchal Bijuli Chandiput",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SIMANCHAL F/W, MUNIGUDA",
+        "parent": "MUNIGUDA &amp; B.CTC LINE",
+        "ledgerGroup": "",
+        "openingBalance": -12159
+      },
+      {
+        "name": "Sindhant Sahoo,Kesinga",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": -619
+      },
+      {
+        "name": "Sindhu Footwear, Kashinagar",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Sing Footwear (Siba Shankara), Koraput",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SIVA F/W(P.MANAMADHA RAO),JK",
+        "parent": "Jk Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SIVA SHOES &amp; GIFT, PADAMPUR",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "S.J. F/W, KHAMBARIGUDA",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "S K Footwear,(Kumar),Parlakhemundi",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "S.K FOOTWEAR(SANJAY PANDA), JK",
+        "parent": "Jk Line",
+        "ledgerGroup": "",
+        "openingBalance": -32964
+      },
+      {
+        "name": "S.K. F/W, PKD",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": -1658
+      },
+      {
+        "name": "S.K.RAUTARAY, ANTAMADA",
+        "parent": "KALYAN SINGHPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": -23860
+      },
+      {
+        "name": "S. Lokanatha",
+        "parent": "Capital Account",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "S Lokanath Patra(Retal)",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": -12751
+      },
+      {
+        "name": "SLOW MOVING PDTS",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SMART BOOT HOUSE, MALKANGIRI",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "S Mouli, Amalapeta",
+        "parent": "Jk Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "S MURTI GODOWN RANT",
+        "parent": "Direct Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "S Nagraju,Katulupeta(Bandhugaon)",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "S Narasingh Rao, Kottapeta",
+        "parent": "Jk Line",
+        "ledgerGroup": "",
+        "openingBalance": -13328
+      },
+      {
+        "name": "S Narasingh Rao, Kotulupeta",
+        "parent": "Koraput",
+        "ledgerGroup": "",
+        "openingBalance": -44
+      },
+      {
+        "name": "S.N.Panda, Gunupur",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Sohan Footwear,Shankarakhol",
+        "parent": "PHULBAANI LINE",
+        "ledgerGroup": "",
+        "openingBalance": -61734
+      },
+      {
+        "name": "Somanath Mahapatra, Cheligada",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Somnath Kasi, Durgi",
+        "parent": "DURGI-KD-THERUBALI-JK LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SOM SUDIN FOOTWEAR, PHULBANI",
+        "parent": "PHULBAANI LINE",
+        "ledgerGroup": "",
+        "openingBalance": -20406
+      },
+      {
+        "name": "SONU FOOTWEAR",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 84
+      },
+      {
+        "name": "S.Padhi-Bilesu",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": -1
+      },
+      {
+        "name": "SPECIAL DISCOUNT",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Special Marketng Tada",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Sport Zone",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "S.RAMU, SIKARPAI",
+        "parent": "KALYAN SINGHPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SR AUROBINDO INTEGRAL EDUCATION CENTRE MATRUVIHAR,",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Sree Suryendra Agencies",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SRG ENTERPRISES (R K) DELHI",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SRI ADITYA METRO SHOE, PARVATHIPURAM",
+        "parent": "Parvathipuram",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Sri Chakra Kumbhar, Kasipur",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": -18225
+      },
+      {
+        "name": "Sridevi Incenctive",
+        "parent": "STAFF",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SRIDEVI, STAFF RGDA",
+        "parent": "STAFF",
+        "ledgerGroup": "",
+        "openingBalance": -500
+      },
+      {
+        "name": "SRI GANESH PADUKALAYA, PARALAKHEMUNDI",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Sri Ganesh Sport",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Sri Ganesh Sports , Rayagada",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": -9232
+      },
+      {
+        "name": "SRI GOPAL FOOTWEAR, BALIMELA",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": -55234
+      },
+      {
+        "name": "Srikant F/w,Rayagada",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SRI LAXMI GANESH FANCY STORE, K.SINGPUR",
+        "parent": "KALYAN SINGHPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SRI MAJHIGOURI FANCY, KOTTAPETA",
+        "parent": "Jk Line",
+        "ledgerGroup": "",
+        "openingBalance": -15813
+      },
+      {
+        "name": "Sri Nivas F/w, Khambhariguda",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": -13116
+      },
+      {
+        "name": "Srinivas Store (Papu),Geerango",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Srinu Engineering Works",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SRINU F/W, KHAMBARIGUDA",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Srinu Salt",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SRI RAMA RAJU ENTERPRISES, CHITRAKUNDA",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": -44451
+      },
+      {
+        "name": "SRI SAI FOOTCARE (SWASTIK)",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SRI SAI FOOTWEAR, SOMPETA",
+        "parent": "Parvathipuram",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SRI SHARVANI FOOTWEAR , VISAKHAPATNAM",
+        "parent": "Parvathipuram",
+        "ledgerGroup": "",
+        "openingBalance": -221486
+      },
+      {
+        "name": "SRI SIDHI VINAYAK MACTING CENTRE,RAYAGADA",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Sri Surya Footwear &amp; General Stores, Parvatipuram",
+        "parent": "Parvathipuram",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Sri Venktesh Kirani, Dumbliendi",
+        "parent": "DURGI-KD-THERUBALI-JK LINE",
+        "ledgerGroup": "",
+        "openingBalance": -11182
+      },
+      {
+        "name": "SRI VINAYAKA F/W, MUNIGUDA",
+        "parent": "MUNIGUDA &amp; B.CTC LINE",
+        "ledgerGroup": "",
+        "openingBalance": -27328
+      },
+      {
+        "name": "S Sahu, Rayagada",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "S.Satyanarayan, Chandrapur",
+        "parent": "MUNIGUDA &amp; B.CTC LINE",
+        "ledgerGroup": "",
+        "openingBalance": -7914
+      },
+      {
+        "name": "S S BANSAL AND COMPANY",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "S S Enterprises(Sakalabattula Santosh),Pkd",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "S.S. F/W, PADAMPUR",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": -3323
+      },
+      {
+        "name": "S S Garment, Rayagada",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "S S Palymers",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "S.SRIDHAR, SIKARPAI",
+        "parent": "KALYAN SINGHPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "STAFF INCETIVE",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Staff &amp; Retail",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": -310261
+      },
+      {
+        "name": "Staff Salary",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Staff Salary From Petty Cash",
+        "parent": "Petty Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "STAMP DUTY CHARGES",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "STAR F/W, TIKIRI",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": -489
+      },
+      {
+        "name": "STAR HEALTH INSURANCE",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Stock Insurance",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "STYLE FOOTWEAR, SARANGAGADA",
+        "parent": "PHULBAANI LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "STYLE F/W(MATHURA SAHU), PADAMPUR",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": -44650
+      },
+      {
+        "name": "SUBASH DAS, CHATIKONA",
+        "parent": "MUNIGUDA &amp; B.CTC LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SUBHANKAR MONDAL, MV-79/-",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SUDARSANA SAHU, BATHIAPADA",
+        "parent": "DURGI-KD-THERUBALI-JK LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SUDHANSU MANDAL,MV-79",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": -126886
+      },
+      {
+        "name": "Suman Nayak,Rayagada",
+        "parent": "Sundry Debtors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Sumit Kumar Choudhury, Bandhugaon",
+        "parent": "Sundry Debtors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SUNIL DRESSES",
+        "parent": "KALYAN SINGHPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SUNKARA DEVI, STAFF RGDA",
+        "parent": "STAFF",
+        "ledgerGroup": "",
+        "openingBalance": -5
+      },
+      {
+        "name": "SUNRISE SPORTS (VISWE), PKD.",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Suraj Kumar Mandal, Kundura",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Surendra Sahu(Gst), Khajuripada",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Surendra Sahu, Khajuripada",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": -8035
+      },
+      {
+        "name": "Suresh Baral, Kudumuluguma",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Suresh Choudhiry, Maligaon",
+        "parent": "Jk Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Suresh Kumar Dora Dhepaguda",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Suresh Nayak,Baipariguda",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Suresh Sadangi,Utkapadu",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Suriyam Bhuyan,Jeerango",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SURRYA KAMAL TOWERS",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Susanta  Pradhan , Staff Incetive",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Susant Kumar Sahu, Bhoiguda",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Susant Kumar Sahu, Goiguda(Kujendri)",
+        "parent": "Gunupur Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Susant Naik, Tikiri",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SUSANT PANIGRAHI,KHEDAPADA",
+        "parent": "DURGI-KD-THERUBALI-JK LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Susant Staff Rgda",
+        "parent": "STAFF",
+        "ledgerGroup": "",
+        "openingBalance": -79540
+      },
+      {
+        "name": "Sushili Footwear, Raikia",
+        "parent": "PHULBAANI LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SUSIL  BOOT HOUSE, RAIKIA",
+        "parent": "PHULBAANI LINE",
+        "ledgerGroup": "",
+        "openingBalance": -11395
+      },
+      {
+        "name": "SUSPENCE ACOUNT",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "SWASTIK FOOTCARE",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 1682291
+      },
+      {
+        "name": "Swastik F/w, Kalimela",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": -34652
+      },
+      {
+        "name": "TADELA APPA RAO, GUNUPUR",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "TALLY (INDIA) PRIVATE LIMITED",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": -33244
+      },
+      {
+        "name": "T ANAND RAO (ADITYA F/W), GUNUPUR",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": -67523
+      },
+      {
+        "name": "Tanmaya Staff",
+        "parent": "STAFF",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "T.Appa Rao Gunpur,GST",
+        "parent": "Gunupur Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "T APPA RAO, GUNUPUR",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "TARGET SCHEME FOR DEALR",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Tarun Naik, Tikiri (Ramesh)",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "T. Chandra Mouli",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": -0.31
+      },
+      {
+        "name": "TCI FRIGHT TRANSPORT",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": -330
+      },
+      {
+        "name": "TCS",
+        "parent": "Current Assets",
+        "ledgerGroup": "",
+        "openingBalance": -113924.68
+      },
+      {
+        "name": "T Dharma Rao, Gumuda",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Tea,Snacks &amp; Water Expenses",
+        "parent": "Petty Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Teja Footwear,Dombosara",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Telephone Expenses",
+        "parent": "Petty Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "TEUZ FOOTWAER INDUTRIES , BAHADURGARH",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "T.GANESH, SIKARPAI",
+        "parent": "KALYAN SINGHPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 16745
+      },
+      {
+        "name": "Tirupati Behera, Staff",
+        "parent": "STAFF",
+        "ledgerGroup": "",
+        "openingBalance": -17128
+      },
+      {
+        "name": "TIRUPATI FOOTWEAR(SWASTIK)",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 31584
+      },
+      {
+        "name": "Tirupati Insective",
+        "parent": "STAFF",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "TIRUPATI PRASAD PANIGRAHI",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Tirupati Rao, Therubali",
+        "parent": "DURGI-KD-THERUBALI-JK LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "TIRUPATI WALDER FOE SHED",
+        "parent": "SHAD",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "TOSIL NAIK, KASIPUR(TALAJHIR)",
+        "parent": "TIKIRI &amp; KASIPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Trade Discount",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Trade Tax",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "T. RAJESH, JALTAR",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Transport Charges(Services)",
+        "parent": "Current Liabilities",
+        "ledgerGroup": "",
+        "openingBalance": -1029247
+      },
+      {
+        "name": "Transport Expenses",
+        "parent": "Indirect Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Travelling Expenses",
+        "parent": "Petty Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "TRIBENI CONSTRUCTION LTD",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Trinatha Behera , Mukundpur",
+        "parent": "Gunupur Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Trinath Bommana",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Trinath Gouda,Ramgiri",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": -323
+      },
+      {
+        "name": "Tristar Software &amp; Solutions Pvt Ltd",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Truck Driver Expenses",
+        "parent": "Petty Expenses",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "T. Shankar Ready, Indranagar",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "T . SOMESWER , SIKHARPAI",
+        "parent": "KALYAN SINGHPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": -5980
+      },
+      {
+        "name": "TUKUNA GARMENT, DURGI",
+        "parent": "DURGI-KD-THERUBALI-JK LINE",
+        "ledgerGroup": "",
+        "openingBalance": -5399
+      },
+      {
+        "name": "Tuna Gouda Ramgiri",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": -6594
+      },
+      {
+        "name": "TUNA PAN SHOP, GUMUDA",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": -2149
+      },
+      {
+        "name": "TUTU FOOTWEAR, KOTAPAD",
+        "parent": "Jeypur",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "TUTU F/W, GUMUDA",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Tutu Kandagari, Jeerango",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": -13864
+      },
+      {
+        "name": "UAM FOOTWEAR PVT LTD",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "UDAY SINGH ( FLOREX)",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Uma Foot Wear,Pkd",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Uma Maheswara Collections, Jkpur",
+        "parent": "Jk Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Upendra Behera",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Usha Behera",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "VAISHNO PLASTIC, DELHI",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "VAISHNOVI AGENCY , JEYPORE",
+        "parent": "Jeypur",
+        "ledgerGroup": "",
+        "openingBalance": -264344
+      },
+      {
+        "name": "VAISHNOVI ENTERPRISES, JEYPORE",
+        "parent": "Jeypur",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "VARDHMAN PLASTICS (R.K TRAERS)",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "VEERABHADRA CLOTH AND GENERAL STORE GST",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": -34462
+      },
+      {
+        "name": "VEERABHADRA CLOTH &amp; GENERAL STORE, CHITROKUNDA",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "VENU  FOOTWEAR, SIKARPAI",
+        "parent": "KALYAN SINGHPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "VERITY SHOE MART, PARVATHIPURAM",
+        "parent": "Parvathipuram",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "VERMA JI SHOE COLLECTION, AGRA",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "V Gopinath, Bankili",
+        "parent": "Gunupur Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "VIGAN VIDHAYALAY, RAYAGADA",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Vijay Durga Footwear,Gunupur",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": -40269
+      },
+      {
+        "name": "VIJAY LAXMI LADIES CORNER, HADUBHANGI",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": -17931
+      },
+      {
+        "name": "VIKAS KIRANA, JALTAR",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Vinayak Kara",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "V KRISHNA RAO, KOTTAPTA",
+        "parent": "Jk Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "V. NARAYAN RAO FOOTWEAR, LAXMIPUR",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "VOLANT SHOES PVT LTD",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 7507
+      },
+      {
+        "name": "V. Pradeep,Kottapeta",
+        "parent": "Jk Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "V PRASAD, KOTTAPETA",
+        "parent": "Jk Line",
+        "ledgerGroup": "",
+        "openingBalance": -4857
+      },
+      {
+        "name": "V Rajesh",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "V. SARBESWER RAO, JALTAR",
+        "parent": "GUDARI &amp; GUNUPUR",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "V SATYANARAYAN, SIKARPAI",
+        "parent": "KALYAN SINGHPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "V SRINIVAS, KOTTAPETA",
+        "parent": "Jk Line",
+        "ledgerGroup": "",
+        "openingBalance": -5578
+      },
+      {
+        "name": "V.TIRUMULA, SIKARPAI",
+        "parent": "KALYAN SINGHPUR LINE",
+        "ledgerGroup": "",
+        "openingBalance": -15403
+      },
+      {
+        "name": "Watan F/w, Rayagada",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "WORKERS CLUB, RAYAGADA",
+        "parent": "Sundry Debtors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "XLENT FOOT PRINTS, PKD.",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Xpania Footcare",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 1469
+      },
+      {
+        "name": "YASH FOOTWEAR(R.K TREDERS)",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Y Laxmi",
+        "parent": "RAYAGADA LOCAL",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Y S L ENTERPRISES (BATA SHOP),PKD",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      },
+      {
+        "name": "Y.SURYA LINGAM SONS, PKD.",
+        "parent": "Parlakhimundi Line",
+        "ledgerGroup": "",
+        "openingBalance": -16696
+      },
+      {
+        "name": "Zenul Ansari, Govidapali",
+        "parent": "Balimela,Chitrokunda,Malkangiri",
+        "ledgerGroup": "",
+        "openingBalance": -19709
+      },
+      {
+        "name": "ZYF TEX PRIVATE LIMITED",
+        "parent": "Sundry Creditors",
+        "ledgerGroup": "",
+        "openingBalance": 0
+      }
+    ],
+    "groups": [
+      {
+        "name": "Branch / Divisions",
+        "parent": ""
+      },
+      {
+        "name": "Capital Account",
+        "parent": ""
+      },
+      {
+        "name": "Current Assets",
+        "parent": ""
+      },
+      {
+        "name": "Current Liabilities",
+        "parent": ""
+      },
+      {
+        "name": "Direct Expenses",
+        "parent": ""
+      },
+      {
+        "name": "Direct Incomes",
+        "parent": ""
+      },
+      {
+        "name": "Fixed Assets",
+        "parent": ""
+      },
+      {
+        "name": "Indirect Expenses",
+        "parent": ""
+      },
+      {
+        "name": "Indirect Incomes",
+        "parent": ""
+      },
+      {
+        "name": "Investments",
+        "parent": ""
+      },
+      {
+        "name": "Loans (Liability)",
+        "parent": ""
+      },
+      {
+        "name": "Misc. Expenses (ASSET)",
+        "parent": ""
+      },
+      {
+        "name": "Purchase Accounts",
+        "parent": ""
+      },
+      {
+        "name": "Sales Accounts",
+        "parent": ""
+      },
+      {
+        "name": "Suspense A/c",
+        "parent": ""
+      },
+      {
+        "name": "Bank Accounts",
+        "parent": "Current Assets"
+      },
+      {
+        "name": "Bank OD A/c",
+        "parent": "Loans (Liability)"
+      },
+      {
+        "name": "Cash-in-Hand",
+        "parent": "Current Assets"
+      },
+      {
+        "name": "Deposits (Asset)",
+        "parent": "Current Assets"
+      },
+      {
+        "name": "Duties &amp; Taxes",
+        "parent": "Current Liabilities"
+      },
+      {
+        "name": "Loans &amp; Advances (Asset)",
+        "parent": "Current Assets"
+      },
+      {
+        "name": "Provisions",
+        "parent": "Current Liabilities"
+      },
+      {
+        "name": "Reserves &amp; Surplus",
+        "parent": "Capital Account"
+      },
+      {
+        "name": "Secured Loans",
+        "parent": "Loans (Liability)"
+      },
+      {
+        "name": "Stock-in-Hand",
+        "parent": "Current Assets"
+      },
+      {
+        "name": "Sundry Creditors",
+        "parent": "Current Liabilities"
+      },
+      {
+        "name": "Sundry Debtors",
+        "parent": "Current Assets"
+      },
+      {
+        "name": "Unsecured Loans",
+        "parent": "Loans (Liability)"
+      },
+      {
+        "name": "Petty Expenses",
+        "parent": "Indirect Expenses"
+      },
+      {
+        "name": "PU-LION",
+        "parent": "Capital Account"
+      },
+      {
+        "name": "SHAD",
+        "parent": "Direct Expenses"
+      },
+      {
+        "name": "SWASTIK",
+        "parent": "Capital Account"
+      },
+      {
+        "name": "Balimela,Chitrokunda,Malkangiri",
+        "parent": "Sundry Debtors"
+      },
+      {
+        "name": "Barhampur",
+        "parent": "Sundry Debtors"
+      },
+      {
+        "name": "Bissam Cuttack",
+        "parent": "Sundry Debtors"
+      },
+      {
+        "name": "DURGI-KD-THERUBALI-JK LINE",
+        "parent": "Sundry Debtors"
+      },
+      {
+        "name": "GUDARI &amp; GUNUPUR",
+        "parent": "Sundry Debtors"
+      },
+      {
+        "name": "Gunupur Line",
+        "parent": "Sundry Debtors"
+      },
+      {
+        "name": "Jeypur",
+        "parent": "Sundry Debtors"
+      },
+      {
+        "name": "Jk Line",
+        "parent": "Sundry Debtors"
+      },
+      {
+        "name": "KALYAN SINGHPUR LINE",
+        "parent": "Sundry Debtors"
+      },
+      {
+        "name": "Kashipur Line",
+        "parent": "Sundry Debtors"
+      },
+      {
+        "name": "Koraput",
+        "parent": "Sundry Debtors"
+      },
+      {
+        "name": "Kotpeta Line",
+        "parent": "Sundry Debtors"
+      },
+      {
+        "name": "MUNIGUDA &amp; B.CTC LINE",
+        "parent": "Sundry Debtors"
+      },
+      {
+        "name": "Parlakhimundi Line",
+        "parent": "Sundry Debtors"
+      },
+      {
+        "name": "Parvathipuram",
+        "parent": "Sundry Debtors"
+      },
+      {
+        "name": "PHULBAANI LINE",
+        "parent": "Sundry Debtors"
+      },
+      {
+        "name": "RAYAGADA LOCAL",
+        "parent": "Sundry Debtors"
+      },
+      {
+        "name": "Srikakulam Line",
+        "parent": "Sundry Debtors"
+      },
+      {
+        "name": "STAFF",
+        "parent": "Sundry Debtors"
+      },
+      {
+        "name": "TIKIRI &amp; KASIPUR LINE",
+        "parent": "Sundry Debtors"
+      },
+      {
+        "name": "Basa",
+        "parent": "RAYAGADA LOCAL"
+      },
+      {
+        "name": "Biswanath Behera",
+        "parent": "RAYAGADA LOCAL"
+      },
+      {
+        "name": "Bombay",
+        "parent": "RAYAGADA LOCAL"
+      },
+      {
+        "name": "City Elina",
+        "parent": "RAYAGADA LOCAL"
+      },
+      {
+        "name": "Dambru",
+        "parent": "RAYAGADA LOCAL"
+      },
+      {
+        "name": "Dhanunjaya Behera",
+        "parent": "RAYAGADA LOCAL"
+      },
+      {
+        "name": "Fashion F/w",
+        "parent": "RAYAGADA LOCAL"
+      },
+      {
+        "name": "Gandhi Behera",
+        "parent": "RAYAGADA LOCAL"
+      },
+      {
+        "name": "Ganesh Sports",
+        "parent": "RAYAGADA LOCAL"
+      },
+      {
+        "name": "Gopal Patro",
+        "parent": "RAYAGADA LOCAL"
+      },
+      {
+        "name": "Kodanda Behera",
+        "parent": "RAYAGADA LOCAL"
+      },
+      {
+        "name": "LAXMIKANTA BEHERA, RAYAGADA",
+        "parent": "RAYAGADA LOCAL"
+      },
+      {
+        "name": "Muna",
+        "parent": "RAYAGADA LOCAL"
+      },
+      {
+        "name": "Om Sai F/w",
+        "parent": "RAYAGADA LOCAL"
+      }
+    ]
+  }
+}
