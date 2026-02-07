@@ -1,0 +1,22 @@
+
+=== BIZSTASH SYNC ENGINE 3.0 ===
+[2026-02-05 05:56:12] [INFO] Target Company: Admin_Test_PC
+[2026-02-05 05:56:12] [INFO] Checking Tally Connection...
+[2026-02-05 06:01:13] [WARN] Tally Request failed (Attempt 1/3). Retrying in 1000ms... Error: timeout of 300000ms exceeded
+[2026-02-05 06:06:14] [WARN] Tally Request failed (Attempt 2/3). Retrying in 2000ms... Error: timeout of 300000ms exceeded
+[2026-02-05 06:11:17] [ERROR] Tally Request failed after 3 attempts.
+[2026-02-05 06:11:17] [ERROR] Sync Fatal Error
+[stacktrace] AxiosError: timeout of 300000ms exceeded
+    at RedirectableRequest.handleRequestTimeout (C:\Projects\Bizstash\node_modules\axios\dist\node\axios.cjs:3552:15)
+    at RedirectableRequest.emit (node:events:508:28)
+    at Timeout._onTimeout (C:\Projects\Bizstash\node_modules\follow-redirects\index.js:221:12)
+    at listOnTimeout (node:internal/timers:605:17)
+    at process.processTimers (node:internal/timers:541:7)
+    at Axios.request (C:\Projects\Bizstash\node_modules\axios\dist\node\axios.cjs:4731:41)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async TallyConnection._executeRequest (C:\Projects\Bizstash\sync\TallyConnection.js:41:30)
+    at async RetryHelper.withRetry (C:\Projects\Bizstash\sync\utils\RetryHelper.js:8:24)
+    at async TallyConnection.send (C:\Projects\Bizstash\sync\TallyConnection.js:20:24)
+    at async DataFetcher.checkConnection (C:\Projects\Bizstash\sync\DataFetcher.js:35:26)
+    at async SyncEngine.run (C:\Projects\Bizstash\sync\SyncEngine.js:26:34)
+    at async main (C:\Projects\Bizstash\sync\index.js:27:21)

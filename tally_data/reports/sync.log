@@ -1,0 +1,89 @@
+[12:53:44 pm] INFO: Config validated:
+[12:53:44 pm] INFO:   • Tally URL: http://localhost:9000
+[12:53:44 pm] INFO:   • Masters output: C:\Projects\Bizstash\tally_data\xml\masters
+[12:53:44 pm] INFO:   • Vouchers output: C:\Projects\Bizstash\tally_data\xml\vouchers
+[12:53:44 pm] INFO:   • Batch delay: 2.5s
+[12:53:44 pm] INFO:   • Retry attempts: 3
+[12:53:44 pm] INFO: 
+[12:53:44 pm] INFO: Executing Phase 1...
+[12:53:44 pm] INFO: 
+[12:53:44 pm] INFO: ╔════════════════════════════════════════════╗
+[12:53:44 pm] INFO: ║         BIZSTASH DATA SYNC - PHASE 1       ║
+[12:53:44 pm] INFO: ║              FETCH FROM TALLY              ║
+[12:53:44 pm] INFO: ╚════════════════════════════════════════════╝
+[12:53:44 pm] INFO: Company: SBE_Rayagada
+[12:53:44 pm] INFO: Tally URL: http://localhost:9000
+[12:53:44 pm] INFO: Output: C:\Projects\Bizstash\tally_data
+[12:53:44 pm] INFO: 
+[12:53:44 pm] DEBUG: Starting: phase1_total
+[12:53:44 pm] INFO: Step 1/3: Testing Tally connection...
+[12:53:44 pm] INFO: Testing Tally connection...
+[12:53:44 pm] DEBUG: [Attempt 1/3] Connection Test...
+[12:53:44 pm] DEBUG: ✓ Connection Test success
+[12:53:44 pm] INFO: ✓ Tally is reachable and responding
+[12:53:44 pm] INFO: 
+[12:53:44 pm] ERROR: ╔════════════════════════════════════════════╗
+[12:53:44 pm] ERROR: ║         PHASE 1 FAILED - STOPPING          ║
+[12:53:44 pm] ERROR: ╚════════════════════════════════════════════╝
+[12:53:44 pm] ERROR: Error: Tally connection failed: undefined
+[12:53:44 pm] DEBUG: Metric: phase1_total_duration = 50
+[12:53:44 pm] SUCCESS: ✓ phase1_total completed in 0.05s
+[12:53:44 pm] SUCCESS: Report saved to C:\Projects\Bizstash\tally_data\.sync_report_1770449024434.json
+[12:53:44 pm] INFO: 
+[12:53:44 pm] INFO: Report saved to: undefined
+[12:53:44 pm] ERROR: 
+[12:53:44 pm] ERROR: ✗ TESTS FAILED
+[12:53:44 pm] ERROR: Error: Tally connection failed: undefined
+[12:54:06 pm] INFO: Config validated:
+[12:54:06 pm] INFO:   • Tally URL: http://localhost:9000
+[12:54:06 pm] INFO:   • Masters output: C:\Projects\Bizstash\tally_data\xml\masters
+[12:54:06 pm] INFO:   • Vouchers output: C:\Projects\Bizstash\tally_data\xml\vouchers
+[12:54:06 pm] INFO:   • Batch delay: 2.5s
+[12:54:06 pm] INFO:   • Retry attempts: 3
+[12:54:06 pm] INFO: 
+[12:54:06 pm] INFO: Executing Phase 1...
+[12:54:06 pm] INFO: 
+[12:54:06 pm] INFO: ╔════════════════════════════════════════════╗
+[12:54:06 pm] INFO: ║         BIZSTASH DATA SYNC - PHASE 1       ║
+[12:54:06 pm] INFO: ║              FETCH FROM TALLY              ║
+[12:54:06 pm] INFO: ╚════════════════════════════════════════════╝
+[12:54:06 pm] INFO: Company: SBE_Rayagada
+[12:54:06 pm] INFO: Tally URL: http://localhost:9000
+[12:54:06 pm] INFO: Output: C:\Projects\Bizstash\tally_data
+[12:54:06 pm] INFO: 
+[12:54:06 pm] DEBUG: Starting: phase1_total
+[12:54:06 pm] INFO: Step 1/3: Testing Tally connection...
+[12:54:06 pm] INFO: Testing Tally connection...
+[12:54:06 pm] DEBUG: [Attempt 1/3] Connection Test...
+[12:54:06 pm] DEBUG: ✓ Connection Test success
+[12:54:06 pm] SUCCESS: ✓ Tally is reachable and responding (47ms)
+[12:54:06 pm] SUCCESS: ✓ Tally connection OK (47ms)
+[12:54:06 pm] INFO: 
+[12:54:06 pm] INFO: Step 2/3: Fetching masters...
+[12:54:06 pm] INFO: ═══════════════════════════════════════════
+[12:54:06 pm] INFO: PHASE 1: FETCH MASTERS
+[12:54:06 pm] INFO: ═══════════════════════════════════════════
+[12:54:06 pm] DEBUG: Starting: fetchMasters
+[12:54:06 pm] INFO: Fetching all masters from Tally...
+[12:54:06 pm] DEBUG: [Attempt 1/3] Masters Fetch...
+[12:54:08 pm] INFO: Config validated:
+[12:54:08 pm] INFO:   • Tally URL: http://localhost:9000
+[12:54:08 pm] INFO:   • Masters output: C:\Projects\Bizstash\tally_data\xml\masters
+[12:54:08 pm] INFO:   • Vouchers output: C:\Projects\Bizstash\tally_data\xml\vouchers
+[12:54:08 pm] INFO:   • Batch delay: 2.5s
+[12:54:08 pm] INFO:   • Retry attempts: 3
+[12:54:08 pm] INFO: 
+[12:54:08 pm] INFO: Executing Phase 1...
+[12:54:08 pm] INFO: 
+[12:54:08 pm] INFO: ╔════════════════════════════════════════════╗
+[12:54:08 pm] INFO: ║         BIZSTASH DATA SYNC - PHASE 1       ║
+[12:54:08 pm] INFO: ║              FETCH FROM TALLY              ║
+[12:54:08 pm] INFO: ╚════════════════════════════════════════════╝
+[12:54:08 pm] INFO: Company: SBE_Rayagada
+[12:54:08 pm] INFO: Tally URL: http://localhost:9000
+[12:54:08 pm] INFO: Output: C:\Projects\Bizstash\tally_data
+[12:54:08 pm] INFO: 
+[12:54:08 pm] DEBUG: Starting: phase1_total
+[12:54:08 pm] INFO: Step 1/3: Testing Tally connection...
+[12:54:08 pm] INFO: Testing Tally connection...
+[12:54:08 pm] DEBUG: [Attempt 1/3] Connection Test...

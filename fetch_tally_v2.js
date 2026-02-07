@@ -17,7 +17,8 @@ async function fetchFromTally(tdl) {
                 'Content-Type': 'text/xml',
                 'Connection': 'close' // Force close connection like curl
             },
-            httpAgent: agent
+            httpAgent: agent,
+            timeout: 10000 // 10s timeout to prevent hanging
         });
         return response.data;
     } catch (error) {
@@ -93,6 +94,7 @@ async function fetchCompanyRange() {
 
         if (!companyBlockMatch) {
             console.warn("No <COMPANY> block found in response.");
+            console.warn("DEBUG RAW DATA (First 500 chars):", data.substring(0, 500)); // Added Debug
             if (data.includes('<VOUCHER>')) console.warn("Received VOUCHER data instead of COMPANY data!");
             throw new Error("Invalid Tally Response: No Company Data");
         }
@@ -105,6 +107,10 @@ async function fetchCompanyRange() {
         const endMatch = companyData.match(/<LASTVOUCHERDATE[^>]*>([^<]+)<\/LASTVOUCHERDATE>/i);
 
         let companyNameDetected = nameMatch ? nameMatch[1] : "Unknown";
+
+        if (companyNameDetected === "Unknown") {
+            console.warn("DEBUG: Company Name Unknown. Raw Block:", companyData);
+        }
         let startStr = startMatch ? startMatch[1] : "20240401"; // Default if missing
         let endStr = endMatch ? endMatch[1] : format(new Date(), 'yyyyMMdd'); // Default to today
 
@@ -253,7 +259,7 @@ async function fetchVouchers(dirs) {
                         <STATICVARIABLES>
                             <SVEXPORTFORMAT>$$SysName:XML</SVEXPORTFORMAT>
                             <SVFROMDATE>${fromDateStr}</SVFROMDATE>
-                            <SVTODATE>${toStr}</SVTODATE>
+                            <SVTODATE>${toDateStr}</SVTODATE>
                         </STATICVARIABLES>
                     </REQUESTDESC>
                 </EXPORTDATA>
