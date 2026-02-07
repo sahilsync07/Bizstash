@@ -1,0 +1,24 @@
+{
+  "company": "SBE_Rayagada",
+  "status": "FAILED",
+  "startTime": "2026-02-07T07:38:32.048Z",
+  "endTime": "2026-02-07T07:40:11.477Z",
+  "duration": "1m 39s",
+  "totalOperations": 64,
+  "errors": 6,
+  "warnings": 0,
+  "metrics": {
+    "mastersTime": 0,
+    "statisticsTime": 0,
+    "vouchersFetched": 0,
+    "vouchersProcessed": 0,
+    "totalTime": 0,
+    "masters_ledgers": 1071,
+    "masters_groups": 66,
+    "masters_size_kb": 145348,
+    "fetchMasters_duration": 99307,
+    "fetchVouchers_duration": 30,
+    "phase1_total_duration": 99399
+  },
+  "qualityScore": "91%"
+}

@@ -17,7 +17,8 @@ const { fetchFromTally, sleep } = require('./tally-connector');
 const progressTracker = require('./progress-tracker');
 
 /**
- * Get company financial year range from Tally
+ * Get company financial year range from Masters file
+ * Extracts min/max dates from ledger records
  * @returns {Promise<{fromDate, toDate}>}
  */
 async function detectCompanyDateRange() {
@@ -26,35 +27,37 @@ async function detectCompanyDateRange() {
   progressTracker.startTimer('detectDateRange');
 
   try {
-    const tdl = `
-    <ENVELOPE>
-        <HEADER>
-            <TALLYREQUEST>Export Data</TALLYREQUEST>
-        </HEADER>
-        <BODY>
-            <EXPORTDATA>
-                <REQUESTDESC>
-                    <REPORTNAME>Statistics</REPORTNAME>
-                    <STATICVARIABLES>
-                        <SVEXPORTFORMAT>$$SysName:XML</SVEXPORTFORMAT>
-                    </STATICVARIABLES>
-                </REQUESTDESC>
-            </EXPORTDATA>
-        </BODY>
-    </ENVELOPE>`;
-
-    const response = await fetchFromTally(tdl, 'Statistics Fetch');
-
-    // Extract from/to dates
-    const fromMatch = response.match(/<STATISTICSFROMDATE>(\d{4}-\d{2}-\d{2})</);
-    const toMatch = response.match(/<STATISTICSTODATE>(\d{4}-\d{2}-\d{2})</);
-
-    if (!fromMatch || !toMatch) {
-      throw new Error('Could not extract financial year dates from Tally');
+    const mastersPath = path.join(config.MASTERS_DIR, 'masters.xml');
+    
+    if (!fs.existsSync(mastersPath)) {
+      throw new Error('Masters file not found - run fetch-masters first');
     }
 
-    const fromDate = fromMatch[1];
-    const toDate = toMatch[1];
+    const mastersData = fs.readFileSync(mastersPath, 'utf8');
+
+    // Extract all CREATEDDATE values from ledger records
+    const dateMatches = mastersData.match(/<CREATEDDATE>(\d{8})<\/CREATEDDATE>/g);
+    
+    if (!dateMatches || dateMatches.length === 0) {
+      // Fallback: use a standard financial year (Apr - Mar)
+      const now = new Date();
+      const year = now.getMonth() < 3 ? now.getFullYear() - 1 : now.getFullYear();
+      const fromDate = `${year}-04-01`;
+      const toDate = `${year + 1}-03-31`;
+      
+      progressTracker.log(`✓ Financial year (fallback): ${fromDate} to ${toDate}`, 'success');
+      progressTracker.endTimer('detectDateRange');
+      return { fromDate, toDate };
+    }
+
+    // Convert YYYYMMDD to YYYY-MM-DD and find min/max
+    const dates = dateMatches
+      .map(m => m.match(/\d{8}/)[0])
+      .map(d => `${d.substring(0, 4)}-${d.substring(4, 6)}-${d.substring(6, 8)}`)
+      .sort();
+
+    const fromDate = dates[0];
+    const toDate = dates[dates.length - 1];
 
     progressTracker.log(`✓ Financial year: ${fromDate} to ${toDate}`, 'success');
     progressTracker.endTimer('detectDateRange');

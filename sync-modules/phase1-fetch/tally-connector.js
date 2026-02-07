@@ -36,13 +36,14 @@ async function fetchFromTally(tdlXml, operationName = 'Tally Request') {
 
       const response = await axios.post(config.TALLY_URL, tdlXml, {
         headers: {
-          'Content-Type': 'text/xml',
-          'Connection': 'close'  // Force connection close
+          'Content-Type': 'text/xml'
+          // Removed 'Connection': 'close' - let axios handle it naturally
         },
         httpAgent,
         httpsAgent,
         timeout: config.REQUEST_TIMEOUT,
-        validateStatus: null  // Don't throw on any status code
+        maxContentLength: Infinity,  // Allow large responses (27+ MB)
+        validateStatus: () => true  // Accept any status code
       });
 
       // Validate response
@@ -50,19 +51,23 @@ async function fetchFromTally(tdlXml, operationName = 'Tally Request') {
         throw new Error('Empty response from Tally');
       }
 
-      if (response.status !== 200) {
+      // Check status - Tally usually returns 200 but also accept other codes for XML responses
+      if (response.status < 200 || response.status >= 400) {
         throw new Error(`HTTP ${response.status}: ${response.statusText}`);
       }
 
-      // Check for Tally errors in response
-      if (response.data.includes('<ERROR') || response.data.includes('error')) {
-        const errorMatch = response.data.match(/<ERROR[^>]*>([^<]+)<\/ERROR>/i);
+      // Convert response.data to string if needed
+      const responseStr = typeof response.data === 'string' ? response.data : JSON.stringify(response.data);
+
+      // Check for Tally errors in response (but allow partial errors in data export)
+      if (responseStr.includes('<ERROR') && !responseStr.includes('<STATISTICS>')) {
+        const errorMatch = responseStr.match(/<ERROR[^>]*>([^<]+)<\/ERROR>/i);
         const errorMsg = errorMatch ? errorMatch[1] : 'Unknown Tally error';
         throw new Error(`Tally Error: ${errorMsg}`);
       }
 
       progressTracker.log(`✓ ${operationName} success`, 'debug');
-      return response.data;
+      return responseStr;
 
     } catch (error) {
       lastError = error;

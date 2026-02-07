@@ -42,11 +42,11 @@ CONFIG.REPORTS_DIR = path.resolve(CONFIG.DATA_DIR, 'reports');
 CONFIG.LOG_FILE = path.resolve(CONFIG.REPORTS_DIR, 'sync.log');
 
 // Progressive fetch settings (CRITICAL for Tally stability)
-CONFIG.BATCH_DELAY = 2.5; // seconds between monthly batch requests
-CONFIG.REQUEST_TIMEOUT = 30000; // 30 seconds per Tally API call
-CONFIG.RETRY_ATTEMPTS = 3;
-CONFIG.RETRY_DELAY = 2; // initial retry delay in seconds
-CONFIG.RETRY_BACKOFF = 1.5; // exponential backoff multiplier
+CONFIG.BATCH_DELAY = 3.0; // seconds between monthly batch requests (increased for safety)
+CONFIG.REQUEST_TIMEOUT = 180000; // 180 seconds (3 minutes) - large exports take time
+CONFIG.RETRY_ATTEMPTS = 2; // Reduce from 3 to 2 (be more conservative)
+CONFIG.RETRY_DELAY = 10; // initial retry delay in seconds (longer wait before retry)
+CONFIG.RETRY_BACKOFF = 2.0; // exponential backoff multiplier (10s -> 20s)
 
 // Connection pooling (set to false to prevent Tally overload)
 CONFIG.HTTP_AGENT_KEEP_ALIVE = false;
