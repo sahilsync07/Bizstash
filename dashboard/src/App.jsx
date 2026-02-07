@@ -7,9 +7,10 @@ import {
   LayoutDashboard, TrendingUp, Users, Package, FileText,
   ArrowUpRight, ArrowDownRight, Search, Calendar, Menu, X,
   ChevronRight, Wallet, CreditCard, DollarSign, Activity, Zap, MessageSquare, PieChart as PieIcon,
-  MapPin, BookOpen, LogOut, User, Settings, Filter, Download, RefreshCw
+  MapPin, BookOpen, LogOut, User, Settings, Filter, Download, RefreshCw, Receipt
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import BillsBrowser from './components/BillsBrowser';
 
 // --- Constants & Config ---
 const COLORS = ['#D9F575', '#C5C0F2', '#A3E635', '#FFA5A5', '#818CF8', '#F472B6'];
@@ -39,6 +40,7 @@ const MENU_ITEMS = [
   { id: 'sales', label: 'Sales Metrics', icon: PieIcon },
   { id: 'debtors', label: 'Parties', icon: Users },
   { id: 'stocks', label: 'Inventory', icon: Package },
+  { id: 'bills', label: 'Bills & Vouchers', icon: Receipt },
   { id: 'overdues', label: 'Overdues', icon: FileText, alert: true },
   { id: 'linemen', label: 'Lineman View', icon: MapPin },
   { id: 'ledger', label: 'Ledger Book', icon: BookOpen },
@@ -197,6 +199,7 @@ export default function App() {
                 {activeTab === 'debtors' && <PartyAnalytics data={data.debtors} type="Debtors" color="orange" onDrillDown={handleDrillDown} />}
                 {activeTab === 'creditors' && <PartyAnalytics data={data.creditors} type="Creditors" color="rose" onDrillDown={handleDrillDown} />}
                 {activeTab === 'stocks' && <InventoryAnalytics data={data.stocks} />}
+                {activeTab === 'bills' && <BillsBrowser />}
                 {activeTab === 'linemen' && <LinemanView data={data} initialLineman={targetLineman} onDrillDown={handleDrillDown} />}
                 {activeTab === 'overdues' && <OverdueTable data={data.creditors} />}
                 {activeTab === 'ledger' && <LedgerView data={data} initialLedger={targetLedger} />}
