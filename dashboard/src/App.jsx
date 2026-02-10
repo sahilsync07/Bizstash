@@ -490,7 +490,7 @@ function SummaryDashboard({ data, onDrillDown }) {
               <span className="flex items-center text-xs font-bold text-flux-black bg-flux-purple/20 px-3 py-1.5 rounded-full"><div className="w-2 h-2 rounded-full bg-flux-purple mr-2" /> Purchase</span>
             </div>
           </div>
-          <div className="relative h-[300px] w-full overflow-hidden" style={{ minWidth: 0 }}>
+          <div className="relative min-h-[300px] h-[300px] w-full overflow-hidden" style={{ minWidth: 0 }}>
             <ResponsiveContainer width="100%" height="100%">
               <AreaChart data={chartData} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
                 <defs>
@@ -519,7 +519,7 @@ function SummaryDashboard({ data, onDrillDown }) {
           <div className="absolute top-0 right-0 w-32 h-32 bg-flux-purple/20 rounded-full blur-3xl -mr-10 -mt-10"></div>
           <h3 className="text-xl font-bold mb-1 relative z-10">Liability Ratio</h3>
           <p className="text-sm text-gray-400 mb-8 relative z-10">Receivables vs Payables</p>
-          <div className="relative h-[250px] w-full overflow-hidden z-10 mt-auto" style={{ minWidth: 0 }}>
+          <div className="relative min-h-[250px] h-[250px] w-full overflow-hidden z-10 mt-auto" style={{ minWidth: 0 }}>
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
                 <Pie data={pieData} cx="50%" cy="50%" innerRadius={60} outerRadius={80} paddingAngle={5} dataKey="value" stroke="none">

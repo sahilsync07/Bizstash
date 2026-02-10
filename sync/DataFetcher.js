@@ -58,7 +58,6 @@ class DataFetcher {
             // Parse LastVoucherDate
             const lastMatch = statsXml.match(/<LASTVOUCHERDATE[^>]*>([^<]+)<\/LASTVOUCHERDATE>/i);
             if (lastMatch) info.lastVoucherDate = lastMatch[1];
-
         } catch (e) {
             info.tallyOnline = false;
         }

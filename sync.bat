@@ -1,34 +1,33 @@
 @echo off
-title BIZSTASH SYNC ENGINE V5
+title BIZSTASH AUTO-SYNC
 cd /d "%~dp0"
 
 echo.
 echo ==========================================
-echo   BIZSTASH SYNC V5 (Admin_Test_PC)
+echo       BIZSTASH AUTO-SYNC ENGINE
 echo ==========================================
 echo.
 
-:: Pull latest code
+:: Pul latest code (optional but recommended for central repo)
 echo [1/3] Pulling latest code...
 git pull origin main
 
-:: Run sync engine
-echo [2/3] Syncing with Tally...
-node sync/index.js "Admin_Test_PC"
+:: Run the auto-detect sync script
+echo [2/3] Detecting Company and Syncing...
+node sync/auto_sync.js
 
 if %ERRORLEVEL% NEQ 0 (
     echo.
-    echo ❌ SYNC FAILED with Code %ERRORLEVEL%
-    color c0
+    echo ❌ SYNC FAILED
+    echo Please ensure Tally is open and the correct company is active.
     pause
-    color 07
     exit /b 1
 )
 
 :: Push to GitHub
 echo [3/3] Uploading to Bizstash Cloud...
 git add .
-git commit -m "Data Sync: %date% %time%"
+git commit -m "Auto-Sync: %date% %time%"
 git push origin main
 
 echo.
@@ -36,4 +35,3 @@ echo ==========================================
 echo      SYNC COMPLETE - DASHBOARD UPDATED
 echo ==========================================
 pause
-color 07

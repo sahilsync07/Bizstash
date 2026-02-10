@@ -23,6 +23,11 @@ const CONFIG = {
         'Admin_Test_PC': 'DEFAULT'
     },
 
+    // Dynamic Company Mapping (Optional: specific overrides can go here)
+    TALLY_COMPANY_MAP: {
+        // 'FOLDER_ID': 'TALLY_NAME_SUBSTRING',
+    },
+
     // Sync Settings
     SETTINGS: {
         REQUEST_TIMEOUT: 120000,  // 120 seconds - single 52MB fetch needs time
