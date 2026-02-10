@@ -104,23 +104,8 @@ class DataFetcher {
 
         const vouchersFile = path.join(this.vouchersDir, 'vouchers.xml');
 
-        // Smart skip: if vouchers.xml is fresh (< 1 hour), skip
-        try {
-            if (fs.existsSync(vouchersFile)) {
-                const stats = await fs.stat(vouchersFile);
-                const ageMinutes = (new Date() - stats.mtime) / (1000 * 60);
-                const sizeMB = (stats.size / 1024 / 1024).toFixed(1);
-
-                if (ageMinutes < 60 && stats.size > 1024 * 1024) {
-                    Logger.success(`Data is fresh (${sizeMB} MB, ${Math.round(ageMinutes)} min ago). Skipping fetch.`);
-
-                    // Update state
-                    const state = { lastSync: new Date().toISOString() };
-                    await fs.writeJson(this.stateFile, state);
-                    return;
-                }
-            }
-        } catch (e) { }
+        // Smart skip REMOVED by user request. Always fetch fresh data.
+        Logger.info('Force Fetching all vouchers to capture any modifications...');
 
         // Fetch ALL vouchers in one request
         Logger.info('Fetching ALL vouchers from Tally (single request)...');
