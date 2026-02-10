@@ -43,20 +43,34 @@ class DataFetcher {
             const statsXml = await TallyConnection.send(TdlBuilder.getCompanyStats());
             info.tallyOnline = true;
 
-            // Parse company name
-            const nameMatch = statsXml.match(/<NAME[^>]*>([^<]+)<\/NAME>/i);
+            // If multiple companies are open, find the one that matches <CURRENTCOMPANY>
+            const companyBlocks = statsXml.match(/<COMPANY[^>]*>[\s\S]*?<\/COMPANY>/g) || [];
+            let activeBlock = companyBlocks[0] || statsXml;
+
+            const globalCurrentMatch = statsXml.match(/<CURRENTCOMPANY[^>]*>([^<]+)<\/CURRENTCOMPANY>/i);
+            if (globalCurrentMatch) {
+                const targetName = globalCurrentMatch[1].trim().toUpperCase();
+                const found = companyBlocks.find(block => {
+                    const nameMatch = block.match(/<NAME[^>]*>([^<]+)<\/NAME>/i);
+                    return nameMatch && nameMatch[1].trim().toUpperCase() === targetName;
+                });
+                if (found) activeBlock = found;
+            }
+
+            // Parse company name from active block
+            const nameMatch = activeBlock.match(/<NAME[^>]*>([^<]+)<\/NAME>/i);
             if (nameMatch) info.companyName = nameMatch[1];
 
             // Parse StartingFrom
-            const startMatch = statsXml.match(/<STARTINGFROM[^>]*>([^<]+)<\/STARTINGFROM>/i);
+            const startMatch = activeBlock.match(/<STARTINGFROM[^>]*>([^<]+)<\/STARTINGFROM>/i);
             if (startMatch) info.startingFrom = startMatch[1];
 
             // Parse BooksFrom
-            const booksMatch = statsXml.match(/<BOOKSFROM[^>]*>([^<]+)<\/BOOKSFROM>/i);
+            const booksMatch = activeBlock.match(/<BOOKSFROM[^>]*>([^<]+)<\/BOOKSFROM>/i);
             if (booksMatch && !info.startingFrom) info.startingFrom = booksMatch[1];
 
             // Parse LastVoucherDate
-            const lastMatch = statsXml.match(/<LASTVOUCHERDATE[^>]*>([^<]+)<\/LASTVOUCHERDATE>/i);
+            const lastMatch = activeBlock.match(/<LASTVOUCHERDATE[^>]*>([^<]+)<\/LASTVOUCHERDATE>/i);
             if (lastMatch) info.lastVoucherDate = lastMatch[1];
         } catch (e) {
             info.tallyOnline = false;

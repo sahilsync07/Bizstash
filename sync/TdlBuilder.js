@@ -51,6 +51,7 @@ class TdlBuilder {
                             <COLLECTION NAME="CompanyStatsForSync">
                                 <TYPE>Company</TYPE>
                                 <FETCH>Name, StartingFrom, BooksFrom, LastVoucherDate, MobileNo</FETCH>
+                                <COMPUTE>CurrentCompany : ##SVCurrentCompany</COMPUTE>
                             </COLLECTION>
                         </TDLMESSAGE>
                     </TDL>
