@@ -568,3 +568,27 @@
 [2026-02-10 19:40:05] [SUCCESS] Data Processing Complete.
 
 === SYNC COMPLETE ✅ ===
+
+=== BIZSTASH SYNC ENGINE 5.0 ===
+[2026-02-10 19:50:14] [INFO] Data Directory: C:\Projects\Bizstash\tally_data\xml\SBEM_Malkangiri
+
+=== PRE-SYNC DASHBOARD ===
+[2026-02-10 19:50:16] [INFO] Fetching Masters (Groups & Ledgers)...
+[2026-02-10 19:50:17] [SUCCESS] Fetched Masters successfully.
+
+=== PHASE 1: FETCH DATA ===
+[2026-02-10 19:50:17] [INFO] Force Fetching all vouchers to capture any modifications...
+[2026-02-10 19:50:17] [INFO] Fetching ALL vouchers from Tally (single request)...
+[2026-02-10 19:50:17] [SUCCESS] Fetched 1.3 MB in 0.7s → vouchers.xml
+
+=== PHASE 2: PROCESS ===
+[2026-02-10 19:50:17] [INFO] Processing data for SBEM_Malkangiri...
+[2026-02-10 19:50:17] [INFO] Parsed 46 Ledgers, 29 Groups.
+[2026-02-10 19:50:17] [INFO] Parsing vouchers.xml...
+[2026-02-10 19:50:17] [INFO] Loaded 1.3 MB. Parsing XML...
+[2026-02-10 19:50:17] [INFO] Parsed 172 vouchers in 0.1s.
+[2026-02-10 19:50:17] [INFO] Analysis: 172 transactions, 17 debtors, 11 creditors, 162 stock items.
+[2026-02-10 19:50:17] [SUCCESS] Data saved to C:\Projects\Bizstash\dashboard\public\data\SBEM_Malkangiri\data.json
+[2026-02-10 19:50:17] [SUCCESS] Data Processing Complete.
+
+=== SYNC COMPLETE ✅ ===
