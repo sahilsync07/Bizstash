@@ -542,3 +542,41 @@
 === SYNC COMPLETE ✅ ===
 [2026-02-10 21:30:08] [SUCCESS] Registered company: M/S SHREE FOOTWEAR(2024-25) (SHREE_FOOTWEAR)
 [2026-02-10 21:30:08] [SUCCESS] Auto-Sync Complete.
+[2026-02-10 21:33:28] [WARN] Tally Request failed (Attempt 1/3). Retrying in 1000ms... Error: Tally returned TDL Error: Could not find Report &apos;ActiveCompanyReport&apos;!
+[2026-02-10 21:33:29] [WARN] Tally Request failed (Attempt 2/3). Retrying in 2000ms... Error: Tally returned TDL Error: Could not find Report &apos;ActiveCompanyReport&apos;!
+[2026-02-10 21:33:31] [ERROR] Tally Request failed after 3 attempts.
+
+=== BIZSTASH DYNAMIC AUTO-SYNC ===
+[2026-02-10 21:39:14] [INFO] Detected Tally Company: "M/S SRI BRUNDABAN ENTERPRISES, MALKANGIRI"
+[2026-02-10 21:39:14] [INFO] Generated Dynamic ID: SRI_BRUNDABAN_ENTERPRISES_MALKANGIRI
+[2026-02-10 21:39:14] [SUCCESS] Ready to sync to project: SRI_BRUNDABAN_ENTERPRISES_MALKANGIRI
+
+=== BIZSTASH SYNC ENGINE 5.0 ===
+[2026-02-10 21:39:14] [INFO] Data Directory: C:\Projects\Bizstash\tally_data\xml\SRI_BRUNDABAN_ENTERPRISES_MALKANGIRI
+
+=== PRE-SYNC DASHBOARD ===
+[2026-02-10 21:39:15] [INFO] Fetching Masters (Groups & Ledgers)...
+[2026-02-10 21:39:16] [SUCCESS] Fetched Masters successfully.
+[2026-02-10 21:39:16] [INFO] Fetching Profit & Loss Report...
+[2026-02-10 21:39:17] [SUCCESS] Fetched Profit & Loss successfully.
+
+=== PHASE 1: FETCH DATA ===
+[2026-02-10 21:39:17] [INFO] Force Fetching all vouchers to capture any modifications...
+[2026-02-10 21:39:17] [INFO] Fetching ALL vouchers from Tally (single request)...
+[2026-02-10 21:39:17] [SUCCESS] Fetched 1.3 MB in 0.8s → vouchers.xml
+
+=== PHASE 2: PROCESS ===
+[2026-02-10 21:39:17] [INFO] Processing data for SRI_BRUNDABAN_ENTERPRISES_MALKANGIRI...
+[2026-02-10 21:39:17] [INFO] Parsed 46 Ledgers, 29 Groups.
+[2026-02-10 21:39:17] [INFO] Parsing vouchers.xml...
+[2026-02-10 21:39:17] [INFO] Loaded 1.3 MB. Parsing XML...
+[2026-02-10 21:39:18] [INFO] Parsed 172 vouchers in 0.1s.
+[2026-02-10 21:39:18] [INFO] DEBUG: Voucher keys: $, DATE, GUID, REQUESTORRULE, VOUCHERTYPENAME, PARTYLEDGERNAME, VOUCHERNUMBER, REFERENCE, SERIALMASTER, ARESERIALMASTER, NUMBERINGSTYLE, PERSISTEDVIEW, ISDELETED, ASORIGINAL, ISDEEMEDPOSITIVE, ISINVOICE, ASPAYSLIP, ISDELETEDVCHRETAINED, ISNEGISPOSSET, MASTERID, VOUCHERKEY, VOUCHERRETAINKEY, REUSEHOLEID, AMOUNT, VOUCHERNUMBERSERIES, ALLINVENTORYENTRIES.LIST, LEDGERENTRIES.LIST
+[2026-02-10 21:39:18] [INFO] Analysis: 172 transactions, 17 debtors, 11 creditors, 162 stock items.
+[2026-02-10 21:39:18] [INFO] P&L Groups Found: Sundry Creditors, Duties & Taxes, Indirect Expenses, Purchase Accounts, Cash-in-Hand, Sundry Debtors, Sales Accounts, Current Liabilities, Bank Accounts
+[2026-02-10 21:39:18] [SUCCESS] Data saved to C:\Projects\Bizstash\dashboard\public\data\SRI_BRUNDABAN_ENTERPRISES_MALKANGIRI\data.json
+[2026-02-10 21:39:18] [SUCCESS] Data Processing Complete.
+
+=== SYNC COMPLETE ✅ ===
+[2026-02-10 21:39:18] [SUCCESS] Registered company: M/S SRI BRUNDABAN ENTERPRISES, MALKANGIRI (SRI_BRUNDABAN_ENTERPRISES_MALKANGIRI)
+[2026-02-10 21:39:18] [SUCCESS] Auto-Sync Complete.

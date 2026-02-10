@@ -24,13 +24,16 @@ async function autoSync() {
 
     let tallyName = 'Unknown';
     try {
-        const statsXml = await TallyConnection.send(TdlBuilder.getCompanyStats());
-        const nameMatch = statsXml.match(/<NAME[^>]*>([^<]+)<\/NAME>/i);
+        const infoXml = await TallyConnection.send(TdlBuilder.getCompanyInfo());
+        // Look for the computed CurrentCompany tag which always holds the ACTIVE context
+        const nameMatch = infoXml.match(/<CURRENTCOMPANY[^>]*>([^<]+)<\/CURRENTCOMPANY>/i);
+
         if (nameMatch) {
             tallyName = nameMatch[1];
         } else {
-            Logger.error("Tally responded but could not determine company name.");
-            process.exit(1);
+            // Fallback to name if only one exists or if computed field failed
+            const simpleMatch = infoXml.match(/<NAME[^>]*>([^<]+)<\/NAME>/i);
+            tallyName = simpleMatch ? simpleMatch[1] : 'Unknown';
         }
     } catch (e) {
         Logger.error("Tally is OFFLINE. Please start Tally and open the company.");

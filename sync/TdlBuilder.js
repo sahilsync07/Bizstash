@@ -7,9 +7,10 @@ class TdlBuilder {
         return `
         <ENVELOPE>
             <HEADER>
+                <VERSION>1</VERSION>
                 <TALLYREQUEST>Export</TALLYREQUEST>
                 <TYPE>Collection</TYPE>
-                <ID>SimpleCompanyList</ID>
+                <ID>ActiveCompanyDetect</ID>
             </HEADER>
             <BODY>
                 <DESC>
@@ -18,9 +19,10 @@ class TdlBuilder {
                     </STATICVARIABLES>
                     <TDL>
                         <TDLMESSAGE>
-                            <COLLECTION NAME="SimpleCompanyList">
+                            <COLLECTION NAME="ActiveCompanyDetect">
                                 <TYPE>Company</TYPE>
-                                <FETCH>Name, StartingFrom</FETCH>
+                                <FETCH>Name</FETCH>
+                                <COMPUTE>CurrentCompany : ##SVCurrentCompany</COMPUTE>
                             </COLLECTION>
                         </TDLMESSAGE>
                     </TDL>
