@@ -496,3 +496,51 @@
 [2026-02-10 19:32:59] [SUCCESS] Data Processing Complete.
 
 === SYNC COMPLETE ✅ ===
+
+=== BIZSTASH SYNC ENGINE 5.0 ===
+[2026-02-10 19:35:51] [INFO] Data Directory: C:\Projects\Bizstash\tally_data\xml\Admin_Test_PC
+
+=== PRE-SYNC DASHBOARD ===
+[2026-02-10 19:35:51] [WARN] Tally Request failed (Attempt 1/3). Retrying in 1000ms... Error: Tally not reachable at http://localhost:9000. Is Tally running?
+[2026-02-10 19:35:52] [WARN] Tally Request failed (Attempt 2/3). Retrying in 2000ms... Error: Tally not reachable at http://localhost:9000. Is Tally running?
+[2026-02-10 19:35:54] [ERROR] Tally Request failed after 3 attempts.
+[2026-02-10 19:35:54] [ERROR] Sync Fatal Error
+[stacktrace] Error: Tally is not reachable. Please start Tally and try again.
+    at SyncEngine._showDashboard (C:\Projects\Bizstash\sync\SyncEngine.js:81:19)
+    at async SyncEngine.run (C:\Projects\Bizstash\sync\SyncEngine.js:22:13)
+    at async main (C:\Projects\Bizstash\sync\index.js:27:21)
+
+=== BIZSTASH SYNC ENGINE 5.0 ===
+[2026-02-10 19:36:49] [INFO] Data Directory: C:\Projects\Bizstash\tally_data\xml\Admin_Test_PC
+
+=== PRE-SYNC DASHBOARD ===
+[2026-02-10 19:36:52] [INFO] Fetching Masters (Groups & Ledgers)...
+[2026-02-10 19:36:53] [SUCCESS] Fetched Masters successfully.
+
+=== PHASE 1: FETCH DATA ===
+[2026-02-10 19:36:53] [INFO] Force Fetching all vouchers to capture any modifications...
+[2026-02-10 19:36:53] [INFO] Fetching ALL vouchers from Tally (single request)...
+
+=== BIZSTASH SYNC ENGINE 5.0 ===
+[2026-02-10 19:37:43] [INFO] Data Directory: C:\Projects\Bizstash\tally_data\xml\Admin_Test_PC
+
+=== PRE-SYNC DASHBOARD ===
+[2026-02-10 19:37:45] [INFO] Fetching Masters (Groups & Ledgers)...
+[2026-02-10 19:37:47] [SUCCESS] Fetched Masters successfully.
+
+=== PHASE 1: FETCH DATA ===
+[2026-02-10 19:37:47] [INFO] Force Fetching all vouchers to capture any modifications...
+[2026-02-10 19:37:47] [INFO] Fetching ALL vouchers from Tally (single request)...
+[2026-02-10 19:38:02] [SUCCESS] Fetched 49.6 MB in 15.4s → vouchers.xml
+
+=== PHASE 2: PROCESS ===
+[2026-02-10 19:38:02] [INFO] Processing data for Admin_Test_PC...
+[2026-02-10 19:38:02] [INFO] Parsed 1071 Ledgers, 66 Groups.
+[2026-02-10 19:38:02] [INFO] Parsing vouchers.xml...
+[2026-02-10 19:38:02] [INFO] Loaded 49.6 MB. Parsing XML...
+[2026-02-10 19:38:05] [INFO] Parsed 4,591 vouchers in 3.0s.
+[2026-02-10 19:38:05] [INFO] Analysis: 4591 transactions, 817 debtors, 115 creditors, 2128 stock items.
+[2026-02-10 19:38:05] [SUCCESS] Data saved to C:\Projects\Bizstash\dashboard\public\data\Admin_Test_PC\data.json
+[2026-02-10 19:38:05] [SUCCESS] Data Processing Complete.
+
+=== SYNC COMPLETE ✅ ===
