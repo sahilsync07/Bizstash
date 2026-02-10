@@ -348,6 +348,7 @@ class DataProcessor {
                 ledEntries.forEach(entry => {
                     const ledgerName = this._getText(entry.LEDGERNAME);
                     if (!ledgerName) return;
+                    const amount = parseFloat(this._getText(entry.AMOUNT) || 0);
                     const isDebit = this._getText(entry.ISDEEMEDPOSITIVE) === 'Yes';
                     const ledgerEntry = { ledger: ledgerName, amount: Math.abs(amount) };
                     if (isDebit) ledgerEntry.debit = Math.abs(amount);

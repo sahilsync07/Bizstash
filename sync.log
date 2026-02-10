@@ -282,3 +282,59 @@
 [2026-02-10 21:13:55] [SUCCESS] Data Processing Complete.
 
 === SYNC COMPLETE ✅ ===
+
+=== BIZSTASH SYNC ENGINE 5.0 ===
+[2026-02-10 21:14:48] [INFO] Data Directory: C:\Projects\Bizstash\tally_data\xml\SBEM_Malkangiri
+
+=== PRE-SYNC DASHBOARD ===
+[2026-02-10 21:14:50] [INFO] Fetching Masters (Groups & Ledgers)...
+[2026-02-10 21:14:51] [SUCCESS] Fetched Masters successfully.
+[2026-02-10 21:14:51] [INFO] Fetching Profit & Loss Report...
+[2026-02-10 21:14:51] [SUCCESS] Fetched Profit & Loss successfully.
+
+=== PHASE 1: FETCH DATA ===
+[2026-02-10 21:14:51] [INFO] Force Fetching all vouchers to capture any modifications...
+[2026-02-10 21:14:51] [INFO] Fetching ALL vouchers from Tally (single request)...
+[2026-02-10 21:14:52] [SUCCESS] Fetched 1.3 MB in 0.8s → vouchers.xml
+
+=== PHASE 2: PROCESS ===
+[2026-02-10 21:14:52] [INFO] Processing data for SBEM_Malkangiri...
+[2026-02-10 21:14:52] [INFO] Parsed 46 Ledgers, 29 Groups.
+[2026-02-10 21:14:52] [INFO] Parsing vouchers.xml...
+[2026-02-10 21:14:52] [INFO] Loaded 1.3 MB. Parsing XML...
+[2026-02-10 21:14:52] [INFO] Parsed 172 vouchers in 0.1s.
+[2026-02-10 21:14:52] [INFO] DEBUG: Voucher keys: $, DATE, GUID, REQUESTORRULE, VOUCHERTYPENAME, PARTYLEDGERNAME, VOUCHERNUMBER, REFERENCE, SERIALMASTER, ARESERIALMASTER, NUMBERINGSTYLE, PERSISTEDVIEW, ISDELETED, ASORIGINAL, ISDEEMEDPOSITIVE, ISINVOICE, ASPAYSLIP, ISDELETEDVCHRETAINED, ISNEGISPOSSET, MASTERID, VOUCHERKEY, VOUCHERRETAINKEY, REUSEHOLEID, AMOUNT, VOUCHERNUMBERSERIES, ALLINVENTORYENTRIES.LIST, LEDGERENTRIES.LIST
+[2026-02-10 21:14:52] [INFO] Analysis: 172 transactions, 17 debtors, 11 creditors, 162 stock items.
+[2026-02-10 21:14:52] [INFO] P&L Groups Found: Sundry Creditors, Duties & Taxes, Indirect Expenses, Purchase Accounts, Cash-in-Hand, Sundry Debtors, Sales Accounts, Current Liabilities, Bank Accounts
+[2026-02-10 21:14:52] [SUCCESS] Data saved to C:\Projects\Bizstash\dashboard\public\data\SBEM_Malkangiri\data.json
+[2026-02-10 21:14:52] [SUCCESS] Data Processing Complete.
+
+=== SYNC COMPLETE ✅ ===
+
+=== BIZSTASH SYNC ENGINE 5.0 ===
+[2026-02-10 21:15:27] [INFO] Data Directory: C:\Projects\Bizstash\tally_data\xml\SBEM_Malkangiri
+
+=== PRE-SYNC DASHBOARD ===
+[2026-02-10 21:15:28] [INFO] Fetching Masters (Groups & Ledgers)...
+[2026-02-10 21:15:29] [SUCCESS] Fetched Masters successfully.
+[2026-02-10 21:15:29] [INFO] Fetching Profit & Loss Report...
+[2026-02-10 21:15:30] [SUCCESS] Fetched Profit & Loss successfully.
+
+=== PHASE 1: FETCH DATA ===
+[2026-02-10 21:15:30] [INFO] Force Fetching all vouchers to capture any modifications...
+[2026-02-10 21:15:30] [INFO] Fetching ALL vouchers from Tally (single request)...
+[2026-02-10 21:15:31] [SUCCESS] Fetched 1.3 MB in 0.7s → vouchers.xml
+
+=== PHASE 2: PROCESS ===
+[2026-02-10 21:15:31] [INFO] Processing data for SBEM_Malkangiri...
+[2026-02-10 21:15:31] [INFO] Parsed 46 Ledgers, 29 Groups.
+[2026-02-10 21:15:31] [INFO] Parsing vouchers.xml...
+[2026-02-10 21:15:31] [INFO] Loaded 1.3 MB. Parsing XML...
+[2026-02-10 21:15:31] [INFO] Parsed 172 vouchers in 0.1s.
+[2026-02-10 21:15:31] [INFO] DEBUG: Voucher keys: $, DATE, GUID, REQUESTORRULE, VOUCHERTYPENAME, PARTYLEDGERNAME, VOUCHERNUMBER, REFERENCE, SERIALMASTER, ARESERIALMASTER, NUMBERINGSTYLE, PERSISTEDVIEW, ISDELETED, ASORIGINAL, ISDEEMEDPOSITIVE, ISINVOICE, ASPAYSLIP, ISDELETEDVCHRETAINED, ISNEGISPOSSET, MASTERID, VOUCHERKEY, VOUCHERRETAINKEY, REUSEHOLEID, AMOUNT, VOUCHERNUMBERSERIES, ALLINVENTORYENTRIES.LIST, LEDGERENTRIES.LIST
+[2026-02-10 21:15:31] [INFO] Analysis: 172 transactions, 17 debtors, 11 creditors, 162 stock items.
+[2026-02-10 21:15:31] [INFO] P&L Groups Found: Sundry Creditors, Duties & Taxes, Indirect Expenses, Purchase Accounts, Cash-in-Hand, Sundry Debtors, Sales Accounts, Current Liabilities, Bank Accounts
+[2026-02-10 21:15:31] [SUCCESS] Data saved to C:\Projects\Bizstash\dashboard\public\data\SBEM_Malkangiri\data.json
+[2026-02-10 21:15:31] [SUCCESS] Data Processing Complete.
+
+=== SYNC COMPLETE ✅ ===
