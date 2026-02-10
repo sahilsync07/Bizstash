@@ -182,7 +182,25 @@ class DataProcessor {
                 ledgers: []
             };
 
-            // --- Inventory Entries ---
+            // --- REVENUE & PURCHASE (Updated to match Tally Registers D-A-S / D-A-P) ---
+            // User requested to see the "Register Total" which is Gross (Incl Tax).
+            const voucherTotal = Math.abs(parseFloat(this._getText(v.AMOUNT) || 0));
+
+            if (vTypeLower.includes('sales') || vTypeLower.includes('tax invoice')) {
+                if (!monthlyStats[month]) monthlyStats[month] = { sales: 0, purchase: 0 };
+                monthlyStats[month].sales += voucherTotal;
+            } else if (vTypeLower.includes('credit note')) {
+                if (!monthlyStats[month]) monthlyStats[month] = { sales: 0, purchase: 0 };
+                monthlyStats[month].sales -= voucherTotal;
+            } else if (vTypeLower.includes('purchase')) {
+                if (!monthlyStats[month]) monthlyStats[month] = { sales: 0, purchase: 0 };
+                monthlyStats[month].purchase += voucherTotal;
+            } else if (vTypeLower.includes('debit note')) {
+                if (!monthlyStats[month]) monthlyStats[month] = { sales: 0, purchase: 0 };
+                monthlyStats[month].purchase -= voucherTotal;
+            }
+
+            // --- Inventory Entries (Stock Analysis Only) ---
             let invEntries = v['ALLINVENTORYENTRIES.LIST'];
             if (invEntries && !Array.isArray(invEntries)) invEntries = [invEntries];
 
@@ -192,53 +210,32 @@ class DataProcessor {
                     const qty = Math.abs(parseFloat(this._getText(item.BILLEDQTY) || this._getText(item.ACTUALQTY) || 0));
                     const stockName = this._getText(item.STOCKITEMNAME);
 
+                    if (!stockName) return;
+
                     if (vTypeLower.includes('sales') || vTypeLower.includes('tax invoice')) {
-                        // SALES
-                        if (!monthlyStats[month]) monthlyStats[month] = { sales: 0, purchase: 0 };
-                        monthlyStats[month].sales += amt;
+                        // STOCK: Sales Outwards
+                        if (!stockStats[stockName]) stockStats[stockName] = { qty: 0, revenue: 0, lastSaleDate: voucherDate, inwardQty: 0, outwardQty: 0, inwardVal: 0, outwardVal: 0 };
+                        stockStats[stockName].outwardQty += qty;
+                        stockStats[stockName].outwardVal += amt;
+                        stockStats[stockName].revenue += amt;
+                        if (voucherDate > stockStats[stockName].lastSaleDate) stockStats[stockName].lastSaleDate = voucherDate;
 
-                        if (stockName) {
-                            if (!stockStats[stockName]) stockStats[stockName] = { qty: 0, revenue: 0, lastSaleDate: voucherDate, inwardQty: 0, outwardQty: 0, inwardVal: 0, outwardVal: 0 };
-                            stockStats[stockName].outwardQty += qty;
-                            stockStats[stockName].outwardVal += amt;
-                            stockStats[stockName].revenue += amt;
-                            if (voucherDate > stockStats[stockName].lastSaleDate) stockStats[stockName].lastSaleDate = voucherDate;
-                        }
                     } else if (vTypeLower.includes('credit note')) {
-                        // SALES RETURN (Reduce Sales)
-                        if (!monthlyStats[month]) monthlyStats[month] = { sales: 0, purchase: 0 };
-                        monthlyStats[month].sales -= amt;
+                        // STOCK: Sales Return (Inwards)
+                        if (!stockStats[stockName]) stockStats[stockName] = { qty: 0, revenue: 0, lastSaleDate: voucherDate, inwardQty: 0, outwardQty: 0, inwardVal: 0, outwardVal: 0 };
+                        stockStats[stockName].inwardQty += qty;
+                        stockStats[stockName].revenue -= amt;
 
-                        if (stockName) {
-                            // Credit Note = Inward (Stock comes back)
-                            if (!stockStats[stockName]) stockStats[stockName] = { qty: 0, revenue: 0, lastSaleDate: voucherDate, inwardQty: 0, outwardQty: 0, inwardVal: 0, outwardVal: 0 };
-                            stockStats[stockName].inwardQty += qty;
-                            // Revenue reduction? Usually Credit Note reduces revenue.
-                            // But usually it's "Sales - Returns". 
-                            // We reduce revenue here.
-                            stockStats[stockName].revenue -= amt;
-                        }
                     } else if (vTypeLower.includes('purchase')) {
-                        // PURCHASE
-                        if (!monthlyStats[month]) monthlyStats[month] = { sales: 0, purchase: 0 };
-                        monthlyStats[month].purchase += amt;
+                        // STOCK: Purchase Inwards
+                        if (!stockStats[stockName]) stockStats[stockName] = { qty: 0, revenue: 0, lastSaleDate: voucherDate, inwardQty: 0, outwardQty: 0, inwardVal: 0, outwardVal: 0 };
+                        stockStats[stockName].inwardQty += qty;
+                        stockStats[stockName].inwardVal += amt;
 
-                        if (stockName) {
-                            if (!stockStats[stockName]) stockStats[stockName] = { qty: 0, revenue: 0, lastSaleDate: voucherDate, inwardQty: 0, outwardQty: 0, inwardVal: 0, outwardVal: 0 };
-                            stockStats[stockName].inwardQty += qty;
-                            stockStats[stockName].inwardVal += amt;
-                        }
                     } else if (vTypeLower.includes('debit note')) {
-                        // PURCHASE RETURN (Reduce Purchase)
-                        if (!monthlyStats[month]) monthlyStats[month] = { sales: 0, purchase: 0 };
-                        monthlyStats[month].purchase -= amt;
-
-                        // Check stock logic? Debit note = Outward?
-                        if (stockName) {
-                            if (!stockStats[stockName]) stockStats[stockName] = { qty: 0, revenue: 0, lastSaleDate: voucherDate, inwardQty: 0, outwardQty: 0, inwardVal: 0, outwardVal: 0 };
-                            stockStats[stockName].outwardQty += qty;
-                            // stockStats[stockName].outwardVal += amt; // Optional
-                        }
+                        // STOCK: Purchase Return (Outwards)
+                        if (!stockStats[stockName]) stockStats[stockName] = { qty: 0, revenue: 0, lastSaleDate: voucherDate, inwardQty: 0, outwardQty: 0, inwardVal: 0, outwardVal: 0 };
+                        stockStats[stockName].outwardQty += qty;
                     }
                 });
             }
