@@ -59,10 +59,10 @@ const fetchWithSWR = async (url, cacheName = 'bizstash-data') => {
   }
 };
 
-export default function BillsBrowser() {
+export default function BillsBrowser({ vouchers: propVouchers }) {
   const [bills, setBills] = useState([]);
-  const [allBills, setAllBills] = useState([]); // Store all bills for client-side filtering
-  const [loading, setLoading] = useState(true);
+  const [allBills, setAllBills] = useState(propVouchers || []); // Store all bills for client-side filtering
+  const [loading, setLoading] = useState(!propVouchers);
   const [search, setSearch] = useState('');
   const [selectedType, setSelectedType] = useState('all');
   const [page, setPage] = useState(0);
@@ -73,10 +73,14 @@ export default function BillsBrowser() {
 
   const limit = 20;
 
-  // Fetch bills once on mount
+  // Sync with prop changes
   useEffect(() => {
-    loadBills();
-  }, []);
+    if (propVouchers) {
+      setAllBills(propVouchers);
+      setLoading(false);
+    }
+  }, [propVouchers]);
+
 
   // Filter and paginate when search/type changes
   useEffect(() => {
@@ -84,31 +88,6 @@ export default function BillsBrowser() {
     setPage(0);
   }, [selectedType, search, allBills]);
 
-  const loadBills = async () => {
-    setLoading(true);
-    try {
-      const dataUrl = `${import.meta.env.BASE_URL}data/vouchers.json`;
-
-      // Use stale-while-revalidate strategy
-      const data = await fetchWithSWR(dataUrl);
-
-      const vouchers = data.data ? Object.values(data.data) : [];
-      setAllBills(vouchers);
-      setTotalBills(vouchers.length);
-
-      // Check if this came from cache
-      if ('caches' in window) {
-        const cache = await caches.open('bizstash-data');
-        const match = await cache.match(dataUrl);
-        setIsCached(!!match);
-      }
-    } catch (error) {
-      console.error('Failed to fetch bills:', error);
-      setBills([]);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const filterAndPaginate = () => {
     let filtered = allBills;
@@ -183,8 +162,8 @@ export default function BillsBrowser() {
             <button
               onClick={() => setSelectedType('all')}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${selectedType === 'all'
-                  ? 'bg-flux-lime text-flux-black'
-                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                ? 'bg-flux-lime text-flux-black'
+                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
             >
               All Types
@@ -194,8 +173,8 @@ export default function BillsBrowser() {
                 key={type}
                 onClick={() => setSelectedType(type)}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${selectedType === type
-                    ? `${TYPE_COLORS[type]} font-bold`
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  ? `${TYPE_COLORS[type]} font-bold`
+                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
               >
                 {type}

@@ -248,7 +248,8 @@ class DataProcessor {
             }
         });
 
-        vouchers.forEach(v => {
+        vouchers.forEach((v, idx) => {
+            if (idx === 0) Logger.info(`DEBUG: Voucher keys: ${Object.keys(v).join(', ')}`);
             if (this._getText(v.ISCANCELLED) === 'Yes' || this._getText(v.ISOPTIONAL) === 'Yes') return;
 
             // XML Collection format: DATE is in element or attribute
@@ -263,10 +264,11 @@ class DataProcessor {
             const transaction = {
                 date: dateStr,
                 type: vType,
-                number: this._getText(v.VOUCHERNUMBER),
+                referenceNumber: (this._getText(v.VOUCHERNUMBER) || this._getText(v.REFERENCE) || '').trim(),
                 party: this._getText(v.PARTYLEDGERNAME),
                 amount: parseFloat(this._getText(v.AMOUNT) || 0),
-                ledgers: []
+                ledgers: [],
+                details: []
             };
 
             // --- REVENUE & PURCHASE (Updated to match Tally Registers D-A-S / D-A-P) ---
@@ -346,9 +348,14 @@ class DataProcessor {
                 ledEntries.forEach(entry => {
                     const ledgerName = this._getText(entry.LEDGERNAME);
                     if (!ledgerName) return;
-                    const amount = parseFloat(this._getText(entry.AMOUNT) || 0);
+                    const isDebit = this._getText(entry.ISDEEMEDPOSITIVE) === 'Yes';
+                    const ledgerEntry = { ledger: ledgerName, amount: Math.abs(amount) };
+                    if (isDebit) ledgerEntry.debit = Math.abs(amount);
+                    else ledgerEntry.credit = Math.abs(amount);
 
                     transaction.ledgers.push({ name: ledgerName, amount });
+                    transaction.details.push(ledgerEntry);
+
 
                     if (masters.ledgers[ledgerName]) {
                         let rootGroup = (masters.ledgers[ledgerName].rootGroup || 'Unknown').trim().replace(/[^\x20-\x7E]/g, '');
@@ -359,17 +366,6 @@ class DataProcessor {
                             if (lowerN.includes('sales')) rootGroup = 'Sales Accounts';
                             else if (lowerN.includes('purchase')) rootGroup = 'Purchase Accounts';
                         }
-                        // Map the specific typo
-                        if (rootGroup === 'Purchase Acounts') rootGroup = 'Purchase Accounts';
-                        if (rootGroup === 'Sales Acounts') rootGroup = 'Sales Accounts';
-
-                        // Debug first 20 ledgers
-                        if (!this.debugCount) this.debugCount = 0;
-                        if (this.debugCount < 20) {
-                            Logger.info(`L: ${ledgerName} | RG: '${rootGroup}' | P: '${masters.ledgers[ledgerName].parent}'`);
-                            this.debugCount++;
-                        }
-
                         // Accumulate for P&L (Global)
                         if (!groupTotals[rootGroup]) groupTotals[rootGroup] = 0;
                         groupTotals[rootGroup] += amount;
