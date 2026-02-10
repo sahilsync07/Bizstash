@@ -189,15 +189,13 @@ class DataProcessor {
             if (vTypeLower.includes('sales') || vTypeLower.includes('tax invoice')) {
                 if (!monthlyStats[month]) monthlyStats[month] = { sales: 0, purchase: 0 };
                 monthlyStats[month].sales += voucherTotal;
-            } else if (vTypeLower.includes('credit note')) {
-                if (!monthlyStats[month]) monthlyStats[month] = { sales: 0, purchase: 0 };
-                monthlyStats[month].sales -= voucherTotal;
+
             } else if (vTypeLower.includes('purchase')) {
                 if (!monthlyStats[month]) monthlyStats[month] = { sales: 0, purchase: 0 };
                 monthlyStats[month].purchase += voucherTotal;
-            } else if (vTypeLower.includes('debit note')) {
-                if (!monthlyStats[month]) monthlyStats[month] = { sales: 0, purchase: 0 };
-                monthlyStats[month].purchase -= voucherTotal;
+
+            } else if (vTypeLower.includes('credit note') || vTypeLower.includes('debit note')) {
+                // Ignore Returns to match Tally "Register" Gross Totals (D-A-S / D-A-P)
             }
 
             // --- Inventory Entries (Stock Analysis Only) ---
