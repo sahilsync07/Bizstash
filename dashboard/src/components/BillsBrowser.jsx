@@ -122,6 +122,16 @@ export default function BillsBrowser({ vouchers: propVouchers }) {
     return `${d}/${m}/${y}`;
   };
 
+  const formatProperCase = (text) => {
+    if (!text) return text;
+    const words = text.toLowerCase().split(' ');
+    return words.map(word => {
+      if (word === 'm/s') return 'M/s';
+      if (word.startsWith('(')) return '(' + word.charAt(1).toUpperCase() + word.slice(2);
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    }).join(' ');
+  };
+
   const handleViewBill = (bill) => {
     setSelectedBill(bill);
     setShowDetail(true);
@@ -276,110 +286,206 @@ export default function BillsBrowser({ vouchers: propVouchers }) {
       )}
 
       {/* Bill Detail Modal */}
-      {showDetail && selectedBill && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50"
-          onClick={() => setShowDetail(false)}
-        >
+      <AnimatePresence>
+        {showDetail && selectedBill && (
           <motion.div
-            initial={{ scale: 0.95, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.95, opacity: 0 }}
-            onClick={(e) => e.stopPropagation()}
-            className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/60 backdrop-blur-md flex items-center justify-center p-4 z-[100]"
+            onClick={() => setShowDetail(false)}
           >
-            {/* Header */}
-            <div className="flex justify-between items-start p-6 border-b border-gray-200 sticky top-0 bg-white">
-              <div>
-                <h3 className="text-2xl font-bold text-flux-black">Bill Details</h3>
-                <p className="text-gray-600 text-sm mt-1">
-                  <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold mt-2 ${TYPE_COLORS[selectedBill.type] || 'bg-gray-100 text-gray-700'}`}>
-                    {selectedBill.type}
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.9, opacity: 0, y: 20 }}
+              onClick={(e) => e.stopPropagation()}
+              className="bg-white rounded-[2.5rem] shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-hidden flex flex-col border border-gray-100"
+            >
+              {/* Decorative Header Bar */}
+              <div className={`h-3 w-full ${selectedBill.type === 'Receipt' ? 'bg-green-400' :
+                selectedBill.type === 'Payment' ? 'bg-purple-500' :
+                  selectedBill.type === 'Journal' ? 'bg-amber-500' :
+                    selectedBill.type === 'Tax Invoice' ? 'bg-blue-500' :
+                      selectedBill.type === 'Contra' ? 'bg-teal-500' : 'bg-gray-400'
+                }`} />
+
+              {/* Main Header */}
+              <div className="flex justify-between items-start p-8 pb-4">
+                <div className="space-y-1">
+                  <div className="flex items-center gap-3">
+                    <h3 className="text-3xl font-black text-flux-black tracking-tight">{selectedBill.type.toUpperCase()}</h3>
+                    <span className={`px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest ${TYPE_COLORS[selectedBill.type] || 'bg-gray-100 text-gray-700'}`}>
+                      Digital Voucher
+                    </span>
+                  </div>
+                  <p className="text-flux-text-dim font-bold text-sm tracking-wide">
+                    Voucher No: <span className="text-flux-black">{selectedBill.referenceNumber || 'N/A'}</span>
+                  </p>
+                </div>
+                <button
+                  onClick={() => setShowDetail(false)}
+                  className="p-2 hover:bg-gray-100 rounded-full transition-all text-gray-400 hover:text-flux-black"
+                >
+                  <X size={28} />
+                </button>
+              </div>
+
+              {/* Body Content */}
+              <div className="flex-1 overflow-y-auto p-8 pt-4 space-y-8 custom-scrollbar">
+                {/* Info Grid */}
+                <div className="grid grid-cols-2 gap-6">
+                  <div className="bg-gray-50/50 rounded-3xl p-6 border border-gray-100 space-y-1">
+                    <div className="flex items-center gap-2 text-gray-400 mb-1">
+                      <Calendar size={14} className="opacity-50" />
+                      <span className="text-[10px] font-black uppercase tracking-[0.2em]">Transaction Date</span>
+                    </div>
+                    <p className="text-xl font-black text-flux-black">{formatDate(selectedBill.date)}</p>
+                  </div>
+                  <div className="bg-gray-50/50 rounded-3xl p-6 border border-gray-100 space-y-1">
+                    <div className="flex items-center gap-2 text-gray-400 mb-1">
+                      <Hash size={14} className="opacity-50" />
+                      <span className="text-[10px] font-black uppercase tracking-[0.2em]">Reference Code</span>
+                    </div>
+                    <p className="text-xl font-black text-flux-black truncate">{selectedBill.referenceNumber || '—'}</p>
+                  </div>
+                </div>
+
+                {/* Ledger Entries Table */}
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between px-2">
+                    <h4 className="text-xs font-black text-gray-400 uppercase tracking-[0.2em]">Accounting Details</h4>
+                    <span className="text-[10px] bg-gray-100 text-gray-500 px-2 py-0.5 rounded-md font-bold">
+                      {selectedBill.details?.length || 0} Entries
+                    </span>
+                  </div>
+
+                  <div className="border border-gray-100 rounded-3xl overflow-hidden bg-white shadow-sm">
+                    <table className="w-full text-left">
+                      <thead>
+                        <tr className="bg-gray-50/80 border-b border-gray-100">
+                          <th className="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-gray-400">Particulars</th>
+                          <th className="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-gray-400 text-right">Debit</th>
+                          <th className="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-gray-400 text-right">Credit</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-gray-50">
+                        {selectedBill.details && selectedBill.details.length > 0 ? (
+                          selectedBill.details.map((detail, idx) => (
+                            <tr key={idx} className="hover:bg-gray-50/50 transition-colors group">
+                              <td className="px-6 py-4">
+                                <p className="font-bold text-flux-black text-sm group-hover:text-flux-lime transition-colors">
+                                  {formatProperCase(detail.ledger || detail.account || 'Unnamed Ledger')}
+                                </p>
+                                {detail.description && (
+                                  <p className="text-[10px] text-gray-400 mt-1 font-medium italic">{detail.description}</p>
+                                )}
+                              </td>
+                              <td className="px-6 py-4 text-right">
+                                {detail.debit ? (
+                                  <span className="text-sm font-black text-flux-black">₹{Math.abs(detail.debit).toLocaleString('en-IN')}</span>
+                                ) : <span className="text-gray-200">—</span>}
+                              </td>
+                              <td className="px-6 py-4 text-right">
+                                {detail.credit ? (
+                                  <span className="text-sm font-black text-flux-black">₹{Math.abs(detail.credit).toLocaleString('en-IN')}</span>
+                                ) : <span className="text-gray-200">—</span>}
+                              </td>
+                            </tr>
+                          ))
+                        ) : (
+                          <tr>
+                            <td colSpan="3" className="px-6 py-12 text-center">
+                              <Type className="mx-auto text-gray-200 mb-3 opacity-50" size={32} />
+                              <p className="text-xs font-bold text-gray-400 uppercase tracking-widest">No accounting lines captured</p>
+                              <p className="text-[10px] text-gray-300 mt-1">Check if the sync pulled complete data</p>
+                            </td>
+                          </tr>
+                        )}
+                      </tbody>
+                      {/* Footer Totals */}
+                      {selectedBill.details?.length > 0 && (
+                        <tfoot className="bg-gray-50/30 font-bold border-t border-gray-100">
+                          <tr>
+                            <td className="px-6 py-4 text-[10px] uppercase font-black tracking-widest text-gray-400">Total</td>
+                            <td className="px-6 py-4 text-right text-sm font-black text-flux-black">
+                              ₹{selectedBill.details.reduce((acc, d) => acc + (d.debit || 0), 0).toLocaleString('en-IN')}
+                            </td>
+                            <td className="px-6 py-4 text-right text-sm font-black text-flux-black">
+                              ₹{selectedBill.details.reduce((acc, d) => acc + (d.credit || 0), 0).toLocaleString('en-IN')}
+                            </td>
+                          </tr>
+                        </tfoot>
+                      )}
+                    </table>
+                  </div>
+                </div>
+
+                {/* Inventory Table (if applicable) */}
+                {selectedBill.inventory && selectedBill.inventory.length > 0 && (
+                  <div className="space-y-4">
+                    <h4 className="text-xs font-black text-gray-400 uppercase tracking-[0.2em] px-2">Inventory Items</h4>
+                    <div className="border border-gray-100 rounded-3xl overflow-hidden bg-white shadow-sm">
+                      <table className="w-full text-left">
+                        <thead className="bg-gray-50/80 border-b border-gray-100">
+                          <tr>
+                            <th className="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-gray-400">Stock Item</th>
+                            <th className="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-gray-400 text-right">Quantity</th>
+                            <th className="px-6 py-4 text-[10px] font-black uppercase tracking-widest text-gray-400 text-right">Amount</th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-gray-50">
+                          {selectedBill.inventory.map((item, idx) => (
+                            <tr key={idx} className="hover:bg-gray-50/50 transition-colors">
+                              <td className="px-6 py-4">
+                                <p className="font-bold text-flux-black text-sm">{formatProperCase(item.name)}</p>
+                                <p className="text-[10px] text-gray-400 font-bold uppercase tracking-widest mt-1">@ ₹{(item.rate || 0).toLocaleString('en-IN')}</p>
+                              </td>
+                              <td className="px-6 py-4 text-right font-black text-flux-black text-sm">
+                                {item.qty}
+                              </td>
+                              <td className="px-6 py-4 text-right font-black text-flux-lime text-sm">
+                                ₹{item.amount.toLocaleString('en-IN')}
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                )}
+
+                {/* Narration */}
+                {selectedBill.narration && (
+                  <div className="bg-flux-black rounded-3xl p-8 text-white relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-3xl -mr-10 -mt-10"></div>
+                    <h4 className="text-[10px] font-black text-gray-400 uppercase tracking-[0.3em] mb-3">Narration / Memo</h4>
+                    <p className="text-sm font-medium leading-relaxed italic text-gray-200">
+                      "{selectedBill.narration}"
+                    </p>
+                  </div>
+                )}
+              </div>
+
+              {/* Footer */}
+              <div className="p-8 py-6 bg-gray-50 border-t border-gray-100 flex justify-between items-center">
+                <div className="flex items-center gap-2 group cursor-help">
+                  <Activity size={16} className="text-flux-lime animate-pulse" />
+                  <span className="text-[10px] font-black text-gray-400 uppercase tracking-widest group-hover:text-flux-black transition-colors">
+                    Verified Digital Record
                   </span>
-                </p>
+                </div>
+                <button
+                  onClick={() => setShowDetail(false)}
+                  className="px-8 py-3 bg-flux-black text-white rounded-2xl font-black text-sm hover:scale-105 active:scale-95 transition-all shadow-lg"
+                >
+                  Done
+                </button>
               </div>
-              <button
-                onClick={() => setShowDetail(false)}
-                className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
-              >
-                <X size={24} />
-              </button>
-            </div>
-
-            {/* Content */}
-            <div className="p-6 space-y-6">
-              {/* Meta Info */}
-              <div className="grid grid-cols-2 gap-4">
-                <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
-                  <Calendar size={20} className="text-flux-lime mt-0.5 shrink-0" />
-                  <div>
-                    <p className="text-xs text-gray-600 uppercase font-bold">Date</p>
-                    <p className="text-lg font-bold text-flux-black mt-1">{formatDate(selectedBill.date)}</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
-                  <Hash size={20} className="text-flux-lime mt-0.5 shrink-0" />
-                  <div>
-                    <p className="text-xs text-gray-600 uppercase font-bold">Reference</p>
-                    <p className="text-lg font-bold text-flux-black mt-1">{selectedBill.referenceNumber || '—'}</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Line Items */}
-              {selectedBill.details && Array.isArray(selectedBill.details) && selectedBill.details.length > 0 ? (
-                <div>
-                  <h4 className="text-sm font-bold text-gray-700 uppercase mb-3">Line Items ({selectedBill.details.length})</h4>
-                  <div className="space-y-2 max-h-60 overflow-y-auto">
-                    {selectedBill.details.map((detail, idx) => (
-                      <div key={idx} className="p-3 bg-gray-50 rounded-lg border border-gray-200">
-                        <div className="flex justify-between items-start">
-                          <div>
-                            <p className="font-bold text-flux-black">{detail.ledger || detail.account || 'Unnamed'}</p>
-                            {detail.description && (
-                              <p className="text-xs text-gray-600 mt-1">{detail.description}</p>
-                            )}
-                          </div>
-                          {detail.amount && (
-                            <span className="font-bold text-flux-lime">
-                              ₹{detail.amount.toLocaleString('en-IN')}
-                            </span>
-                          )}
-                        </div>
-                        {detail.debit !== undefined || detail.credit !== undefined ? (
-                          <div className="mt-2 text-xs text-gray-600 flex gap-4">
-                            {detail.debit !== undefined && (
-                              <span>Debit: ₹{detail.debit.toLocaleString('en-IN')}</span>
-                            )}
-                            {detail.credit !== undefined && (
-                              <span>Credit: ₹{detail.credit.toLocaleString('en-IN')}</span>
-                            )}
-                          </div>
-                        ) : null}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              ) : (
-                <div className="p-4 bg-gray-50 rounded-lg text-center text-gray-600">
-                  No line items available
-                </div>
-              )}
-
-              {/* JSON Preview */}
-              <div>
-                <h4 className="text-sm font-bold text-gray-700 uppercase mb-3">Raw Data</h4>
-                <pre className="bg-gray-900 text-gray-100 p-4 rounded-lg text-xs overflow-x-auto max-h-40">
-                  {JSON.stringify(selectedBill, null, 2)}
-                </pre>
-              </div>
-            </div>
+            </motion.div>
           </motion.div>
-        </motion.div>
-      )}
+        )}
+      </AnimatePresence>
     </div>
   );
 }

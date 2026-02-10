@@ -107,7 +107,9 @@ class TdlBuilder {
                         <TDLMESSAGE>
                             <COLLECTION NAME="VoucherAllColl">
                                 <TYPE>Voucher</TYPE>
-                                <FETCH>Date,VoucherNumber,VoucherTypeName,PartyLedgerName,Amount,Reference</FETCH>
+                                <FETCH>Date, VoucherNumber, VoucherTypeName, PartyLedgerName, Amount, Reference, Narration, IsCancelled, IsOptional</FETCH>
+                                <FETCH>AllLedgerEntries.*</FETCH>
+                                <FETCH>AllInventoryEntries.*</FETCH>
                             </COLLECTION>
                         </TDLMESSAGE>
                     </TDL>

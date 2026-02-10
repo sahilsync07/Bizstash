@@ -267,8 +267,10 @@ class DataProcessor {
                 referenceNumber: (this._getText(v.VOUCHERNUMBER) || this._getText(v.REFERENCE) || '').trim(),
                 party: this._getText(v.PARTYLEDGERNAME),
                 amount: parseFloat(this._getText(v.AMOUNT) || 0),
+                narration: this._getText(v.NARRATION) || '',
                 ledgers: [],
-                details: []
+                details: [],
+                inventory: []
             };
 
             // --- REVENUE & PURCHASE (Updated to match Tally Registers D-A-S / D-A-P) ---
@@ -324,6 +326,14 @@ class DataProcessor {
                         if (!stockStats[stockName]) stockStats[stockName] = { qty: 0, revenue: 0, lastSaleDate: voucherDate, inwardQty: 0, outwardQty: 0, inwardVal: 0, outwardVal: 0 };
                         stockStats[stockName].outwardQty += qty;
                     }
+
+                    // Store in transaction for UI display
+                    transaction.inventory.push({
+                        name: stockName,
+                        qty: qty,
+                        amount: amt,
+                        rate: amt / (qty || 1)
+                    });
                 });
             }
 

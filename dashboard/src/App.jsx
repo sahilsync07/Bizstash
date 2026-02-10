@@ -34,6 +34,18 @@ const formatMonth = (yyyymm) => {
   return date.toLocaleString('default', { month: 'short', year: '2-digit' });
 };
 
+const formatProperCase = (text) => {
+  if (!text) return text;
+  // Handle case where it might be (2024-25) or similar
+  const words = text.toLowerCase().split(' ');
+  return words.map(word => {
+    if (word === 'm/s') return 'M/s';
+    // If it's a bracketed thing like (2024-25), keep as is or capitalize first char
+    if (word.startsWith('(')) return '(' + word.charAt(1).toUpperCase() + word.slice(2);
+    return word.charAt(0).toUpperCase() + word.slice(1);
+  }).join(' ');
+};
+
 // --- Menu Configuration ---
 const MENU_ITEMS = [
   { id: 'summary', label: 'Dashboard', icon: LayoutDashboard },
@@ -139,6 +151,7 @@ export default function App() {
     const q = searchQuery.toLowerCase();
     return searchIndex
       .filter(item => item.name.toLowerCase().includes(q))
+      .map(item => ({ ...item, displayName: formatProperCase(item.name) }))
       .slice(0, 8);
   }, [searchIndex, searchQuery]);
 
@@ -343,7 +356,7 @@ function Header({ title, companies, selectedCompany, onSelectCompany, toggleSide
                         <item.icon size={18} />
                       </div>
                       <div className="flex flex-col">
-                        <span className="text-sm font-bold text-flux-black">{item.name}</span>
+                        <span className="text-sm font-bold text-flux-black">{formatProperCase(item.name)}</span>
                         <span className="text-[10px] text-gray-400 font-bold uppercase tracking-wider">{item.type}</span>
                       </div>
                       {item.meta !== undefined && (
@@ -369,7 +382,7 @@ function Header({ title, companies, selectedCompany, onSelectCompany, toggleSide
               {selectedCompany?.name?.substring(0, 2).toUpperCase() || 'BC'}
             </div>
             <div className="flex flex-col">
-              <span className="text-xs font-bold text-flux-black max-w-[120px] truncate">{selectedCompany?.name || 'Select Company'}</span>
+              <span className="text-xs font-bold text-flux-black max-w-[120px] truncate">{formatProperCase(selectedCompany?.name || 'Select Company')}</span>
               <span className="text-[10px] text-flux-text-dim font-medium uppercase tracking-wider">{getSyncStatus(selectedCompany?.lastUpdated)}</span>
             </div>
             <ChevronRight size={14} className={`text-flux-text-dim ml-auto transition-transform ${showProfileMenu ? 'rotate-90' : ''}`} />
@@ -396,7 +409,7 @@ function Header({ title, companies, selectedCompany, onSelectCompany, toggleSide
                           className={`w-full text-left px-3 py-2 rounded-xl text-sm font-bold flex items-center justify-between group ${selectedCompany?.id === c.id ? 'bg-flux-lime/10 text-flux-black' : 'text-gray-500 hover:bg-gray-50'}`}
                         >
                           <div className="flex flex-col">
-                            <span>{c.name}</span>
+                            <span>{formatProperCase(c.name)}</span>
                             <span className="text-[10px] text-gray-400 font-medium">{c.lastUpdated ? new Date(c.lastUpdated).toLocaleString() : 'Never'}</span>
                           </div>
                           {selectedCompany?.id === c.id && <div className="w-2 h-2 rounded-full bg-flux-lime"></div>}
@@ -547,7 +560,7 @@ function SummaryDashboard({ data, onDrillDown }) {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <ListBox
           title="Top 5 Outstanding Debtors"
-          items={data.debtors.slice(0, 5)}
+          items={data.debtors.slice(0, 5).map(d => ({ ...d, name: formatProperCase(d.name) }))}
           type="money"
           icon={ArrowUpRight}
           accent="orange"
@@ -555,7 +568,7 @@ function SummaryDashboard({ data, onDrillDown }) {
         />
         <ListBox
           title="Top 5 Selling Items"
-          items={data.stocks.slice(0, 5).map(s => ({ name: s.name, balance: s.revenue, sub: s.qtySold + ' units' }))}
+          items={data.stocks.slice(0, 5).map(s => ({ name: formatProperCase(s.name), balance: s.revenue, sub: s.qtySold + ' units' }))}
           type="money"
           icon={Package}
           accent="lime"
