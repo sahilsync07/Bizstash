@@ -1,291 +1,167 @@
 const fs = require('fs-extra');
 const path = require('path');
-const { format, addMonths, startOfMonth, endOfMonth, isAfter, parseISO, parse } = require('date-fns');
 const CONFIG = require('./config');
 const Logger = require('./utils/Logger');
 const TallyConnection = require('./TallyConnection');
 const TdlBuilder = require('./TdlBuilder');
 
-// V4 Constants
-const SYNC_STATE_FILE = 'sync_state.json';
-
 class DataFetcher {
     constructor(companyName) {
         this.companyName = companyName;
-        // Resolve Target Directory
         let relativePath = 'xml';
         if (companyName && companyName !== 'default_company') {
             relativePath = path.join('xml', companyName);
         }
         this.baseDir = path.resolve(CONFIG.PATHS.ROOT, 'tally_data', relativePath);
         this.mastersDir = path.join(this.baseDir, 'masters');
-        this.vouchersDir = path.join(this.baseDir, 'vouchers'); // Now holds JSON files too
-        this.stateFile = path.join(this.baseDir, SYNC_STATE_FILE);
+        this.vouchersDir = path.join(this.baseDir, 'vouchers');
+        this.stateFile = path.join(this.baseDir, 'sync_state.json');
     }
 
     async init() {
         await fs.ensureDir(this.mastersDir);
         await fs.ensureDir(this.vouchersDir);
-        Logger.info(`Data Directory initialized: ${this.baseDir}`);
+        Logger.info(`Data Directory: ${this.baseDir}`);
     }
 
-    async checkConnection() {
-        Logger.info('Checking Tally Connection...');
-        const xml = TdlBuilder.getCompanyInfo();
-        const response = await TallyConnection.send(xml);
+    // --- PRE-SYNC DASHBOARD ---
+    async getPreSyncInfo() {
+        const info = {
+            tallyOnline: false,
+            companyName: 'Unknown',
+            startingFrom: null,
+            lastVoucherDate: null,
+            voucherCount: 0,
+            lastSyncDate: null,
+            localDataExists: false,
+            localVoucherFileSize: null,
+            dashboardDataExists: false,
+        };
 
-        // Parse Company Name (Works for Report or Collection)
-        let detectedName = "Unknown";
-        // Check for Collection format: <COMPANY ...<NAME>Val</NAME> or just <NAME>Val</NAME>
-        const match = response.match(/<NAME[^>]*>(.*?)<\/NAME>/i);
-        if (match) detectedName = match[1];
+        // 1. Check Tally connection + get company stats
+        try {
+            const statsXml = await TallyConnection.send(TdlBuilder.getCompanyStats());
+            info.tallyOnline = true;
 
-        Logger.success(`Connected to Tally! Active Company: ${detectedName}`);
-        return detectedName;
-    }
+            // Parse company name
+            const nameMatch = statsXml.match(/<NAME[^>]*>([^<]+)<\/NAME>/i);
+            if (nameMatch) info.companyName = nameMatch[1];
 
-    // --- V4 SMART SYNC ENTRY POINT ---
-    async runSmartSync() {
-        Logger.header('PHASE 1: SMART FETCH');
+            // Parse StartingFrom
+            const startMatch = statsXml.match(/<STARTINGFROM[^>]*>([^<]+)<\/STARTINGFROM>/i);
+            if (startMatch) info.startingFrom = startMatch[1];
 
-        // 1. Check State
-        let state = { lastAlterId: 0, lastSync: null };
+            // Parse BooksFrom
+            const booksMatch = statsXml.match(/<BOOKSFROM[^>]*>([^<]+)<\/BOOKSFROM>/i);
+            if (booksMatch && !info.startingFrom) info.startingFrom = booksMatch[1];
+
+            // Parse LastVoucherDate
+            const lastMatch = statsXml.match(/<LASTVOUCHERDATE[^>]*>([^<]+)<\/LASTVOUCHERDATE>/i);
+            if (lastMatch) info.lastVoucherDate = lastMatch[1];
+
+        } catch (e) {
+            info.tallyOnline = false;
+        }
+
+        // 2. Count vouchers (if Tally is online)
+        if (info.tallyOnline) {
+            try {
+                const countXml = await TallyConnection.send(TdlBuilder.getVoucherCount());
+                // Count VOUCHER tags
+                const matches = countXml.match(/<VOUCHER /g);
+                info.voucherCount = matches ? matches.length : 0;
+            } catch (e) {
+                // Non-critical, continue
+            }
+        }
+
+        // 3. Check local state
         try {
             if (fs.existsSync(this.stateFile)) {
-                state = await fs.readJson(this.stateFile);
+                const state = await fs.readJson(this.stateFile);
+                info.lastSyncDate = state.lastSync || null;
             }
         } catch (e) { }
 
-        if (state.lastAlterId > 0) {
-            Logger.info(`Incremental Mode Detected. Last AlterId: ${state.lastAlterId}`);
-            await this._runIncrementalSync(state);
-        } else {
-            Logger.info("No previous sync state found. Running Full Baseline Sync (JSON).");
-            await this._runFullSyncJSON(state);
+        // 4. Check local vouchers.xml
+        const vouchersFile = path.join(this.vouchersDir, 'vouchers.xml');
+        if (fs.existsSync(vouchersFile)) {
+            const stats = await fs.stat(vouchersFile);
+            info.localDataExists = true;
+            info.localVoucherFileSize = stats.size;
         }
+
+        // 5. Check dashboard output
+        const dashboardFile = path.join(CONFIG.PATHS.OUTPUT_DATA, this.companyName, 'data.json');
+        info.dashboardDataExists = fs.existsSync(dashboardFile);
+
+        return info;
     }
 
-    async _runFullSyncJSON(state) {
-        // 1. Fetch Masters (XML) - Hybrid Strategy
-        // Resume Logic: Check if masters.xml is fresh (< 2 hours) and large enough
-        const mastersPath = path.join(this.mastersDir, 'masters.xml');
-        let skipMasters = false;
+    // --- SINGLE FETCH ---
+    async fetchAllVouchers() {
+        Logger.header('PHASE 1: FETCH DATA');
+
+        const vouchersFile = path.join(this.vouchersDir, 'vouchers.xml');
+
+        // Smart skip: if vouchers.xml is fresh (< 1 hour), skip
+        try {
+            if (fs.existsSync(vouchersFile)) {
+                const stats = await fs.stat(vouchersFile);
+                const ageMinutes = (new Date() - stats.mtime) / (1000 * 60);
+                const sizeMB = (stats.size / 1024 / 1024).toFixed(1);
+
+                if (ageMinutes < 60 && stats.size > 1024 * 1024) {
+                    Logger.success(`Data is fresh (${sizeMB} MB, ${Math.round(ageMinutes)} min ago). Skipping fetch.`);
+
+                    // Update state
+                    const state = { lastSync: new Date().toISOString() };
+                    await fs.writeJson(this.stateFile, state);
+                    return;
+                }
+            }
+        } catch (e) { }
+
+        // Fetch ALL vouchers in one request
+        Logger.info('Fetching ALL vouchers from Tally (single request)...');
+        const startTime = Date.now();
 
         try {
-            if (fs.existsSync(mastersPath)) {
-                const stats = await fs.stat(mastersPath);
-                const ageHours = (new Date() - stats.mtime) / (1000 * 60 * 60);
-                if (ageHours < 2 && stats.size > 1024 * 1024) { // < 2 hours old and > 1MB
-                    skipMasters = true;
-                    Logger.info(`Found fresh Masters XML (${(stats.size / 1024 / 1024).toFixed(2)} MB). Skipping fetch.`);
-                }
-            }
+            const xmlData = await TallyConnection.send(TdlBuilder.getAllVouchers());
+
+            await fs.writeFile(vouchersFile, xmlData);
+            const sizeMB = (xmlData.length / 1024 / 1024).toFixed(1);
+            const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
+            Logger.success(`Fetched ${sizeMB} MB in ${elapsed}s → vouchers.xml`);
+
         } catch (e) {
-            // Ignore stat errors
+            Logger.error('Failed to fetch vouchers', e);
+            throw e;
         }
 
-        if (!skipMasters) {
-            Logger.info('Fetching Masters (XML) [Hybrid Mode]...');
-            const mastersXml = TdlBuilder.getMasters(); // Use Legacy XML Request
-            const mastersData = await TallyConnection.send(mastersXml);
-            await fs.writeFile(mastersPath, mastersData);
-            Logger.success('Masters (XML) saved.');
-        } else {
-            // Just touch the file to keep it fresh? No.
-        }
-
-        // 2. Fetch Vouchers (Monthly Batches)
-        const cliProgress = require('cli-progress');
-        const endDate = new Date();
-        const startDate = parseISO('2021-04-01');
-
-        // Progress Bar Logic
-        const totalMonths = (endDate.getFullYear() - startDate.getFullYear()) * 12 + (endDate.getMonth() - startDate.getMonth()) + 1;
-        const bar = new cliProgress.SingleBar({
-            format: 'Baseline Sync |{bar}| {percentage}% || {value}/{total} Months || {currentMonth}',
-            barCompleteChar: '\u2588',
-            barIncompleteChar: '\u2591',
-            hideCursor: true
-        }, cliProgress.Presets.shades_classic);
-        bar.start(totalMonths, 0, { currentMonth: "Init" });
-
-        let current = startDate;
-        let maxAlterId = 0;
-
-        while (!isAfter(current, endDate)) {
-            const rangeStart = startOfMonth(current);
-            const rangeEnd = endOfMonth(current);
-            if (isAfter(rangeStart, endDate)) break;
-
-            bar.update({ currentMonth: format(rangeStart, 'MMM yyyy') });
-
-            const tdl = TdlBuilder.getVouchersJSON(rangeStart, rangeEnd);
-            try {
-                const jsonStr = await TallyConnection.send(tdl);
-
-                // Parse to find Max Alter ID
-                // Tally JSONEx structure: { ENVELOPE: { BODY: { IMPORTDATA: { REQUESTDATA: { TALLYMESSAGE: [ ... ] } } } } }
-                // We need to parse strictly to update state, but save raw string for speed.
-
-                // Simple Regex to find max AlterId might be unsafe if comments exist, but fast.
-                // Better: Parse JSON.
-                // Note: Tally JSON might be large.
-
-                // To keep it simple: Save the file. We will calculate Max AlterId during PROCESS phase or here?
-                // Let's parse here to build valid state. 
-                const data = JSON.parse(jsonStr);
-                const msgs = data?.ENVELOPE?.BODY?.IMPORTDATA?.REQUESTDATA?.TALLYMESSAGE;
-
-                if (msgs) {
-                    const voucherList = Array.isArray(msgs) ? msgs : [msgs];
-                    voucherList.forEach(m => {
-                        const v = m.VOUCHER;
-                        if (v && v.ALTERID) {
-                            const aid = parseInt(v.ALTERID);
-                            if (aid > maxAlterId) maxAlterId = aid;
-                        }
-                    });
-
-                    const filename = `vouchers_${format(rangeStart, 'yyyy_MM')}.json`;
-                    await fs.writeJson(path.join(this.vouchersDir, filename), voucherList); // Save clean array of messages
-                    // await fs.writeFile(path.join(this.vouchersDir, filename), jsonStr); // Save RAW? No, save processed array is better for appending later.
-                }
-
-            } catch (e) {
-                // Logger.debug(`Error fetching ${format(rangeStart, 'MMM-yy')}: ${e.message}`);
-            }
-
-            bar.increment();
-            current = addMonths(current, 1);
-        }
-        bar.stop();
-
-        // Update State
-        state.lastAlterId = maxAlterId;
-        state.lastSync = new Date().toISOString();
+        // Update state
+        const state = { lastSync: new Date().toISOString() };
         await fs.writeJson(this.stateFile, state);
-        Logger.success(`Baseline Complete. Max AlterId: ${maxAlterId}`);
     }
-
-    async _runIncrementalSync(state) {
-        Logger.info(`Fetching updates since AlterId ${state.lastAlterId}...`);
-
-        const tdl = TdlBuilder.getIncrementalVouchers(state.lastAlterId);
-        const jsonStr = await TallyConnection.send(tdl);
-
-        let newVouchers = [];
-        let maxAlterId = state.lastAlterId;
+    // --- MASTERS FETCH ---
+    async fetchMasters() {
+        Logger.info('Fetching Masters (Groups & Ledgers)...');
 
         try {
-            const data = JSON.parse(jsonStr);
-            // Tally Collection Export structure is simpler: { ENVELOPE: { BODY: { DATA: { COLLECTION: { VOUCHER: [...] } } } } } ??
-            // OR standard export structure if we used Export Data
-            // With "Collection", Tally returns: { ENVELOPE: { BODY: { DESC: { ... }, DATA: { COLLECTION: [ ...objects... ] } } } }
-            // Let's inspect structure safely
+            // 1. Fetch Groups
+            const groupsXml = await TallyConnection.send(TdlBuilder.getGroups());
+            await fs.writeFile(path.join(this.mastersDir, 'groups.xml'), groupsXml);
 
-            // Note: If using "Export Data" with Collection Filter, standard structure applies.
-            // If using "Collection" request, structure differs.
-            // Let's assume standard parsing for now, or robustly find the ARRAY.
+            // 2. Fetch Ledgers
+            const ledgersXml = await TallyConnection.send(TdlBuilder.getLedgers());
+            await fs.writeFile(path.join(this.mastersDir, 'ledgers.xml'), ledgersXml);
 
-            // Generic finder for ARRAY of objects
-            // Usually data.ENVELOPE.BODY.DATA.COLLECTION.VOUCHER or just data.ENVELOPE...TALLYMESSAGE
-
-            // For Collection Request:
-            const collectionData = data?.ENVELOPE?.BODY?.DATA?.COLLECTION?.VOUCHER;
-            if (collectionData) {
-                newVouchers = Array.isArray(collectionData) ? collectionData : [collectionData];
-            } else {
-                // Try standard path (fallback)
-                const msgs = data?.ENVELOPE?.BODY?.IMPORTDATA?.REQUESTDATA?.TALLYMESSAGE;
-                if (msgs) {
-                    newVouchers = (Array.isArray(msgs) ? msgs : [msgs]).map(m => m.VOUCHER).filter(v => v);
-                }
-            }
+            Logger.success('Fetched Masters successfully.');
 
         } catch (e) {
-            Logger.warn("Failed to parse incremental JSON response. Is it empty?");
-            return;
+            Logger.error('Failed to fetch Masters', e);
+            throw e;
         }
-
-        if (newVouchers.length === 0) {
-            Logger.success("No new changes found.");
-            return;
-        }
-
-        Logger.info(`Found ${newVouchers.length} new/modified vouchers. Merging...`);
-
-        // Update Max AlterId
-        newVouchers.forEach(v => {
-            const aid = parseInt(v.ALTERID || v.masterId || v.MASTERID || 0); // Varies by export type
-            if (aid > maxAlterId) maxAlterId = aid;
-        });
-
-        // MERGE LOGIC
-        await this._mergeVouchersIntoBatches(newVouchers);
-
-        // Update State
-        state.lastAlterId = maxAlterId;
-        state.lastSync = new Date().toISOString();
-        await fs.writeJson(this.stateFile, state);
-        Logger.success(`Incremental Sync Complete. New Max AlterId: ${maxAlterId}`);
-    }
-
-    async _mergeVouchersIntoBatches(newVouchers) {
-        // 1. Group by YYYY_MM
-        const grouped = {};
-        newVouchers.forEach(v => {
-            const dateStr = v.DATE; // YYYYMMDD
-            if (!dateStr) return;
-            const yyyy = dateStr.substring(0, 4);
-            const mm = dateStr.substring(4, 6);
-            const key = `${yyyy}_${mm}`;
-
-            if (!grouped[key]) grouped[key] = [];
-            grouped[key].push(v);
-        });
-
-        // 2. Open each file and upsert
-        for (const [key, vouchers] of Object.entries(grouped)) {
-            const filename = `vouchers_${key}.json`;
-            const filePath = path.join(this.vouchersDir, filename);
-
-            let existingData = [];
-            // If file exists, load it (it's an array of TALLYMESSAGE or VOUCHER objects)
-            // Note: Full Sync saved array of TALLYMESSAGE. Incremental returns VOUCHERS.
-            // We should normalize storage to VOUCHERS only for simplicity in V4.
-
-            if (fs.existsSync(filePath)) {
-                // Determine format
-                const raw = await fs.readJson(filePath);
-                // Extract vouchers if wrapped in TallyMessage
-                if (raw.length > 0 && raw[0].VOUCHER) {
-                    existingData = raw.map(m => m.VOUCHER);
-                } else {
-                    existingData = raw;
-                }
-            }
-
-            // Create Map for fast lookup by GUID (or MasterID/VoucherNumber+Date)
-            const map = new Map();
-            existingData.forEach(v => map.set(v.GUID, v));
-
-            // Upsert
-            vouchers.forEach(v => {
-                map.set(v.GUID, v); // Overwrite existing
-            });
-
-            // Convert back to array
-            const merged = Array.from(map.values());
-
-            // Save as pure Voucher Array (Cleaner V4 format)
-            await fs.writeJson(filePath, merged);
-            // Logger.debug(`  Updated ${filename}: ${existingData.length} -> ${merged.length} vouchers`);
-        }
-    }
-
-    // Legacy support for V3 fetchers
-    async fetchMasters() { /* keep V3 logic or redirect? let's keep V3 logic in V3 files if separation needed, or overwrite */
-        // For V4, we assume runSmartSync calls the shots.
     }
 }
 

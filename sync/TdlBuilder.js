@@ -2,8 +2,7 @@ const { format } = require('date-fns');
 
 class TdlBuilder {
 
-    // --- LEGACY XML METHODS (Proven V3) ---
-
+    // --- Company Info (lightweight ping) ---
     static getCompanyInfo() {
         return `
         <ENVELOPE>
@@ -30,161 +29,138 @@ class TdlBuilder {
         </ENVELOPE>`;
     }
 
-    static getMasters() {
-        return `
-        <ENVELOPE>
-            <HEADER>
-                <TALLYREQUEST>Export Data</TALLYREQUEST>
-            </HEADER>
-            <BODY>
-                <EXPORTDATA>
-                    <REQUESTDESC>
-                        <REPORTNAME>List of Accounts</REPORTNAME>
-                        <STATICVARIABLES>
-                            <SVEXPORTFORMAT>$$SysName:XML</SVEXPORTFORMAT>
-                            <ACCOUNTTYPE>All Masters</ACCOUNTTYPE>
-                        </STATICVARIABLES>
-                    </REQUESTDESC>
-                </EXPORTDATA>
-            </BODY>
-        </ENVELOPE>`;
-    }
-
-    static getVouchers(fromDate, toDate) {
-        const fromStr = format(fromDate, 'yyyyMMdd');
-        const toStr = format(toDate, 'yyyyMMdd');
-        return `
-        <ENVELOPE>
-            <HEADER>
-                <TALLYREQUEST>Export Data</TALLYREQUEST>
-            </HEADER>
-            <BODY>
-                <EXPORTDATA>
-                    <REQUESTDESC>
-                        <REPORTNAME>Voucher Register</REPORTNAME>
-                        <STATICVARIABLES>
-                            <SVEXPORTFORMAT>$$SysName:XML</SVEXPORTFORMAT>
-                            <SVFROMDATE>${fromStr}</SVFROMDATE>
-                            <SVTODATE>${toStr}</SVTODATE>
-                        </STATICVARIABLES>
-                    </REQUESTDESC>
-                </EXPORTDATA>
-            </BODY>
-        </ENVELOPE>`;
-    }
-
-    // --- NEW V4 JSON METHODS (Smart Sync) ---
-
-    static getMastersJSON() {
-        return `
-        <ENVELOPE>
-            <HEADER>
-                <TALLYREQUEST>Export Data</TALLYREQUEST>
-            </HEADER>
-            <BODY>
-                <EXPORTDATA>
-                    <REQUESTDESC>
-                        <REPORTNAME>List of Accounts</REPORTNAME>
-                        <STATICVARIABLES>
-                            <SVEXPORTFORMAT>JSONEx</SVEXPORTFORMAT>
-                            <ACCOUNTTYPE>All Masters</ACCOUNTTYPE>
-                        </STATICVARIABLES>
-                    </REQUESTDESC>
-                </EXPORTDATA>
-            </BODY>
-        </ENVELOPE>`;
-    }
-
-    static getGroupsJSON() {
-        return `
-        <ENVELOPE>
-            <HEADER>
-                <TALLYREQUEST>Export Data</TALLYREQUEST>
-            </HEADER>
-            <BODY>
-                <EXPORTDATA>
-                    <REQUESTDESC>
-                        <REPORTNAME>List of Accounts</REPORTNAME>
-                        <STATICVARIABLES>
-                            <SVEXPORTFORMAT>JSONEx</SVEXPORTFORMAT>
-                            <ACCOUNTTYPE>Groups</ACCOUNTTYPE>
-                        </STATICVARIABLES>
-                    </REQUESTDESC>
-                </EXPORTDATA>
-            </BODY>
-        </ENVELOPE>`;
-    }
-
-    static getLedgersJSON() {
-        return `
-        <ENVELOPE>
-            <HEADER>
-                <TALLYREQUEST>Export Data</TALLYREQUEST>
-            </HEADER>
-            <BODY>
-                <EXPORTDATA>
-                    <REQUESTDESC>
-                        <REPORTNAME>List of Accounts</REPORTNAME>
-                        <STATICVARIABLES>
-                            <SVEXPORTFORMAT>JSONEx</SVEXPORTFORMAT>
-                            <ACCOUNTTYPE>Ledgers</ACCOUNTTYPE>
-                        </STATICVARIABLES>
-                    </REQUESTDESC>
-                </EXPORTDATA>
-            </BODY>
-        </ENVELOPE>`;
-    }
-
-    // Full Fetch by Date (JSON)
-    static getVouchersJSON(fromDate, toDate) {
-        const fromStr = format(fromDate, 'yyyyMMdd');
-        const toStr = format(toDate, 'yyyyMMdd');
-        return `
-        <ENVELOPE>
-            <HEADER>
-                <TALLYREQUEST>Export Data</TALLYREQUEST>
-            </HEADER>
-            <BODY>
-                <EXPORTDATA>
-                    <REQUESTDESC>
-                        <REPORTNAME>Voucher Register</REPORTNAME>
-                        <STATICVARIABLES>
-                            <SVEXPORTFORMAT>JSONEx</SVEXPORTFORMAT>
-                            <SVFROMDATE>${fromStr}</SVFROMDATE>
-                            <SVTODATE>${toStr}</SVTODATE>
-                        </STATICVARIABLES>
-                    </REQUESTDESC>
-                </EXPORTDATA>
-            </BODY>
-        </ENVELOPE>`;
-    }
-
-    // Incremental Fetch by AlterId
-    static getIncrementalVouchers(minAlterId) {
-        // We define a Custom Collection with a Filter
+    // --- Company Statistics (for Pre-Sync Dashboard) ---
+    static getCompanyStats() {
         return `
         <ENVELOPE>
             <HEADER>
                 <VERSION>1</VERSION>
                 <TALLYREQUEST>Export</TALLYREQUEST>
                 <TYPE>Collection</TYPE>
-                <ID>BizStashIncremental</ID>
+                <ID>CompanyStatsForSync</ID>
             </HEADER>
             <BODY>
                 <DESC>
                     <STATICVARIABLES>
-                        <SVEXPORTFORMAT>JSONEx</SVEXPORTFORMAT>
+                        <SVEXPORTFORMAT>$$SysName:XML</SVEXPORTFORMAT>
                     </STATICVARIABLES>
                     <TDL>
                         <TDLMESSAGE>
-                            <COLLECTION NAME="BizStashIncremental">
-                                <TYPE>Voucher</TYPE>
-                                <FILTERS>FilterByAlterID</FILTERS>
-                                <!-- Optional: Optimization fields here -->
+                            <COLLECTION NAME="CompanyStatsForSync">
+                                <TYPE>Company</TYPE>
+                                <FETCH>Name, StartingFrom, BooksFrom, LastVoucherDate, MobileNo</FETCH>
                             </COLLECTION>
-                            <SYSTEM TYPE="Formulae" NAME="FilterByAlterID">
-                                $AlterId > ${minAlterId}
-                            </SYSTEM>
+                        </TDLMESSAGE>
+                    </TDL>
+                </DESC>
+            </BODY>
+        </ENVELOPE>`;
+    }
+
+    // --- Voucher Count (lightweight, for dashboard) ---
+    static getVoucherCount() {
+        return `
+        <ENVELOPE>
+            <HEADER>
+                <VERSION>1</VERSION>
+                <TALLYREQUEST>Export</TALLYREQUEST>
+                <TYPE>Collection</TYPE>
+                <ID>VoucherCountColl</ID>
+            </HEADER>
+            <BODY>
+                <DESC>
+                    <STATICVARIABLES>
+                        <SVEXPORTFORMAT>$$SysName:XML</SVEXPORTFORMAT>
+                    </STATICVARIABLES>
+                    <TDL>
+                        <TDLMESSAGE>
+                            <COLLECTION NAME="VoucherCountColl">
+                                <TYPE>Voucher</TYPE>
+                                <FETCH>VoucherNumber</FETCH>
+                            </COLLECTION>
+                        </TDLMESSAGE>
+                    </TDL>
+                </DESC>
+            </BODY>
+        </ENVELOPE>`;
+    }
+
+    // --- ALL Vouchers (single fetch - PROVEN from Building Block 2) ---
+    static getAllVouchers() {
+        return `
+        <ENVELOPE>
+            <HEADER>
+                <VERSION>1</VERSION>
+                <TALLYREQUEST>Export</TALLYREQUEST>
+                <TYPE>Collection</TYPE>
+                <ID>VoucherAllColl</ID>
+            </HEADER>
+            <BODY>
+                <DESC>
+                    <STATICVARIABLES>
+                        <SVEXPORTFORMAT>$$SysName:XML</SVEXPORTFORMAT>
+                    </STATICVARIABLES>
+                    <TDL>
+                        <TDLMESSAGE>
+                            <COLLECTION NAME="VoucherAllColl">
+                                <TYPE>Voucher</TYPE>
+                                <FETCH>Date,VoucherNumber,VoucherTypeName,PartyLedgerName,Amount,Reference</FETCH>
+                            </COLLECTION>
+                        </TDLMESSAGE>
+                    </TDL>
+                </DESC>
+            </BODY>
+        </ENVELOPE>`;
+    }
+    // --- Groups (for hierarchy) ---
+    static getGroups() {
+        return `
+        <ENVELOPE>
+            <HEADER>
+                <VERSION>1</VERSION>
+                <TALLYREQUEST>Export</TALLYREQUEST>
+                <TYPE>Collection</TYPE>
+                <ID>GroupColl</ID>
+            </HEADER>
+            <BODY>
+                <DESC>
+                    <STATICVARIABLES>
+                        <SVEXPORTFORMAT>$$SysName:XML</SVEXPORTFORMAT>
+                    </STATICVARIABLES>
+                    <TDL>
+                        <TDLMESSAGE>
+                            <COLLECTION NAME="GroupColl">
+                                <TYPE>Group</TYPE>
+                                <FETCH>Name, Parent</FETCH>
+                            </COLLECTION>
+                        </TDLMESSAGE>
+                    </TDL>
+                </DESC>
+            </BODY>
+        </ENVELOPE>`;
+    }
+
+    // --- Ledgers (for Opening Balance) ---
+    static getLedgers() {
+        return `
+        <ENVELOPE>
+            <HEADER>
+                <VERSION>1</VERSION>
+                <TALLYREQUEST>Export</TALLYREQUEST>
+                <TYPE>Collection</TYPE>
+                <ID>LedgerColl</ID>
+            </HEADER>
+            <BODY>
+                <DESC>
+                    <STATICVARIABLES>
+                        <SVEXPORTFORMAT>$$SysName:XML</SVEXPORTFORMAT>
+                    </STATICVARIABLES>
+                    <TDL>
+                        <TDLMESSAGE>
+                            <COLLECTION NAME="LedgerColl">
+                                <TYPE>Ledger</TYPE>
+                                <FETCH>Name, Parent, OpeningBalance</FETCH>
+                            </COLLECTION>
                         </TDLMESSAGE>
                     </TDL>
                 </DESC>

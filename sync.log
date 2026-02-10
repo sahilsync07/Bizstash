@@ -1,22 +1,358 @@
+[2026-02-10 17:09:02] [INFO] Running Health Check...
+[2026-02-10 17:09:03] [SUCCESS] Tally is ONLINE and responding.
 
 === BIZSTASH SYNC ENGINE 3.0 ===
-[2026-02-05 05:56:12] [INFO] Target Company: Admin_Test_PC
-[2026-02-05 05:56:12] [INFO] Checking Tally Connection...
-[2026-02-05 06:01:13] [WARN] Tally Request failed (Attempt 1/3). Retrying in 1000ms... Error: timeout of 300000ms exceeded
-[2026-02-05 06:06:14] [WARN] Tally Request failed (Attempt 2/3). Retrying in 2000ms... Error: timeout of 300000ms exceeded
-[2026-02-05 06:11:17] [ERROR] Tally Request failed after 3 attempts.
-[2026-02-05 06:11:17] [ERROR] Sync Fatal Error
-[stacktrace] AxiosError: timeout of 300000ms exceeded
-    at RedirectableRequest.handleRequestTimeout (C:\Projects\Bizstash\node_modules\axios\dist\node\axios.cjs:3552:15)
-    at RedirectableRequest.emit (node:events:508:28)
-    at Timeout._onTimeout (C:\Projects\Bizstash\node_modules\follow-redirects\index.js:221:12)
-    at listOnTimeout (node:internal/timers:605:17)
-    at process.processTimers (node:internal/timers:541:7)
-    at Axios.request (C:\Projects\Bizstash\node_modules\axios\dist\node\axios.cjs:4731:41)
+[2026-02-10 17:11:05] [INFO] Target Company: Admin_Test_PC
+[2026-02-10 17:11:05] [INFO] Checking Tally Connection...
+[2026-02-10 17:11:06] [SUCCESS] Connected to Tally! Active Company: Unknown
+[2026-02-10 17:11:06] [INFO] Data Directory initialized: C:\Projects\Bizstash\tally_data\xml\Admin_Test_PC
+
+=== PHASE 1: SMART FETCH ===
+[2026-02-10 17:11:06] [INFO] No previous sync state found. Running Full Baseline Sync (JSON).
+[2026-02-10 17:11:06] [INFO] Fetching Masters (XML) [Hybrid Mode]...
+
+=== BIZSTASH SYNC ENGINE 3.0 ===
+[2026-02-10 17:11:20] [INFO] Target Company: Admin_Test_PC
+[2026-02-10 17:11:20] [INFO] Checking Tally Connection...
+
+=== BIZSTASH SYNC ENGINE 3.0 ===
+[2026-02-10 17:11:28] [INFO] Target Company: Admin_Test_PC
+[2026-02-10 17:11:28] [INFO] Checking Tally Connection...
+[2026-02-10 17:12:37] [SUCCESS] Connected to Tally! Active Company: Unknown
+[2026-02-10 17:12:37] [SUCCESS] Connected to Tally! Active Company: Unknown
+[2026-02-10 17:12:37] [INFO] Data Directory initialized: C:\Projects\Bizstash\tally_data\xml\Admin_Test_PC
+[2026-02-10 17:12:37] [INFO] Data Directory initialized: C:\Projects\Bizstash\tally_data\xml\Admin_Test_PC
+
+=== PHASE 1: SMART FETCH ===
+
+=== PHASE 1: SMART FETCH ===
+[2026-02-10 17:12:37] [INFO] No previous sync state found. Running Full Baseline Sync (JSON).
+[2026-02-10 17:12:37] [INFO] No previous sync state found. Running Full Baseline Sync (JSON).
+[2026-02-10 17:12:37] [INFO] Fetching Masters (XML) [Hybrid Mode]...
+[2026-02-10 17:12:37] [INFO] Fetching Masters (XML) [Hybrid Mode]...
+[2026-02-10 17:12:57] [WARN] Tally Request failed (Attempt 1/3). Retrying in 1000ms... Error: read ECONNRESET
+[2026-02-10 17:12:57] [WARN] Tally Request failed (Attempt 1/3). Retrying in 1000ms... Error: read ECONNRESET
+[2026-02-10 17:12:58] [WARN] Tally Request failed (Attempt 2/3). Retrying in 2000ms... Error: Tally not reachable at http://localhost:9000. Is Tally running?
+[2026-02-10 17:12:58] [WARN] Tally Request failed (Attempt 2/3). Retrying in 2000ms... Error: Tally not reachable at http://localhost:9000. Is Tally running?
+[2026-02-10 17:13:00] [ERROR] Tally Request failed after 3 attempts.
+[2026-02-10 17:13:00] [ERROR] Sync Fatal Error
+[stacktrace] Error: Tally not reachable at http://localhost:9000. Is Tally running?
+    at TallyConnection._executeRequest (C:\Projects\Bizstash\sync\TallyConnection.js:67:23)
     at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
-    at async TallyConnection._executeRequest (C:\Projects\Bizstash\sync\TallyConnection.js:41:30)
+    at async RetryHelper.withRetry (C:\Projects\Bizstash\sync\utils\RetryHelper.js:8:24)
+    at async TallyConnection.send (C:\Projects\Bizstash\sync\TallyConnection.js:20:24)
+    at async DataFetcher._runFullSyncJSON (C:\Projects\Bizstash\sync\DataFetcher.js:90:33)
+    at async DataFetcher.runSmartSync (C:\Projects\Bizstash\sync\DataFetcher.js:64:13)
+    at async SyncEngine.run (C:\Projects\Bizstash\sync\SyncEngine.js:38:13)
+    at async main (C:\Projects\Bizstash\sync\index.js:27:21)
+[2026-02-10 17:13:00] [ERROR] Tally Request failed after 3 attempts.
+[2026-02-10 17:13:00] [ERROR] Sync Fatal Error
+[stacktrace] Error: Tally not reachable at http://localhost:9000. Is Tally running?
+    at TallyConnection._executeRequest (C:\Projects\Bizstash\sync\TallyConnection.js:67:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async RetryHelper.withRetry (C:\Projects\Bizstash\sync\utils\RetryHelper.js:8:24)
+    at async TallyConnection.send (C:\Projects\Bizstash\sync\TallyConnection.js:20:24)
+    at async DataFetcher._runFullSyncJSON (C:\Projects\Bizstash\sync\DataFetcher.js:90:33)
+    at async DataFetcher.runSmartSync (C:\Projects\Bizstash\sync\DataFetcher.js:64:13)
+    at async SyncEngine.run (C:\Projects\Bizstash\sync\SyncEngine.js:38:13)
+    at async main (C:\Projects\Bizstash\sync\index.js:27:21)
+[2026-02-10 17:13:13] [INFO] Running Health Check...
+[2026-02-10 17:13:14] [SUCCESS] Tally is ONLINE and responding.
+[2026-02-10 17:14:09] [INFO] Running Health Check...
+[2026-02-10 17:14:10] [SUCCESS] Tally is ONLINE and responding.
+
+=== BIZSTASH SYNC ENGINE 3.0 ===
+[2026-02-10 17:14:20] [INFO] Target Company: Admin_Test_PC
+[2026-02-10 17:14:20] [INFO] Checking Tally Connection...
+[2026-02-10 17:14:21] [SUCCESS] Connected to Tally! Active Company: Unknown
+[2026-02-10 17:14:21] [INFO] Data Directory initialized: C:\Projects\Bizstash\tally_data\xml\Admin_Test_PC
+
+=== PHASE 1: SMART FETCH ===
+[2026-02-10 17:14:21] [INFO] No previous sync state found. Running Full Baseline Sync (JSON).
+[2026-02-10 17:14:21] [INFO] Fetching Masters (XML) [Hybrid Mode]...
+[2026-02-10 17:15:43] [SUCCESS] Masters (XML) saved.
+[2026-02-10 17:16:14] [WARN] Tally Request failed (Attempt 1/3). Retrying in 1000ms... Error: read ECONNRESET
+[2026-02-10 17:16:15] [WARN] Tally Request failed (Attempt 2/3). Retrying in 2000ms... Error: Tally not reachable at http://localhost:9000. Is Tally running?
+[2026-02-10 17:16:17] [ERROR] Tally Request failed after 3 attempts.
+[2026-02-10 17:16:18] [WARN] Tally Request failed (Attempt 1/3). Retrying in 1000ms... Error: Tally not reachable at http://localhost:9000. Is Tally running?
+[2026-02-10 17:16:19] [WARN] Tally Request failed (Attempt 2/3). Retrying in 2000ms... Error: Tally not reachable at http://localhost:9000. Is Tally running?
+[2026-02-10 17:16:21] [ERROR] Tally Request failed after 3 attempts.
+[2026-02-10 17:16:22] [WARN] Tally Request failed (Attempt 1/3). Retrying in 1000ms... Error: Tally not reachable at http://localhost:9000. Is Tally running?
+[2026-02-10 17:16:23] [WARN] Tally Request failed (Attempt 2/3). Retrying in 2000ms... Error: Tally not reachable at http://localhost:9000. Is Tally running?
+[2026-02-10 17:16:25] [ERROR] Tally Request failed after 3 attempts.
+[2026-02-10 17:16:26] [WARN] Tally Request failed (Attempt 1/3). Retrying in 1000ms... Error: Tally not reachable at http://localhost:9000. Is Tally running?
+[2026-02-10 17:16:27] [WARN] Tally Request failed (Attempt 2/3). Retrying in 2000ms... Error: Tally not reachable at http://localhost:9000. Is Tally running?
+[2026-02-10 17:19:04] [INFO] Running Health Check...
+[2026-02-10 17:19:04] [WARN] Tally Request failed (Attempt 1/3). Retrying in 1000ms... Error: Tally not reachable at http://localhost:9000. Is Tally running?
+[2026-02-10 17:19:05] [WARN] Tally Request failed (Attempt 2/3). Retrying in 2000ms... Error: Tally not reachable at http://localhost:9000. Is Tally running?
+[2026-02-10 17:19:07] [ERROR] Tally Request failed after 3 attempts.
+[2026-02-10 17:19:07] [ERROR] Health Check Failed
+[stacktrace] Error: Tally not reachable at http://localhost:9000. Is Tally running?
+    at TallyConnection._executeRequest (C:\Projects\Bizstash\sync\TallyConnection.js:67:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async RetryHelper.withRetry (C:\Projects\Bizstash\sync\utils\RetryHelper.js:8:24)
+    at async TallyConnection.send (C:\Projects\Bizstash\sync\TallyConnection.js:20:24)
+    at async main (C:\Projects\Bizstash\sync\index.js:14:26)
+
+=== BIZSTASH SYNC ENGINE 3.0 ===
+[2026-02-10 17:19:15] [INFO] Target Company: Admin_Test_PC
+[2026-02-10 17:19:15] [INFO] Checking Tally Connection...
+[2026-02-10 17:19:16] [WARN] Tally Request failed (Attempt 1/3). Retrying in 1000ms... Error: Tally not reachable at http://localhost:9000. Is Tally running?
+[2026-02-10 17:19:17] [WARN] Tally Request failed (Attempt 2/3). Retrying in 2000ms... Error: Tally not reachable at http://localhost:9000. Is Tally running?
+[2026-02-10 17:19:19] [ERROR] Tally Request failed after 3 attempts.
+[2026-02-10 17:19:19] [ERROR] Sync Fatal Error
+[stacktrace] Error: Tally not reachable at http://localhost:9000. Is Tally running?
+    at TallyConnection._executeRequest (C:\Projects\Bizstash\sync\TallyConnection.js:67:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
     at async RetryHelper.withRetry (C:\Projects\Bizstash\sync\utils\RetryHelper.js:8:24)
     at async TallyConnection.send (C:\Projects\Bizstash\sync\TallyConnection.js:20:24)
     at async DataFetcher.checkConnection (C:\Projects\Bizstash\sync\DataFetcher.js:35:26)
     at async SyncEngine.run (C:\Projects\Bizstash\sync\SyncEngine.js:26:34)
     at async main (C:\Projects\Bizstash\sync\index.js:27:21)
+[2026-02-10 17:20:09] [INFO] Running Health Check...
+[2026-02-10 17:20:09] [SUCCESS] Tally is ONLINE and responding.
+
+=== BIZSTASH SYNC ENGINE 3.0 ===
+[2026-02-10 17:20:22] [INFO] Target Company: Admin_Test_PC
+[2026-02-10 17:20:22] [INFO] Checking Tally Connection...
+[2026-02-10 17:20:23] [SUCCESS] Connected to Tally! Active Company: Unknown
+[2026-02-10 17:20:23] [INFO] Data Directory initialized: C:\Projects\Bizstash\tally_data\xml\Admin_Test_PC
+
+=== PHASE 1: SMART FETCH ===
+[2026-02-10 17:20:23] [INFO] No previous sync state found. Running Full Baseline Sync (JSON).
+[2026-02-10 17:20:23] [INFO] Found fresh Masters XML (141.94 MB). Skipping fetch.
+[2026-02-10 17:20:23] [INFO] Skipping Masters fetch (crash prevention - vouchers contain all needed data)
+[2026-02-10 17:20:53] [WARN] Tally Request failed (Attempt 1/3). Retrying in 1000ms... Error: timeout of 30000ms exceeded
+[2026-02-10 17:21:24] [WARN] Tally Request failed (Attempt 2/3). Retrying in 2000ms... Error: timeout of 30000ms exceeded
+[2026-02-10 17:21:56] [ERROR] Tally Request failed after 3 attempts.
+[2026-02-10 17:22:27] [WARN] Tally Request failed (Attempt 1/3). Retrying in 1000ms... Error: timeout of 30000ms exceeded
+[2026-02-10 17:22:58] [WARN] Tally Request failed (Attempt 2/3). Retrying in 2000ms... Error: timeout of 30000ms exceeded
+[2026-02-10 17:23:19] [ERROR] Tally Request failed after 3 attempts.
+[2026-02-10 17:23:19] [WARN] Tally Request failed (Attempt 1/3). Retrying in 1000ms... Error: Tally not reachable at http://localhost:9000. Is Tally running?
+[2026-02-10 17:23:20] [WARN] Tally Request failed (Attempt 2/3). Retrying in 2000ms... Error: Tally not reachable at http://localhost:9000. Is Tally running?
+[2026-02-10 17:23:22] [ERROR] Tally Request failed after 3 attempts.
+[2026-02-10 17:23:23] [WARN] Tally Request failed (Attempt 1/3). Retrying in 1000ms... Error: Tally not reachable at http://localhost:9000. Is Tally running?
+[2026-02-10 17:23:24] [WARN] Tally Request failed (Attempt 2/3). Retrying in 2000ms... Error: Tally not reachable at http://localhost:9000. Is Tally running?
+[2026-02-10 17:23:26] [ERROR] Tally Request failed after 3 attempts.
+[2026-02-10 17:23:26] [WARN] Tally Request failed (Attempt 1/3). Retrying in 1000ms... Error: Tally returned TDL Error: Could not find Company &apos;&apos;
+[2026-02-10 17:23:27] [WARN] Tally Request failed (Attempt 2/3). Retrying in 2000ms... Error: Tally returned TDL Error: Could not find Company &apos;&apos;
+[2026-02-10 17:23:49] [ERROR] Tally Request failed after 3 attempts.
+[2026-02-10 17:23:50] [WARN] Tally Request failed (Attempt 1/3). Retrying in 1000ms... Error: Tally not reachable at http://localhost:9000. Is Tally running?
+[2026-02-10 17:23:51] [WARN] Tally Request failed (Attempt 2/3). Retrying in 2000ms... Error: Tally not reachable at http://localhost:9000. Is Tally running?
+[2026-02-10 17:23:53] [ERROR] Tally Request failed after 3 attempts.
+[2026-02-10 17:23:53] [WARN] Tally Request failed (Attempt 1/3). Retrying in 1000ms... Error: Tally not reachable at http://localhost:9000. Is Tally running?
+[2026-02-10 17:23:54] [WARN] Tally Request failed (Attempt 2/3). Retrying in 2000ms... Error: Tally not reachable at http://localhost:9000. Is Tally running?
+[2026-02-10 17:23:56] [ERROR] Tally Request failed after 3 attempts.
+[2026-02-10 17:23:57] [WARN] Tally Request failed (Attempt 1/3). Retrying in 1000ms... Error: Tally returned TDL Error: Could not find Company &apos;&apos;
+[2026-02-10 17:23:58] [WARN] Tally Request failed (Attempt 2/3). Retrying in 2000ms... Error: Tally returned TDL Error: Could not find Company &apos;&apos;
+[2026-02-10 17:24:00] [ERROR] Tally Request failed after 3 attempts.
+[2026-02-10 17:24:06] [WARN] Tally Request failed (Attempt 1/3). Retrying in 1000ms... Error: read ECONNRESET
+[2026-02-10 17:24:07] [WARN] Tally Request failed (Attempt 2/3). Retrying in 2000ms... Error: Tally not reachable at http://localhost:9000. Is Tally running?
+[2026-02-10 17:24:09] [ERROR] Tally Request failed after 3 attempts.
+[2026-02-10 17:24:10] [WARN] Tally Request failed (Attempt 1/3). Retrying in 1000ms... Error: Tally not reachable at http://localhost:9000. Is Tally running?
+[2026-02-10 17:24:11] [WARN] Tally Request failed (Attempt 2/3). Retrying in 2000ms... Error: Tally not reachable at http://localhost:9000. Is Tally running?
+[2026-02-10 17:24:13] [ERROR] Tally Request failed after 3 attempts.
+[2026-02-10 17:24:13] [WARN] Tally Request failed (Attempt 1/3). Retrying in 1000ms... Error: Tally not reachable at http://localhost:9000. Is Tally running?
+[2026-02-10 17:24:14] [WARN] Tally Request failed (Attempt 2/3). Retrying in 2000ms... Error: Tally not reachable at http://localhost:9000. Is Tally running?
+[2026-02-10 17:24:16] [ERROR] Tally Request failed after 3 attempts.
+[2026-02-10 17:24:17] [WARN] Tally Request failed (Attempt 1/3). Retrying in 1000ms... Error: Tally not reachable at http://localhost:9000. Is Tally running?
+[2026-02-10 17:24:18] [WARN] Tally Request failed (Attempt 2/3). Retrying in 2000ms... Error: Tally not reachable at http://localhost:9000. Is Tally running?
+[2026-02-10 17:24:20] [ERROR] Tally Request failed after 3 attempts.
+[2026-02-10 17:24:20] [WARN] Tally Request failed (Attempt 1/3). Retrying in 1000ms... Error: Tally returned TDL Error: Could not find Company &apos;&apos;
+[2026-02-10 17:24:21] [WARN] Tally Request failed (Attempt 2/3). Retrying in 2000ms... Error: Tally returned TDL Error: Could not find Company &apos;&apos;
+[2026-02-10 17:24:23] [ERROR] Tally Request failed after 3 attempts.
+[2026-02-10 17:24:24] [WARN] Tally Request failed (Attempt 1/3). Retrying in 1000ms... Error: Tally returned TDL Error: Could not find Company &apos;&apos;
+[2026-02-10 17:24:25] [WARN] Tally Request failed (Attempt 2/3). Retrying in 2000ms... Error: Tally returned TDL Error: Could not find Company &apos;&apos;
+[2026-02-10 17:24:35] [ERROR] Tally Request failed after 3 attempts.
+[2026-02-10 17:24:36] [WARN] Tally Request failed (Attempt 1/3). Retrying in 1000ms... Error: Tally not reachable at http://localhost:9000. Is Tally running?
+[2026-02-10 17:24:37] [WARN] Tally Request failed (Attempt 2/3). Retrying in 2000ms... Error: Tally not reachable at http://localhost:9000. Is Tally running?
+[2026-02-10 17:24:39] [ERROR] Tally Request failed after 3 attempts.
+[2026-02-10 17:24:39] [WARN] Tally Request failed (Attempt 1/3). Retrying in 1000ms... Error: Tally not reachable at http://localhost:9000. Is Tally running?
+[2026-02-10 17:24:40] [WARN] Tally Request failed (Attempt 2/3). Retrying in 2000ms... Error: Tally not reachable at http://localhost:9000. Is Tally running?
+[2026-02-10 17:24:42] [ERROR] Tally Request failed after 3 attempts.
+[2026-02-10 17:24:43] [WARN] Tally Request failed (Attempt 1/3). Retrying in 1000ms... Error: Tally not reachable at http://localhost:9000. Is Tally running?
+[2026-02-10 17:24:44] [WARN] Tally Request failed (Attempt 2/3). Retrying in 2000ms... Error: Tally not reachable at http://localhost:9000. Is Tally running?
+[2026-02-10 17:24:46] [ERROR] Tally Request failed after 3 attempts.
+[2026-02-10 17:24:46] [WARN] Tally Request failed (Attempt 1/3). Retrying in 1000ms... Error: Tally not reachable at http://localhost:9000. Is Tally running?
+[2026-02-10 17:24:47] [WARN] Tally Request failed (Attempt 2/3). Retrying in 2000ms... Error: Tally not reachable at http://localhost:9000. Is Tally running?
+[2026-02-10 17:25:37] [INFO] Running Health Check...
+[2026-02-10 17:25:37] [WARN] Tally Request failed (Attempt 1/3). Retrying in 1000ms... Error: Tally not reachable at http://localhost:9000. Is Tally running?
+[2026-02-10 17:25:38] [WARN] Tally Request failed (Attempt 2/3). Retrying in 2000ms... Error: Tally not reachable at http://localhost:9000. Is Tally running?
+[2026-02-10 17:25:40] [ERROR] Tally Request failed after 3 attempts.
+[2026-02-10 17:25:40] [ERROR] Health Check Failed
+[stacktrace] Error: Tally not reachable at http://localhost:9000. Is Tally running?
+    at TallyConnection._executeRequest (C:\Projects\Bizstash\sync\TallyConnection.js:67:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async RetryHelper.withRetry (C:\Projects\Bizstash\sync\utils\RetryHelper.js:8:24)
+    at async TallyConnection.send (C:\Projects\Bizstash\sync\TallyConnection.js:20:24)
+    at async main (C:\Projects\Bizstash\sync\index.js:14:26)
+
+=== BIZSTASH SYNC ENGINE 3.0 ===
+[2026-02-10 17:25:51] [INFO] Target Company: Admin_Test_PC
+[2026-02-10 17:25:51] [INFO] Checking Tally Connection...
+[2026-02-10 17:25:51] [WARN] Tally Request failed (Attempt 1/3). Retrying in 1000ms... Error: Tally not reachable at http://localhost:9000. Is Tally running?
+[2026-02-10 17:25:52] [WARN] Tally Request failed (Attempt 2/3). Retrying in 2000ms... Error: Tally not reachable at http://localhost:9000. Is Tally running?
+[2026-02-10 17:25:54] [ERROR] Tally Request failed after 3 attempts.
+[2026-02-10 17:25:54] [ERROR] Sync Fatal Error
+[stacktrace] Error: Tally not reachable at http://localhost:9000. Is Tally running?
+    at TallyConnection._executeRequest (C:\Projects\Bizstash\sync\TallyConnection.js:67:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)
+    at async RetryHelper.withRetry (C:\Projects\Bizstash\sync\utils\RetryHelper.js:8:24)
+    at async TallyConnection.send (C:\Projects\Bizstash\sync\TallyConnection.js:20:24)
+    at async DataFetcher.checkConnection (C:\Projects\Bizstash\sync\DataFetcher.js:35:26)
+    at async SyncEngine.run (C:\Projects\Bizstash\sync\SyncEngine.js:26:34)
+    at async main (C:\Projects\Bizstash\sync\index.js:27:21)
+[2026-02-10 17:26:54] [INFO] Running Health Check...
+[2026-02-10 17:26:54] [SUCCESS] Tally is ONLINE and responding.
+
+=== BIZSTASH SYNC ENGINE 3.0 ===
+[2026-02-10 17:27:08] [INFO] Target Company: Admin_Test_PC
+[2026-02-10 17:27:08] [INFO] Checking Tally Connection...
+[2026-02-10 17:27:08] [SUCCESS] Connected to Tally! Active Company: Unknown
+[2026-02-10 17:27:08] [INFO] Data Directory initialized: C:\Projects\Bizstash\tally_data\xml\Admin_Test_PC
+
+=== PHASE 1: SMART FETCH ===
+[2026-02-10 17:27:08] [INFO] No previous sync state found. Running Full Baseline Sync (JSON).
+[2026-02-10 17:27:08] [INFO] Found fresh Masters XML (141.94 MB). Skipping fetch.
+[2026-02-10 17:27:08] [INFO] Skipping Masters fetch (crash prevention - vouchers contain all needed data)
+[2026-02-10 17:43:12] [SUCCESS] Baseline Sync Complete.
+
+=== PHASE 2: PROCESS ===
+[2026-02-10 17:43:12] [INFO] Processing data for Admin_Test_PC (V4 Logic)...
+[2026-02-10 17:43:12] [INFO] Parsing Masters from XML (Hybrid Mode)...
+[2026-02-10 17:43:28] [INFO] Parsed 1 Ledgers from JSON.
+[2026-02-10 17:43:28] [INFO] Found 0 JSON voucher modules.
+[2026-02-10 17:43:28] [SUCCESS] Data saved to C:\Projects\Bizstash\dashboard\public\data\Admin_Test_PC\data.json
+[2026-02-10 17:43:28] [SUCCESS] Data Processing Complete.
+
+=== SYNC COMPLETE ===
+
+=== BIZSTASH SYNC ENGINE 5.0 ===
+[2026-02-10 17:53:01] [INFO] Data Directory: C:\Projects\Bizstash\tally_data\xml\Admin_Test_PC
+
+=== PRE-SYNC DASHBOARD ===
+
+=== PHASE 1: FETCH DATA ===
+[2026-02-10 17:53:05] [INFO] Fetching ALL vouchers from Tally (single request)...
+[2026-02-10 17:53:21] [SUCCESS] Fetched 49.6 MB in 15.9s → vouchers.xml
+
+=== PHASE 2: PROCESS ===
+[2026-02-10 17:53:21] [INFO] Processing data for Admin_Test_PC...
+[2026-02-10 17:53:21] [INFO] Parsing Masters from XML...
+[2026-02-10 17:53:33] [INFO] Parsed 1071 Ledgers, 66 Groups.
+[2026-02-10 17:53:33] [INFO] Parsing vouchers.xml...
+[2026-02-10 17:53:33] [INFO] Loaded 49.6 MB. Parsing XML...
+[2026-02-10 17:53:36] [INFO] Parsed 4,591 vouchers in 2.4s.
+[2026-02-10 17:53:36] [INFO] Analysis: 4591 transactions, 817 debtors, 115 creditors, 2121 stock items.
+[2026-02-10 17:53:36] [SUCCESS] Data saved to C:\Projects\Bizstash\dashboard\public\data\Admin_Test_PC\data.json
+[2026-02-10 17:53:36] [SUCCESS] Data Processing Complete.
+
+=== SYNC COMPLETE ✅ ===
+
+=== BIZSTASH SYNC ENGINE 5.0 ===
+[2026-02-10 17:53:53] [INFO] Data Directory: C:\Projects\Bizstash\tally_data\xml\Admin_Test_PC
+
+=== PRE-SYNC DASHBOARD ===
+
+=== PHASE 1: FETCH DATA ===
+[2026-02-10 17:53:57] [SUCCESS] Data is fresh (49.6 MB, 1 min ago). Skipping fetch.
+
+=== PHASE 2: PROCESS ===
+[2026-02-10 17:53:57] [INFO] Processing data for Admin_Test_PC...
+[2026-02-10 17:53:57] [INFO] Parsing Masters from XML...
+[2026-02-10 17:54:13] [INFO] Parsed 1071 Ledgers, 66 Groups.
+[2026-02-10 17:54:13] [INFO] Parsing vouchers.xml...
+[2026-02-10 17:54:13] [INFO] Loaded 49.6 MB. Parsing XML...
+[2026-02-10 17:54:17] [INFO] Parsed 4,591 vouchers in 4.5s.
+[2026-02-10 17:54:18] [INFO] Analysis: 4591 transactions, 817 debtors, 115 creditors, 2121 stock items.
+[2026-02-10 17:54:18] [SUCCESS] Data saved to C:\Projects\Bizstash\dashboard\public\data\Admin_Test_PC\data.json
+[2026-02-10 17:54:18] [SUCCESS] Data Processing Complete.
+
+=== SYNC COMPLETE ✅ ===
+
+=== BIZSTASH SYNC ENGINE 5.0 ===
+[2026-02-10 17:59:53] [INFO] Data Directory: C:\Projects\Bizstash\tally_data\xml\Admin_Test_PC
+
+=== PRE-SYNC DASHBOARD ===
+
+=== PHASE 1: FETCH DATA ===
+[2026-02-10 17:59:56] [SUCCESS] Data is fresh (49.6 MB, 7 min ago). Skipping fetch.
+
+=== PHASE 2: PROCESS ===
+[2026-02-10 17:59:56] [INFO] Processing data for Admin_Test_PC...
+[2026-02-10 17:59:56] [INFO] Parsing Masters from XML...
+[2026-02-10 18:00:04] [INFO] Parsed 1071 Ledgers, 66 Groups.
+[2026-02-10 18:00:04] [INFO] Parsing vouchers.xml...
+[2026-02-10 18:00:04] [INFO] Loaded 49.6 MB. Parsing XML...
+[2026-02-10 18:00:08] [INFO] Parsed 4,591 vouchers in 3.3s.
+[2026-02-10 18:00:08] [INFO] Analysis: 4591 transactions, 817 debtors, 115 creditors, 2121 stock items.
+[2026-02-10 18:00:08] [SUCCESS] Data saved to C:\Projects\Bizstash\dashboard\public\data\Admin_Test_PC\data.json
+[2026-02-10 18:00:08] [SUCCESS] Data Processing Complete.
+
+=== SYNC COMPLETE ✅ ===
+
+=== BIZSTASH SYNC ENGINE 5.0 ===
+[2026-02-10 18:33:18] [INFO] Data Directory: C:\Projects\Bizstash\tally_data\xml\Admin_Test_PC
+
+=== PRE-SYNC DASHBOARD ===
+[2026-02-10 18:33:22] [INFO] Fetching Masters (Groups & Ledgers)...
+[2026-02-10 18:33:23] [SUCCESS] Fetched Masters successfully.
+
+=== PHASE 1: FETCH DATA ===
+[2026-02-10 18:33:23] [SUCCESS] Data is fresh (49.6 MB, 40 min ago). Skipping fetch.
+
+=== PHASE 2: PROCESS ===
+[2026-02-10 18:33:23] [INFO] Processing data for Admin_Test_PC...
+[2026-02-10 18:33:23] [INFO] Parsed 0 Ledgers, 0 Groups.
+[2026-02-10 18:33:23] [INFO] Parsing vouchers.xml...
+[2026-02-10 18:33:23] [INFO] Loaded 49.6 MB. Parsing XML...
+[2026-02-10 18:33:29] [INFO] Parsed 4,591 vouchers in 5.4s.
+[2026-02-10 18:33:29] [INFO] Analysis: 4591 transactions, 0 debtors, 0 creditors, 2128 stock items.
+[2026-02-10 18:33:29] [SUCCESS] Data saved to C:\Projects\Bizstash\dashboard\public\data\Admin_Test_PC\data.json
+[2026-02-10 18:33:29] [SUCCESS] Data Processing Complete.
+
+=== SYNC COMPLETE ✅ ===
+
+=== BIZSTASH SYNC ENGINE 5.0 ===
+[2026-02-10 18:34:52] [INFO] Data Directory: C:\Projects\Bizstash\tally_data\xml\Admin_Test_PC
+
+=== PRE-SYNC DASHBOARD ===
+[2026-02-10 18:34:56] [INFO] Fetching Masters (Groups & Ledgers)...
+[2026-02-10 18:34:57] [SUCCESS] Fetched Masters successfully.
+
+=== PHASE 1: FETCH DATA ===
+[2026-02-10 18:34:57] [SUCCESS] Data is fresh (49.6 MB, 42 min ago). Skipping fetch.
+
+=== PHASE 2: PROCESS ===
+[2026-02-10 18:34:57] [INFO] Processing data for Admin_Test_PC...
+[2026-02-10 18:34:57] [INFO] Parsed 0 Ledgers, 0 Groups.
+[2026-02-10 18:34:57] [INFO] Parsing vouchers.xml...
+[2026-02-10 18:34:57] [INFO] Loaded 49.6 MB. Parsing XML...
+[2026-02-10 18:35:02] [INFO] Parsed 4,591 vouchers in 5.4s.
+[2026-02-10 18:35:02] [INFO] Analysis: 4591 transactions, 0 debtors, 0 creditors, 2128 stock items.
+[2026-02-10 18:35:02] [SUCCESS] Data saved to C:\Projects\Bizstash\dashboard\public\data\Admin_Test_PC\data.json
+[2026-02-10 18:35:02] [SUCCESS] Data Processing Complete.
+
+=== SYNC COMPLETE ✅ ===
+
+=== BIZSTASH SYNC ENGINE 5.0 ===
+[2026-02-10 18:38:03] [INFO] Data Directory: C:\Projects\Bizstash\tally_data\xml\Admin_Test_PC
+
+=== PRE-SYNC DASHBOARD ===
+[2026-02-10 18:38:07] [INFO] Fetching Masters (Groups & Ledgers)...
+[2026-02-10 18:38:08] [SUCCESS] Fetched Masters successfully.
+
+=== PHASE 1: FETCH DATA ===
+[2026-02-10 18:38:08] [SUCCESS] Data is fresh (49.6 MB, 45 min ago). Skipping fetch.
+
+=== PHASE 2: PROCESS ===
+[2026-02-10 18:38:08] [INFO] Processing data for Admin_Test_PC...
+[2026-02-10 18:38:08] [INFO] Parsed 1071 Ledgers, 66 Groups.
+[2026-02-10 18:38:08] [INFO] Parsing vouchers.xml...
+[2026-02-10 18:38:08] [INFO] Loaded 49.6 MB. Parsing XML...
+[2026-02-10 18:38:14] [INFO] Parsed 4,591 vouchers in 5.5s.
+[2026-02-10 18:38:14] [INFO] Analysis: 4591 transactions, 817 debtors, 115 creditors, 2128 stock items.
+[2026-02-10 18:38:14] [SUCCESS] Data saved to C:\Projects\Bizstash\dashboard\public\data\Admin_Test_PC\data.json
+[2026-02-10 18:38:14] [SUCCESS] Data Processing Complete.
+
+=== SYNC COMPLETE ✅ ===

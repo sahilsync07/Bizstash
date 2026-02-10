@@ -25,9 +25,9 @@ const CONFIG = {
 
     // Sync Settings
     SETTINGS: {
-        REQUEST_TIMEOUT: 300000,  // 300 seconds (5 mins) for SAFE Masters Fetch
+        REQUEST_TIMEOUT: 120000,  // 120 seconds - single 52MB fetch needs time
         RETRY_ATTEMPTS: 3,
-        COOLDOWN_MS: 1000,
+        COOLDOWN_MS: 500, // 500ms delay between requests - give Tally time to breathe
         MONTH_CHUNKS: 1
     }
 };

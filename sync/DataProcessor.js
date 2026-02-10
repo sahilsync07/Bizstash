@@ -1,5 +1,6 @@
 const fs = require('fs-extra');
 const path = require('path');
+const xml2js = require('xml2js');
 const { parse, differenceInDays } = require('date-fns');
 const CONFIG = require('./config');
 const Logger = require('./utils/Logger');
@@ -13,14 +14,14 @@ class DataProcessor {
             relativePath = path.join('xml', companyName);
         }
 
-        this.baseDir = path.resolve(CONFIG.PATHS.ROOT, 'tally_data', relativePath); // renamed from xmlDir to baseDir
+        this.baseDir = path.resolve(CONFIG.PATHS.ROOT, 'tally_data', relativePath);
         this.mastersDir = path.join(this.baseDir, 'masters');
         this.vouchersDir = path.join(this.baseDir, 'vouchers');
         this.outputDir = path.join(CONFIG.PATHS.OUTPUT_DATA, companyName);
     }
 
     async process() {
-        Logger.info(`Processing data for ${this.companyName} (V4 Logic)...`);
+        Logger.info(`Processing data for ${this.companyName}...`);
         await fs.ensureDir(this.outputDir);
 
         const masters = await this._parseMasters();
@@ -32,64 +33,61 @@ class DataProcessor {
         Logger.success('Data Processing Complete.');
     }
 
+    // --- MASTERS (from groups.xml and ledgers.xml) ---
     async _parseMasters() {
-        // V4: Try JSON first
-        const jsonFile = path.join(this.mastersDir, 'masters.json');
-        if (fs.existsSync(jsonFile)) {
-            Logger.info('Loading Masters from JSON...');
-            try {
-                // Tally JSONEX Output for Masters is usually { ENVELOPE: { BODY: { IMPORTDATA: { REQUESTDATA: { TALLYMESSAGE: [...] } } } } }
-                // OR if we saved raw string in fetcher, we parse it here.
-                // In DataFetcher V4 we verified we saved Raw String.
-                const rawStr = await fs.readFile(jsonFile, 'utf8');
-                const rawObj = JSON.parse(rawStr);
+        const groupsFile = path.join(this.mastersDir, 'groups.xml');
+        const ledgersFile = path.join(this.mastersDir, 'ledgers.xml');
 
-                const msgs = rawObj?.ENVELOPE?.BODY?.IMPORTDATA?.REQUESTDATA?.TALLYMESSAGE || [];
-                const msgArray = Array.isArray(msgs) ? msgs : [msgs];
-
-                return this._buildMastersStructure(msgArray);
-
-            } catch (e) {
-                Logger.error("Failed to parse masters.json", e);
-                return { ledgers: {}, groups: {} };
-            }
-        }
-
-        // Fallback to XML (V3 Hybrid Mode)
-        const xmlFile = path.join(this.mastersDir, 'masters.xml');
-        if (fs.existsSync(xmlFile)) {
-            Logger.info("Parsing Masters from XML (Hybrid Mode)...");
-            const xmlData = await fs.readFile(xmlFile, 'utf8');
-            const parser = new require('xml2js').Parser({ explicitArray: false });
-            const result = await parser.parseStringPromise(xmlData);
-
-            const messages = result?.ENVELOPE?.BODY?.IMPORTDATA?.REQUESTDATA?.TALLYMESSAGE || [];
-            const msgArray = Array.isArray(messages) ? messages : [messages];
-            return this._buildMastersStructure(msgArray);
-        }
-        return { ledgers: {}, groups: {} };
-    }
-
-    _buildMastersStructure(msgArray) {
-        const ledgers = {};
         const groups = {};
+        const ledgers = {};
 
-        msgArray.forEach(msg => {
-            if (msg.LEDGER) {
-                // JSONEx structure matches XML tag names usually
-                ledgers[msg.LEDGER.NAME] = {
-                    name: msg.LEDGER.NAME,
-                    parent: msg.LEDGER.PARENT,
-                    openingBalance: parseFloat(msg.LEDGER.OPENINGBALANCE || 0)
-                };
-            } else if (msg.GROUP) {
-                groups[msg.GROUP.NAME] = {
-                    name: msg.GROUP.NAME,
-                    parent: msg.GROUP.PARENT
+        // Helper to parse Collection XML
+        const parseCollection = async (file, itemTag, mapFn) => {
+            if (!fs.existsSync(file)) return;
+            try {
+                const xmlData = await fs.readFile(file, 'utf8');
+                const parser = new xml2js.Parser({ explicitArray: false, attrkey: '$' });
+                const result = await parser.parseStringPromise(xmlData);
+
+                let items = result?.ENVELOPE?.BODY?.DATA?.COLLECTION?.[itemTag] || [];
+                if (!Array.isArray(items)) items = [items];
+
+                items.forEach(mapFn);
+            } catch (e) {
+                Logger.error(`Failed to parse ${path.basename(file)}`, e);
+            }
+        };
+
+        // 1. Parse Groups
+        await parseCollection(groupsFile, 'GROUP', (g) => {
+            const name = g.$?.NAME || this._getText(g.NAME);
+            if (name) {
+                groups[name] = {
+                    name,
+                    parent: this._getText(g.PARENT)
                 };
             }
         });
 
+        // 2. Parse Ledgers
+        await parseCollection(ledgersFile, 'LEDGER', (l) => {
+            const name = l.$?.NAME || this._getText(l.NAME);
+            if (name) {
+                // Tally Opening Balance: Credit is negative, Debit is positive normally?
+                // Actually in Collection Export:
+                // Debit = Positive Number
+                // Credit = Negative Number (e.g. -1000)
+                // We use parseFloat directly.
+                const opBal = parseFloat(this._getText(l.OPENINGBALANCE) || 0);
+                ledgers[name] = {
+                    name,
+                    parent: this._getText(l.PARENT),
+                    openingBalance: opBal
+                };
+            }
+        });
+
+        // Resolve Root Groups
         const findRootGroup = (groupName) => {
             if (!groupName) return 'Unknown';
             if (groupName === 'Sundry Debtors' || groupName === 'Sundry Creditors') return groupName;
@@ -102,25 +100,58 @@ class DataProcessor {
             l.rootGroup = findRootGroup(l.parent);
         });
 
-        Logger.info(`Parsed ${Object.keys(ledgers).length} Ledgers from JSON.`);
+        Logger.info(`Parsed ${Object.keys(ledgers).length} Ledgers, ${Object.keys(groups).length} Groups.`);
         return { ledgers, groups };
     }
 
+    _buildMastersStructure(msgArray) {
+        // Obsolete method, kept for reference or safe deletion if unused.
+        return { ledgers: {}, groups: {} };
+    }
+
+    // --- VOUCHERS (from single vouchers.xml) ---
     async _parseVouchers(masters) {
-        if (!fs.existsSync(this.vouchersDir)) return {};
+        const vouchersFile = path.join(this.vouchersDir, 'vouchers.xml');
 
-        const files = await fs.readdir(this.vouchersDir);
-        // Look for JSON files (V4)
-        const voucherFiles = files.filter(f => f.endsWith('.json') && f.startsWith('vouchers_'));
-        Logger.info(`Found ${voucherFiles.length} JSON voucher modules.`);
+        if (!fs.existsSync(vouchersFile)) {
+            Logger.warn('No vouchers.xml found.');
+            return this._emptyAnalysis();
+        }
 
+        Logger.info('Parsing vouchers.xml...');
+        const startTime = Date.now();
+
+        try {
+            const xmlData = await fs.readFile(vouchersFile, 'utf8');
+            const sizeMB = (xmlData.length / 1024 / 1024).toFixed(1);
+            Logger.info(`Loaded ${sizeMB} MB. Parsing XML...`);
+
+            const parser = new xml2js.Parser({ explicitArray: false, attrkey: '$' });
+            const result = await parser.parseStringPromise(xmlData);
+
+            // Structure: ENVELOPE > BODY > DATA > COLLECTION > VOUCHER[]
+            let vouchers = result?.ENVELOPE?.BODY?.DATA?.COLLECTION?.VOUCHER || [];
+            if (!Array.isArray(vouchers)) vouchers = [vouchers];
+
+            const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
+            Logger.info(`Parsed ${vouchers.length.toLocaleString()} vouchers in ${elapsed}s.`);
+
+            return this._analyzeVouchers(vouchers, masters);
+
+        } catch (e) {
+            Logger.error('Failed to parse vouchers.xml', e);
+            return this._emptyAnalysis();
+        }
+    }
+
+    _analyzeVouchers(vouchers, masters) {
         const monthlyStats = {};
         const stockStats = {};
         const ledgerBalances = {};
         const allTransactions = [];
         const today = new Date();
 
-        // Init Balances
+        // Init ledger balances from masters
         Object.values(masters.ledgers).forEach(l => {
             if (l.rootGroup === 'Sundry Debtors' || l.rootGroup === 'Sundry Creditors') {
                 ledgerBalances[l.name] = {
@@ -132,112 +163,149 @@ class DataProcessor {
             }
         });
 
-        for (const file of voucherFiles) {
-            try {
-                // V4 Files are pure arrays of Voucher Objects
-                const vouchers = await fs.readJson(path.join(this.vouchersDir, file));
+        vouchers.forEach(v => {
+            // XML Collection format: DATE is in element or attribute
+            const dateStr = this._getText(v.DATE); // YYYYMMDD
+            if (!dateStr) return;
 
-                vouchers.forEach(v => {
-                    const dateStr = v.DATE; // YYYYMMDD
-                    if (!dateStr) return;
-                    const month = dateStr.substring(0, 6);
-                    const voucherDate = parse(dateStr, 'yyyyMMdd', new Date());
+            const month = dateStr.substring(0, 6);
+            const voucherDate = parse(dateStr, 'yyyyMMdd', new Date());
+            const vType = this._getText(v.VOUCHERTYPENAME); // Keep original case for display
+            const vTypeLower = (vType || '').toLowerCase(); // Lowercase for logic
 
-                    const transaction = {
-                        date: dateStr,
-                        type: v.VOUCHERTYPENAME,
-                        number: v.VOUCHERNUMBER,
-                        guid: v.GUID,
-                        ledgers: []
-                    };
+            const transaction = {
+                date: dateStr,
+                type: vType,
+                number: this._getText(v.VOUCHERNUMBER),
+                party: this._getText(v.PARTYLEDGERNAME),
+                amount: parseFloat(this._getText(v.AMOUNT) || 0),
+                ledgers: []
+            };
 
-                    // Inventory
-                    // JSONEx treats keys with dots differently sometimes? 
-                    // Usually "ALLINVENTORYENTRIES.LIST" becomes "ALLINVENTORYENTRIES_LIST" or array
-                    // Let's check typical JSONEx output.
-                    // Tally JSON output usually Arrays are nested objects.
+            // --- Inventory Entries ---
+            let invEntries = v['ALLINVENTORYENTRIES.LIST'];
+            if (invEntries && !Array.isArray(invEntries)) invEntries = [invEntries];
 
-                    // Note: We need to handle Tally's erratic JSON key naming depending on export.
-                    // Assuming standard keys for now.
-                    let invEntries = v['ALLINVENTORYENTRIES.LIST'] || v['INVENTORYENTRIES.LIST'];
-                    if (invEntries && !Array.isArray(invEntries)) invEntries = [invEntries];
+            if (invEntries) {
+                invEntries.forEach(item => {
+                    const amt = Math.abs(parseFloat(this._getText(item.AMOUNT) || 0));
+                    const qty = Math.abs(parseFloat(this._getText(item.BILLEDQTY) || this._getText(item.ACTUALQTY) || 0));
+                    const stockName = this._getText(item.STOCKITEMNAME);
 
-                    if (invEntries) {
-                        invEntries.forEach(item => {
-                            const amt = Math.abs(parseFloat(item.AMOUNT || 0));
-                            let qty = parseFloat(item.BILLEDQTY) || 0; // JSON is already number often? No Tally sends strings.
+                    if (vTypeLower.includes('sales') || vTypeLower.includes('tax invoice')) {
+                        // SALES
+                        if (!monthlyStats[month]) monthlyStats[month] = { sales: 0, purchase: 0 };
+                        monthlyStats[month].sales += amt;
 
-                            const vType = (v.VOUCHERTYPENAME || '').toLowerCase();
+                        if (stockName) {
+                            if (!stockStats[stockName]) stockStats[stockName] = { qty: 0, revenue: 0, lastSaleDate: voucherDate, inwardQty: 0, outwardQty: 0, inwardVal: 0, outwardVal: 0 };
+                            stockStats[stockName].outwardQty += qty;
+                            stockStats[stockName].outwardVal += amt;
+                            stockStats[stockName].revenue += amt;
+                            if (voucherDate > stockStats[stockName].lastSaleDate) stockStats[stockName].lastSaleDate = voucherDate;
+                        }
+                    } else if (vTypeLower.includes('credit note')) {
+                        // SALES RETURN (Reduce Sales)
+                        if (!monthlyStats[month]) monthlyStats[month] = { sales: 0, purchase: 0 };
+                        monthlyStats[month].sales -= amt;
 
-                            if (vType.includes('sales') || vType.includes('tax invoice')) {
-                                if (!monthlyStats[month]) monthlyStats[month] = { sales: 0, purchase: 0 };
-                                monthlyStats[month].sales += amt;
+                        if (stockName) {
+                            // Credit Note = Inward (Stock comes back)
+                            if (!stockStats[stockName]) stockStats[stockName] = { qty: 0, revenue: 0, lastSaleDate: voucherDate, inwardQty: 0, outwardQty: 0, inwardVal: 0, outwardVal: 0 };
+                            stockStats[stockName].inwardQty += qty;
+                            // Revenue reduction? Usually Credit Note reduces revenue.
+                            // But usually it's "Sales - Returns". 
+                            // We reduce revenue here.
+                            stockStats[stockName].revenue -= amt;
+                        }
+                    } else if (vTypeLower.includes('purchase')) {
+                        // PURCHASE
+                        if (!monthlyStats[month]) monthlyStats[month] = { sales: 0, purchase: 0 };
+                        monthlyStats[month].purchase += amt;
 
-                                if (!stockStats[item.STOCKITEMNAME]) stockStats[item.STOCKITEMNAME] = { qty: 0, revenue: 0, lastSaleDate: voucherDate, inwardQty: 0, outwardQty: 0, inwardVal: 0, outwardVal: 0 };
-                                stockStats[item.STOCKITEMNAME].outwardQty += Math.abs(qty);
-                                stockStats[item.STOCKITEMNAME].outwardVal += amt;
-                                stockStats[item.STOCKITEMNAME].revenue += amt;
-                                if (voucherDate > stockStats[item.STOCKITEMNAME].lastSaleDate) stockStats[item.STOCKITEMNAME].lastSaleDate = voucherDate;
+                        if (stockName) {
+                            if (!stockStats[stockName]) stockStats[stockName] = { qty: 0, revenue: 0, lastSaleDate: voucherDate, inwardQty: 0, outwardQty: 0, inwardVal: 0, outwardVal: 0 };
+                            stockStats[stockName].inwardQty += qty;
+                            stockStats[stockName].inwardVal += amt;
+                        }
+                    } else if (vTypeLower.includes('debit note')) {
+                        // PURCHASE RETURN (Reduce Purchase)
+                        if (!monthlyStats[month]) monthlyStats[month] = { sales: 0, purchase: 0 };
+                        monthlyStats[month].purchase -= amt;
 
-                            } else if (vType.includes('purchase')) {
-                                if (!monthlyStats[month]) monthlyStats[month] = { sales: 0, purchase: 0 };
-                                monthlyStats[month].purchase += amt;
-
-                                if (!stockStats[item.STOCKITEMNAME]) stockStats[item.STOCKITEMNAME] = { qty: 0, revenue: 0, lastSaleDate: voucherDate, inwardQty: 0, outwardQty: 0, inwardVal: 0, outwardVal: 0 };
-                                stockStats[item.STOCKITEMNAME].inwardQty += Math.abs(qty);
-                                stockStats[item.STOCKITEMNAME].inwardVal += amt;
-                            }
-                        });
+                        // Check stock logic? Debit note = Outward?
+                        if (stockName) {
+                            if (!stockStats[stockName]) stockStats[stockName] = { qty: 0, revenue: 0, lastSaleDate: voucherDate, inwardQty: 0, outwardQty: 0, inwardVal: 0, outwardVal: 0 };
+                            stockStats[stockName].outwardQty += qty;
+                            // stockStats[stockName].outwardVal += amt; // Optional
+                        }
                     }
-
-                    // Ledgers
-                    let ledEntries = v['ALLLEDGERENTRIES.LIST'] || v['LEDGERENTRIES.LIST'];
-                    if (ledEntries && !Array.isArray(ledEntries)) ledEntries = [ledEntries];
-
-                    if (ledEntries) {
-                        ledEntries.forEach(entry => {
-                            const ledgerName = entry.LEDGERNAME;
-                            const amount = parseFloat(entry.AMOUNT || 0);
-
-                            transaction.ledgers.push({ name: ledgerName, amount });
-
-                            if (masters.ledgers[ledgerName]) {
-                                const rootGroup = masters.ledgers[ledgerName].rootGroup;
-                                if (rootGroup === 'Sundry Debtors' || rootGroup === 'Sundry Creditors') {
-                                    if (!ledgerBalances[ledgerName]) ledgerBalances[ledgerName] = { balance: 0, billRefs: [], group: rootGroup, parent: masters.ledgers[ledgerName].parent };
-                                    ledgerBalances[ledgerName].balance += amount;
-
-                                    let bills = entry['BILLALLOCATIONS.LIST'];
-                                    if (bills && !Array.isArray(bills)) bills = [bills];
-
-                                    if (bills) {
-                                        bills.forEach(b => {
-                                            ledgerBalances[ledgerName].billRefs.push({
-                                                date: voucherDate,
-                                                name: b.NAME,
-                                                amount: parseFloat(b.AMOUNT || 0),
-                                                type: b.BILLTYPE
-                                            });
-                                        });
-                                    }
-                                }
-                            }
-                        });
-                    }
-                    allTransactions.push(transaction);
                 });
-
-            } catch (e) {
-                Logger.error(`Skipping corrupt JSON ${file}`, e);
             }
-        }
+
+            // --- Ledger Entries ---
+            let ledEntries = v['ALLLEDGERENTRIES.LIST'] || v['LEDGERENTRIES.LIST'];
+            if (ledEntries && !Array.isArray(ledEntries)) ledEntries = [ledEntries];
+
+            if (ledEntries) {
+                ledEntries.forEach(entry => {
+                    const ledgerName = this._getText(entry.LEDGERNAME);
+                    const amount = parseFloat(this._getText(entry.AMOUNT) || 0);
+
+                    transaction.ledgers.push({ name: ledgerName, amount });
+
+                    if (masters.ledgers[ledgerName]) {
+                        const rootGroup = masters.ledgers[ledgerName].rootGroup;
+                        if (rootGroup === 'Sundry Debtors' || rootGroup === 'Sundry Creditors') {
+                            if (!ledgerBalances[ledgerName]) {
+                                ledgerBalances[ledgerName] = { balance: 0, billRefs: [], group: rootGroup, parent: masters.ledgers[ledgerName].parent };
+                            }
+                            ledgerBalances[ledgerName].balance += amount;
+
+                            let bills = entry['BILLALLOCATIONS.LIST'];
+                            if (bills && !Array.isArray(bills)) bills = [bills];
+
+                            if (bills) {
+                                bills.forEach(b => {
+                                    ledgerBalances[ledgerName].billRefs.push({
+                                        date: voucherDate,
+                                        name: this._getText(b.NAME),
+                                        amount: parseFloat(this._getText(b.AMOUNT) || 0),
+                                        type: this._getText(b.BILLTYPE)
+                                    });
+                                });
+                            }
+                        }
+                    }
+                });
+            }
+
+            allTransactions.push(transaction);
+        });
 
         return this._finalizeAnalysis(monthlyStats, stockStats, ledgerBalances, allTransactions, masters, today);
     }
 
-    // _finalizeAnalysis and _saveData remain same as V3 (Shared Logic)
-    // DUPLICATED HERE FOR NOW TO KEEP FILE SELF-CONTAINED or we can extend V3 class?
-    // Let's copy-paste existing logic to be safe and explicit.
+    // Helper: Get text from XML element (handles {_: "val", $: {TYPE: "..."}} and plain strings)
+    _getText(el) {
+        if (el === null || el === undefined) return null;
+        if (typeof el === 'string') return el;
+        if (typeof el === 'number') return String(el);
+        if (el._ !== undefined) return el._;  // xml2js typed element {_: value, $: {TYPE: ...}}
+        if (el.$ && el.$.toString) return null; // attribute-only, no text
+        return String(el);
+    }
+
+    _emptyAnalysis() {
+        return {
+            monthlyStats: {},
+            debtors: [],
+            creditors: [],
+            stocks: [],
+            transactions: [],
+            ledgersList: []
+        };
+    }
 
     _finalizeAnalysis(monthlyStats, stockStats, ledgerBalances, allTransactions, masters, today) {
         const debtors = [];
@@ -311,6 +379,8 @@ class DataProcessor {
 
         allTransactions.sort((a, b) => b.date.localeCompare(a.date));
 
+        Logger.info(`Analysis: ${allTransactions.length} transactions, ${debtors.length} debtors, ${creditors.length} creditors, ${stocks.length} stock items.`);
+
         return {
             monthlyStats,
             debtors: debtors.sort((a, b) => b.balance - a.balance),
@@ -328,7 +398,7 @@ class DataProcessor {
         const completeData = {
             meta: { companyName: this.companyName, lastUpdated: new Date().toISOString() },
             linemanConfig,
-            analysis: { ...analysis, ledgerOpenings: masters.ledgers }
+            analysis: { ...analysis, linemanConfig, ledgerOpenings: masters.ledgers }
         };
 
         const outputFile = path.join(this.outputDir, 'data.json');

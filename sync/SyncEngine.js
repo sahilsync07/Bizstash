@@ -4,49 +4,81 @@ const Logger = require('./utils/Logger');
 
 class SyncEngine {
     constructor() {
-        Logger.header('BIZSTASH SYNC ENGINE 3.0');
+        Logger.header('BIZSTASH SYNC ENGINE 5.0');
     }
 
     async run(companyName) {
-        // Fallback or Validation
         if (!companyName) {
             companyName = 'default_company';
             Logger.warn("No company specified, using 'default_company'");
         }
 
-        Logger.info(`Target Company: ${companyName}`);
-
         try {
-            // 1. Initialize Components
             const fetcher = new DataFetcher(companyName);
             const processor = new DataProcessor(companyName);
-
-            // 2. Health Check
-            // We do a ping first to fail fast if Tally isn't running
-            const detectedName = await fetcher.checkConnection();
-
-            // Optional: Check if detected company matches requested (for safety)
-            // But we often map folder names differently than Tally names, so just logging for now.
-            if (detectedName.toUpperCase() !== companyName.replace(/_/g, ' ').toUpperCase()) {
-                Logger.debug(`Note: Tally Company "${detectedName}" differs from Folder ID "${companyName}"`);
-            }
-
-            // 3. Prepare Directories
             await fetcher.init();
 
-            // 3. FETCH PHASE
-            await fetcher.runSmartSync(); // V4 Smart Logic
+            // --- PRE-SYNC DASHBOARD ---
+            await this._showDashboard(fetcher, companyName);
 
-            // 4. PROCESS PHASE
+            // --- FETCH ---
+            await fetcher.fetchMasters();
+            await fetcher.fetchAllVouchers();
+
+            // --- PROCESS ---
             Logger.header('PHASE 2: PROCESS');
             await processor.process();
 
-            Logger.header('SYNC COMPLETE');
+            Logger.header('SYNC COMPLETE ✅');
             return true;
 
         } catch (error) {
             Logger.error('Sync Fatal Error', error);
             return false;
+        }
+    }
+
+    async _showDashboard(fetcher, companyName) {
+        Logger.header('PRE-SYNC DASHBOARD');
+        console.log('');
+
+        const info = await fetcher.getPreSyncInfo();
+
+        // Format date string YYYYMMDD → DD-MMM-YYYY
+        const fmtDate = (d) => {
+            if (!d) return '—';
+            const y = d.substring(0, 4), m = d.substring(4, 6), day = d.substring(6, 8);
+            const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            return `${day}-${months[parseInt(m) - 1]}-${y}`;
+        };
+
+        const fmtSize = (bytes) => {
+            if (!bytes) return '—';
+            return `${(bytes / 1024 / 1024).toFixed(1)} MB`;
+        };
+
+        const fmtSyncDate = (iso) => {
+            if (!iso) return '— (never synced)';
+            const d = new Date(iso);
+            return d.toLocaleString('en-IN', {
+                day: '2-digit', month: 'short', year: 'numeric',
+                hour: '2-digit', minute: '2-digit', hour12: true
+            });
+        };
+
+        // Tally Status
+        console.log(`  🔗  Tally Status     : ${info.tallyOnline ? '✅ ONLINE' : '❌ OFFLINE'}`);
+        console.log(`  🏢  Company          : ${info.companyName}`);
+        console.log(`  📅  First Entry      : ${fmtDate(info.startingFrom)}`);
+        console.log(`  📅  Last Entry       : ${fmtDate(info.lastVoucherDate)}`);
+        console.log(`  📊  Total Vouchers   : ${info.voucherCount > 0 ? info.voucherCount.toLocaleString() : '—'}`);
+        console.log(`  🕐  Last Sync        : ${fmtSyncDate(info.lastSyncDate)}`);
+        console.log(`  💾  Local Data       : ${info.localDataExists ? `✅ ${fmtSize(info.localVoucherFileSize)}` : '❌ No data'}`);
+        console.log(`  📁  Dashboard Output : ${info.dashboardDataExists ? '✅ data.json exists' : '❌ Not generated yet'}`);
+        console.log('');
+
+        if (!info.tallyOnline) {
+            throw new Error('Tally is not reachable. Please start Tally and try again.');
         }
     }
 }
