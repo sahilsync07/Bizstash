@@ -5,11 +5,6 @@
     "lastUpdated": "2026-01-26T03:46:21.907Z"
   },
   {
-    "id": "SF_SKLM",
-    "name": "SF SKLM",
-    "lastUpdated": "2026-01-26T03:47:19.482Z"
-  },
-  {
     "id": "SBE_Rayagada",
     "name": "SBE Rayagada",
     "lastUpdated": "2026-01-26T12:34:37.854Z"
@@ -22,6 +17,11 @@
   {
     "id": "SBEM_Malkangiri",
     "name": "SBEM Malkangiri",
-    "lastUpdated": "2026-02-10T19:50:17.960Z"
+    "lastUpdated": "2026-02-10T20:50:36.158Z"
+  },
+  {
+    "id": "SF_SKLM",
+    "name": "SF SKLM",
+    "lastUpdated": "2026-02-10T20:54:16.911Z"
   }
 ]

@@ -51,6 +51,7 @@ export default function App() {
   const [activeTab, setActiveTab] = useState('summary');
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   // Default to closed on mobile (< 768px), open on desktop
   const [isSidebarOpen, setSidebarOpen] = useState(window.innerWidth >= 768);
   const [targetLedger, setTargetLedger] = useState('');
@@ -81,8 +82,17 @@ export default function App() {
     if (!selectedCompany) return;
 
     setLoading(true);
-    fetch(`${import.meta.env.BASE_URL}data/${selectedCompany.id}/data.json`)
-      .then(res => res.json())
+    setError(null);
+    const url = `${import.meta.env.BASE_URL}data/${selectedCompany.id}/data.json`;
+    console.log("Fetching data from:", url);
+
+    fetch(url)
+      .then(res => {
+        if (!res.ok) throw new Error(`HTTP ${res.status} ${res.statusText} for ${url}`);
+        const contentType = res.headers.get("content-type");
+        if (contentType && contentType.includes("text/html")) throw new Error(`Expected JSON but got HTML from ${url} (File not found?)`);
+        return res.json();
+      })
       .then(d => {
         setData(d.analysis);
         setLoading(false);
@@ -91,6 +101,7 @@ export default function App() {
         console.error("Failed to load data", err);
         setLoading(false);
         setData(null);
+        setError(err.message);
       });
   }, [selectedCompany]);
 
@@ -146,6 +157,7 @@ export default function App() {
     setActiveTab('ledger');
   };
 
+  if (error) return <ErrorScreen message={error} retry={() => window.location.reload()} />;
   if (loading) return <LoadingScreen />;
   if (!data && companies.length === 0) return <ErrorScreen message="No Companies Found. Please run sync script." />;
   if (!data) return <ErrorScreen message="Could not load financial records." />;
@@ -419,6 +431,9 @@ function SummaryDashboard({ data, onDrillDown }) {
   const totalDebtors = data.debtors.reduce((acc, curr) => acc + curr.balance, 0);
   const totalCreditors = data.creditors.reduce((acc, curr) => acc + curr.balance, 0);
 
+  const grossProfit = currentMonthData.grossProfit || 0;
+  const netProfit = currentMonthData.netProfit || 0;
+
   // Prepare Chart Data
   const chartData = Object.keys(data.monthlyStats).sort().map(k => ({
     name: formatMonth(k),
@@ -455,10 +470,10 @@ function SummaryDashboard({ data, onDrillDown }) {
 
       {/* KPI Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <KpiCard title="Total Revenue" value={totalSales} trend="Selected Month" icon={ArrowUpRight} accent="lime" />
-        <KpiCard title="Total Expenses" value={totalPurchase} trend="Selected Month" icon={Activity} accent="purple" />
-        <KpiCard title="Receivables" value={totalDebtors} trend="Total Outstanding" icon={Wallet} accent="blue" />
-        <KpiCard title="Payables" value={totalCreditors} trend="Total Outstanding" icon={CreditCard} accent="rose" />
+        <KpiCard title="Total Sales" value={totalSales} trend="Selected Month" icon={ArrowUpRight} accent="lime" />
+        <KpiCard title="Total Purchase" value={totalPurchase} trend="Selected Month" icon={Activity} accent="purple" />
+        <KpiCard title="Gross Profit" value={grossProfit} trend="Selected Month" icon={Wallet} accent="blue" />
+        <KpiCard title="Net Profit" value={netProfit} trend="Selected Month" icon={CreditCard} accent="rose" />
       </div>
 
       {/* Main Charts Row */}
@@ -475,7 +490,7 @@ function SummaryDashboard({ data, onDrillDown }) {
               <span className="flex items-center text-xs font-bold text-flux-black bg-flux-purple/20 px-3 py-1.5 rounded-full"><div className="w-2 h-2 rounded-full bg-flux-purple mr-2" /> Purchase</span>
             </div>
           </div>
-          <div className="h-[300px] w-full">
+          <div className="h-[300px] w-full" style={{ minWidth: 0 }}>
             <ResponsiveContainer width="100%" height="100%">
               <AreaChart data={chartData} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
                 <defs>
@@ -504,7 +519,7 @@ function SummaryDashboard({ data, onDrillDown }) {
           <div className="absolute top-0 right-0 w-32 h-32 bg-flux-purple/20 rounded-full blur-3xl -mr-10 -mt-10"></div>
           <h3 className="text-xl font-bold mb-1 relative z-10">Liability Ratio</h3>
           <p className="text-sm text-gray-400 mb-8 relative z-10">Receivables vs Payables</p>
-          <div className="flex-1 min-h-[220px] w-full relative z-10">
+          <div className="flex-1 min-h-[220px] w-full relative z-10" style={{ minWidth: 0 }}>
             <ResponsiveContainer width="100%" height="100%">
               <PieChart>
                 <Pie data={pieData} cx="50%" cy="50%" innerRadius={60} outerRadius={80} paddingAngle={5} dataKey="value" stroke="none">

@@ -23,6 +23,7 @@ class SyncEngine {
 
             // --- FETCH ---
             await fetcher.fetchMasters();
+            await fetcher.fetchProfitLoss();
             await fetcher.fetchAllVouchers();
 
             // --- PROCESS ---

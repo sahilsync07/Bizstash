@@ -25,7 +25,9 @@ class DataProcessor {
         await fs.ensureDir(this.outputDir);
 
         const masters = await this._parseMasters();
+        // const profitLoss = await this._parseProfitLoss(); // Deprecated
         const analysis = await this._parseVouchers(masters);
+        // analysis.profitLoss = profitLoss; // Deprecated
 
         await this._saveData(masters, analysis);
         await this._updateCompanyIndex();
@@ -60,19 +62,21 @@ class DataProcessor {
 
         // 1. Parse Groups
         await parseCollection(groupsFile, 'GROUP', (g) => {
-            const name = g.$?.NAME || this._getText(g.NAME);
+            let name = g.$?.NAME || this._getText(g.NAME);
             if (name) {
+                name = name.trim();
                 groups[name] = {
                     name,
-                    parent: this._getText(g.PARENT)
+                    parent: this._getText(g.PARENT) // _getText trims now
                 };
             }
         });
 
         // 2. Parse Ledgers
         await parseCollection(ledgersFile, 'LEDGER', (l) => {
-            const name = l.$?.NAME || this._getText(l.NAME);
+            let name = l.$?.NAME || this._getText(l.NAME);
             if (name) {
+                name = name.trim();
                 // Tally Opening Balance: Credit is negative, Debit is positive normally?
                 // Actually in Collection Export:
                 // Debit = Positive Number
@@ -90,9 +94,45 @@ class DataProcessor {
         // Resolve Root Groups
         const findRootGroup = (groupName) => {
             if (!groupName) return 'Unknown';
-            if (groupName === 'Sundry Debtors' || groupName === 'Sundry Creditors') return groupName;
-            const parent = groups[groupName]?.parent;
-            if (!parent || parent === '') return groupName;
+            const cleanName = groupName.trim().replace(/[^\x20-\x7E]/g, '');
+            const lowerName = cleanName.toLowerCase();
+
+            // Stop at Standard P&L/Balance Sheet Root Groups (and common Tally typos)
+            const roots = [
+                'sundry debtors', 'sundry creditors',
+                'sales accounts', 'purchase accounts', 'purchase acounts', 'sales acounts',
+                'direct expenses', 'indirect expenses',
+                'direct incomes', 'indirect incomes',
+                'bank accounts', 'cash-in-hand', 'bank od a/c',
+                'duties & taxes', 'provisions', 'fixed assets', 'current assets', 'current liabilities',
+                'investments', 'loans & advances (asset)', 'loans (liability)', 'suspense a/c'
+            ];
+
+            // Find the canonical name from the list (if it matches)
+            const canonicalRoots = {
+                'sundry debtors': 'Sundry Debtors', 'sundry creditors': 'Sundry Creditors',
+                'sales accounts': 'Sales Accounts', 'purchase accounts': 'Purchase Accounts',
+                'purchase acounts': 'Purchase Accounts', 'sales acounts': 'Sales Accounts',
+                'direct expenses': 'Direct Expenses', 'indirect expenses': 'Indirect Expenses',
+                'direct incomes': 'Direct Incomes', 'indirect incomes': 'Indirect Incomes',
+                'bank accounts': 'Bank Accounts', 'cash-in-hand': 'Cash-in-Hand', 'bank od a/c': 'Bank OD A/c',
+                'duties & taxes': 'Duties & Taxes', 'provisions': 'Provisions', 'fixed assets': 'Fixed Assets',
+                'current assets': 'Current Assets', 'current liabilities': 'Current Liabilities',
+                'investments': 'Investments', 'loans & advances (asset)': 'Loans & Advances (Asset)',
+                'loans (liability)': 'Loans (Liability)', 'suspense a/c': 'Suspense A/c'
+            };
+
+            if (canonicalRoots[lowerName]) return canonicalRoots[lowerName];
+
+            const groupObj = groups[cleanName];
+            if (!groupObj) return cleanName;
+
+            let parent = groupObj.parent;
+            if (parent && typeof parent !== 'string') parent = String(parent);
+            if (parent) parent = parent.trim();
+
+            // Stop if parent is missing, empty, or Primary
+            if (!parent || parent === '' || parent.toLowerCase() === 'primary') return cleanName;
             return findRootGroup(parent);
         };
 
@@ -101,8 +141,52 @@ class DataProcessor {
         });
 
         Logger.info(`Parsed ${Object.keys(ledgers).length} Ledgers, ${Object.keys(groups).length} Groups.`);
-        return { ledgers, groups };
+        return { groups, ledgers };
     }
+
+    // --- PROFIT & LOSS PARSER ---
+    async _parseProfitLoss() {
+        const plFile = path.join(this.mastersDir, 'profit_loss.xml');
+        if (!fs.existsSync(plFile)) return { grossProfit: 0, netProfit: 0 };
+
+        try {
+            const xmlData = await fs.readFile(plFile, 'utf8');
+            const parser = new xml2js.Parser({ explicitArray: false });
+            const result = await parser.parseStringPromise(xmlData);
+
+            let gp = 0, np = 0;
+
+            // Recursive traversal to find key figures
+            const traverse = (obj) => {
+                if (!obj || typeof obj !== 'object') return;
+
+                // key check
+                if (obj.DSPACCNAME) {
+                    const name = typeof obj.DSPACCNAME === 'string' ? obj.DSPACCNAME : obj.DSPACCNAME._;
+                    const amt = obj.PLAMT ? (typeof obj.PLAMT === 'string' ? obj.PLAMT : obj.PLAMT._) : 0;
+
+                    if (name === 'Gross Profit') gp = parseFloat(amt || 0);
+                    if (name === 'Nett Profit' || name === 'Net Profit') np = parseFloat(amt || 0);
+                }
+
+                Object.values(obj).forEach(val => {
+                    if (Array.isArray(val)) val.forEach(traverse);
+                    else traverse(val);
+                });
+            };
+
+            traverse(result);
+            // Tally returns absolute values usually, but Credits might be negative. P&L amounts are usually positive in report view?
+            // Actually Gross Profit is Credit side -> Negative?
+            // We take logical value.
+            return { grossProfit: Math.abs(gp), netProfit: Math.abs(np) };
+
+        } catch (e) {
+            Logger.error('Failed to parse Profit & Loss', e);
+            return { grossProfit: 0, netProfit: 0 };
+        }
+    }
+
 
     _buildMastersStructure(msgArray) {
         // Obsolete method, kept for reference or safe deletion if unused.
@@ -148,6 +232,7 @@ class DataProcessor {
         const monthlyStats = {};
         const stockStats = {};
         const ledgerBalances = {};
+        const groupTotals = {}; // Accumulate Group Totals for P&L
         const allTransactions = [];
         const today = new Date();
 
@@ -164,14 +249,16 @@ class DataProcessor {
         });
 
         vouchers.forEach(v => {
+            if (this._getText(v.ISCANCELLED) === 'Yes' || this._getText(v.ISOPTIONAL) === 'Yes') return;
+
             // XML Collection format: DATE is in element or attribute
             const dateStr = this._getText(v.DATE); // YYYYMMDD
             if (!dateStr) return;
 
             const month = dateStr.substring(0, 6);
             const voucherDate = parse(dateStr, 'yyyyMMdd', new Date());
-            const vType = this._getText(v.VOUCHERTYPENAME); // Keep original case for display
-            const vTypeLower = (vType || '').toLowerCase(); // Lowercase for logic
+            const vType = (v.$.VCHTYPE || this._getText(v.VOUCHERTYPENAME) || this._getText(v.VOUCHERTYPE) || 'Unknown').trim(); // Check attribute first
+            const vTypeLower = vType.toLowerCase(); // Lowercase for logic
 
             const transaction = {
                 date: dateStr,
@@ -238,39 +325,81 @@ class DataProcessor {
                 });
             }
 
-            // --- Ledger Entries ---
-            let ledEntries = v['ALLLEDGERENTRIES.LIST'] || v['LEDGERENTRIES.LIST'];
-            if (ledEntries && !Array.isArray(ledEntries)) ledEntries = [ledEntries];
+            // --- Gather All Ledger Entries (including nested inventory allocations) ---
+            let ledEntries = [];
 
-            if (ledEntries) {
+            // 1. Direct Ledger Entries
+            let directLedgers = v['ALLLEDGERENTRIES.LIST'] || v['LEDGERENTRIES.LIST'] || [];
+            if (!Array.isArray(directLedgers)) directLedgers = [directLedgers];
+            ledEntries.push(...directLedgers);
+
+            // 2. Accounting Allocations from Inventory
+            let invItems = v['ALLINVENTORYENTRIES.LIST'] || v['INVENTORYENTRIES.LIST'] || [];
+            if (!Array.isArray(invItems)) invItems = [invItems];
+            invItems.forEach(inv => {
+                let allocations = inv['ACCOUNTINGALLOCATIONS.LIST'] || [];
+                if (!Array.isArray(allocations)) allocations = [allocations];
+                ledEntries.push(...allocations);
+            });
+
+            if (ledEntries.length > 0) {
                 ledEntries.forEach(entry => {
                     const ledgerName = this._getText(entry.LEDGERNAME);
+                    if (!ledgerName) return;
                     const amount = parseFloat(this._getText(entry.AMOUNT) || 0);
 
                     transaction.ledgers.push({ name: ledgerName, amount });
 
                     if (masters.ledgers[ledgerName]) {
-                        const rootGroup = masters.ledgers[ledgerName].rootGroup;
+                        let rootGroup = (masters.ledgers[ledgerName].rootGroup || 'Unknown').trim().replace(/[^\x20-\x7E]/g, '');
+
+                        // Safety Fallback for P&L categorization based on ledger name
+                        if (rootGroup === 'Primary' || rootGroup === 'Unknown') {
+                            const lowerN = ledgerName.toLowerCase();
+                            if (lowerN.includes('sales')) rootGroup = 'Sales Accounts';
+                            else if (lowerN.includes('purchase')) rootGroup = 'Purchase Accounts';
+                        }
+                        // Map the specific typo
+                        if (rootGroup === 'Purchase Acounts') rootGroup = 'Purchase Accounts';
+                        if (rootGroup === 'Sales Acounts') rootGroup = 'Sales Accounts';
+
+                        // Debug first 20 ledgers
+                        if (!this.debugCount) this.debugCount = 0;
+                        if (this.debugCount < 20) {
+                            Logger.info(`L: ${ledgerName} | RG: '${rootGroup}' | P: '${masters.ledgers[ledgerName].parent}'`);
+                            this.debugCount++;
+                        }
+
+                        // Accumulate for P&L (Global)
+                        if (!groupTotals[rootGroup]) groupTotals[rootGroup] = 0;
+                        groupTotals[rootGroup] += amount;
+
+                        // Accumulate for P&L (Monthly)
+                        if (!monthlyStats[month]) monthlyStats[month] = { sales: 0, purchase: 0, groupTotals: {} };
+                        if (!monthlyStats[month].groupTotals) monthlyStats[month].groupTotals = {};
+                        if (!monthlyStats[month].groupTotals[rootGroup]) monthlyStats[month].groupTotals[rootGroup] = 0;
+                        monthlyStats[month].groupTotals[rootGroup] += amount;
+
                         if (rootGroup === 'Sundry Debtors' || rootGroup === 'Sundry Creditors') {
                             if (!ledgerBalances[ledgerName]) {
                                 ledgerBalances[ledgerName] = { balance: 0, billRefs: [], group: rootGroup, parent: masters.ledgers[ledgerName].parent };
                             }
                             ledgerBalances[ledgerName].balance += amount;
-
-                            let bills = entry['BILLALLOCATIONS.LIST'];
-                            if (bills && !Array.isArray(bills)) bills = [bills];
-
-                            if (bills) {
-                                bills.forEach(b => {
-                                    ledgerBalances[ledgerName].billRefs.push({
-                                        date: voucherDate,
-                                        name: this._getText(b.NAME),
-                                        amount: parseFloat(this._getText(b.AMOUNT) || 0),
-                                        type: this._getText(b.BILLTYPE)
-                                    });
-                                });
-                            }
                         }
+                    }
+
+                    let bills = entry['BILLALLOCATIONS.LIST'];
+                    if (bills && !Array.isArray(bills)) bills = [bills];
+
+                    if (bills && ledgerBalances[ledgerName]) {
+                        bills.forEach(b => {
+                            ledgerBalances[ledgerName].billRefs.push({
+                                date: voucherDate,
+                                amount: parseFloat(this._getText(b.AMOUNT) || 0),
+                                type: this._getText(b.BILLTYPE),
+                                name: this._getText(b.NAME)
+                            });
+                        });
                     }
                 });
             }
@@ -278,17 +407,20 @@ class DataProcessor {
             allTransactions.push(transaction);
         });
 
-        return this._finalizeAnalysis(monthlyStats, stockStats, ledgerBalances, allTransactions, masters, today);
+        return this._finalizeAnalysis(monthlyStats, stockStats, ledgerBalances, allTransactions, masters, today, groupTotals);
     }
 
     // Helper: Get text from XML element (handles {_: "val", $: {TYPE: "..."}} and plain strings)
     _getText(el) {
         if (el === null || el === undefined) return null;
-        if (typeof el === 'string') return el;
-        if (typeof el === 'number') return String(el);
-        if (el._ !== undefined) return el._;  // xml2js typed element {_: value, $: {TYPE: ...}}
-        if (el.$ && el.$.toString) return null; // attribute-only, no text
-        return String(el);
+        let str = '';
+        if (typeof el === 'string') str = el;
+        else if (typeof el === 'number') str = String(el);
+        else if (el._ !== undefined) str = el._;
+        else if (el.$ && el.$.toString) return null;
+        else str = String(el);
+
+        return str.trim().replace(/[^\x20-\x7E]/g, '');
     }
 
     _emptyAnalysis() {
@@ -302,7 +434,7 @@ class DataProcessor {
         };
     }
 
-    _finalizeAnalysis(monthlyStats, stockStats, ledgerBalances, allTransactions, masters, today) {
+    _finalizeAnalysis(monthlyStats, stockStats, ledgerBalances, allTransactions, masters, today, groupTotals) {
         const debtors = [];
         const creditors = [];
 
@@ -376,13 +508,66 @@ class DataProcessor {
 
         Logger.info(`Analysis: ${allTransactions.length} transactions, ${debtors.length} debtors, ${creditors.length} creditors, ${stocks.length} stock items.`);
 
+        // Calculate P&L (Gross Profit & Net Profit)
+        Logger.info(`P&L Groups Found: ${Object.keys(groupTotals).join(', ')}`);
+
+        const Sales = Math.abs(groupTotals['Sales Accounts'] || 0);
+        const Purchase = Math.abs(groupTotals['Purchase Accounts'] || 0);
+        const DirectExp = Math.abs(groupTotals['Direct Expenses'] || 0);
+        const DirectInc = Math.abs(groupTotals['Direct Incomes'] || 0);
+        const IndirectExp = Math.abs(groupTotals['Indirect Expenses'] || 0);
+        const IndirectInc = Math.abs(groupTotals['Indirect Incomes'] || 0);
+
+        // Gross Profit = Sales - Purchase - DirectExp + DirectInc
+        const grossProfit = Sales - Purchase - DirectExp + DirectInc;
+
+        // Net Profit = Gross Profit + IndirectInc - IndirectExp
+        const netProfit = grossProfit + IndirectInc - IndirectExp;
+
+        // Calculate Monthly P&L
+        Object.keys(monthlyStats).forEach(month => {
+            const m = monthlyStats[month];
+            const g = m.groupTotals || {};
+
+            const mSales = Math.abs(g['Sales Accounts'] || 0);
+            const mPurchase = Math.abs(g['Purchase Accounts'] || 0);
+            const mDirectExp = Math.abs(g['Direct Expenses'] || 0);
+            const mDirectInc = Math.abs(g['Direct Incomes'] || 0);
+            const mIndirectExp = Math.abs(g['Indirect Expenses'] || 0);
+            const mIndirectInc = Math.abs(g['Indirect Incomes'] || 0);
+
+            m.grossProfit = mSales - mPurchase - mDirectExp + mDirectInc;
+            m.netProfit = m.grossProfit + mIndirectInc - mIndirectExp;
+
+            // Back-fill sales/purchase if they were missed by the vchType logic but caught by groups
+            if (m.sales === 0) m.sales = mSales;
+            if (m.purchase === 0) m.purchase = mPurchase;
+
+            m.details = {
+                DirectExp: mDirectExp,
+                DirectInc: mDirectInc,
+                IndirectExp: mIndirectExp,
+                IndirectInc: mIndirectInc
+            };
+            delete m.groupTotals; // Clean up
+        });
+
+        const profitLoss = {
+            grossProfit,
+            netProfit,
+            sales: Sales,
+            purchase: Purchase,
+            details: { DirectExp, DirectInc, IndirectExp, IndirectInc }
+        };
+
         return {
             monthlyStats,
             debtors: debtors.sort((a, b) => b.balance - a.balance),
             creditors: creditors.sort((a, b) => b.balance - a.balance),
             stocks: stocks.sort((a, b) => b.revenue - a.revenue),
             transactions: allTransactions,
-            ledgersList: Object.keys(masters.ledgers || {}).sort()
+            ledgersList: Object.keys(masters.ledgers || {}).sort(),
+            profitLoss
         };
     }
 

@@ -592,3 +592,2067 @@
 [2026-02-10 19:50:17] [SUCCESS] Data Processing Complete.
 
 === SYNC COMPLETE ✅ ===
+
+=== BIZSTASH SYNC ENGINE 5.0 ===
+[2026-02-10 20:08:16] [INFO] Data Directory: C:\Projects\Bizstash\tally_data\xml\SBEM_Malkangiri
+
+=== PRE-SYNC DASHBOARD ===
+[2026-02-10 20:08:17] [INFO] Fetching Masters (Groups & Ledgers)...
+[2026-02-10 20:08:18] [SUCCESS] Fetched Masters successfully.
+[2026-02-10 20:08:18] [INFO] Fetching Profit & Loss Report...
+[2026-02-10 20:08:18] [SUCCESS] Fetched Profit & Loss successfully.
+
+=== PHASE 1: FETCH DATA ===
+[2026-02-10 20:08:18] [INFO] Force Fetching all vouchers to capture any modifications...
+[2026-02-10 20:08:18] [INFO] Fetching ALL vouchers from Tally (single request)...
+[2026-02-10 20:08:19] [SUCCESS] Fetched 1.3 MB in 0.7s → vouchers.xml
+
+=== PHASE 2: PROCESS ===
+[2026-02-10 20:08:19] [INFO] Processing data for SBEM_Malkangiri...
+[2026-02-10 20:08:19] [INFO] Parsed 46 Ledgers, 29 Groups.
+[2026-02-10 20:08:19] [INFO] Parsing vouchers.xml...
+[2026-02-10 20:08:19] [INFO] Loaded 1.3 MB. Parsing XML...
+[2026-02-10 20:08:19] [INFO] Parsed 172 vouchers in 0.1s.
+[2026-02-10 20:08:19] [INFO] Analysis: 172 transactions, 17 debtors, 11 creditors, 162 stock items.
+[2026-02-10 20:08:19] [SUCCESS] Data saved to C:\Projects\Bizstash\dashboard\public\data\SBEM_Malkangiri\data.json
+[2026-02-10 20:08:19] [SUCCESS] Data Processing Complete.
+
+=== SYNC COMPLETE ✅ ===
+
+=== BIZSTASH SYNC ENGINE 5.0 ===
+[2026-02-10 20:09:51] [INFO] Data Directory: C:\Projects\Bizstash\tally_data\xml\SBEM_Malkangiri
+
+=== PRE-SYNC DASHBOARD ===
+[2026-02-10 20:09:52] [INFO] Fetching Masters (Groups & Ledgers)...
+[2026-02-10 20:09:53] [SUCCESS] Fetched Masters successfully.
+[2026-02-10 20:09:53] [INFO] Fetching Profit & Loss Report...
+[2026-02-10 20:09:53] [SUCCESS] Fetched Profit & Loss successfully.
+
+=== PHASE 1: FETCH DATA ===
+[2026-02-10 20:09:53] [INFO] Force Fetching all vouchers to capture any modifications...
+[2026-02-10 20:09:53] [INFO] Fetching ALL vouchers from Tally (single request)...
+[2026-02-10 20:09:54] [SUCCESS] Fetched 1.3 MB in 0.7s → vouchers.xml
+
+=== PHASE 2: PROCESS ===
+[2026-02-10 20:09:54] [INFO] Processing data for SBEM_Malkangiri...
+[2026-02-10 20:09:54] [INFO] Parsed 46 Ledgers, 29 Groups.
+[2026-02-10 20:09:54] [INFO] Parsing vouchers.xml...
+[2026-02-10 20:09:54] [INFO] Loaded 1.3 MB. Parsing XML...
+[2026-02-10 20:09:54] [INFO] Parsed 172 vouchers in 0.1s.
+[2026-02-10 20:09:54] [INFO] Analysis: 172 transactions, 17 debtors, 11 creditors, 162 stock items.
+[2026-02-10 20:09:54] [SUCCESS] Data saved to C:\Projects\Bizstash\dashboard\public\data\SBEM_Malkangiri\data.json
+[2026-02-10 20:09:54] [SUCCESS] Data Processing Complete.
+
+=== SYNC COMPLETE ✅ ===
+
+=== BIZSTASH SYNC ENGINE 5.0 ===
+[2026-02-10 20:11:52] [INFO] Data Directory: C:\Projects\Bizstash\tally_data\xml\SBEM_Malkangiri
+
+=== PRE-SYNC DASHBOARD ===
+[2026-02-10 20:11:53] [INFO] Fetching Masters (Groups & Ledgers)...
+[2026-02-10 20:11:54] [SUCCESS] Fetched Masters successfully.
+[2026-02-10 20:11:54] [INFO] Fetching Profit & Loss Report...
+[2026-02-10 20:11:55] [SUCCESS] Fetched Profit & Loss successfully.
+
+=== PHASE 1: FETCH DATA ===
+[2026-02-10 20:11:55] [INFO] Force Fetching all vouchers to capture any modifications...
+[2026-02-10 20:11:55] [INFO] Fetching ALL vouchers from Tally (single request)...
+[2026-02-10 20:11:56] [SUCCESS] Fetched 1.3 MB in 0.7s → vouchers.xml
+
+=== PHASE 2: PROCESS ===
+[2026-02-10 20:11:56] [INFO] Processing data for SBEM_Malkangiri...
+[2026-02-10 20:11:56] [INFO] Parsed 46 Ledgers, 29 Groups.
+[2026-02-10 20:11:56] [INFO] Parsing vouchers.xml...
+[2026-02-10 20:11:56] [INFO] Loaded 1.3 MB. Parsing XML...
+[2026-02-10 20:11:56] [INFO] Parsed 172 vouchers in 0.1s.
+[2026-02-10 20:11:56] [INFO] Analysis: 172 transactions, 17 debtors, 11 creditors, 162 stock items.
+[2026-02-10 20:11:56] [SUCCESS] Data saved to C:\Projects\Bizstash\dashboard\public\data\SBEM_Malkangiri\data.json
+[2026-02-10 20:11:56] [SUCCESS] Data Processing Complete.
+
+=== SYNC COMPLETE ✅ ===
+
+=== BIZSTASH SYNC ENGINE 5.0 ===
+[2026-02-10 20:17:12] [INFO] Data Directory: C:\Projects\Bizstash\tally_data\xml\SBEM_Malkangiri
+
+=== PRE-SYNC DASHBOARD ===
+[2026-02-10 20:17:13] [INFO] Fetching Masters (Groups & Ledgers)...
+[2026-02-10 20:17:14] [SUCCESS] Fetched Masters successfully.
+[2026-02-10 20:17:14] [INFO] Fetching Profit & Loss Report...
+[2026-02-10 20:17:15] [SUCCESS] Fetched Profit & Loss successfully.
+
+=== PHASE 1: FETCH DATA ===
+[2026-02-10 20:17:15] [INFO] Force Fetching all vouchers to capture any modifications...
+[2026-02-10 20:17:15] [INFO] Fetching ALL vouchers from Tally (single request)...
+[2026-02-10 20:17:16] [SUCCESS] Fetched 1.3 MB in 0.8s → vouchers.xml
+
+=== PHASE 2: PROCESS ===
+[2026-02-10 20:17:16] [INFO] Processing data for SBEM_Malkangiri...
+[2026-02-10 20:17:16] [INFO] Parsed 46 Ledgers, 29 Groups.
+[2026-02-10 20:17:16] [INFO] Parsing vouchers.xml...
+[2026-02-10 20:17:16] [INFO] Loaded 1.3 MB. Parsing XML...
+[2026-02-10 20:17:16] [INFO] Parsed 172 vouchers in 0.1s.
+[2026-02-10 20:17:16] [INFO] Analysis: 172 transactions, 17 debtors, 11 creditors, 162 stock items.
+[2026-02-10 20:17:16] [SUCCESS] Data saved to C:\Projects\Bizstash\dashboard\public\data\SBEM_Malkangiri\data.json
+[2026-02-10 20:17:16] [SUCCESS] Data Processing Complete.
+
+=== SYNC COMPLETE ✅ ===
+
+=== BIZSTASH SYNC ENGINE 5.0 ===
+[2026-02-10 20:18:24] [INFO] Data Directory: C:\Projects\Bizstash\tally_data\xml\SBEM_Malkangiri
+
+=== PRE-SYNC DASHBOARD ===
+[2026-02-10 20:18:25] [INFO] Fetching Masters (Groups & Ledgers)...
+[2026-02-10 20:18:26] [SUCCESS] Fetched Masters successfully.
+[2026-02-10 20:18:26] [INFO] Fetching Profit & Loss Report...
+[2026-02-10 20:18:27] [SUCCESS] Fetched Profit & Loss successfully.
+
+=== PHASE 1: FETCH DATA ===
+[2026-02-10 20:18:27] [INFO] Force Fetching all vouchers to capture any modifications...
+[2026-02-10 20:18:27] [INFO] Fetching ALL vouchers from Tally (single request)...
+[2026-02-10 20:18:27] [SUCCESS] Fetched 1.3 MB in 0.7s → vouchers.xml
+
+=== PHASE 2: PROCESS ===
+[2026-02-10 20:18:27] [INFO] Processing data for SBEM_Malkangiri...
+[2026-02-10 20:18:27] [INFO] Parsed 46 Ledgers, 29 Groups.
+[2026-02-10 20:18:27] [INFO] Parsing vouchers.xml...
+[2026-02-10 20:18:27] [INFO] Loaded 1.3 MB. Parsing XML...
+[2026-02-10 20:18:28] [INFO] Parsed 172 vouchers in 0.2s.
+[2026-02-10 20:18:28] [INFO] L: PARAGON POLYMER PRODUCTS PRIVATE LIMITED , CUTTACK | G: Sundry Creditors | A: 465582
+[2026-02-10 20:18:28] [INFO] L: CGST | G:  Primary | A: -24941.87
+[2026-02-10 20:18:28] [INFO] L: SGST | G:  Primary | A: -24941.87
+[2026-02-10 20:18:28] [INFO] L: ROUND OFF-SALE | G:  Primary | A: -0.02
+[2026-02-10 20:18:28] [INFO] L: SHRI RAMDUT ENTRPRISES , HARYAN | G: Sundry Creditors | A: 54003
+[2026-02-10 20:18:28] [INFO] L: IGST | G:  Primary | A: -5786
+[2026-02-10 20:18:28] [INFO] L: ROUND-OF PURCHASE | G:  Primary | A: -0.4
+[2026-02-10 20:18:28] [INFO] L: Miscellaneous Expenses | G:  Primary | A: -500
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 500
+[2026-02-10 20:18:28] [INFO] L: Miscellaneous Expenses | G:  Primary | A: -810
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 810
+[2026-02-10 20:18:28] [INFO] L: Travelling Expenses | G:  Primary | A: -381
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 381
+[2026-02-10 20:18:28] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -45
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 45
+[2026-02-10 20:18:28] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -210
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 210
+[2026-02-10 20:18:28] [INFO] L: LOADING AND UNLONDING | G:  Primary | A: -500
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 500
+[2026-02-10 20:18:28] [INFO] L: Miscellaneous Expenses | G:  Primary | A: -3000
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 3000
+[2026-02-10 20:18:28] [INFO] L: Miscellaneous Expenses | G:  Primary | A: -570
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 570
+[2026-02-10 20:18:28] [INFO] L: Miscellaneous Expenses | G:  Primary | A: -380
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 380
+[2026-02-10 20:18:28] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -180
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 180
+[2026-02-10 20:18:28] [INFO] L: Miscellaneous Expenses | G:  Primary | A: -10
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 10
+[2026-02-10 20:18:28] [INFO] L: Miscellaneous Expenses | G:  Primary | A: -30
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 30
+[2026-02-10 20:18:28] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -200
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 200
+[2026-02-10 20:18:28] [INFO] L: M/S S M TRADERS, MALKANGIRI | G: Sundry Debtors | A: -30000
+[2026-02-10 20:18:28] [INFO] L: CGST | G:  Primary | A: 1607.15
+[2026-02-10 20:18:28] [INFO] L: SGST | G:  Primary | A: 1607.15
+[2026-02-10 20:18:28] [INFO] L: ROUND OFF-SALE | G:  Primary | A: -0.22
+[2026-02-10 20:18:28] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -200
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 200
+[2026-02-10 20:18:28] [INFO] L: PARAGON POLYMER PRODUCTS PRIVATE LIMITED , CUTTACK | G: Sundry Creditors | A: 358070
+[2026-02-10 20:18:28] [INFO] L: CGST | G:  Primary | A: -19182.36
+[2026-02-10 20:18:28] [INFO] L: SGST | G:  Primary | A: -19182.36
+[2026-02-10 20:18:28] [INFO] L: ROUND OFF-SALE | G:  Primary | A: 0.36
+[2026-02-10 20:18:28] [INFO] L: PARAGON POLYMER PRODUCTS PRIVATE LIMITED , CUTTACK | G: Sundry Creditors | A: 12745
+[2026-02-10 20:18:28] [INFO] L: CGST | G:  Primary | A: -682.78
+[2026-02-10 20:18:28] [INFO] L: SGST | G:  Primary | A: -682.78
+[2026-02-10 20:18:28] [INFO] L: ROUND OFF-SALE | G:  Primary | A: 0.16
+[2026-02-10 20:18:28] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -190
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 190
+[2026-02-10 20:18:28] [INFO] L: Miscellaneous Expenses | G:  Primary | A: -40
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 40
+[2026-02-10 20:18:28] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -210
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 210
+[2026-02-10 20:18:28] [INFO] L: Miscellaneous Expenses | G:  Primary | A: -50
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 50
+[2026-02-10 20:18:28] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -170
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 170
+[2026-02-10 20:18:28] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -180
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 180
+[2026-02-10 20:18:28] [INFO] L: LOADING AND UNLONDING | G:  Primary | A: -550
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 550
+[2026-02-10 20:18:28] [INFO] L: M/S S M TRADERS, MALKANGIRI | G: Sundry Debtors | A: 5000
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: -5000
+[2026-02-10 20:18:28] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -200
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 200
+[2026-02-10 20:18:28] [INFO] L: Travelling Expenses | G:  Primary | A: -430
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 430
+[2026-02-10 20:18:28] [INFO] L: MAGNET POLYMERS | G: Sundry Creditors | A: 29856
+[2026-02-10 20:18:28] [INFO] L: IGST | G:  Primary | A: -3198.87
+[2026-02-10 20:18:28] [INFO] L: ROUND-OF PURCHASE | G:  Primary | A: 0.1
+[2026-02-10 20:18:28] [INFO] L: Travelling Expenses | G:  Primary | A: -615
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 615
+[2026-02-10 20:18:28] [INFO] L: Miscellaneous Expenses | G:  Primary | A: -30
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 30
+[2026-02-10 20:18:28] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -130
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 130
+[2026-02-10 20:18:28] [INFO] L: Travelling Expenses | G:  Primary | A: -125
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 125
+[2026-02-10 20:18:28] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -70
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 70
+[2026-02-10 20:18:28] [INFO] L: LOADING AND UNLONDING | G:  Primary | A: -40
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 40
+[2026-02-10 20:18:28] [INFO] L: TARUN FOOTWEAR , KALIMELA | G: Sundry Debtors | A: -44678
+[2026-02-10 20:18:28] [INFO] L: CGST | G:  Primary | A: 2393.48
+[2026-02-10 20:18:28] [INFO] L: SGST | G:  Primary | A: 2393.48
+[2026-02-10 20:18:28] [INFO] L: ROUND OFF-SALE | G:  Primary | A: -0.26
+[2026-02-10 20:18:28] [INFO] L: GREAT INDIA ROADWAYS, MALKANGIRI | G: Sundry Creditors | A: 3200
+[2026-02-10 20:18:28] [INFO] L: Transport Charges(Services) | G:  Primary | A: -3200
+[2026-02-10 20:18:28] [INFO] L: GREAT INDIA ROADWAYS, MALKANGIRI | G: Sundry Creditors | A: -3200
+[2026-02-10 20:18:28] [INFO] L: SBI(ADB)-CC A/C | G:  Primary | A: 3200
+[2026-02-10 20:18:28] [INFO] L: TARUN FOOTWEAR , KALIMELA | G: Sundry Debtors | A: -41349
+[2026-02-10 20:18:28] [INFO] L: CGST | G:  Primary | A: 2215.1
+[2026-02-10 20:18:28] [INFO] L: SGST | G:  Primary | A: 2215.1
+[2026-02-10 20:18:28] [INFO] L: ROUND OFF-SALE | G:  Primary | A: 0.38
+[2026-02-10 20:18:28] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -170
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 170
+[2026-02-10 20:18:28] [INFO] L: Miscellaneous Expenses | G:  Primary | A: -600
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 600
+[2026-02-10 20:18:28] [INFO] L: Miscellaneous Expenses | G:  Primary | A: -50
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 50
+[2026-02-10 20:18:28] [INFO] L: RAIPUR CALCUTTA ROADCARRIERS | G: Sundry Creditors | A: 1370
+[2026-02-10 20:18:28] [INFO] L: Transport Charges(Services) | G:  Primary | A: -1370
+[2026-02-10 20:18:28] [INFO] L: RAIPUR CALCUTTA ROADCARRIERS | G: Sundry Creditors | A: 620
+[2026-02-10 20:18:28] [INFO] L: Transport Charges(Services) | G:  Primary | A: -620
+[2026-02-10 20:18:28] [INFO] L: RAIPUR CALCUTTA ROADCARRIERS | G: Sundry Creditors | A: 470
+[2026-02-10 20:18:28] [INFO] L: Transport Charges(Services) | G:  Primary | A: -470
+[2026-02-10 20:18:28] [INFO] L: TARUN FOOTWEAR , KALIMELA | G: Sundry Debtors | A: -34807
+[2026-02-10 20:18:28] [INFO] L: CGST | G:  Primary | A: 1864.72
+[2026-02-10 20:18:28] [INFO] L: SGST | G:  Primary | A: 1864.72
+[2026-02-10 20:18:28] [INFO] L: ROUND OFF-SALE | G:  Primary | A: -0.88
+[2026-02-10 20:18:28] [INFO] L: Miscellaneous Expenses | G:  Primary | A: -10
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 10
+[2026-02-10 20:18:28] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -180
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 180
+[2026-02-10 20:18:28] [INFO] L: RAIPUR CALCUTTA ROADCARRIERS | G: Sundry Creditors | A: 1520
+[2026-02-10 20:18:28] [INFO] L: Transport Charges(Services) | G:  Primary | A: -1520
+[2026-02-10 20:18:28] [INFO] L: MAGNET POLYMERS | G: Sundry Creditors | A: 15120
+[2026-02-10 20:18:28] [INFO] L: IGST | G:  Primary | A: -1620
+[2026-02-10 20:18:28] [INFO] L: ROUND OFF-SALE | G:  Primary | A: 0.04
+[2026-02-10 20:18:28] [INFO] L: MAGNET POLYMERS | G: Sundry Creditors | A: 15300
+[2026-02-10 20:18:28] [INFO] L: IGST | G:  Primary | A: -1639.29
+[2026-02-10 20:18:28] [INFO] L: ROUND-OF PURCHASE | G:  Primary | A: 0.05
+[2026-02-10 20:18:28] [INFO] L: B. LOKESWAR RAO, CHITROKUNDA | G: Sundry Debtors | A: -6390
+[2026-02-10 20:18:28] [INFO] L: CGST | G:  Primary | A: 342.32
+[2026-02-10 20:18:28] [INFO] L: SGST | G:  Primary | A: 342.32
+[2026-02-10 20:18:28] [INFO] L: ROUND OFF-SALE | G:  Primary | A: 0.08
+[2026-02-10 20:18:28] [INFO] L: VEERABHADRA CLOTH AND GENERAL STORE, CHITRAKUNDA | G: Sundry Debtors | A: -17867
+[2026-02-10 20:18:28] [INFO] L: CGST | G:  Primary | A: 957.15
+[2026-02-10 20:18:28] [INFO] L: SGST | G:  Primary | A: 957.15
+[2026-02-10 20:18:28] [INFO] L: ROUND OFF-SALE | G:  Primary | A: 0.16
+[2026-02-10 20:18:28] [INFO] L: PRINCE STORE, CHITROKUNDA | G: Sundry Debtors | A: -41105
+[2026-02-10 20:18:28] [INFO] L: CGST | G:  Primary | A: 2202.07
+[2026-02-10 20:18:28] [INFO] L: SGST | G:  Primary | A: 2202.07
+[2026-02-10 20:18:28] [INFO] L: ROUND OFF-SALE | G:  Primary | A: -0.08
+[2026-02-10 20:18:28] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -170
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 170
+[2026-02-10 20:18:28] [INFO] L: Miscellaneous Expenses | G:  Primary | A: -350
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 350
+[2026-02-10 20:18:28] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -170
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 170
+[2026-02-10 20:18:28] [INFO] L: M/S S M TRADERS, MALKANGIRI | G: Sundry Debtors | A: 15000
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: -15000
+[2026-02-10 20:18:28] [INFO] L: MAGNET POLYMERS | G: Sundry Creditors | A: 23040
+[2026-02-10 20:18:28] [INFO] L: IGST | G:  Primary | A: -2468.58
+[2026-02-10 20:18:28] [INFO] L: ROUND-OF PURCHASE | G:  Primary | A: 0.07
+[2026-02-10 20:18:28] [INFO] L: MAGNET POLYMERS | G: Sundry Creditors | A: 50700
+[2026-02-10 20:18:28] [INFO] L: IGST | G:  Primary | A: -5432.15
+[2026-02-10 20:18:28] [INFO] L: ROUND-OF PURCHASE | G:  Primary | A: 0.16
+[2026-02-10 20:18:28] [INFO] L: NALINI BISWAS , MPV.81 | G: Sundry Debtors | A: -10095
+[2026-02-10 20:18:28] [INFO] L: CGST | G:  Primary | A: 540.82
+[2026-02-10 20:18:28] [INFO] L: SGST | G:  Primary | A: 540.82
+[2026-02-10 20:18:28] [INFO] L: ROUND OFF-SALE | G:  Primary | A: -0.14
+[2026-02-10 20:18:28] [INFO] L: NEXUS VENTURE,(R K TRADERS) | G: Sundry Creditors | A: 39864
+[2026-02-10 20:18:28] [INFO] L: IGST | G:  Primary | A: -4271.19
+[2026-02-10 20:18:28] [INFO] L: ROUND OFF-SALE | G:  Primary | A: 0.45
+[2026-02-10 20:18:28] [INFO] L: NAV DURGA ENTERPRISES (R K TRADRES) | G: Sundry Creditors | A: 23050
+[2026-02-10 20:18:28] [INFO] L: IGST | G:  Primary | A: -2469.6
+[2026-02-10 20:18:28] [INFO] L: ROUND-OF PURCHASE | G:  Primary | A: -0.4
+[2026-02-10 20:18:28] [INFO] L: GREAT INDIA ROADWAYS, MALKANGIRI | G: Sundry Creditors | A: 1330
+[2026-02-10 20:18:28] [INFO] L: Transport Charges(Services) | G:  Primary | A: -1330
+[2026-02-10 20:18:28] [INFO] L: GREAT INDIA ROADWAYS, MALKANGIRI | G: Sundry Creditors | A: 2550
+[2026-02-10 20:18:28] [INFO] L: Transport Charges(Services) | G:  Primary | A: -2550
+[2026-02-10 20:18:28] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -190
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 190
+[2026-02-10 20:18:28] [INFO] L: NALINI BISWAS , MPV.81 | G: Sundry Debtors | A: 10090
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: -10090
+[2026-02-10 20:18:28] [INFO] L: SARADA PRASAD NANDI, KDUMULUGUMMA | G: Sundry Debtors | A: -5071
+[2026-02-10 20:18:28] [INFO] L: CGST | G:  Primary | A: 271.65
+[2026-02-10 20:18:28] [INFO] L: SGST | G:  Primary | A: 271.65
+[2026-02-10 20:18:28] [INFO] L: ROUND OFF-SALE | G:  Primary | A: 0.17
+[2026-02-10 20:18:28] [INFO] L: SHRI RAMDUT ENTRPRISES , HARYAN | G: Sundry Creditors | A: 54003
+[2026-02-10 20:18:28] [INFO] L: IGST | G:  Primary | A: -5786
+[2026-02-10 20:18:28] [INFO] L: ROUND-OF PURCHASE | G:  Primary | A: -0.4
+[2026-02-10 20:18:28] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -170
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 170
+[2026-02-10 20:18:28] [INFO] L: SARADA PRASAD NANDI, KDUMULUGUMMA | G: Sundry Debtors | A: 5000
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: -5000
+[2026-02-10 20:18:28] [INFO] L: Travelling Expenses | G:  Primary | A: 350
+[2026-02-10 20:18:28] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: 90
+[2026-02-10 20:18:28] [INFO] L: Miscellaneous Expenses | G:  Primary | A: 200
+[2026-02-10 20:18:28] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: 150
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: -790
+[2026-02-10 20:18:28] [INFO] L: Travelling Expenses | G:  Primary | A: 240
+[2026-02-10 20:18:28] [INFO] L: Travelling Expenses | G:  Primary | A: 120
+[2026-02-10 20:18:28] [INFO] L: Travelling Expenses | G:  Primary | A: 280
+[2026-02-10 20:18:28] [INFO] L: Transport Expenses | G:  Primary | A: 40
+[2026-02-10 20:18:28] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: 380
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: -1060
+[2026-02-10 20:18:28] [INFO] L: GREAT INDIA ROADWAYS, MALKANGIRI | G: Sundry Creditors | A: -1330
+[2026-02-10 20:18:28] [INFO] L: SBI(ADB)-CC A/C | G:  Primary | A: 1330
+[2026-02-10 20:18:28] [INFO] L: GREAT INDIA ROADWAYS, MALKANGIRI | G: Sundry Creditors | A: -2550
+[2026-02-10 20:18:28] [INFO] L: SBI(ADB)-CC A/C | G:  Primary | A: 2550
+[2026-02-10 20:18:28] [INFO] L: Travelling Expenses | G:  Primary | A: -370
+[2026-02-10 20:18:28] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -60
+[2026-02-10 20:18:28] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -140
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 570
+[2026-02-10 20:18:28] [INFO] L: DEBABRATHA MANDAL, KALIMELA | G: Sundry Debtors | A: -33840
+[2026-02-10 20:18:28] [INFO] L: CGST | G:  Primary | A: 805.72
+[2026-02-10 20:18:28] [INFO] L: SGST | G:  Primary | A: 805.72
+[2026-02-10 20:18:28] [INFO] L: ROUND OFF-SALE | G:  Primary | A: 0.11
+[2026-02-10 20:18:28] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -40
+[2026-02-10 20:18:28] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -70
+[2026-02-10 20:18:28] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -140
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 250
+[2026-02-10 20:18:28] [INFO] L: M/S S M TRADERS, MALKANGIRI | G: Sundry Debtors | A: 10000
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: -10000
+[2026-02-10 20:18:28] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -140
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 140
+[2026-02-10 20:18:28] [INFO] L: RAIPUR CALCUTTA ROADCARRIERS | G: Sundry Creditors | A: 470
+[2026-02-10 20:18:28] [INFO] L: Transport Charges(Services) | G:  Primary | A: -470
+[2026-02-10 20:18:28] [INFO] L: DEBABRATHA MANDAL, KALIMELA | G: Sundry Debtors | A: -28511
+[2026-02-10 20:18:28] [INFO] L: CGST | G:  Primary | A: 678.85
+[2026-02-10 20:18:28] [INFO] L: SGST | G:  Primary | A: 678.85
+[2026-02-10 20:18:28] [INFO] L: ROUND OFF-SALE | G:  Primary | A: -0.37
+[2026-02-10 20:18:28] [INFO] L: M/S S M TRADERS, MALKANGIRI | G: Sundry Debtors | A: -30351
+[2026-02-10 20:18:28] [INFO] L: CGST | G:  Primary | A: 722.64
+[2026-02-10 20:18:28] [INFO] L: SGST | G:  Primary | A: 722.64
+[2026-02-10 20:18:28] [INFO] L: ROUND OFF-SALE | G:  Primary | A: -0.02
+[2026-02-10 20:18:28] [INFO] L: GOPAL FOOTWEAR, BALIMELA | G: Sundry Debtors | A: -15445
+[2026-02-10 20:18:28] [INFO] L: CGST | G:  Primary | A: 367.75
+[2026-02-10 20:18:28] [INFO] L: SGST | G:  Primary | A: 367.75
+[2026-02-10 20:18:28] [INFO] L: ROUND OFF-SALE | G:  Primary | A: -0.25
+[2026-02-10 20:18:28] [INFO] L: PARAGON POLYMER PRODUCTS PRIVATE LIMITED, TELANAGAN | G: Sundry Creditors | A: 18645
+[2026-02-10 20:18:28] [INFO] L: IGST | G:  Primary | A: -887.88
+[2026-02-10 20:18:28] [INFO] L: ROUND-OF PURCHASE | G:  Primary | A: 0.48
+[2026-02-10 20:18:28] [INFO] L: PARAGON POLYMER PRODUCTS PRIVATE LIMITED, TELANAGAN | G: Sundry Creditors | A: 5137
+[2026-02-10 20:18:28] [INFO] L: IGST | G:  Primary | A: -244.62
+[2026-02-10 20:18:28] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -30
+[2026-02-10 20:18:28] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -70
+[2026-02-10 20:18:28] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -10
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 110
+[2026-02-10 20:18:28] [INFO] L: GOPAL FOOTWEAR, BALIMELA | G: Sundry Debtors | A: 15440
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: -15440
+[2026-02-10 20:18:28] [INFO] L: BABULA PATRO, CHITROKUNDA | G: Sundry Debtors | A: -4389
+[2026-02-10 20:18:28] [INFO] L: CGST | G:  Primary | A: 104.5
+[2026-02-10 20:18:28] [INFO] L: SGST | G:  Primary | A: 104.5
+[2026-02-10 20:18:28] [INFO] L: ROUND OFF-SALE | G:  Primary | A: -0.06
+[2026-02-10 20:18:28] [INFO] L: JAWAHAR HOSIERY FACTORY | G: Sundry Creditors | A: 49069
+[2026-02-10 20:18:28] [INFO] L: IGST | G:  Primary | A: -2336.6
+[2026-02-10 20:18:28] [INFO] L: ROUND-OF PURCHASE | G:  Primary | A: -0.4
+[2026-02-10 20:18:28] [INFO] L: GREAT INDIA ROADWAYS, MALKANGIRI | G: Sundry Creditors | A: 1540
+[2026-02-10 20:18:28] [INFO] L: Transport Charges(Services) | G:  Primary | A: -1540
+[2026-02-10 20:18:28] [INFO] L: GREAT INDIA ROADWAYS, MALKANGIRI | G: Sundry Creditors | A: 3200
+[2026-02-10 20:18:28] [INFO] L: Transport Charges(Services) | G:  Primary | A: -3200
+[2026-02-10 20:18:28] [INFO] L: Paragon Polymer Products Pvt Ltd(Bangalore) | G: Sundry Creditors | A: 37748
+[2026-02-10 20:18:28] [INFO] L: IGST | G:  Primary | A: -1797.54
+[2026-02-10 20:18:28] [INFO] L: ROUND OFF-SALE | G:  Primary | A: -0.06
+[2026-02-10 20:18:28] [INFO] L: Paragon Polymer Products Pvt Ltd(Bangalore) | G: Sundry Creditors | A: 26827
+[2026-02-10 20:18:28] [INFO] L: IGST | G:  Primary | A: -1277.5
+[2026-02-10 20:18:28] [INFO] L: ROUND-OF PURCHASE | G:  Primary | A: 0.05
+[2026-02-10 20:18:28] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -110
+[2026-02-10 20:18:28] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -30
+[2026-02-10 20:18:28] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -140
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 280
+[2026-02-10 20:18:28] [INFO] L: B. LOKESWAR RAO, CHITROKUNDA | G: Sundry Debtors | A: -11255
+[2026-02-10 20:18:28] [INFO] L: CGST | G:  Primary | A: 267.95
+[2026-02-10 20:18:28] [INFO] L: SGST | G:  Primary | A: 267.95
+[2026-02-10 20:18:28] [INFO] L: ROUND OFF-SALE | G:  Primary | A: 0.57
+[2026-02-10 20:18:28] [INFO] L: M/S S M TRADERS, MALKANGIRI | G: Sundry Debtors | A: -9980
+[2026-02-10 20:18:28] [INFO] L: CGST | G:  Primary | A: 237.63
+[2026-02-10 20:18:28] [INFO] L: SGST | G:  Primary | A: 237.63
+[2026-02-10 20:18:28] [INFO] L: ROUND OFF-SALE | G:  Primary | A: -0.33
+[2026-02-10 20:18:28] [INFO] L: GREAT INDIA ROADWAYS, MALKANGIRI | G: Sundry Creditors | A: -3200
+[2026-02-10 20:18:28] [INFO] L: SBI(ADB)-CC A/C | G:  Primary | A: 3200
+[2026-02-10 20:18:28] [INFO] L: GREAT INDIA ROADWAYS, MALKANGIRI | G: Sundry Creditors | A: -1540
+[2026-02-10 20:18:28] [INFO] L: SBI(ADB)-CC A/C | G:  Primary | A: 1540
+[2026-02-10 20:18:28] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -80
+[2026-02-10 20:18:28] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -150
+[2026-02-10 20:18:28] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -20
+[2026-02-10 20:18:28] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -140
+[2026-02-10 20:18:28] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -140
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 530
+[2026-02-10 20:18:28] [INFO] L: Travelling Expenses | G:  Primary | A: -760
+[2026-02-10 20:18:28] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -90
+[2026-02-10 20:18:28] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -150
+[2026-02-10 20:18:28] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -140
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 1140
+[2026-02-10 20:18:28] [INFO] L: GOUDAWN RANT MALKANGIRI BIJAY | G:  Primary | A: -10000
+[2026-02-10 20:18:28] [INFO] L: SBI(ADB)-CC A/C | G:  Primary | A: 10000
+[2026-02-10 20:18:28] [INFO] L: RAIPUR CALCUTTA ROADCARRIERS | G: Sundry Creditors | A: -5050
+[2026-02-10 20:18:28] [INFO] L: SBI(ADB)-CC A/C | G:  Primary | A: 5050
+[2026-02-10 20:18:28] [INFO] L: Miscellaneous Expenses | G:  Primary | A: -280
+[2026-02-10 20:18:28] [INFO] L: Miscellaneous Expenses | G:  Primary | A: -150
+[2026-02-10 20:18:28] [INFO] L: Travelling Expenses | G:  Primary | A: -536
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 966
+[2026-02-10 20:18:28] [INFO] L: Miscellaneous Expenses | G:  Primary | A: -20
+[2026-02-10 20:18:28] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -40
+[2026-02-10 20:18:28] [INFO] L: Travelling Expenses | G:  Primary | A: -410
+[2026-02-10 20:18:28] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -90
+[2026-02-10 20:18:28] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -20
+[2026-02-10 20:18:28] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -70
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 650
+[2026-02-10 20:18:28] [INFO] L: SRI RAMRAJU ENTERPRISES, CHITROKUNDA | G: Sundry Debtors | A: -4500
+[2026-02-10 20:18:28] [INFO] L: CGST | G:  Primary | A: 107.15
+[2026-02-10 20:18:28] [INFO] L: SGST | G:  Primary | A: 107.15
+[2026-02-10 20:18:28] [INFO] L: ROUND OFF-SALE | G:  Primary | A: -0.3
+[2026-02-10 20:18:28] [INFO] L: PRINCE STORE, CHITROKUNDA | G: Sundry Debtors | A: -1977
+[2026-02-10 20:18:28] [INFO] L: CGST | G:  Primary | A: 47.06
+[2026-02-10 20:18:28] [INFO] L: SGST | G:  Primary | A: 47.06
+[2026-02-10 20:18:28] [INFO] L: ROUND OFF-SALE | G:  Primary | A: 0.3
+[2026-02-10 20:18:28] [INFO] L: M/S S M TRADERS, MALKANGIRI | G: Sundry Debtors | A: 17473
+[2026-02-10 20:18:28] [INFO] L: CGST | G:  Primary | A: -416.01
+[2026-02-10 20:18:28] [INFO] L: SGST | G:  Primary | A: -416.01
+[2026-02-10 20:18:28] [INFO] L: ROUND OFF-SALE | G:  Primary | A: -0.25
+[2026-02-10 20:18:28] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -40
+[2026-02-10 20:18:28] [INFO] L: Miscellaneous Expenses | G:  Primary | A: -150
+[2026-02-10 20:18:28] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -140
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 330
+[2026-02-10 20:18:28] [INFO] L: M/S S M TRADERS, MALKANGIRI | G: Sundry Debtors | A: -25260
+[2026-02-10 20:18:28] [INFO] L: CGST | G:  Primary | A: 601.43
+[2026-02-10 20:18:28] [INFO] L: SGST | G:  Primary | A: 601.43
+[2026-02-10 20:18:28] [INFO] L: ROUND OFF-SALE | G:  Primary | A: -0.07
+[2026-02-10 20:18:28] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -180
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 180
+[2026-02-10 20:18:28] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -170
+[2026-02-10 20:18:28] [INFO] L: Miscellaneous Expenses | G:  Primary | A: -62
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 232
+[2026-02-10 20:18:28] [INFO] L: PRINCE STORE, CHITROKUNDA | G: Sundry Debtors | A: -15964
+[2026-02-10 20:18:28] [INFO] L: CGST | G:  Primary | A: 380.09
+[2026-02-10 20:18:28] [INFO] L: SGST | G:  Primary | A: 380.09
+[2026-02-10 20:18:28] [INFO] L: ROUND OFF-SALE | G:  Primary | A: 0.32
+[2026-02-10 20:18:28] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -200
+[2026-02-10 20:18:28] [INFO] L: Travelling Expenses | G:  Primary | A: -150
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 350
+[2026-02-10 20:18:28] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -210
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 210
+[2026-02-10 20:18:28] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -130
+[2026-02-10 20:18:28] [INFO] L: Miscellaneous Expenses | G:  Primary | A: -300
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 430
+[2026-02-10 20:18:28] [INFO] L: SIBU SAHA, MV-17 | G: Sundry Debtors | A: -4510
+[2026-02-10 20:18:28] [INFO] L: CGST | G:  Primary | A: 107.39
+[2026-02-10 20:18:28] [INFO] L: SGST | G:  Primary | A: 107.39
+[2026-02-10 20:18:28] [INFO] L: ROUND OFF-SALE | G:  Primary | A: 0.14
+[2026-02-10 20:18:28] [INFO] L: M/S S M TRADERS, MALKANGIRI | G: Sundry Debtors | A: 15850
+[2026-02-10 20:18:28] [INFO] L: SIBU SAHA, MV-17 | G: Sundry Debtors | A: 4500
+[2026-02-10 20:18:28] [INFO] L: BABULA PATRO, CHITROKUNDA | G: Sundry Debtors | A: 3000
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: -23350
+[2026-02-10 20:18:28] [INFO] L: PRINCE STORE, CHITROKUNDA | G: Sundry Debtors | A: 10000
+[2026-02-10 20:18:28] [INFO] L: SBI(ADB)-CC A/C | G:  Primary | A: -10000
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 28000
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 20000
+[2026-02-10 20:18:28] [INFO] L: SBI(ADB)-CC A/C | G:  Primary | A: -48000
+[2026-02-10 20:18:28] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -180
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 180
+[2026-02-10 20:18:28] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -180
+[2026-02-10 20:18:28] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -200
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 380
+[2026-02-10 20:18:28] [INFO] L: BABULA PATRO, CHITROKUNDA | G: Sundry Debtors | A: -34826
+[2026-02-10 20:18:28] [INFO] L: CGST | G:  Primary | A: 829.2
+[2026-02-10 20:18:28] [INFO] L: SGST | G:  Primary | A: 829.2
+[2026-02-10 20:18:28] [INFO] L: ROUND OFF-SALE | G:  Primary | A: 0.12
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 23550
+[2026-02-10 20:18:28] [INFO] L: SBI(ADB)-CC A/C | G:  Primary | A: -23550
+[2026-02-10 20:18:28] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -200
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 200
+[2026-02-10 20:18:28] [INFO] L: TARUN FOOTWEAR , KALIMELA | G: Sundry Debtors | A: 99000
+[2026-02-10 20:18:28] [INFO] L: SBI(ADB)-CC A/C | G:  Primary | A: -99000
+[2026-02-10 20:18:28] [INFO] L: Paragon Polymer Products Pvt Ltd(Bangalore) | G: Sundry Creditors | A: 56927
+[2026-02-10 20:18:28] [INFO] L: IGST | G:  Primary | A: -2710.8
+[2026-02-10 20:18:28] [INFO] L: ROUND-OF PURCHASE | G:  Primary | A: -0.2
+[2026-02-10 20:18:28] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -185
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 185
+[2026-02-10 20:18:28] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -190
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 190
+[2026-02-10 20:18:28] [INFO] L: Travelling Expenses | G:  Primary | A: -250
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 250
+[2026-02-10 20:18:28] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -200
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 200
+[2026-02-10 20:18:28] [INFO] L: Travelling Expenses | G:  Primary | A: -520
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 520
+[2026-02-10 20:18:28] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -140
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 140
+[2026-02-10 20:18:28] [INFO] L: Paragon Polymer Products Pvt Ltd(Bangalore) | G: Sundry Creditors | A: 61149
+[2026-02-10 20:18:28] [INFO] L: IGST | G:  Primary | A: -2911.84
+[2026-02-10 20:18:28] [INFO] L: ROUND-OF PURCHASE | G:  Primary | A: -0.02
+[2026-02-10 20:18:28] [INFO] L: SANJAY FOOTWEAR, POTERU | G: Sundry Debtors | A: -24624
+[2026-02-10 20:18:28] [INFO] L: CGST | G:  Primary | A: 586.29
+[2026-02-10 20:18:28] [INFO] L: SGST | G:  Primary | A: 586.29
+[2026-02-10 20:18:28] [INFO] L: ROUND OFF-SALE | G:  Primary | A: -0.03
+[2026-02-10 20:18:28] [INFO] L: PRINCE STORE, CHITROKUNDA | G: Sundry Debtors | A: -23807
+[2026-02-10 20:18:28] [INFO] L: CGST | G:  Primary | A: 566.83
+[2026-02-10 20:18:28] [INFO] L: SGST | G:  Primary | A: 566.83
+[2026-02-10 20:18:28] [INFO] L: ROUND OFF-SALE | G:  Primary | A: 0.25
+[2026-02-10 20:18:28] [INFO] L: B. LOKESWAR RAO, CHITROKUNDA | G: Sundry Debtors | A: -13644
+[2026-02-10 20:18:28] [INFO] L: CGST | G:  Primary | A: 324.86
+[2026-02-10 20:18:28] [INFO] L: SGST | G:  Primary | A: 324.86
+[2026-02-10 20:18:28] [INFO] L: ROUND OFF-SALE | G:  Primary | A: -0.16
+[2026-02-10 20:18:28] [INFO] L: SRINU SWAMI , CHITROKUNDA | G: Sundry Debtors | A: -16903
+[2026-02-10 20:18:28] [INFO] L: CGST | G:  Primary | A: 402.48
+[2026-02-10 20:18:28] [INFO] L: SGST | G:  Primary | A: 402.48
+[2026-02-10 20:18:28] [INFO] L: ROUND OFF-SALE | G:  Primary | A: -0.16
+[2026-02-10 20:18:28] [INFO] L: B. LOKESWAR RAO, CHITROKUNDA | G: Sundry Debtors | A: -3216
+[2026-02-10 20:18:28] [INFO] L: CGST | G:  Primary | A: 76.57
+[2026-02-10 20:18:28] [INFO] L: SGST | G:  Primary | A: 76.57
+[2026-02-10 20:18:28] [INFO] L: ROUND OFF-SALE | G:  Primary | A: -0.02
+[2026-02-10 20:18:28] [INFO] L: GOPAL FOOTWEAR, BALIMELA | G: Sundry Debtors | A: -5244
+[2026-02-10 20:18:28] [INFO] L: CGST | G:  Primary | A: 124.87
+[2026-02-10 20:18:28] [INFO] L: SGST | G:  Primary | A: 124.87
+[2026-02-10 20:18:28] [INFO] L: ROUND OFF-SALE | G:  Primary | A: -0.02
+[2026-02-10 20:18:28] [INFO] L: M/S S M TRADERS, MALKANGIRI | G: Sundry Debtors | A: -37218
+[2026-02-10 20:18:28] [INFO] L: CGST | G:  Primary | A: 886.15
+[2026-02-10 20:18:28] [INFO] L: SGST | G:  Primary | A: 886.15
+[2026-02-10 20:18:28] [INFO] L: ROUND OFF-SALE | G:  Primary | A: -0.05
+[2026-02-10 20:18:28] [INFO] L: Paragon Polymer Products Pvt Ltd(Bangalore) | G: Sundry Creditors | A: 11171
+[2026-02-10 20:18:28] [INFO] L: IGST | G:  Primary | A: -531.96
+[2026-02-10 20:18:28] [INFO] L: ROUND-OF PURCHASE | G:  Primary | A: 0.02
+[2026-02-10 20:18:28] [INFO] L: Paragon Polymer Products Pvt Ltd(Bangalore) | G: Sundry Creditors | A: 6050
+[2026-02-10 20:18:28] [INFO] L: IGST | G:  Primary | A: -288.11
+[2026-02-10 20:18:28] [INFO] L: ROUND-OF PURCHASE | G:  Primary | A: 0.27
+[2026-02-10 20:18:28] [INFO] L: Paragon Polymer Products Pvt Ltd(Bangalore) | G: Sundry Creditors | A: 71900
+[2026-02-10 20:18:28] [INFO] L: IGST | G:  Primary | A: -3423.79
+[2026-02-10 20:18:28] [INFO] L: ROUND-OF PURCHASE | G:  Primary | A: 0.12
+[2026-02-10 20:18:28] [INFO] L: PARAGON POLYMER PRODUCTS PRIVATE LIMITED, TELANAGAN | G: Sundry Creditors | A: 7197
+[2026-02-10 20:18:28] [INFO] L: IGST | G:  Primary | A: -342.72
+[2026-02-10 20:18:28] [INFO] L: PARAGON POLYMER PRODUCTS PRIVATE LIMITED, TELANAGAN | G: Sundry Creditors | A: 19178
+[2026-02-10 20:18:28] [INFO] L: IGST | G:  Primary | A: -913.24
+[2026-02-10 20:18:28] [INFO] L: ROUND-OF PURCHASE | G:  Primary | A: 0.2
+[2026-02-10 20:18:28] [INFO] L: Paragon Polymer Products Pvt.Ltd(Kerala) | G: Sundry Creditors | A: 27260
+[2026-02-10 20:18:28] [INFO] L: IGST | G:  Primary | A: -1298.1
+[2026-02-10 20:18:28] [INFO] L: ROUND-OF PURCHASE | G:  Primary | A: 0.04
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 15000
+[2026-02-10 20:18:28] [INFO] L: SBI(ADB)-CC A/C | G:  Primary | A: -15000
+[2026-02-10 20:18:28] [INFO] L: BANK INTREST | G:  Primary | A: -59
+[2026-02-10 20:18:28] [INFO] L: SBI(ADB)-CC A/C | G:  Primary | A: 59
+[2026-02-10 20:18:28] [INFO] L: SHRI RAMDUT ENTRPRISES , HARYAN | G: Sundry Creditors | A: 58321
+[2026-02-10 20:18:28] [INFO] L: IGST | G:  Primary | A: -2777.19
+[2026-02-10 20:18:28] [INFO] L: ROUND-OF PURCHASE | G:  Primary | A: 0.14
+[2026-02-10 20:18:28] [INFO] L: GREAT INDIA ROADWAYS, MALKANGIRI | G: Sundry Creditors | A: 3820
+[2026-02-10 20:18:28] [INFO] L: Transport Charges(Services) | G:  Primary | A: -3820
+[2026-02-10 20:18:28] [INFO] L: GOUDAWN RANT MALKANGIRI BIJAY | G:  Primary | A: -10000
+[2026-02-10 20:18:28] [INFO] L: SBI(ADB)-CC A/C | G:  Primary | A: 10000
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 32000
+[2026-02-10 20:18:28] [INFO] L: SBI(ADB)-CC A/C | G:  Primary | A: -32000
+[2026-02-10 20:18:28] [INFO] L: BANK INTREST | G:  Primary | A: -59
+[2026-02-10 20:18:28] [INFO] L: SBI(ADB)-CC A/C | G:  Primary | A: 59
+[2026-02-10 20:18:28] [INFO] L: M/S S M TRADERS, MALKANGIRI | G: Sundry Debtors | A: -6672
+[2026-02-10 20:18:28] [INFO] L: CGST | G:  Primary | A: 158.86
+[2026-02-10 20:18:28] [INFO] L: SGST | G:  Primary | A: 158.86
+[2026-02-10 20:18:28] [INFO] L: ROUND OFF-SALE | G:  Primary | A: 0.08
+[2026-02-10 20:18:28] [INFO] L: MAA MAULI FOOTWEAR, MATHILI | G: Sundry Debtors | A: -9912
+[2026-02-10 20:18:28] [INFO] L: CGST | G:  Primary | A: 236.01
+[2026-02-10 20:18:28] [INFO] L: SGST | G:  Primary | A: 236.01
+[2026-02-10 20:18:28] [INFO] L: ROUND OFF-SALE | G:  Primary | A: 0.06
+[2026-02-10 20:18:28] [INFO] L: SARADA PRASAD NANDI, KDUMULUGUMMA | G: Sundry Debtors | A: -25488
+[2026-02-10 20:18:28] [INFO] L: CGST | G:  Primary | A: 606.86
+[2026-02-10 20:18:28] [INFO] L: SGST | G:  Primary | A: 606.86
+[2026-02-10 20:18:28] [INFO] L: ROUND OFF-SALE | G:  Primary | A: -0.06
+[2026-02-10 20:18:28] [INFO] L: RAHUL FOOTWEAR, KALIMELA | G: Sundry Debtors | A: -12936
+[2026-02-10 20:18:28] [INFO] L: CGST | G:  Primary | A: 308.01
+[2026-02-10 20:18:28] [INFO] L: SGST | G:  Primary | A: 308.01
+[2026-02-10 20:18:28] [INFO] L: ROUND OFF-SALE | G:  Primary | A: -0.06
+[2026-02-10 20:18:28] [INFO] L: BABULA PATRO, CHITROKUNDA | G: Sundry Debtors | A: -3216
+[2026-02-10 20:18:28] [INFO] L: CGST | G:  Primary | A: 76.57
+[2026-02-10 20:18:28] [INFO] L: SGST | G:  Primary | A: 76.57
+[2026-02-10 20:18:28] [INFO] L: ROUND OFF-SALE | G:  Primary | A: -0.02
+[2026-02-10 20:18:28] [INFO] L: B. LOKESWAR RAO, CHITROKUNDA | G: Sundry Debtors | A: -4152
+[2026-02-10 20:18:28] [INFO] L: CGST | G:  Primary | A: 98.86
+[2026-02-10 20:18:28] [INFO] L: SGST | G:  Primary | A: 98.86
+[2026-02-10 20:18:28] [INFO] L: ROUND OFF-SALE | G:  Primary | A: 0.04
+[2026-02-10 20:18:28] [INFO] L: SIBU SAHA, MV-17 | G: Sundry Debtors | A: -14452
+[2026-02-10 20:18:28] [INFO] L: CGST | G:  Primary | A: 344.1
+[2026-02-10 20:18:28] [INFO] L: SGST | G:  Primary | A: 344.1
+[2026-02-10 20:18:28] [INFO] L: ROUND OFF-SALE | G:  Primary | A: -0.05
+[2026-02-10 20:18:28] [INFO] L: TARUN FOOTWEAR , KALIMELA | G: Sundry Debtors | A: -14294
+[2026-02-10 20:18:28] [INFO] L: CGST | G:  Primary | A: 340.35
+[2026-02-10 20:18:28] [INFO] L: SGST | G:  Primary | A: 340.35
+[2026-02-10 20:18:28] [INFO] L: ROUND OFF-SALE | G:  Primary | A: 0.12
+[2026-02-10 20:18:28] [INFO] L: SRI RAMRAJU ENTERPRISES, CHITROKUNDA | G: Sundry Debtors | A: -18096
+[2026-02-10 20:18:28] [INFO] L: CGST | G:  Primary | A: 430.87
+[2026-02-10 20:18:28] [INFO] L: SGST | G:  Primary | A: 430.87
+[2026-02-10 20:18:28] [INFO] L: ROUND OFF-SALE | G:  Primary | A: -0.38
+[2026-02-10 20:18:28] [INFO] L: PRINCE STORE, CHITROKUNDA | G: Sundry Debtors | A: -20798
+[2026-02-10 20:18:28] [INFO] L: CGST | G:  Primary | A: 495.2
+[2026-02-10 20:18:28] [INFO] L: SGST | G:  Primary | A: 495.2
+[2026-02-10 20:18:28] [INFO] L: ROUND OFF-SALE | G:  Primary | A: -0.06
+[2026-02-10 20:18:28] [INFO] L: TARUN FOOTWEAR , KALIMELA | G: Sundry Debtors | A: 21800
+[2026-02-10 20:18:28] [INFO] L: SBI(ADB)-CC A/C | G:  Primary | A: -21800
+[2026-02-10 20:18:28] [INFO] L: GREAT INDIA ROADWAYS, MALKANGIRI | G: Sundry Creditors | A: -3820
+[2026-02-10 20:18:28] [INFO] L: SBI(ADB)-CC A/C | G:  Primary | A: 3820
+[2026-02-10 20:18:28] [INFO] L: M/S S M TRADERS, MALKANGIRI | G: Sundry Debtors | A: -12214
+[2026-02-10 20:18:28] [INFO] L: CGST | G:  Primary | A: 290.81
+[2026-02-10 20:18:28] [INFO] L: SGST | G:  Primary | A: 290.81
+[2026-02-10 20:18:28] [INFO] L: ROUND OFF-SALE | G:  Primary | A: 0.14
+[2026-02-10 20:18:28] [INFO] L: MAA MAULI FOOTWEAR, MATHILI | G: Sundry Debtors | A: 9912
+[2026-02-10 20:18:28] [INFO] L: SBI(ADB)-CC A/C | G:  Primary | A: -9912
+[2026-02-10 20:18:28] [INFO] L: Cash | G:  Primary | A: 64000
+[2026-02-10 20:18:28] [INFO] L: SBI(ADB)-CC A/C | G:  Primary | A: -64000
+[2026-02-10 20:18:28] [INFO] L: BANK INTREST | G:  Primary | A: -59
+[2026-02-10 20:18:28] [INFO] L: SBI(ADB)-CC A/C | G:  Primary | A: 59
+[2026-02-10 20:18:28] [INFO] L: DULAL BOOT HOUSE,POTTERU | G: Sundry Debtors | A: -12376
+[2026-02-10 20:18:28] [INFO] L: CGST | G:  Primary | A: 294.67
+[2026-02-10 20:18:28] [INFO] L: SGST | G:  Primary | A: 294.67
+[2026-02-10 20:18:28] [INFO] L: ROUND OFF-SALE | G:  Primary | A: -0.02
+[2026-02-10 20:18:28] [INFO] Analysis: 172 transactions, 17 debtors, 11 creditors, 162 stock items.
+[2026-02-10 20:18:28] [SUCCESS] Data saved to C:\Projects\Bizstash\dashboard\public\data\SBEM_Malkangiri\data.json
+[2026-02-10 20:18:28] [SUCCESS] Data Processing Complete.
+
+=== SYNC COMPLETE ✅ ===
+
+=== BIZSTASH SYNC ENGINE 5.0 ===
+[2026-02-10 20:18:34] [INFO] Data Directory: C:\Projects\Bizstash\tally_data\xml\SBEM_Malkangiri
+
+=== PRE-SYNC DASHBOARD ===
+[2026-02-10 20:18:35] [INFO] Fetching Masters (Groups & Ledgers)...
+[2026-02-10 20:18:36] [SUCCESS] Fetched Masters successfully.
+[2026-02-10 20:18:36] [INFO] Fetching Profit & Loss Report...
+[2026-02-10 20:18:37] [SUCCESS] Fetched Profit & Loss successfully.
+
+=== PHASE 1: FETCH DATA ===
+[2026-02-10 20:18:37] [INFO] Force Fetching all vouchers to capture any modifications...
+[2026-02-10 20:18:37] [INFO] Fetching ALL vouchers from Tally (single request)...
+[2026-02-10 20:18:38] [SUCCESS] Fetched 1.3 MB in 0.7s → vouchers.xml
+
+=== PHASE 2: PROCESS ===
+[2026-02-10 20:18:38] [INFO] Processing data for SBEM_Malkangiri...
+[2026-02-10 20:18:38] [INFO] Parsed 46 Ledgers, 29 Groups.
+[2026-02-10 20:18:38] [INFO] Parsing vouchers.xml...
+[2026-02-10 20:18:38] [INFO] Loaded 1.3 MB. Parsing XML...
+[2026-02-10 20:18:38] [INFO] Parsed 172 vouchers in 0.2s.
+[2026-02-10 20:18:38] [INFO] L: PARAGON POLYMER PRODUCTS PRIVATE LIMITED , CUTTACK | G: Sundry Creditors | A: 465582
+[2026-02-10 20:18:38] [INFO] L: CGST | G:  Primary | A: -24941.87
+[2026-02-10 20:18:38] [INFO] L: SGST | G:  Primary | A: -24941.87
+[2026-02-10 20:18:38] [INFO] L: ROUND OFF-SALE | G:  Primary | A: -0.02
+[2026-02-10 20:18:38] [INFO] L: SHRI RAMDUT ENTRPRISES , HARYAN | G: Sundry Creditors | A: 54003
+[2026-02-10 20:18:38] [INFO] L: IGST | G:  Primary | A: -5786
+[2026-02-10 20:18:38] [INFO] L: ROUND-OF PURCHASE | G:  Primary | A: -0.4
+[2026-02-10 20:18:38] [INFO] L: Miscellaneous Expenses | G:  Primary | A: -500
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 500
+[2026-02-10 20:18:38] [INFO] L: Miscellaneous Expenses | G:  Primary | A: -810
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 810
+[2026-02-10 20:18:38] [INFO] L: Travelling Expenses | G:  Primary | A: -381
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 381
+[2026-02-10 20:18:38] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -45
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 45
+[2026-02-10 20:18:38] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -210
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 210
+[2026-02-10 20:18:38] [INFO] L: LOADING AND UNLONDING | G:  Primary | A: -500
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 500
+[2026-02-10 20:18:38] [INFO] L: Miscellaneous Expenses | G:  Primary | A: -3000
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 3000
+[2026-02-10 20:18:38] [INFO] L: Miscellaneous Expenses | G:  Primary | A: -570
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 570
+[2026-02-10 20:18:38] [INFO] L: Miscellaneous Expenses | G:  Primary | A: -380
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 380
+[2026-02-10 20:18:38] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -180
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 180
+[2026-02-10 20:18:38] [INFO] L: Miscellaneous Expenses | G:  Primary | A: -10
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 10
+[2026-02-10 20:18:38] [INFO] L: Miscellaneous Expenses | G:  Primary | A: -30
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 30
+[2026-02-10 20:18:38] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -200
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 200
+[2026-02-10 20:18:38] [INFO] L: M/S S M TRADERS, MALKANGIRI | G: Sundry Debtors | A: -30000
+[2026-02-10 20:18:38] [INFO] L: CGST | G:  Primary | A: 1607.15
+[2026-02-10 20:18:38] [INFO] L: SGST | G:  Primary | A: 1607.15
+[2026-02-10 20:18:38] [INFO] L: ROUND OFF-SALE | G:  Primary | A: -0.22
+[2026-02-10 20:18:38] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -200
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 200
+[2026-02-10 20:18:38] [INFO] L: PARAGON POLYMER PRODUCTS PRIVATE LIMITED , CUTTACK | G: Sundry Creditors | A: 358070
+[2026-02-10 20:18:38] [INFO] L: CGST | G:  Primary | A: -19182.36
+[2026-02-10 20:18:38] [INFO] L: SGST | G:  Primary | A: -19182.36
+[2026-02-10 20:18:38] [INFO] L: ROUND OFF-SALE | G:  Primary | A: 0.36
+[2026-02-10 20:18:38] [INFO] L: PARAGON POLYMER PRODUCTS PRIVATE LIMITED , CUTTACK | G: Sundry Creditors | A: 12745
+[2026-02-10 20:18:38] [INFO] L: CGST | G:  Primary | A: -682.78
+[2026-02-10 20:18:38] [INFO] L: SGST | G:  Primary | A: -682.78
+[2026-02-10 20:18:38] [INFO] L: ROUND OFF-SALE | G:  Primary | A: 0.16
+[2026-02-10 20:18:38] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -190
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 190
+[2026-02-10 20:18:38] [INFO] L: Miscellaneous Expenses | G:  Primary | A: -40
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 40
+[2026-02-10 20:18:38] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -210
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 210
+[2026-02-10 20:18:38] [INFO] L: Miscellaneous Expenses | G:  Primary | A: -50
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 50
+[2026-02-10 20:18:38] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -170
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 170
+[2026-02-10 20:18:38] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -180
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 180
+[2026-02-10 20:18:38] [INFO] L: LOADING AND UNLONDING | G:  Primary | A: -550
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 550
+[2026-02-10 20:18:38] [INFO] L: M/S S M TRADERS, MALKANGIRI | G: Sundry Debtors | A: 5000
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: -5000
+[2026-02-10 20:18:38] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -200
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 200
+[2026-02-10 20:18:38] [INFO] L: Travelling Expenses | G:  Primary | A: -430
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 430
+[2026-02-10 20:18:38] [INFO] L: MAGNET POLYMERS | G: Sundry Creditors | A: 29856
+[2026-02-10 20:18:38] [INFO] L: IGST | G:  Primary | A: -3198.87
+[2026-02-10 20:18:38] [INFO] L: ROUND-OF PURCHASE | G:  Primary | A: 0.1
+[2026-02-10 20:18:38] [INFO] L: Travelling Expenses | G:  Primary | A: -615
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 615
+[2026-02-10 20:18:38] [INFO] L: Miscellaneous Expenses | G:  Primary | A: -30
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 30
+[2026-02-10 20:18:38] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -130
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 130
+[2026-02-10 20:18:38] [INFO] L: Travelling Expenses | G:  Primary | A: -125
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 125
+[2026-02-10 20:18:38] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -70
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 70
+[2026-02-10 20:18:38] [INFO] L: LOADING AND UNLONDING | G:  Primary | A: -40
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 40
+[2026-02-10 20:18:38] [INFO] L: TARUN FOOTWEAR , KALIMELA | G: Sundry Debtors | A: -44678
+[2026-02-10 20:18:38] [INFO] L: CGST | G:  Primary | A: 2393.48
+[2026-02-10 20:18:38] [INFO] L: SGST | G:  Primary | A: 2393.48
+[2026-02-10 20:18:38] [INFO] L: ROUND OFF-SALE | G:  Primary | A: -0.26
+[2026-02-10 20:18:38] [INFO] L: GREAT INDIA ROADWAYS, MALKANGIRI | G: Sundry Creditors | A: 3200
+[2026-02-10 20:18:38] [INFO] L: Transport Charges(Services) | G:  Primary | A: -3200
+[2026-02-10 20:18:38] [INFO] L: GREAT INDIA ROADWAYS, MALKANGIRI | G: Sundry Creditors | A: -3200
+[2026-02-10 20:18:38] [INFO] L: SBI(ADB)-CC A/C | G:  Primary | A: 3200
+[2026-02-10 20:18:38] [INFO] L: TARUN FOOTWEAR , KALIMELA | G: Sundry Debtors | A: -41349
+[2026-02-10 20:18:38] [INFO] L: CGST | G:  Primary | A: 2215.1
+[2026-02-10 20:18:38] [INFO] L: SGST | G:  Primary | A: 2215.1
+[2026-02-10 20:18:38] [INFO] L: ROUND OFF-SALE | G:  Primary | A: 0.38
+[2026-02-10 20:18:38] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -170
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 170
+[2026-02-10 20:18:38] [INFO] L: Miscellaneous Expenses | G:  Primary | A: -600
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 600
+[2026-02-10 20:18:38] [INFO] L: Miscellaneous Expenses | G:  Primary | A: -50
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 50
+[2026-02-10 20:18:38] [INFO] L: RAIPUR CALCUTTA ROADCARRIERS | G: Sundry Creditors | A: 1370
+[2026-02-10 20:18:38] [INFO] L: Transport Charges(Services) | G:  Primary | A: -1370
+[2026-02-10 20:18:38] [INFO] L: RAIPUR CALCUTTA ROADCARRIERS | G: Sundry Creditors | A: 620
+[2026-02-10 20:18:38] [INFO] L: Transport Charges(Services) | G:  Primary | A: -620
+[2026-02-10 20:18:38] [INFO] L: RAIPUR CALCUTTA ROADCARRIERS | G: Sundry Creditors | A: 470
+[2026-02-10 20:18:38] [INFO] L: Transport Charges(Services) | G:  Primary | A: -470
+[2026-02-10 20:18:38] [INFO] L: TARUN FOOTWEAR , KALIMELA | G: Sundry Debtors | A: -34807
+[2026-02-10 20:18:38] [INFO] L: CGST | G:  Primary | A: 1864.72
+[2026-02-10 20:18:38] [INFO] L: SGST | G:  Primary | A: 1864.72
+[2026-02-10 20:18:38] [INFO] L: ROUND OFF-SALE | G:  Primary | A: -0.88
+[2026-02-10 20:18:38] [INFO] L: Miscellaneous Expenses | G:  Primary | A: -10
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 10
+[2026-02-10 20:18:38] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -180
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 180
+[2026-02-10 20:18:38] [INFO] L: RAIPUR CALCUTTA ROADCARRIERS | G: Sundry Creditors | A: 1520
+[2026-02-10 20:18:38] [INFO] L: Transport Charges(Services) | G:  Primary | A: -1520
+[2026-02-10 20:18:38] [INFO] L: MAGNET POLYMERS | G: Sundry Creditors | A: 15120
+[2026-02-10 20:18:38] [INFO] L: IGST | G:  Primary | A: -1620
+[2026-02-10 20:18:38] [INFO] L: ROUND OFF-SALE | G:  Primary | A: 0.04
+[2026-02-10 20:18:38] [INFO] L: MAGNET POLYMERS | G: Sundry Creditors | A: 15300
+[2026-02-10 20:18:38] [INFO] L: IGST | G:  Primary | A: -1639.29
+[2026-02-10 20:18:38] [INFO] L: ROUND-OF PURCHASE | G:  Primary | A: 0.05
+[2026-02-10 20:18:38] [INFO] L: B. LOKESWAR RAO, CHITROKUNDA | G: Sundry Debtors | A: -6390
+[2026-02-10 20:18:38] [INFO] L: CGST | G:  Primary | A: 342.32
+[2026-02-10 20:18:38] [INFO] L: SGST | G:  Primary | A: 342.32
+[2026-02-10 20:18:38] [INFO] L: ROUND OFF-SALE | G:  Primary | A: 0.08
+[2026-02-10 20:18:38] [INFO] L: VEERABHADRA CLOTH AND GENERAL STORE, CHITRAKUNDA | G: Sundry Debtors | A: -17867
+[2026-02-10 20:18:38] [INFO] L: CGST | G:  Primary | A: 957.15
+[2026-02-10 20:18:38] [INFO] L: SGST | G:  Primary | A: 957.15
+[2026-02-10 20:18:38] [INFO] L: ROUND OFF-SALE | G:  Primary | A: 0.16
+[2026-02-10 20:18:38] [INFO] L: PRINCE STORE, CHITROKUNDA | G: Sundry Debtors | A: -41105
+[2026-02-10 20:18:38] [INFO] L: CGST | G:  Primary | A: 2202.07
+[2026-02-10 20:18:38] [INFO] L: SGST | G:  Primary | A: 2202.07
+[2026-02-10 20:18:38] [INFO] L: ROUND OFF-SALE | G:  Primary | A: -0.08
+[2026-02-10 20:18:38] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -170
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 170
+[2026-02-10 20:18:38] [INFO] L: Miscellaneous Expenses | G:  Primary | A: -350
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 350
+[2026-02-10 20:18:38] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -170
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 170
+[2026-02-10 20:18:38] [INFO] L: M/S S M TRADERS, MALKANGIRI | G: Sundry Debtors | A: 15000
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: -15000
+[2026-02-10 20:18:38] [INFO] L: MAGNET POLYMERS | G: Sundry Creditors | A: 23040
+[2026-02-10 20:18:38] [INFO] L: IGST | G:  Primary | A: -2468.58
+[2026-02-10 20:18:38] [INFO] L: ROUND-OF PURCHASE | G:  Primary | A: 0.07
+[2026-02-10 20:18:38] [INFO] L: MAGNET POLYMERS | G: Sundry Creditors | A: 50700
+[2026-02-10 20:18:38] [INFO] L: IGST | G:  Primary | A: -5432.15
+[2026-02-10 20:18:38] [INFO] L: ROUND-OF PURCHASE | G:  Primary | A: 0.16
+[2026-02-10 20:18:38] [INFO] L: NALINI BISWAS , MPV.81 | G: Sundry Debtors | A: -10095
+[2026-02-10 20:18:38] [INFO] L: CGST | G:  Primary | A: 540.82
+[2026-02-10 20:18:38] [INFO] L: SGST | G:  Primary | A: 540.82
+[2026-02-10 20:18:38] [INFO] L: ROUND OFF-SALE | G:  Primary | A: -0.14
+[2026-02-10 20:18:38] [INFO] L: NEXUS VENTURE,(R K TRADERS) | G: Sundry Creditors | A: 39864
+[2026-02-10 20:18:38] [INFO] L: IGST | G:  Primary | A: -4271.19
+[2026-02-10 20:18:38] [INFO] L: ROUND OFF-SALE | G:  Primary | A: 0.45
+[2026-02-10 20:18:38] [INFO] L: NAV DURGA ENTERPRISES (R K TRADRES) | G: Sundry Creditors | A: 23050
+[2026-02-10 20:18:38] [INFO] L: IGST | G:  Primary | A: -2469.6
+[2026-02-10 20:18:38] [INFO] L: ROUND-OF PURCHASE | G:  Primary | A: -0.4
+[2026-02-10 20:18:38] [INFO] L: GREAT INDIA ROADWAYS, MALKANGIRI | G: Sundry Creditors | A: 1330
+[2026-02-10 20:18:38] [INFO] L: Transport Charges(Services) | G:  Primary | A: -1330
+[2026-02-10 20:18:38] [INFO] L: GREAT INDIA ROADWAYS, MALKANGIRI | G: Sundry Creditors | A: 2550
+[2026-02-10 20:18:38] [INFO] L: Transport Charges(Services) | G:  Primary | A: -2550
+[2026-02-10 20:18:38] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -190
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 190
+[2026-02-10 20:18:38] [INFO] L: NALINI BISWAS , MPV.81 | G: Sundry Debtors | A: 10090
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: -10090
+[2026-02-10 20:18:38] [INFO] L: SARADA PRASAD NANDI, KDUMULUGUMMA | G: Sundry Debtors | A: -5071
+[2026-02-10 20:18:38] [INFO] L: CGST | G:  Primary | A: 271.65
+[2026-02-10 20:18:38] [INFO] L: SGST | G:  Primary | A: 271.65
+[2026-02-10 20:18:38] [INFO] L: ROUND OFF-SALE | G:  Primary | A: 0.17
+[2026-02-10 20:18:38] [INFO] L: SHRI RAMDUT ENTRPRISES , HARYAN | G: Sundry Creditors | A: 54003
+[2026-02-10 20:18:38] [INFO] L: IGST | G:  Primary | A: -5786
+[2026-02-10 20:18:38] [INFO] L: ROUND-OF PURCHASE | G:  Primary | A: -0.4
+[2026-02-10 20:18:38] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -170
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 170
+[2026-02-10 20:18:38] [INFO] L: SARADA PRASAD NANDI, KDUMULUGUMMA | G: Sundry Debtors | A: 5000
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: -5000
+[2026-02-10 20:18:38] [INFO] L: Travelling Expenses | G:  Primary | A: 350
+[2026-02-10 20:18:38] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: 90
+[2026-02-10 20:18:38] [INFO] L: Miscellaneous Expenses | G:  Primary | A: 200
+[2026-02-10 20:18:38] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: 150
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: -790
+[2026-02-10 20:18:38] [INFO] L: Travelling Expenses | G:  Primary | A: 240
+[2026-02-10 20:18:38] [INFO] L: Travelling Expenses | G:  Primary | A: 120
+[2026-02-10 20:18:38] [INFO] L: Travelling Expenses | G:  Primary | A: 280
+[2026-02-10 20:18:38] [INFO] L: Transport Expenses | G:  Primary | A: 40
+[2026-02-10 20:18:38] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: 380
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: -1060
+[2026-02-10 20:18:38] [INFO] L: GREAT INDIA ROADWAYS, MALKANGIRI | G: Sundry Creditors | A: -1330
+[2026-02-10 20:18:38] [INFO] L: SBI(ADB)-CC A/C | G:  Primary | A: 1330
+[2026-02-10 20:18:38] [INFO] L: GREAT INDIA ROADWAYS, MALKANGIRI | G: Sundry Creditors | A: -2550
+[2026-02-10 20:18:38] [INFO] L: SBI(ADB)-CC A/C | G:  Primary | A: 2550
+[2026-02-10 20:18:38] [INFO] L: Travelling Expenses | G:  Primary | A: -370
+[2026-02-10 20:18:38] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -60
+[2026-02-10 20:18:38] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -140
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 570
+[2026-02-10 20:18:38] [INFO] L: DEBABRATHA MANDAL, KALIMELA | G: Sundry Debtors | A: -33840
+[2026-02-10 20:18:38] [INFO] L: CGST | G:  Primary | A: 805.72
+[2026-02-10 20:18:38] [INFO] L: SGST | G:  Primary | A: 805.72
+[2026-02-10 20:18:38] [INFO] L: ROUND OFF-SALE | G:  Primary | A: 0.11
+[2026-02-10 20:18:38] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -40
+[2026-02-10 20:18:38] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -70
+[2026-02-10 20:18:38] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -140
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 250
+[2026-02-10 20:18:38] [INFO] L: M/S S M TRADERS, MALKANGIRI | G: Sundry Debtors | A: 10000
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: -10000
+[2026-02-10 20:18:38] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -140
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 140
+[2026-02-10 20:18:38] [INFO] L: RAIPUR CALCUTTA ROADCARRIERS | G: Sundry Creditors | A: 470
+[2026-02-10 20:18:38] [INFO] L: Transport Charges(Services) | G:  Primary | A: -470
+[2026-02-10 20:18:38] [INFO] L: DEBABRATHA MANDAL, KALIMELA | G: Sundry Debtors | A: -28511
+[2026-02-10 20:18:38] [INFO] L: CGST | G:  Primary | A: 678.85
+[2026-02-10 20:18:38] [INFO] L: SGST | G:  Primary | A: 678.85
+[2026-02-10 20:18:38] [INFO] L: ROUND OFF-SALE | G:  Primary | A: -0.37
+[2026-02-10 20:18:38] [INFO] L: M/S S M TRADERS, MALKANGIRI | G: Sundry Debtors | A: -30351
+[2026-02-10 20:18:38] [INFO] L: CGST | G:  Primary | A: 722.64
+[2026-02-10 20:18:38] [INFO] L: SGST | G:  Primary | A: 722.64
+[2026-02-10 20:18:38] [INFO] L: ROUND OFF-SALE | G:  Primary | A: -0.02
+[2026-02-10 20:18:38] [INFO] L: GOPAL FOOTWEAR, BALIMELA | G: Sundry Debtors | A: -15445
+[2026-02-10 20:18:38] [INFO] L: CGST | G:  Primary | A: 367.75
+[2026-02-10 20:18:38] [INFO] L: SGST | G:  Primary | A: 367.75
+[2026-02-10 20:18:38] [INFO] L: ROUND OFF-SALE | G:  Primary | A: -0.25
+[2026-02-10 20:18:38] [INFO] L: PARAGON POLYMER PRODUCTS PRIVATE LIMITED, TELANAGAN | G: Sundry Creditors | A: 18645
+[2026-02-10 20:18:38] [INFO] L: IGST | G:  Primary | A: -887.88
+[2026-02-10 20:18:38] [INFO] L: ROUND-OF PURCHASE | G:  Primary | A: 0.48
+[2026-02-10 20:18:38] [INFO] L: PARAGON POLYMER PRODUCTS PRIVATE LIMITED, TELANAGAN | G: Sundry Creditors | A: 5137
+[2026-02-10 20:18:38] [INFO] L: IGST | G:  Primary | A: -244.62
+[2026-02-10 20:18:38] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -30
+[2026-02-10 20:18:38] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -70
+[2026-02-10 20:18:38] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -10
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 110
+[2026-02-10 20:18:38] [INFO] L: GOPAL FOOTWEAR, BALIMELA | G: Sundry Debtors | A: 15440
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: -15440
+[2026-02-10 20:18:38] [INFO] L: BABULA PATRO, CHITROKUNDA | G: Sundry Debtors | A: -4389
+[2026-02-10 20:18:38] [INFO] L: CGST | G:  Primary | A: 104.5
+[2026-02-10 20:18:38] [INFO] L: SGST | G:  Primary | A: 104.5
+[2026-02-10 20:18:38] [INFO] L: ROUND OFF-SALE | G:  Primary | A: -0.06
+[2026-02-10 20:18:38] [INFO] L: JAWAHAR HOSIERY FACTORY | G: Sundry Creditors | A: 49069
+[2026-02-10 20:18:38] [INFO] L: IGST | G:  Primary | A: -2336.6
+[2026-02-10 20:18:38] [INFO] L: ROUND-OF PURCHASE | G:  Primary | A: -0.4
+[2026-02-10 20:18:38] [INFO] L: GREAT INDIA ROADWAYS, MALKANGIRI | G: Sundry Creditors | A: 1540
+[2026-02-10 20:18:38] [INFO] L: Transport Charges(Services) | G:  Primary | A: -1540
+[2026-02-10 20:18:38] [INFO] L: GREAT INDIA ROADWAYS, MALKANGIRI | G: Sundry Creditors | A: 3200
+[2026-02-10 20:18:38] [INFO] L: Transport Charges(Services) | G:  Primary | A: -3200
+[2026-02-10 20:18:38] [INFO] L: Paragon Polymer Products Pvt Ltd(Bangalore) | G: Sundry Creditors | A: 37748
+[2026-02-10 20:18:38] [INFO] L: IGST | G:  Primary | A: -1797.54
+[2026-02-10 20:18:38] [INFO] L: ROUND OFF-SALE | G:  Primary | A: -0.06
+[2026-02-10 20:18:38] [INFO] L: Paragon Polymer Products Pvt Ltd(Bangalore) | G: Sundry Creditors | A: 26827
+[2026-02-10 20:18:38] [INFO] L: IGST | G:  Primary | A: -1277.5
+[2026-02-10 20:18:38] [INFO] L: ROUND-OF PURCHASE | G:  Primary | A: 0.05
+[2026-02-10 20:18:38] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -110
+[2026-02-10 20:18:38] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -30
+[2026-02-10 20:18:38] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -140
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 280
+[2026-02-10 20:18:38] [INFO] L: B. LOKESWAR RAO, CHITROKUNDA | G: Sundry Debtors | A: -11255
+[2026-02-10 20:18:38] [INFO] L: CGST | G:  Primary | A: 267.95
+[2026-02-10 20:18:38] [INFO] L: SGST | G:  Primary | A: 267.95
+[2026-02-10 20:18:38] [INFO] L: ROUND OFF-SALE | G:  Primary | A: 0.57
+[2026-02-10 20:18:38] [INFO] L: M/S S M TRADERS, MALKANGIRI | G: Sundry Debtors | A: -9980
+[2026-02-10 20:18:38] [INFO] L: CGST | G:  Primary | A: 237.63
+[2026-02-10 20:18:38] [INFO] L: SGST | G:  Primary | A: 237.63
+[2026-02-10 20:18:38] [INFO] L: ROUND OFF-SALE | G:  Primary | A: -0.33
+[2026-02-10 20:18:38] [INFO] L: GREAT INDIA ROADWAYS, MALKANGIRI | G: Sundry Creditors | A: -3200
+[2026-02-10 20:18:38] [INFO] L: SBI(ADB)-CC A/C | G:  Primary | A: 3200
+[2026-02-10 20:18:38] [INFO] L: GREAT INDIA ROADWAYS, MALKANGIRI | G: Sundry Creditors | A: -1540
+[2026-02-10 20:18:38] [INFO] L: SBI(ADB)-CC A/C | G:  Primary | A: 1540
+[2026-02-10 20:18:38] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -80
+[2026-02-10 20:18:38] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -150
+[2026-02-10 20:18:38] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -20
+[2026-02-10 20:18:38] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -140
+[2026-02-10 20:18:38] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -140
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 530
+[2026-02-10 20:18:38] [INFO] L: Travelling Expenses | G:  Primary | A: -760
+[2026-02-10 20:18:38] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -90
+[2026-02-10 20:18:38] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -150
+[2026-02-10 20:18:38] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -140
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 1140
+[2026-02-10 20:18:38] [INFO] L: GOUDAWN RANT MALKANGIRI BIJAY | G:  Primary | A: -10000
+[2026-02-10 20:18:38] [INFO] L: SBI(ADB)-CC A/C | G:  Primary | A: 10000
+[2026-02-10 20:18:38] [INFO] L: RAIPUR CALCUTTA ROADCARRIERS | G: Sundry Creditors | A: -5050
+[2026-02-10 20:18:38] [INFO] L: SBI(ADB)-CC A/C | G:  Primary | A: 5050
+[2026-02-10 20:18:38] [INFO] L: Miscellaneous Expenses | G:  Primary | A: -280
+[2026-02-10 20:18:38] [INFO] L: Miscellaneous Expenses | G:  Primary | A: -150
+[2026-02-10 20:18:38] [INFO] L: Travelling Expenses | G:  Primary | A: -536
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 966
+[2026-02-10 20:18:38] [INFO] L: Miscellaneous Expenses | G:  Primary | A: -20
+[2026-02-10 20:18:38] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -40
+[2026-02-10 20:18:38] [INFO] L: Travelling Expenses | G:  Primary | A: -410
+[2026-02-10 20:18:38] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -90
+[2026-02-10 20:18:38] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -20
+[2026-02-10 20:18:38] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -70
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 650
+[2026-02-10 20:18:38] [INFO] L: SRI RAMRAJU ENTERPRISES, CHITROKUNDA | G: Sundry Debtors | A: -4500
+[2026-02-10 20:18:38] [INFO] L: CGST | G:  Primary | A: 107.15
+[2026-02-10 20:18:38] [INFO] L: SGST | G:  Primary | A: 107.15
+[2026-02-10 20:18:38] [INFO] L: ROUND OFF-SALE | G:  Primary | A: -0.3
+[2026-02-10 20:18:38] [INFO] L: PRINCE STORE, CHITROKUNDA | G: Sundry Debtors | A: -1977
+[2026-02-10 20:18:38] [INFO] L: CGST | G:  Primary | A: 47.06
+[2026-02-10 20:18:38] [INFO] L: SGST | G:  Primary | A: 47.06
+[2026-02-10 20:18:38] [INFO] L: ROUND OFF-SALE | G:  Primary | A: 0.3
+[2026-02-10 20:18:38] [INFO] L: M/S S M TRADERS, MALKANGIRI | G: Sundry Debtors | A: 17473
+[2026-02-10 20:18:38] [INFO] L: CGST | G:  Primary | A: -416.01
+[2026-02-10 20:18:38] [INFO] L: SGST | G:  Primary | A: -416.01
+[2026-02-10 20:18:38] [INFO] L: ROUND OFF-SALE | G:  Primary | A: -0.25
+[2026-02-10 20:18:38] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -40
+[2026-02-10 20:18:38] [INFO] L: Miscellaneous Expenses | G:  Primary | A: -150
+[2026-02-10 20:18:38] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -140
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 330
+[2026-02-10 20:18:38] [INFO] L: M/S S M TRADERS, MALKANGIRI | G: Sundry Debtors | A: -25260
+[2026-02-10 20:18:38] [INFO] L: CGST | G:  Primary | A: 601.43
+[2026-02-10 20:18:38] [INFO] L: SGST | G:  Primary | A: 601.43
+[2026-02-10 20:18:38] [INFO] L: ROUND OFF-SALE | G:  Primary | A: -0.07
+[2026-02-10 20:18:38] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -180
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 180
+[2026-02-10 20:18:38] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -170
+[2026-02-10 20:18:38] [INFO] L: Miscellaneous Expenses | G:  Primary | A: -62
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 232
+[2026-02-10 20:18:38] [INFO] L: PRINCE STORE, CHITROKUNDA | G: Sundry Debtors | A: -15964
+[2026-02-10 20:18:38] [INFO] L: CGST | G:  Primary | A: 380.09
+[2026-02-10 20:18:38] [INFO] L: SGST | G:  Primary | A: 380.09
+[2026-02-10 20:18:38] [INFO] L: ROUND OFF-SALE | G:  Primary | A: 0.32
+[2026-02-10 20:18:38] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -200
+[2026-02-10 20:18:38] [INFO] L: Travelling Expenses | G:  Primary | A: -150
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 350
+[2026-02-10 20:18:38] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -210
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 210
+[2026-02-10 20:18:38] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -130
+[2026-02-10 20:18:38] [INFO] L: Miscellaneous Expenses | G:  Primary | A: -300
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 430
+[2026-02-10 20:18:38] [INFO] L: SIBU SAHA, MV-17 | G: Sundry Debtors | A: -4510
+[2026-02-10 20:18:38] [INFO] L: CGST | G:  Primary | A: 107.39
+[2026-02-10 20:18:38] [INFO] L: SGST | G:  Primary | A: 107.39
+[2026-02-10 20:18:38] [INFO] L: ROUND OFF-SALE | G:  Primary | A: 0.14
+[2026-02-10 20:18:38] [INFO] L: M/S S M TRADERS, MALKANGIRI | G: Sundry Debtors | A: 15850
+[2026-02-10 20:18:38] [INFO] L: SIBU SAHA, MV-17 | G: Sundry Debtors | A: 4500
+[2026-02-10 20:18:38] [INFO] L: BABULA PATRO, CHITROKUNDA | G: Sundry Debtors | A: 3000
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: -23350
+[2026-02-10 20:18:38] [INFO] L: PRINCE STORE, CHITROKUNDA | G: Sundry Debtors | A: 10000
+[2026-02-10 20:18:38] [INFO] L: SBI(ADB)-CC A/C | G:  Primary | A: -10000
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 28000
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 20000
+[2026-02-10 20:18:38] [INFO] L: SBI(ADB)-CC A/C | G:  Primary | A: -48000
+[2026-02-10 20:18:38] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -180
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 180
+[2026-02-10 20:18:38] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -180
+[2026-02-10 20:18:38] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -200
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 380
+[2026-02-10 20:18:38] [INFO] L: BABULA PATRO, CHITROKUNDA | G: Sundry Debtors | A: -34826
+[2026-02-10 20:18:38] [INFO] L: CGST | G:  Primary | A: 829.2
+[2026-02-10 20:18:38] [INFO] L: SGST | G:  Primary | A: 829.2
+[2026-02-10 20:18:38] [INFO] L: ROUND OFF-SALE | G:  Primary | A: 0.12
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 23550
+[2026-02-10 20:18:38] [INFO] L: SBI(ADB)-CC A/C | G:  Primary | A: -23550
+[2026-02-10 20:18:38] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -200
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 200
+[2026-02-10 20:18:38] [INFO] L: TARUN FOOTWEAR , KALIMELA | G: Sundry Debtors | A: 99000
+[2026-02-10 20:18:38] [INFO] L: SBI(ADB)-CC A/C | G:  Primary | A: -99000
+[2026-02-10 20:18:38] [INFO] L: Paragon Polymer Products Pvt Ltd(Bangalore) | G: Sundry Creditors | A: 56927
+[2026-02-10 20:18:38] [INFO] L: IGST | G:  Primary | A: -2710.8
+[2026-02-10 20:18:38] [INFO] L: ROUND-OF PURCHASE | G:  Primary | A: -0.2
+[2026-02-10 20:18:38] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -185
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 185
+[2026-02-10 20:18:38] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -190
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 190
+[2026-02-10 20:18:38] [INFO] L: Travelling Expenses | G:  Primary | A: -250
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 250
+[2026-02-10 20:18:38] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -200
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 200
+[2026-02-10 20:18:38] [INFO] L: Travelling Expenses | G:  Primary | A: -520
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 520
+[2026-02-10 20:18:38] [INFO] L: TEA,SNACKS,MEALS | G:  Primary | A: -140
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 140
+[2026-02-10 20:18:38] [INFO] L: Paragon Polymer Products Pvt Ltd(Bangalore) | G: Sundry Creditors | A: 61149
+[2026-02-10 20:18:38] [INFO] L: IGST | G:  Primary | A: -2911.84
+[2026-02-10 20:18:38] [INFO] L: ROUND-OF PURCHASE | G:  Primary | A: -0.02
+[2026-02-10 20:18:38] [INFO] L: SANJAY FOOTWEAR, POTERU | G: Sundry Debtors | A: -24624
+[2026-02-10 20:18:38] [INFO] L: CGST | G:  Primary | A: 586.29
+[2026-02-10 20:18:38] [INFO] L: SGST | G:  Primary | A: 586.29
+[2026-02-10 20:18:38] [INFO] L: ROUND OFF-SALE | G:  Primary | A: -0.03
+[2026-02-10 20:18:38] [INFO] L: PRINCE STORE, CHITROKUNDA | G: Sundry Debtors | A: -23807
+[2026-02-10 20:18:38] [INFO] L: CGST | G:  Primary | A: 566.83
+[2026-02-10 20:18:38] [INFO] L: SGST | G:  Primary | A: 566.83
+[2026-02-10 20:18:38] [INFO] L: ROUND OFF-SALE | G:  Primary | A: 0.25
+[2026-02-10 20:18:38] [INFO] L: B. LOKESWAR RAO, CHITROKUNDA | G: Sundry Debtors | A: -13644
+[2026-02-10 20:18:38] [INFO] L: CGST | G:  Primary | A: 324.86
+[2026-02-10 20:18:38] [INFO] L: SGST | G:  Primary | A: 324.86
+[2026-02-10 20:18:38] [INFO] L: ROUND OFF-SALE | G:  Primary | A: -0.16
+[2026-02-10 20:18:38] [INFO] L: SRINU SWAMI , CHITROKUNDA | G: Sundry Debtors | A: -16903
+[2026-02-10 20:18:38] [INFO] L: CGST | G:  Primary | A: 402.48
+[2026-02-10 20:18:38] [INFO] L: SGST | G:  Primary | A: 402.48
+[2026-02-10 20:18:38] [INFO] L: ROUND OFF-SALE | G:  Primary | A: -0.16
+[2026-02-10 20:18:38] [INFO] L: B. LOKESWAR RAO, CHITROKUNDA | G: Sundry Debtors | A: -3216
+[2026-02-10 20:18:38] [INFO] L: CGST | G:  Primary | A: 76.57
+[2026-02-10 20:18:38] [INFO] L: SGST | G:  Primary | A: 76.57
+[2026-02-10 20:18:38] [INFO] L: ROUND OFF-SALE | G:  Primary | A: -0.02
+[2026-02-10 20:18:38] [INFO] L: GOPAL FOOTWEAR, BALIMELA | G: Sundry Debtors | A: -5244
+[2026-02-10 20:18:38] [INFO] L: CGST | G:  Primary | A: 124.87
+[2026-02-10 20:18:38] [INFO] L: SGST | G:  Primary | A: 124.87
+[2026-02-10 20:18:38] [INFO] L: ROUND OFF-SALE | G:  Primary | A: -0.02
+[2026-02-10 20:18:38] [INFO] L: M/S S M TRADERS, MALKANGIRI | G: Sundry Debtors | A: -37218
+[2026-02-10 20:18:38] [INFO] L: CGST | G:  Primary | A: 886.15
+[2026-02-10 20:18:38] [INFO] L: SGST | G:  Primary | A: 886.15
+[2026-02-10 20:18:38] [INFO] L: ROUND OFF-SALE | G:  Primary | A: -0.05
+[2026-02-10 20:18:38] [INFO] L: Paragon Polymer Products Pvt Ltd(Bangalore) | G: Sundry Creditors | A: 11171
+[2026-02-10 20:18:38] [INFO] L: IGST | G:  Primary | A: -531.96
+[2026-02-10 20:18:38] [INFO] L: ROUND-OF PURCHASE | G:  Primary | A: 0.02
+[2026-02-10 20:18:38] [INFO] L: Paragon Polymer Products Pvt Ltd(Bangalore) | G: Sundry Creditors | A: 6050
+[2026-02-10 20:18:38] [INFO] L: IGST | G:  Primary | A: -288.11
+[2026-02-10 20:18:38] [INFO] L: ROUND-OF PURCHASE | G:  Primary | A: 0.27
+[2026-02-10 20:18:38] [INFO] L: Paragon Polymer Products Pvt Ltd(Bangalore) | G: Sundry Creditors | A: 71900
+[2026-02-10 20:18:38] [INFO] L: IGST | G:  Primary | A: -3423.79
+[2026-02-10 20:18:38] [INFO] L: ROUND-OF PURCHASE | G:  Primary | A: 0.12
+[2026-02-10 20:18:38] [INFO] L: PARAGON POLYMER PRODUCTS PRIVATE LIMITED, TELANAGAN | G: Sundry Creditors | A: 7197
+[2026-02-10 20:18:38] [INFO] L: IGST | G:  Primary | A: -342.72
+[2026-02-10 20:18:38] [INFO] L: PARAGON POLYMER PRODUCTS PRIVATE LIMITED, TELANAGAN | G: Sundry Creditors | A: 19178
+[2026-02-10 20:18:38] [INFO] L: IGST | G:  Primary | A: -913.24
+[2026-02-10 20:18:38] [INFO] L: ROUND-OF PURCHASE | G:  Primary | A: 0.2
+[2026-02-10 20:18:38] [INFO] L: Paragon Polymer Products Pvt.Ltd(Kerala) | G: Sundry Creditors | A: 27260
+[2026-02-10 20:18:38] [INFO] L: IGST | G:  Primary | A: -1298.1
+[2026-02-10 20:18:38] [INFO] L: ROUND-OF PURCHASE | G:  Primary | A: 0.04
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 15000
+[2026-02-10 20:18:38] [INFO] L: SBI(ADB)-CC A/C | G:  Primary | A: -15000
+[2026-02-10 20:18:38] [INFO] L: BANK INTREST | G:  Primary | A: -59
+[2026-02-10 20:18:38] [INFO] L: SBI(ADB)-CC A/C | G:  Primary | A: 59
+[2026-02-10 20:18:38] [INFO] L: SHRI RAMDUT ENTRPRISES , HARYAN | G: Sundry Creditors | A: 58321
+[2026-02-10 20:18:38] [INFO] L: IGST | G:  Primary | A: -2777.19
+[2026-02-10 20:18:38] [INFO] L: ROUND-OF PURCHASE | G:  Primary | A: 0.14
+[2026-02-10 20:18:38] [INFO] L: GREAT INDIA ROADWAYS, MALKANGIRI | G: Sundry Creditors | A: 3820
+[2026-02-10 20:18:38] [INFO] L: Transport Charges(Services) | G:  Primary | A: -3820
+[2026-02-10 20:18:38] [INFO] L: GOUDAWN RANT MALKANGIRI BIJAY | G:  Primary | A: -10000
+[2026-02-10 20:18:38] [INFO] L: SBI(ADB)-CC A/C | G:  Primary | A: 10000
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 32000
+[2026-02-10 20:18:38] [INFO] L: SBI(ADB)-CC A/C | G:  Primary | A: -32000
+[2026-02-10 20:18:38] [INFO] L: BANK INTREST | G:  Primary | A: -59
+[2026-02-10 20:18:38] [INFO] L: SBI(ADB)-CC A/C | G:  Primary | A: 59
+[2026-02-10 20:18:38] [INFO] L: M/S S M TRADERS, MALKANGIRI | G: Sundry Debtors | A: -6672
+[2026-02-10 20:18:38] [INFO] L: CGST | G:  Primary | A: 158.86
+[2026-02-10 20:18:38] [INFO] L: SGST | G:  Primary | A: 158.86
+[2026-02-10 20:18:38] [INFO] L: ROUND OFF-SALE | G:  Primary | A: 0.08
+[2026-02-10 20:18:38] [INFO] L: MAA MAULI FOOTWEAR, MATHILI | G: Sundry Debtors | A: -9912
+[2026-02-10 20:18:38] [INFO] L: CGST | G:  Primary | A: 236.01
+[2026-02-10 20:18:38] [INFO] L: SGST | G:  Primary | A: 236.01
+[2026-02-10 20:18:38] [INFO] L: ROUND OFF-SALE | G:  Primary | A: 0.06
+[2026-02-10 20:18:38] [INFO] L: SARADA PRASAD NANDI, KDUMULUGUMMA | G: Sundry Debtors | A: -25488
+[2026-02-10 20:18:38] [INFO] L: CGST | G:  Primary | A: 606.86
+[2026-02-10 20:18:38] [INFO] L: SGST | G:  Primary | A: 606.86
+[2026-02-10 20:18:38] [INFO] L: ROUND OFF-SALE | G:  Primary | A: -0.06
+[2026-02-10 20:18:38] [INFO] L: RAHUL FOOTWEAR, KALIMELA | G: Sundry Debtors | A: -12936
+[2026-02-10 20:18:38] [INFO] L: CGST | G:  Primary | A: 308.01
+[2026-02-10 20:18:38] [INFO] L: SGST | G:  Primary | A: 308.01
+[2026-02-10 20:18:38] [INFO] L: ROUND OFF-SALE | G:  Primary | A: -0.06
+[2026-02-10 20:18:38] [INFO] L: BABULA PATRO, CHITROKUNDA | G: Sundry Debtors | A: -3216
+[2026-02-10 20:18:38] [INFO] L: CGST | G:  Primary | A: 76.57
+[2026-02-10 20:18:38] [INFO] L: SGST | G:  Primary | A: 76.57
+[2026-02-10 20:18:38] [INFO] L: ROUND OFF-SALE | G:  Primary | A: -0.02
+[2026-02-10 20:18:38] [INFO] L: B. LOKESWAR RAO, CHITROKUNDA | G: Sundry Debtors | A: -4152
+[2026-02-10 20:18:38] [INFO] L: CGST | G:  Primary | A: 98.86
+[2026-02-10 20:18:38] [INFO] L: SGST | G:  Primary | A: 98.86
+[2026-02-10 20:18:38] [INFO] L: ROUND OFF-SALE | G:  Primary | A: 0.04
+[2026-02-10 20:18:38] [INFO] L: SIBU SAHA, MV-17 | G: Sundry Debtors | A: -14452
+[2026-02-10 20:18:38] [INFO] L: CGST | G:  Primary | A: 344.1
+[2026-02-10 20:18:38] [INFO] L: SGST | G:  Primary | A: 344.1
+[2026-02-10 20:18:38] [INFO] L: ROUND OFF-SALE | G:  Primary | A: -0.05
+[2026-02-10 20:18:38] [INFO] L: TARUN FOOTWEAR , KALIMELA | G: Sundry Debtors | A: -14294
+[2026-02-10 20:18:38] [INFO] L: CGST | G:  Primary | A: 340.35
+[2026-02-10 20:18:38] [INFO] L: SGST | G:  Primary | A: 340.35
+[2026-02-10 20:18:38] [INFO] L: ROUND OFF-SALE | G:  Primary | A: 0.12
+[2026-02-10 20:18:38] [INFO] L: SRI RAMRAJU ENTERPRISES, CHITROKUNDA | G: Sundry Debtors | A: -18096
+[2026-02-10 20:18:38] [INFO] L: CGST | G:  Primary | A: 430.87
+[2026-02-10 20:18:38] [INFO] L: SGST | G:  Primary | A: 430.87
+[2026-02-10 20:18:38] [INFO] L: ROUND OFF-SALE | G:  Primary | A: -0.38
+[2026-02-10 20:18:38] [INFO] L: PRINCE STORE, CHITROKUNDA | G: Sundry Debtors | A: -20798
+[2026-02-10 20:18:38] [INFO] L: CGST | G:  Primary | A: 495.2
+[2026-02-10 20:18:38] [INFO] L: SGST | G:  Primary | A: 495.2
+[2026-02-10 20:18:38] [INFO] L: ROUND OFF-SALE | G:  Primary | A: -0.06
+[2026-02-10 20:18:38] [INFO] L: TARUN FOOTWEAR , KALIMELA | G: Sundry Debtors | A: 21800
+[2026-02-10 20:18:38] [INFO] L: SBI(ADB)-CC A/C | G:  Primary | A: -21800
+[2026-02-10 20:18:38] [INFO] L: GREAT INDIA ROADWAYS, MALKANGIRI | G: Sundry Creditors | A: -3820
+[2026-02-10 20:18:38] [INFO] L: SBI(ADB)-CC A/C | G:  Primary | A: 3820
+[2026-02-10 20:18:38] [INFO] L: M/S S M TRADERS, MALKANGIRI | G: Sundry Debtors | A: -12214
+[2026-02-10 20:18:38] [INFO] L: CGST | G:  Primary | A: 290.81
+[2026-02-10 20:18:38] [INFO] L: SGST | G:  Primary | A: 290.81
+[2026-02-10 20:18:38] [INFO] L: ROUND OFF-SALE | G:  Primary | A: 0.14
+[2026-02-10 20:18:38] [INFO] L: MAA MAULI FOOTWEAR, MATHILI | G: Sundry Debtors | A: 9912
+[2026-02-10 20:18:38] [INFO] L: SBI(ADB)-CC A/C | G:  Primary | A: -9912
+[2026-02-10 20:18:38] [INFO] L: Cash | G:  Primary | A: 64000
+[2026-02-10 20:18:38] [INFO] L: SBI(ADB)-CC A/C | G:  Primary | A: -64000
+[2026-02-10 20:18:38] [INFO] L: BANK INTREST | G:  Primary | A: -59
+[2026-02-10 20:18:38] [INFO] L: SBI(ADB)-CC A/C | G:  Primary | A: 59
+[2026-02-10 20:18:38] [INFO] L: DULAL BOOT HOUSE,POTTERU | G: Sundry Debtors | A: -12376
+[2026-02-10 20:18:38] [INFO] L: CGST | G:  Primary | A: 294.67
+[2026-02-10 20:18:38] [INFO] L: SGST | G:  Primary | A: 294.67
+[2026-02-10 20:18:38] [INFO] L: ROUND OFF-SALE | G:  Primary | A: -0.02
+[2026-02-10 20:18:38] [INFO] Analysis: 172 transactions, 17 debtors, 11 creditors, 162 stock items.
+[2026-02-10 20:18:38] [SUCCESS] Data saved to C:\Projects\Bizstash\dashboard\public\data\SBEM_Malkangiri\data.json
+[2026-02-10 20:18:38] [SUCCESS] Data Processing Complete.
+
+=== SYNC COMPLETE ✅ ===
+
+=== BIZSTASH SYNC ENGINE 5.0 ===
+[2026-02-10 20:21:58] [INFO] Data Directory: C:\Projects\Bizstash\tally_data\xml\SBEM_Malkangiri
+
+=== PRE-SYNC DASHBOARD ===
+[2026-02-10 20:21:59] [INFO] Fetching Masters (Groups & Ledgers)...
+[2026-02-10 20:22:00] [SUCCESS] Fetched Masters successfully.
+[2026-02-10 20:22:00] [INFO] Fetching Profit & Loss Report...
+[2026-02-10 20:22:01] [SUCCESS] Fetched Profit & Loss successfully.
+
+=== PHASE 1: FETCH DATA ===
+[2026-02-10 20:22:01] [INFO] Force Fetching all vouchers to capture any modifications...
+[2026-02-10 20:22:01] [INFO] Fetching ALL vouchers from Tally (single request)...
+[2026-02-10 20:22:02] [SUCCESS] Fetched 1.3 MB in 0.7s → vouchers.xml
+
+=== PHASE 2: PROCESS ===
+[2026-02-10 20:22:02] [INFO] Processing data for SBEM_Malkangiri...
+[2026-02-10 20:22:02] [ERROR] Sync Fatal Error
+[stacktrace] TypeError: parent.toLowerCase is not a function
+    at findRootGroup (C:\Projects\Bizstash\sync\DataProcessor.js:97:52)
+    at C:\Projects\Bizstash\sync\DataProcessor.js:102:27
+    at Array.forEach (<anonymous>)
+    at DataProcessor._parseMasters (C:\Projects\Bizstash\sync\DataProcessor.js:101:32)
+    at async DataProcessor.process (C:\Projects\Bizstash\sync\DataProcessor.js:27:25)
+    at async SyncEngine.run (C:\Projects\Bizstash\sync\SyncEngine.js:31:13)
+    at async main (C:\Projects\Bizstash\sync\index.js:27:21)
+
+=== BIZSTASH SYNC ENGINE 5.0 ===
+[2026-02-10 20:22:27] [INFO] Data Directory: C:\Projects\Bizstash\tally_data\xml\SBEM_Malkangiri
+
+=== PRE-SYNC DASHBOARD ===
+[2026-02-10 20:22:28] [INFO] Fetching Masters (Groups & Ledgers)...
+[2026-02-10 20:22:29] [SUCCESS] Fetched Masters successfully.
+[2026-02-10 20:22:29] [INFO] Fetching Profit & Loss Report...
+[2026-02-10 20:22:30] [SUCCESS] Fetched Profit & Loss successfully.
+
+=== PHASE 1: FETCH DATA ===
+[2026-02-10 20:22:30] [INFO] Force Fetching all vouchers to capture any modifications...
+[2026-02-10 20:22:30] [INFO] Fetching ALL vouchers from Tally (single request)...
+[2026-02-10 20:22:31] [SUCCESS] Fetched 1.3 MB in 0.8s → vouchers.xml
+
+=== PHASE 2: PROCESS ===
+[2026-02-10 20:22:31] [INFO] Processing data for SBEM_Malkangiri...
+[2026-02-10 20:22:31] [INFO] Parsed 46 Ledgers, 29 Groups.
+[2026-02-10 20:22:31] [INFO] Parsing vouchers.xml...
+[2026-02-10 20:22:31] [INFO] Loaded 1.3 MB. Parsing XML...
+[2026-02-10 20:22:31] [INFO] Parsed 172 vouchers in 0.2s.
+[2026-02-10 20:22:31] [INFO] Analysis: 172 transactions, 0 debtors, 0 creditors, 162 stock items.
+[2026-02-10 20:22:31] [SUCCESS] Data saved to C:\Projects\Bizstash\dashboard\public\data\SBEM_Malkangiri\data.json
+[2026-02-10 20:22:31] [SUCCESS] Data Processing Complete.
+
+=== SYNC COMPLETE ✅ ===
+
+=== BIZSTASH SYNC ENGINE 5.0 ===
+[2026-02-10 20:24:04] [INFO] Data Directory: C:\Projects\Bizstash\tally_data\xml\SBEM_Malkangiri
+
+=== PRE-SYNC DASHBOARD ===
+[2026-02-10 20:24:05] [INFO] Fetching Masters (Groups & Ledgers)...
+[2026-02-10 20:24:06] [SUCCESS] Fetched Masters successfully.
+[2026-02-10 20:24:06] [INFO] Fetching Profit & Loss Report...
+[2026-02-10 20:24:07] [SUCCESS] Fetched Profit & Loss successfully.
+
+=== PHASE 1: FETCH DATA ===
+[2026-02-10 20:24:07] [INFO] Force Fetching all vouchers to capture any modifications...
+[2026-02-10 20:24:07] [INFO] Fetching ALL vouchers from Tally (single request)...
+[2026-02-10 20:24:08] [SUCCESS] Fetched 1.3 MB in 0.7s → vouchers.xml
+
+=== PHASE 2: PROCESS ===
+[2026-02-10 20:24:08] [INFO] Processing data for SBEM_Malkangiri...
+[2026-02-10 20:24:08] [INFO] Parsed 46 Ledgers, 29 Groups.
+[2026-02-10 20:24:08] [INFO] Parsing vouchers.xml...
+[2026-02-10 20:24:08] [INFO] Loaded 1.3 MB. Parsing XML...
+[2026-02-10 20:24:08] [INFO] Parsed 172 vouchers in 0.2s.
+[2026-02-10 20:24:08] [INFO] Analysis: 172 transactions, 16 debtors, 11 creditors, 162 stock items.
+[2026-02-10 20:24:08] [SUCCESS] Data saved to C:\Projects\Bizstash\dashboard\public\data\SBEM_Malkangiri\data.json
+[2026-02-10 20:24:08] [SUCCESS] Data Processing Complete.
+
+=== SYNC COMPLETE ✅ ===
+
+=== BIZSTASH SYNC ENGINE 5.0 ===
+[2026-02-10 20:24:27] [INFO] Data Directory: C:\Projects\Bizstash\tally_data\xml\SBEM_Malkangiri
+
+=== PRE-SYNC DASHBOARD ===
+[2026-02-10 20:24:29] [INFO] Fetching Masters (Groups & Ledgers)...
+[2026-02-10 20:24:30] [SUCCESS] Fetched Masters successfully.
+[2026-02-10 20:24:30] [INFO] Fetching Profit & Loss Report...
+[2026-02-10 20:24:30] [SUCCESS] Fetched Profit & Loss successfully.
+
+=== PHASE 1: FETCH DATA ===
+[2026-02-10 20:24:30] [INFO] Force Fetching all vouchers to capture any modifications...
+[2026-02-10 20:24:30] [INFO] Fetching ALL vouchers from Tally (single request)...
+[2026-02-10 20:24:31] [SUCCESS] Fetched 1.3 MB in 0.8s → vouchers.xml
+
+=== PHASE 2: PROCESS ===
+[2026-02-10 20:24:31] [INFO] Processing data for SBEM_Malkangiri...
+[2026-02-10 20:24:31] [INFO] Parsed 46 Ledgers, 29 Groups.
+[2026-02-10 20:24:31] [INFO] Parsing vouchers.xml...
+[2026-02-10 20:24:31] [INFO] Loaded 1.3 MB. Parsing XML...
+[2026-02-10 20:24:31] [INFO] Parsed 172 vouchers in 0.2s.
+[2026-02-10 20:24:31] [INFO] Analysis: 172 transactions, 16 debtors, 11 creditors, 162 stock items.
+[2026-02-10 20:24:31] [INFO] P&L Groups Found: Sundry Creditors, [object Object], Sundry Debtors
+[2026-02-10 20:24:31] [SUCCESS] Data saved to C:\Projects\Bizstash\dashboard\public\data\SBEM_Malkangiri\data.json
+[2026-02-10 20:24:31] [SUCCESS] Data Processing Complete.
+
+=== SYNC COMPLETE ✅ ===
+
+=== BIZSTASH SYNC ENGINE 5.0 ===
+[2026-02-10 20:24:57] [INFO] Data Directory: C:\Projects\Bizstash\tally_data\xml\SBEM_Malkangiri
+
+=== PRE-SYNC DASHBOARD ===
+[2026-02-10 20:24:58] [INFO] Fetching Masters (Groups & Ledgers)...
+[2026-02-10 20:24:59] [SUCCESS] Fetched Masters successfully.
+[2026-02-10 20:24:59] [INFO] Fetching Profit & Loss Report...
+[2026-02-10 20:25:00] [SUCCESS] Fetched Profit & Loss successfully.
+
+=== PHASE 1: FETCH DATA ===
+[2026-02-10 20:25:00] [INFO] Force Fetching all vouchers to capture any modifications...
+[2026-02-10 20:25:00] [INFO] Fetching ALL vouchers from Tally (single request)...
+[2026-02-10 20:25:01] [SUCCESS] Fetched 1.3 MB in 0.8s → vouchers.xml
+
+=== PHASE 2: PROCESS ===
+[2026-02-10 20:25:01] [INFO] Processing data for SBEM_Malkangiri...
+[2026-02-10 20:25:01] [INFO] Parsed 46 Ledgers, 29 Groups.
+[2026-02-10 20:25:01] [INFO] Parsing vouchers.xml...
+[2026-02-10 20:25:01] [INFO] Loaded 1.3 MB. Parsing XML...
+[2026-02-10 20:25:01] [INFO] Parsed 172 vouchers in 0.1s.
+[2026-02-10 20:25:01] [INFO] Analysis: 172 transactions, 16 debtors, 11 creditors, 162 stock items.
+[2026-02-10 20:25:01] [INFO] P&L Groups Found: Sundry Creditors, [object Object], Sundry Debtors
+[2026-02-10 20:25:01] [SUCCESS] Data saved to C:\Projects\Bizstash\dashboard\public\data\SBEM_Malkangiri\data.json
+[2026-02-10 20:25:01] [SUCCESS] Data Processing Complete.
+
+=== SYNC COMPLETE ✅ ===
+
+=== BIZSTASH SYNC ENGINE 5.0 ===
+[2026-02-10 20:25:40] [INFO] Data Directory: C:\Projects\Bizstash\tally_data\xml\SBEM_Malkangiri
+
+=== PRE-SYNC DASHBOARD ===
+[2026-02-10 20:25:41] [INFO] Fetching Masters (Groups & Ledgers)...
+[2026-02-10 20:25:42] [SUCCESS] Fetched Masters successfully.
+[2026-02-10 20:25:42] [INFO] Fetching Profit & Loss Report...
+[2026-02-10 20:25:43] [SUCCESS] Fetched Profit & Loss successfully.
+
+=== PHASE 1: FETCH DATA ===
+[2026-02-10 20:25:43] [INFO] Force Fetching all vouchers to capture any modifications...
+[2026-02-10 20:25:43] [INFO] Fetching ALL vouchers from Tally (single request)...
+[2026-02-10 20:25:44] [SUCCESS] Fetched 1.3 MB in 0.7s → vouchers.xml
+
+=== PHASE 2: PROCESS ===
+[2026-02-10 20:25:44] [INFO] Processing data for SBEM_Malkangiri...
+[2026-02-10 20:25:44] [INFO] Parsed 46 Ledgers, 29 Groups.
+[2026-02-10 20:25:44] [INFO] Parsing vouchers.xml...
+[2026-02-10 20:25:44] [INFO] Loaded 1.3 MB. Parsing XML...
+[2026-02-10 20:25:44] [INFO] Parsed 172 vouchers in 0.1s.
+[2026-02-10 20:25:44] [INFO] Analysis: 172 transactions, 17 debtors, 11 creditors, 162 stock items.
+[2026-02-10 20:25:44] [INFO] P&L Groups Found: Sundry Creditors,  Primary, Sundry Debtors
+[2026-02-10 20:25:44] [SUCCESS] Data saved to C:\Projects\Bizstash\dashboard\public\data\SBEM_Malkangiri\data.json
+[2026-02-10 20:25:44] [SUCCESS] Data Processing Complete.
+
+=== SYNC COMPLETE ✅ ===
+
+=== BIZSTASH SYNC ENGINE 5.0 ===
+[2026-02-10 20:26:04] [INFO] Data Directory: C:\Projects\Bizstash\tally_data\xml\SBEM_Malkangiri
+
+=== PRE-SYNC DASHBOARD ===
+[2026-02-10 20:26:06] [INFO] Fetching Masters (Groups & Ledgers)...
+[2026-02-10 20:26:07] [SUCCESS] Fetched Masters successfully.
+[2026-02-10 20:26:07] [INFO] Fetching Profit & Loss Report...
+[2026-02-10 20:26:07] [SUCCESS] Fetched Profit & Loss successfully.
+
+=== PHASE 1: FETCH DATA ===
+[2026-02-10 20:26:07] [INFO] Force Fetching all vouchers to capture any modifications...
+[2026-02-10 20:26:07] [INFO] Fetching ALL vouchers from Tally (single request)...
+[2026-02-10 20:26:08] [SUCCESS] Fetched 1.3 MB in 0.8s → vouchers.xml
+
+=== PHASE 2: PROCESS ===
+[2026-02-10 20:26:08] [INFO] Processing data for SBEM_Malkangiri...
+[2026-02-10 20:26:08] [INFO] Parsed 46 Ledgers, 29 Groups.
+[2026-02-10 20:26:08] [INFO] Parsing vouchers.xml...
+[2026-02-10 20:26:08] [INFO] Loaded 1.3 MB. Parsing XML...
+[2026-02-10 20:26:08] [INFO] Parsed 172 vouchers in 0.1s.
+[2026-02-10 20:26:08] [INFO] Analysis: 172 transactions, 17 debtors, 11 creditors, 162 stock items.
+[2026-02-10 20:26:08] [INFO] P&L Groups Found: Sundry Creditors,  Primary, Sundry Debtors
+[2026-02-10 20:26:08] [SUCCESS] Data saved to C:\Projects\Bizstash\dashboard\public\data\SBEM_Malkangiri\data.json
+[2026-02-10 20:26:08] [SUCCESS] Data Processing Complete.
+
+=== SYNC COMPLETE ✅ ===
+
+=== BIZSTASH SYNC ENGINE 5.0 ===
+[2026-02-10 20:26:32] [INFO] Data Directory: C:\Projects\Bizstash\tally_data\xml\SBEM_Malkangiri
+
+=== PRE-SYNC DASHBOARD ===
+[2026-02-10 20:26:33] [INFO] Fetching Masters (Groups & Ledgers)...
+[2026-02-10 20:26:34] [SUCCESS] Fetched Masters successfully.
+[2026-02-10 20:26:34] [INFO] Fetching Profit & Loss Report...
+[2026-02-10 20:26:35] [SUCCESS] Fetched Profit & Loss successfully.
+
+=== PHASE 1: FETCH DATA ===
+[2026-02-10 20:26:35] [INFO] Force Fetching all vouchers to capture any modifications...
+[2026-02-10 20:26:35] [INFO] Fetching ALL vouchers from Tally (single request)...
+[2026-02-10 20:26:36] [SUCCESS] Fetched 1.3 MB in 0.8s → vouchers.xml
+
+=== PHASE 2: PROCESS ===
+[2026-02-10 20:26:36] [INFO] Processing data for SBEM_Malkangiri...
+[2026-02-10 20:26:36] [INFO] Parsed 46 Ledgers, 29 Groups.
+[2026-02-10 20:26:36] [INFO] Parsing vouchers.xml...
+[2026-02-10 20:26:36] [INFO] Loaded 1.3 MB. Parsing XML...
+[2026-02-10 20:26:36] [INFO] Parsed 172 vouchers in 0.1s.
+[2026-02-10 20:26:36] [INFO] Analysis: 172 transactions, 17 debtors, 11 creditors, 162 stock items.
+[2026-02-10 20:26:36] [INFO] P&L Groups Found: Sundry Creditors,  Primary, Sundry Debtors
+[2026-02-10 20:26:36] [SUCCESS] Data saved to C:\Projects\Bizstash\dashboard\public\data\SBEM_Malkangiri\data.json
+[2026-02-10 20:26:36] [SUCCESS] Data Processing Complete.
+
+=== SYNC COMPLETE ✅ ===
+
+=== BIZSTASH SYNC ENGINE 5.0 ===
+[2026-02-10 20:28:02] [INFO] Data Directory: C:\Projects\Bizstash\tally_data\xml\SBEM_Malkangiri
+
+=== PRE-SYNC DASHBOARD ===
+[2026-02-10 20:28:04] [INFO] Fetching Masters (Groups & Ledgers)...
+[2026-02-10 20:28:05] [SUCCESS] Fetched Masters successfully.
+[2026-02-10 20:28:05] [INFO] Fetching Profit & Loss Report...
+[2026-02-10 20:28:05] [SUCCESS] Fetched Profit & Loss successfully.
+
+=== PHASE 1: FETCH DATA ===
+[2026-02-10 20:28:05] [INFO] Force Fetching all vouchers to capture any modifications...
+[2026-02-10 20:28:05] [INFO] Fetching ALL vouchers from Tally (single request)...
+[2026-02-10 20:28:06] [SUCCESS] Fetched 1.3 MB in 0.7s → vouchers.xml
+
+=== PHASE 2: PROCESS ===
+[2026-02-10 20:28:06] [INFO] Processing data for SBEM_Malkangiri...
+[2026-02-10 20:28:06] [INFO] Parsed 46 Ledgers, 29 Groups.
+[2026-02-10 20:28:06] [INFO] Parsing vouchers.xml...
+[2026-02-10 20:28:06] [INFO] Loaded 1.3 MB. Parsing XML...
+[2026-02-10 20:28:06] [INFO] Parsed 172 vouchers in 0.1s.
+[2026-02-10 20:28:06] [ERROR] Failed to parse vouchers.xml
+[stacktrace] TypeError: Cannot read properties of undefined (reading 'billRefs')
+    at C:\Projects\Bizstash\sync\DataProcessor.js:331:56
+    at Array.forEach (<anonymous>)
+    at C:\Projects\Bizstash\sync\DataProcessor.js:330:31
+    at Array.forEach (<anonymous>)
+    at C:\Projects\Bizstash\sync\DataProcessor.js:304:28
+    at Array.forEach (<anonymous>)
+    at DataProcessor._analyzeVouchers (C:\Projects\Bizstash\sync\DataProcessor.js:222:18)
+    at DataProcessor._parseVouchers (C:\Projects\Bizstash\sync\DataProcessor.js:194:25)
+    at async DataProcessor.process (C:\Projects\Bizstash\sync\DataProcessor.js:29:26)
+    at async SyncEngine.run (C:\Projects\Bizstash\sync\SyncEngine.js:31:13)
+[2026-02-10 20:28:06] [SUCCESS] Data saved to C:\Projects\Bizstash\dashboard\public\data\SBEM_Malkangiri\data.json
+[2026-02-10 20:28:06] [SUCCESS] Data Processing Complete.
+
+=== SYNC COMPLETE ✅ ===
+
+=== BIZSTASH SYNC ENGINE 5.0 ===
+[2026-02-10 20:28:31] [INFO] Data Directory: C:\Projects\Bizstash\tally_data\xml\SBEM_Malkangiri
+
+=== PRE-SYNC DASHBOARD ===
+[2026-02-10 20:28:32] [INFO] Fetching Masters (Groups & Ledgers)...
+[2026-02-10 20:28:33] [SUCCESS] Fetched Masters successfully.
+[2026-02-10 20:28:33] [INFO] Fetching Profit & Loss Report...
+[2026-02-10 20:28:33] [SUCCESS] Fetched Profit & Loss successfully.
+
+=== PHASE 1: FETCH DATA ===
+[2026-02-10 20:28:33] [INFO] Force Fetching all vouchers to capture any modifications...
+[2026-02-10 20:28:33] [INFO] Fetching ALL vouchers from Tally (single request)...
+[2026-02-10 20:28:34] [SUCCESS] Fetched 1.3 MB in 0.8s → vouchers.xml
+
+=== PHASE 2: PROCESS ===
+[2026-02-10 20:28:34] [INFO] Processing data for SBEM_Malkangiri...
+[2026-02-10 20:28:34] [INFO] Parsed 46 Ledgers, 29 Groups.
+[2026-02-10 20:28:34] [INFO] Parsing vouchers.xml...
+[2026-02-10 20:28:34] [INFO] Loaded 1.3 MB. Parsing XML...
+[2026-02-10 20:28:34] [INFO] Parsed 172 vouchers in 0.1s.
+[2026-02-10 20:28:34] [INFO] Analysis: 172 transactions, 17 debtors, 11 creditors, 162 stock items.
+[2026-02-10 20:28:34] [INFO] P&L Groups Found: Sundry Creditors,  Primary, Sundry Debtors
+[2026-02-10 20:28:34] [SUCCESS] Data saved to C:\Projects\Bizstash\dashboard\public\data\SBEM_Malkangiri\data.json
+[2026-02-10 20:28:34] [SUCCESS] Data Processing Complete.
+
+=== SYNC COMPLETE ✅ ===
+
+=== BIZSTASH SYNC ENGINE 5.0 ===
+[2026-02-10 20:28:53] [INFO] Data Directory: C:\Projects\Bizstash\tally_data\xml\SBEM_Malkangiri
+
+=== PRE-SYNC DASHBOARD ===
+[2026-02-10 20:28:54] [INFO] Fetching Masters (Groups & Ledgers)...
+[2026-02-10 20:28:55] [SUCCESS] Fetched Masters successfully.
+[2026-02-10 20:28:55] [INFO] Fetching Profit & Loss Report...
+[2026-02-10 20:28:56] [SUCCESS] Fetched Profit & Loss successfully.
+
+=== PHASE 1: FETCH DATA ===
+[2026-02-10 20:28:56] [INFO] Force Fetching all vouchers to capture any modifications...
+[2026-02-10 20:28:56] [INFO] Fetching ALL vouchers from Tally (single request)...
+[2026-02-10 20:28:56] [SUCCESS] Fetched 1.3 MB in 0.7s → vouchers.xml
+
+=== PHASE 2: PROCESS ===
+[2026-02-10 20:28:56] [INFO] Processing data for SBEM_Malkangiri...
+[2026-02-10 20:28:56] [INFO] Parsed 46 Ledgers, 29 Groups.
+[2026-02-10 20:28:56] [INFO] Parsing vouchers.xml...
+[2026-02-10 20:28:56] [INFO] Loaded 1.3 MB. Parsing XML...
+[2026-02-10 20:28:56] [INFO] Parsed 172 vouchers in 0.1s.
+[2026-02-10 20:28:56] [INFO] Analysis: 172 transactions, 17 debtors, 11 creditors, 162 stock items.
+[2026-02-10 20:28:56] [INFO] P&L Groups Found: Sundry Creditors,  Primary, Sundry Debtors
+[2026-02-10 20:28:56] [SUCCESS] Data saved to C:\Projects\Bizstash\dashboard\public\data\SBEM_Malkangiri\data.json
+[2026-02-10 20:28:56] [SUCCESS] Data Processing Complete.
+
+=== SYNC COMPLETE ✅ ===
+
+=== BIZSTASH SYNC ENGINE 5.0 ===
+[2026-02-10 20:29:17] [INFO] Data Directory: C:\Projects\Bizstash\tally_data\xml\SBEM_Malkangiri
+
+=== PRE-SYNC DASHBOARD ===
+[2026-02-10 20:29:18] [INFO] Fetching Masters (Groups & Ledgers)...
+[2026-02-10 20:29:19] [SUCCESS] Fetched Masters successfully.
+[2026-02-10 20:29:19] [INFO] Fetching Profit & Loss Report...
+[2026-02-10 20:29:19] [SUCCESS] Fetched Profit & Loss successfully.
+
+=== PHASE 1: FETCH DATA ===
+[2026-02-10 20:29:19] [INFO] Force Fetching all vouchers to capture any modifications...
+[2026-02-10 20:29:19] [INFO] Fetching ALL vouchers from Tally (single request)...
+[2026-02-10 20:29:20] [SUCCESS] Fetched 1.3 MB in 0.8s → vouchers.xml
+
+=== PHASE 2: PROCESS ===
+[2026-02-10 20:29:20] [INFO] Processing data for SBEM_Malkangiri...
+[2026-02-10 20:29:20] [INFO] Parsed 46 Ledgers, 29 Groups.
+[2026-02-10 20:29:20] [INFO] Parsing vouchers.xml...
+[2026-02-10 20:29:20] [INFO] Loaded 1.3 MB. Parsing XML...
+[2026-02-10 20:29:20] [INFO] Parsed 172 vouchers in 0.1s.
+[2026-02-10 20:29:20] [INFO] Analysis: 172 transactions, 17 debtors, 11 creditors, 162 stock items.
+[2026-02-10 20:29:20] [INFO] P&L Groups Found: Sundry Creditors,  Primary, Sundry Debtors
+[2026-02-10 20:29:20] [SUCCESS] Data saved to C:\Projects\Bizstash\dashboard\public\data\SBEM_Malkangiri\data.json
+[2026-02-10 20:29:20] [SUCCESS] Data Processing Complete.
+
+=== SYNC COMPLETE ✅ ===
+
+=== BIZSTASH SYNC ENGINE 5.0 ===
+[2026-02-10 20:29:40] [INFO] Data Directory: C:\Projects\Bizstash\tally_data\xml\SBEM_Malkangiri
+
+=== PRE-SYNC DASHBOARD ===
+[2026-02-10 20:29:41] [INFO] Fetching Masters (Groups & Ledgers)...
+[2026-02-10 20:29:42] [SUCCESS] Fetched Masters successfully.
+[2026-02-10 20:29:42] [INFO] Fetching Profit & Loss Report...
+[2026-02-10 20:29:43] [SUCCESS] Fetched Profit & Loss successfully.
+
+=== PHASE 1: FETCH DATA ===
+[2026-02-10 20:29:43] [INFO] Force Fetching all vouchers to capture any modifications...
+[2026-02-10 20:29:43] [INFO] Fetching ALL vouchers from Tally (single request)...
+[2026-02-10 20:29:43] [SUCCESS] Fetched 1.3 MB in 0.7s → vouchers.xml
+
+=== PHASE 2: PROCESS ===
+[2026-02-10 20:29:43] [INFO] Processing data for SBEM_Malkangiri...
+[2026-02-10 20:29:43] [INFO] Parsed 46 Ledgers, 29 Groups.
+[2026-02-10 20:29:43] [INFO] Parsing vouchers.xml...
+[2026-02-10 20:29:43] [INFO] Loaded 1.3 MB. Parsing XML...
+[2026-02-10 20:29:43] [INFO] Parsed 172 vouchers in 0.1s.
+[2026-02-10 20:29:43] [INFO] Analysis: 172 transactions, 17 debtors, 11 creditors, 162 stock items.
+[2026-02-10 20:29:43] [INFO] P&L Groups Found: Sundry Creditors,  Primary, Sundry Debtors
+[2026-02-10 20:29:43] [SUCCESS] Data saved to C:\Projects\Bizstash\dashboard\public\data\SBEM_Malkangiri\data.json
+[2026-02-10 20:29:43] [SUCCESS] Data Processing Complete.
+
+=== SYNC COMPLETE ✅ ===
+
+=== BIZSTASH SYNC ENGINE 5.0 ===
+[2026-02-10 20:30:08] [INFO] Data Directory: C:\Projects\Bizstash\tally_data\xml\SBEM_Malkangiri
+
+=== PRE-SYNC DASHBOARD ===
+[2026-02-10 20:30:09] [INFO] Fetching Masters (Groups & Ledgers)...
+[2026-02-10 20:30:10] [SUCCESS] Fetched Masters successfully.
+[2026-02-10 20:30:10] [INFO] Fetching Profit & Loss Report...
+[2026-02-10 20:30:11] [SUCCESS] Fetched Profit & Loss successfully.
+
+=== PHASE 1: FETCH DATA ===
+[2026-02-10 20:30:11] [INFO] Force Fetching all vouchers to capture any modifications...
+[2026-02-10 20:30:11] [INFO] Fetching ALL vouchers from Tally (single request)...
+[2026-02-10 20:30:12] [SUCCESS] Fetched 1.3 MB in 0.7s → vouchers.xml
+
+=== PHASE 2: PROCESS ===
+[2026-02-10 20:30:12] [INFO] Processing data for SBEM_Malkangiri...
+[2026-02-10 20:30:12] [INFO] Parsed 46 Ledgers, 29 Groups.
+[2026-02-10 20:30:12] [INFO] Parsing vouchers.xml...
+[2026-02-10 20:30:12] [INFO] Loaded 1.3 MB. Parsing XML...
+[2026-02-10 20:30:12] [INFO] Parsed 172 vouchers in 0.1s.
+[2026-02-10 20:30:12] [INFO] L: PARAGON POLYMER PRODUCTS PRIVATE LIMITED , CUTTACK | RG: 'Sundry Creditors' | P: 'Sundry Creditors'
+[2026-02-10 20:30:12] [INFO] L: CGST | RG: ' Primary' | P: 'Duties & Taxes'
+[2026-02-10 20:30:12] [INFO] L: SGST | RG: ' Primary' | P: 'Duties & Taxes'
+[2026-02-10 20:30:12] [INFO] L: ROUND OFF-SALE | RG: ' Primary' | P: 'Indirect Expenses'
+[2026-02-10 20:30:12] [INFO] L: SHRI RAMDUT ENTRPRISES , HARYAN | RG: 'Sundry Creditors' | P: 'Sundry Creditors'
+[2026-02-10 20:30:12] [INFO] L: IGST | RG: ' Primary' | P: 'Duties & Taxes'
+[2026-02-10 20:30:12] [INFO] L: ROUND-OF PURCHASE | RG: ' Primary' | P: 'Indirect Expenses'
+[2026-02-10 20:30:12] [INFO] L: Miscellaneous Expenses | RG: ' Primary' | P: 'Indirect Expenses'
+[2026-02-10 20:30:12] [INFO] L: Cash | RG: ' Primary' | P: 'Cash-in-Hand'
+[2026-02-10 20:30:12] [INFO] L: Miscellaneous Expenses | RG: ' Primary' | P: 'Indirect Expenses'
+[2026-02-10 20:30:12] [INFO] L: Cash | RG: ' Primary' | P: 'Cash-in-Hand'
+[2026-02-10 20:30:12] [INFO] L: Travelling Expenses | RG: ' Primary' | P: 'Indirect Expenses'
+[2026-02-10 20:30:12] [INFO] L: Cash | RG: ' Primary' | P: 'Cash-in-Hand'
+[2026-02-10 20:30:12] [INFO] L: TEA,SNACKS,MEALS | RG: ' Primary' | P: 'Indirect Expenses'
+[2026-02-10 20:30:12] [INFO] L: Cash | RG: ' Primary' | P: 'Cash-in-Hand'
+[2026-02-10 20:30:12] [INFO] L: TEA,SNACKS,MEALS | RG: ' Primary' | P: 'Indirect Expenses'
+[2026-02-10 20:30:12] [INFO] L: Cash | RG: ' Primary' | P: 'Cash-in-Hand'
+[2026-02-10 20:30:12] [INFO] L: LOADING AND UNLONDING | RG: ' Primary' | P: 'Indirect Expenses'
+[2026-02-10 20:30:12] [INFO] L: Cash | RG: ' Primary' | P: 'Cash-in-Hand'
+[2026-02-10 20:30:12] [INFO] L: Miscellaneous Expenses | RG: ' Primary' | P: 'Indirect Expenses'
+[2026-02-10 20:30:12] [INFO] Analysis: 172 transactions, 17 debtors, 11 creditors, 162 stock items.
+[2026-02-10 20:30:12] [INFO] P&L Groups Found: Sundry Creditors,  Primary, Sundry Debtors
+[2026-02-10 20:30:12] [SUCCESS] Data saved to C:\Projects\Bizstash\dashboard\public\data\SBEM_Malkangiri\data.json
+[2026-02-10 20:30:12] [SUCCESS] Data Processing Complete.
+
+=== SYNC COMPLETE ✅ ===
+
+=== BIZSTASH SYNC ENGINE 5.0 ===
+[2026-02-10 20:30:40] [INFO] Data Directory: C:\Projects\Bizstash\tally_data\xml\SBEM_Malkangiri
+
+=== PRE-SYNC DASHBOARD ===
+[2026-02-10 20:30:41] [INFO] Fetching Masters (Groups & Ledgers)...
+[2026-02-10 20:30:42] [SUCCESS] Fetched Masters successfully.
+[2026-02-10 20:30:42] [INFO] Fetching Profit & Loss Report...
+[2026-02-10 20:30:43] [SUCCESS] Fetched Profit & Loss successfully.
+
+=== PHASE 1: FETCH DATA ===
+[2026-02-10 20:30:43] [INFO] Force Fetching all vouchers to capture any modifications...
+[2026-02-10 20:30:43] [INFO] Fetching ALL vouchers from Tally (single request)...
+[2026-02-10 20:30:43] [SUCCESS] Fetched 1.3 MB in 0.7s → vouchers.xml
+
+=== PHASE 2: PROCESS ===
+[2026-02-10 20:30:43] [INFO] Processing data for SBEM_Malkangiri...
+[2026-02-10 20:30:43] [INFO] Parsed 46 Ledgers, 29 Groups.
+[2026-02-10 20:30:43] [INFO] Parsing vouchers.xml...
+[2026-02-10 20:30:43] [INFO] Loaded 1.3 MB. Parsing XML...
+[2026-02-10 20:30:43] [INFO] Parsed 172 vouchers in 0.1s.
+[2026-02-10 20:30:43] [INFO] L: PARAGON POLYMER PRODUCTS PRIVATE LIMITED , CUTTACK | RG: 'Sundry Creditors' | P: 'Sundry Creditors'
+[2026-02-10 20:30:43] [INFO] L: CGST | RG: ' Primary' | P: 'Duties & Taxes'
+[2026-02-10 20:30:43] [INFO] L: SGST | RG: ' Primary' | P: 'Duties & Taxes'
+[2026-02-10 20:30:43] [INFO] L: ROUND OFF-SALE | RG: ' Primary' | P: 'Indirect Expenses'
+[2026-02-10 20:30:43] [INFO] L: SHRI RAMDUT ENTRPRISES , HARYAN | RG: 'Sundry Creditors' | P: 'Sundry Creditors'
+[2026-02-10 20:30:43] [INFO] L: IGST | RG: ' Primary' | P: 'Duties & Taxes'
+[2026-02-10 20:30:43] [INFO] L: ROUND-OF PURCHASE | RG: ' Primary' | P: 'Indirect Expenses'
+[2026-02-10 20:30:43] [INFO] L: Miscellaneous Expenses | RG: ' Primary' | P: 'Indirect Expenses'
+[2026-02-10 20:30:43] [INFO] L: Cash | RG: ' Primary' | P: 'Cash-in-Hand'
+[2026-02-10 20:30:43] [INFO] L: Miscellaneous Expenses | RG: ' Primary' | P: 'Indirect Expenses'
+[2026-02-10 20:30:43] [INFO] L: Cash | RG: ' Primary' | P: 'Cash-in-Hand'
+[2026-02-10 20:30:43] [INFO] L: Travelling Expenses | RG: ' Primary' | P: 'Indirect Expenses'
+[2026-02-10 20:30:43] [INFO] L: Cash | RG: ' Primary' | P: 'Cash-in-Hand'
+[2026-02-10 20:30:43] [INFO] L: TEA,SNACKS,MEALS | RG: ' Primary' | P: 'Indirect Expenses'
+[2026-02-10 20:30:43] [INFO] L: Cash | RG: ' Primary' | P: 'Cash-in-Hand'
+[2026-02-10 20:30:43] [INFO] L: TEA,SNACKS,MEALS | RG: ' Primary' | P: 'Indirect Expenses'
+[2026-02-10 20:30:43] [INFO] L: Cash | RG: ' Primary' | P: 'Cash-in-Hand'
+[2026-02-10 20:30:43] [INFO] L: LOADING AND UNLONDING | RG: ' Primary' | P: 'Indirect Expenses'
+[2026-02-10 20:30:43] [INFO] L: Cash | RG: ' Primary' | P: 'Cash-in-Hand'
+[2026-02-10 20:30:43] [INFO] L: Miscellaneous Expenses | RG: ' Primary' | P: 'Indirect Expenses'
+[2026-02-10 20:30:43] [INFO] Analysis: 172 transactions, 17 debtors, 11 creditors, 162 stock items.
+[2026-02-10 20:30:43] [INFO] P&L Groups Found: Sundry Creditors,  Primary, Sundry Debtors
+[2026-02-10 20:30:43] [SUCCESS] Data saved to C:\Projects\Bizstash\dashboard\public\data\SBEM_Malkangiri\data.json
+[2026-02-10 20:30:43] [SUCCESS] Data Processing Complete.
+
+=== SYNC COMPLETE ✅ ===
+
+=== BIZSTASH SYNC ENGINE 5.0 ===
+[2026-02-10 20:31:11] [INFO] Data Directory: C:\Projects\Bizstash\tally_data\xml\SBEM_Malkangiri
+
+=== PRE-SYNC DASHBOARD ===
+[2026-02-10 20:31:12] [INFO] Fetching Masters (Groups & Ledgers)...
+[2026-02-10 20:31:13] [SUCCESS] Fetched Masters successfully.
+[2026-02-10 20:31:13] [INFO] Fetching Profit & Loss Report...
+[2026-02-10 20:31:14] [SUCCESS] Fetched Profit & Loss successfully.
+
+=== PHASE 1: FETCH DATA ===
+[2026-02-10 20:31:14] [INFO] Force Fetching all vouchers to capture any modifications...
+[2026-02-10 20:31:14] [INFO] Fetching ALL vouchers from Tally (single request)...
+[2026-02-10 20:31:14] [SUCCESS] Fetched 1.3 MB in 0.7s → vouchers.xml
+
+=== PHASE 2: PROCESS ===
+[2026-02-10 20:31:14] [INFO] Processing data for SBEM_Malkangiri...
+[2026-02-10 20:31:14] [INFO] Parsed 46 Ledgers, 29 Groups.
+[2026-02-10 20:31:14] [INFO] Parsing vouchers.xml...
+[2026-02-10 20:31:14] [INFO] Loaded 1.3 MB. Parsing XML...
+[2026-02-10 20:31:14] [INFO] Parsed 172 vouchers in 0.1s.
+[2026-02-10 20:31:14] [INFO] L: PARAGON POLYMER PRODUCTS PRIVATE LIMITED , CUTTACK | RG: 'Sundry Creditors' | P: 'Sundry Creditors'
+[2026-02-10 20:31:14] [INFO] L: CGST | RG: ' Primary' | P: 'Duties & Taxes'
+[2026-02-10 20:31:14] [INFO] L: SGST | RG: ' Primary' | P: 'Duties & Taxes'
+[2026-02-10 20:31:14] [INFO] L: ROUND OFF-SALE | RG: ' Primary' | P: 'Indirect Expenses'
+[2026-02-10 20:31:14] [INFO] L: SHRI RAMDUT ENTRPRISES , HARYAN | RG: 'Sundry Creditors' | P: 'Sundry Creditors'
+[2026-02-10 20:31:14] [INFO] L: IGST | RG: ' Primary' | P: 'Duties & Taxes'
+[2026-02-10 20:31:14] [INFO] L: ROUND-OF PURCHASE | RG: ' Primary' | P: 'Indirect Expenses'
+[2026-02-10 20:31:14] [INFO] L: Miscellaneous Expenses | RG: ' Primary' | P: 'Indirect Expenses'
+[2026-02-10 20:31:14] [INFO] L: Cash | RG: ' Primary' | P: 'Cash-in-Hand'
+[2026-02-10 20:31:14] [INFO] L: Miscellaneous Expenses | RG: ' Primary' | P: 'Indirect Expenses'
+[2026-02-10 20:31:14] [INFO] L: Cash | RG: ' Primary' | P: 'Cash-in-Hand'
+[2026-02-10 20:31:14] [INFO] L: Travelling Expenses | RG: ' Primary' | P: 'Indirect Expenses'
+[2026-02-10 20:31:14] [INFO] L: Cash | RG: ' Primary' | P: 'Cash-in-Hand'
+[2026-02-10 20:31:14] [INFO] L: TEA,SNACKS,MEALS | RG: ' Primary' | P: 'Indirect Expenses'
+[2026-02-10 20:31:14] [INFO] L: Cash | RG: ' Primary' | P: 'Cash-in-Hand'
+[2026-02-10 20:31:14] [INFO] L: TEA,SNACKS,MEALS | RG: ' Primary' | P: 'Indirect Expenses'
+[2026-02-10 20:31:14] [INFO] L: Cash | RG: ' Primary' | P: 'Cash-in-Hand'
+[2026-02-10 20:31:14] [INFO] L: LOADING AND UNLONDING | RG: ' Primary' | P: 'Indirect Expenses'
+[2026-02-10 20:31:14] [INFO] L: Cash | RG: ' Primary' | P: 'Cash-in-Hand'
+[2026-02-10 20:31:14] [INFO] L: Miscellaneous Expenses | RG: ' Primary' | P: 'Indirect Expenses'
+[2026-02-10 20:31:14] [INFO] Analysis: 172 transactions, 17 debtors, 11 creditors, 162 stock items.
+[2026-02-10 20:31:14] [INFO] P&L Groups Found: Sundry Creditors,  Primary, Sundry Debtors
+[2026-02-10 20:31:14] [SUCCESS] Data saved to C:\Projects\Bizstash\dashboard\public\data\SBEM_Malkangiri\data.json
+[2026-02-10 20:31:14] [SUCCESS] Data Processing Complete.
+
+=== SYNC COMPLETE ✅ ===
+
+=== BIZSTASH SYNC ENGINE 5.0 ===
+[2026-02-10 20:31:44] [INFO] Data Directory: C:\Projects\Bizstash\tally_data\xml\SBEM_Malkangiri
+
+=== PRE-SYNC DASHBOARD ===
+[2026-02-10 20:31:45] [INFO] Fetching Masters (Groups & Ledgers)...
+[2026-02-10 20:31:46] [SUCCESS] Fetched Masters successfully.
+[2026-02-10 20:31:46] [INFO] Fetching Profit & Loss Report...
+[2026-02-10 20:31:47] [SUCCESS] Fetched Profit & Loss successfully.
+
+=== PHASE 1: FETCH DATA ===
+[2026-02-10 20:31:47] [INFO] Force Fetching all vouchers to capture any modifications...
+[2026-02-10 20:31:47] [INFO] Fetching ALL vouchers from Tally (single request)...
+[2026-02-10 20:31:47] [SUCCESS] Fetched 1.3 MB in 0.7s → vouchers.xml
+
+=== PHASE 2: PROCESS ===
+[2026-02-10 20:31:47] [INFO] Processing data for SBEM_Malkangiri...
+[2026-02-10 20:31:47] [INFO] Parsed 46 Ledgers, 29 Groups.
+[2026-02-10 20:31:47] [INFO] Parsing vouchers.xml...
+[2026-02-10 20:31:47] [INFO] Loaded 1.3 MB. Parsing XML...
+[2026-02-10 20:31:47] [INFO] Parsed 172 vouchers in 0.1s.
+[2026-02-10 20:31:47] [INFO] L: PARAGON POLYMER PRODUCTS PRIVATE LIMITED , CUTTACK | RG: 'Sundry Creditors' | P: 'Sundry Creditors'
+[2026-02-10 20:31:47] [INFO] L: CGST | RG: ' Primary' | P: 'Duties & Taxes'
+[2026-02-10 20:31:47] [INFO] L: SGST | RG: ' Primary' | P: 'Duties & Taxes'
+[2026-02-10 20:31:47] [INFO] L: ROUND OFF-SALE | RG: ' Primary' | P: 'Indirect Expenses'
+[2026-02-10 20:31:47] [INFO] L: SHRI RAMDUT ENTRPRISES , HARYAN | RG: 'Sundry Creditors' | P: 'Sundry Creditors'
+[2026-02-10 20:31:47] [INFO] L: IGST | RG: ' Primary' | P: 'Duties & Taxes'
+[2026-02-10 20:31:47] [INFO] L: ROUND-OF PURCHASE | RG: ' Primary' | P: 'Indirect Expenses'
+[2026-02-10 20:31:47] [INFO] L: Miscellaneous Expenses | RG: ' Primary' | P: 'Indirect Expenses'
+[2026-02-10 20:31:47] [INFO] L: Cash | RG: ' Primary' | P: 'Cash-in-Hand'
+[2026-02-10 20:31:47] [INFO] L: Miscellaneous Expenses | RG: ' Primary' | P: 'Indirect Expenses'
+[2026-02-10 20:31:47] [INFO] L: Cash | RG: ' Primary' | P: 'Cash-in-Hand'
+[2026-02-10 20:31:47] [INFO] L: Travelling Expenses | RG: ' Primary' | P: 'Indirect Expenses'
+[2026-02-10 20:31:47] [INFO] L: Cash | RG: ' Primary' | P: 'Cash-in-Hand'
+[2026-02-10 20:31:47] [INFO] L: TEA,SNACKS,MEALS | RG: ' Primary' | P: 'Indirect Expenses'
+[2026-02-10 20:31:47] [INFO] L: Cash | RG: ' Primary' | P: 'Cash-in-Hand'
+[2026-02-10 20:31:47] [INFO] L: TEA,SNACKS,MEALS | RG: ' Primary' | P: 'Indirect Expenses'
+[2026-02-10 20:31:47] [INFO] L: Cash | RG: ' Primary' | P: 'Cash-in-Hand'
+[2026-02-10 20:31:47] [INFO] L: LOADING AND UNLONDING | RG: ' Primary' | P: 'Indirect Expenses'
+[2026-02-10 20:31:47] [INFO] L: Cash | RG: ' Primary' | P: 'Cash-in-Hand'
+[2026-02-10 20:31:47] [INFO] L: Miscellaneous Expenses | RG: ' Primary' | P: 'Indirect Expenses'
+[2026-02-10 20:31:47] [INFO] Analysis: 172 transactions, 17 debtors, 11 creditors, 162 stock items.
+[2026-02-10 20:31:47] [INFO] P&L Groups Found: Sundry Creditors,  Primary, Sundry Debtors
+[2026-02-10 20:31:47] [SUCCESS] Data saved to C:\Projects\Bizstash\dashboard\public\data\SBEM_Malkangiri\data.json
+[2026-02-10 20:31:47] [SUCCESS] Data Processing Complete.
+
+=== SYNC COMPLETE ✅ ===
+
+=== BIZSTASH SYNC ENGINE 5.0 ===
+[2026-02-10 20:34:44] [INFO] Data Directory: C:\Projects\Bizstash\tally_data\xml\SBEM_Malkangiri
+
+=== PRE-SYNC DASHBOARD ===
+[2026-02-10 20:34:45] [INFO] Fetching Masters (Groups & Ledgers)...
+[2026-02-10 20:34:46] [SUCCESS] Fetched Masters successfully.
+[2026-02-10 20:34:46] [INFO] Fetching Profit & Loss Report...
+[2026-02-10 20:34:47] [SUCCESS] Fetched Profit & Loss successfully.
+
+=== PHASE 1: FETCH DATA ===
+[2026-02-10 20:34:47] [INFO] Force Fetching all vouchers to capture any modifications...
+[2026-02-10 20:34:47] [INFO] Fetching ALL vouchers from Tally (single request)...
+[2026-02-10 20:34:48] [SUCCESS] Fetched 1.3 MB in 0.7s → vouchers.xml
+
+=== PHASE 2: PROCESS ===
+[2026-02-10 20:34:48] [INFO] Processing data for SBEM_Malkangiri...
+[2026-02-10 20:34:48] [INFO] Parsed 46 Ledgers, 29 Groups.
+[2026-02-10 20:34:48] [INFO] Parsing vouchers.xml...
+[2026-02-10 20:34:48] [INFO] Loaded 1.3 MB. Parsing XML...
+[2026-02-10 20:34:48] [INFO] Parsed 172 vouchers in 0.1s.
+[2026-02-10 20:34:48] [INFO] L: PARAGON POLYMER PRODUCTS PRIVATE LIMITED , CUTTACK | RG: 'Sundry Creditors' | P: 'Sundry Creditors'
+[2026-02-10 20:34:48] [INFO] L: CGST | RG: 'Duties & Taxes' | P: 'Duties & Taxes'
+[2026-02-10 20:34:48] [INFO] L: SGST | RG: 'Duties & Taxes' | P: 'Duties & Taxes'
+[2026-02-10 20:34:48] [INFO] L: ROUND OFF-SALE | RG: 'Indirect Expenses' | P: 'Indirect Expenses'
+[2026-02-10 20:34:48] [INFO] L: SHRI RAMDUT ENTRPRISES , HARYAN | RG: 'Sundry Creditors' | P: 'Sundry Creditors'
+[2026-02-10 20:34:48] [INFO] L: IGST | RG: 'Duties & Taxes' | P: 'Duties & Taxes'
+[2026-02-10 20:34:48] [INFO] L: ROUND-OF PURCHASE | RG: 'Indirect Expenses' | P: 'Indirect Expenses'
+[2026-02-10 20:34:48] [INFO] L: Miscellaneous Expenses | RG: 'Indirect Expenses' | P: 'Indirect Expenses'
+[2026-02-10 20:34:48] [INFO] L: Cash | RG: 'Cash-in-Hand' | P: 'Cash-in-Hand'
+[2026-02-10 20:34:48] [INFO] L: Miscellaneous Expenses | RG: 'Indirect Expenses' | P: 'Indirect Expenses'
+[2026-02-10 20:34:48] [INFO] L: Cash | RG: 'Cash-in-Hand' | P: 'Cash-in-Hand'
+[2026-02-10 20:34:48] [INFO] L: Travelling Expenses | RG: 'Indirect Expenses' | P: 'Indirect Expenses'
+[2026-02-10 20:34:48] [INFO] L: Cash | RG: 'Cash-in-Hand' | P: 'Cash-in-Hand'
+[2026-02-10 20:34:48] [INFO] L: TEA,SNACKS,MEALS | RG: 'Indirect Expenses' | P: 'Indirect Expenses'
+[2026-02-10 20:34:48] [INFO] L: Cash | RG: 'Cash-in-Hand' | P: 'Cash-in-Hand'
+[2026-02-10 20:34:48] [INFO] L: TEA,SNACKS,MEALS | RG: 'Indirect Expenses' | P: 'Indirect Expenses'
+[2026-02-10 20:34:48] [INFO] L: Cash | RG: 'Cash-in-Hand' | P: 'Cash-in-Hand'
+[2026-02-10 20:34:48] [INFO] L: LOADING AND UNLONDING | RG: 'Indirect Expenses' | P: 'Indirect Expenses'
+[2026-02-10 20:34:48] [INFO] L: Cash | RG: 'Cash-in-Hand' | P: 'Cash-in-Hand'
+[2026-02-10 20:34:48] [INFO] L: Miscellaneous Expenses | RG: 'Indirect Expenses' | P: 'Indirect Expenses'
+[2026-02-10 20:34:48] [INFO] Analysis: 172 transactions, 17 debtors, 11 creditors, 162 stock items.
+[2026-02-10 20:34:48] [INFO] P&L Groups Found: Sundry Creditors, Duties & Taxes, Indirect Expenses, Cash-in-Hand, Sundry Debtors, Current Liabilities, Bank Accounts
+[2026-02-10 20:34:48] [SUCCESS] Data saved to C:\Projects\Bizstash\dashboard\public\data\SBEM_Malkangiri\data.json
+[2026-02-10 20:34:48] [SUCCESS] Data Processing Complete.
+
+=== SYNC COMPLETE ✅ ===
+
+=== BIZSTASH SYNC ENGINE 5.0 ===
+[2026-02-10 20:35:43] [INFO] Data Directory: C:\Projects\Bizstash\tally_data\xml\SBEM_Malkangiri
+
+=== PRE-SYNC DASHBOARD ===
+[2026-02-10 20:35:44] [INFO] Fetching Masters (Groups & Ledgers)...
+[2026-02-10 20:35:45] [SUCCESS] Fetched Masters successfully.
+[2026-02-10 20:35:45] [INFO] Fetching Profit & Loss Report...
+[2026-02-10 20:35:46] [SUCCESS] Fetched Profit & Loss successfully.
+
+=== PHASE 1: FETCH DATA ===
+[2026-02-10 20:35:46] [INFO] Force Fetching all vouchers to capture any modifications...
+[2026-02-10 20:35:46] [INFO] Fetching ALL vouchers from Tally (single request)...
+[2026-02-10 20:35:46] [SUCCESS] Fetched 1.3 MB in 0.8s → vouchers.xml
+
+=== PHASE 2: PROCESS ===
+[2026-02-10 20:35:46] [INFO] Processing data for SBEM_Malkangiri...
+[2026-02-10 20:35:46] [INFO] Parsed 46 Ledgers, 29 Groups.
+[2026-02-10 20:35:46] [INFO] Parsing vouchers.xml...
+[2026-02-10 20:35:46] [INFO] Loaded 1.3 MB. Parsing XML...
+[2026-02-10 20:35:47] [INFO] Parsed 172 vouchers in 0.1s.
+[2026-02-10 20:35:47] [INFO] L: PARAGON POLYMER PRODUCTS PRIVATE LIMITED , CUTTACK | RG: 'Sundry Creditors' | P: 'Sundry Creditors'
+[2026-02-10 20:35:47] [INFO] L: CGST | RG: 'Duties & Taxes' | P: 'Duties & Taxes'
+[2026-02-10 20:35:47] [INFO] L: SGST | RG: 'Duties & Taxes' | P: 'Duties & Taxes'
+[2026-02-10 20:35:47] [INFO] L: ROUND OFF-SALE | RG: 'Indirect Expenses' | P: 'Indirect Expenses'
+[2026-02-10 20:35:47] [INFO] L: SHRI RAMDUT ENTRPRISES , HARYAN | RG: 'Sundry Creditors' | P: 'Sundry Creditors'
+[2026-02-10 20:35:47] [INFO] L: IGST | RG: 'Duties & Taxes' | P: 'Duties & Taxes'
+[2026-02-10 20:35:47] [INFO] L: ROUND-OF PURCHASE | RG: 'Indirect Expenses' | P: 'Indirect Expenses'
+[2026-02-10 20:35:47] [INFO] L: Miscellaneous Expenses | RG: 'Indirect Expenses' | P: 'Indirect Expenses'
+[2026-02-10 20:35:47] [INFO] L: Cash | RG: 'Cash-in-Hand' | P: 'Cash-in-Hand'
+[2026-02-10 20:35:47] [INFO] L: Miscellaneous Expenses | RG: 'Indirect Expenses' | P: 'Indirect Expenses'
+[2026-02-10 20:35:47] [INFO] L: Cash | RG: 'Cash-in-Hand' | P: 'Cash-in-Hand'
+[2026-02-10 20:35:47] [INFO] L: Travelling Expenses | RG: 'Indirect Expenses' | P: 'Indirect Expenses'
+[2026-02-10 20:35:47] [INFO] L: Cash | RG: 'Cash-in-Hand' | P: 'Cash-in-Hand'
+[2026-02-10 20:35:47] [INFO] L: TEA,SNACKS,MEALS | RG: 'Indirect Expenses' | P: 'Indirect Expenses'
+[2026-02-10 20:35:47] [INFO] L: Cash | RG: 'Cash-in-Hand' | P: 'Cash-in-Hand'
+[2026-02-10 20:35:47] [INFO] L: TEA,SNACKS,MEALS | RG: 'Indirect Expenses' | P: 'Indirect Expenses'
+[2026-02-10 20:35:47] [INFO] L: Cash | RG: 'Cash-in-Hand' | P: 'Cash-in-Hand'
+[2026-02-10 20:35:47] [INFO] L: LOADING AND UNLONDING | RG: 'Indirect Expenses' | P: 'Indirect Expenses'
+[2026-02-10 20:35:47] [INFO] L: Cash | RG: 'Cash-in-Hand' | P: 'Cash-in-Hand'
+[2026-02-10 20:35:47] [INFO] L: Miscellaneous Expenses | RG: 'Indirect Expenses' | P: 'Indirect Expenses'
+[2026-02-10 20:35:47] [INFO] Analysis: 172 transactions, 17 debtors, 11 creditors, 162 stock items.
+[2026-02-10 20:35:47] [INFO] P&L Groups Found: Sundry Creditors, Duties & Taxes, Indirect Expenses, Cash-in-Hand, Sundry Debtors, Current Liabilities, Bank Accounts
+[2026-02-10 20:35:47] [SUCCESS] Data saved to C:\Projects\Bizstash\dashboard\public\data\SBEM_Malkangiri\data.json
+[2026-02-10 20:35:47] [SUCCESS] Data Processing Complete.
+
+=== SYNC COMPLETE ✅ ===
+
+=== BIZSTASH SYNC ENGINE 5.0 ===
+[2026-02-10 20:43:25] [INFO] Data Directory: C:\Projects\Bizstash\tally_data\xml\SBEM_Malkangiri
+
+=== PRE-SYNC DASHBOARD ===
+[2026-02-10 20:43:26] [INFO] Fetching Masters (Groups & Ledgers)...
+[2026-02-10 20:43:27] [SUCCESS] Fetched Masters successfully.
+[2026-02-10 20:43:27] [INFO] Fetching Profit & Loss Report...
+[2026-02-10 20:43:27] [SUCCESS] Fetched Profit & Loss successfully.
+
+=== PHASE 1: FETCH DATA ===
+[2026-02-10 20:43:27] [INFO] Force Fetching all vouchers to capture any modifications...
+[2026-02-10 20:43:27] [INFO] Fetching ALL vouchers from Tally (single request)...
+[2026-02-10 20:43:28] [SUCCESS] Fetched 1.3 MB in 0.7s → vouchers.xml
+
+=== PHASE 2: PROCESS ===
+[2026-02-10 20:43:28] [INFO] Processing data for SBEM_Malkangiri...
+[2026-02-10 20:43:28] [INFO] Parsed 46 Ledgers, 29 Groups.
+[2026-02-10 20:43:28] [INFO] Parsing vouchers.xml...
+[2026-02-10 20:43:28] [INFO] Loaded 1.3 MB. Parsing XML...
+[2026-02-10 20:43:28] [INFO] Parsed 172 vouchers in 0.1s.
+[2026-02-10 20:43:28] [INFO] L: PARAGON POLYMER PRODUCTS PRIVATE LIMITED , CUTTACK | RG: 'Sundry Creditors' | P: 'Sundry Creditors'
+[2026-02-10 20:43:28] [INFO] L: CGST | RG: 'Duties & Taxes' | P: 'Duties & Taxes'
+[2026-02-10 20:43:28] [INFO] L: SGST | RG: 'Duties & Taxes' | P: 'Duties & Taxes'
+[2026-02-10 20:43:28] [INFO] L: ROUND OFF-SALE | RG: 'Indirect Expenses' | P: 'Indirect Expenses'
+[2026-02-10 20:43:28] [INFO] L: SHRI RAMDUT ENTRPRISES , HARYAN | RG: 'Sundry Creditors' | P: 'Sundry Creditors'
+[2026-02-10 20:43:28] [INFO] L: IGST | RG: 'Duties & Taxes' | P: 'Duties & Taxes'
+[2026-02-10 20:43:28] [INFO] L: ROUND-OF PURCHASE | RG: 'Indirect Expenses' | P: 'Indirect Expenses'
+[2026-02-10 20:43:28] [INFO] L: Miscellaneous Expenses | RG: 'Indirect Expenses' | P: 'Indirect Expenses'
+[2026-02-10 20:43:28] [INFO] L: Cash | RG: 'Cash-in-Hand' | P: 'Cash-in-Hand'
+[2026-02-10 20:43:28] [INFO] L: Miscellaneous Expenses | RG: 'Indirect Expenses' | P: 'Indirect Expenses'
+[2026-02-10 20:43:28] [INFO] L: Cash | RG: 'Cash-in-Hand' | P: 'Cash-in-Hand'
+[2026-02-10 20:43:28] [INFO] L: Travelling Expenses | RG: 'Indirect Expenses' | P: 'Indirect Expenses'
+[2026-02-10 20:43:28] [INFO] L: Cash | RG: 'Cash-in-Hand' | P: 'Cash-in-Hand'
+[2026-02-10 20:43:28] [INFO] L: TEA,SNACKS,MEALS | RG: 'Indirect Expenses' | P: 'Indirect Expenses'
+[2026-02-10 20:43:28] [INFO] L: Cash | RG: 'Cash-in-Hand' | P: 'Cash-in-Hand'
+[2026-02-10 20:43:28] [INFO] L: TEA,SNACKS,MEALS | RG: 'Indirect Expenses' | P: 'Indirect Expenses'
+[2026-02-10 20:43:28] [INFO] L: Cash | RG: 'Cash-in-Hand' | P: 'Cash-in-Hand'
+[2026-02-10 20:43:28] [INFO] L: LOADING AND UNLONDING | RG: 'Indirect Expenses' | P: 'Indirect Expenses'
+[2026-02-10 20:43:28] [INFO] L: Cash | RG: 'Cash-in-Hand' | P: 'Cash-in-Hand'
+[2026-02-10 20:43:28] [INFO] L: Miscellaneous Expenses | RG: 'Indirect Expenses' | P: 'Indirect Expenses'
+[2026-02-10 20:43:28] [INFO] Analysis: 172 transactions, 17 debtors, 11 creditors, 162 stock items.
+[2026-02-10 20:43:28] [INFO] P&L Groups Found: Sundry Creditors, Duties & Taxes, Indirect Expenses, Cash-in-Hand, Sundry Debtors, Current Liabilities, Bank Accounts
+[2026-02-10 20:43:28] [SUCCESS] Data saved to C:\Projects\Bizstash\dashboard\public\data\SBEM_Malkangiri\data.json
+[2026-02-10 20:43:28] [SUCCESS] Data Processing Complete.
+
+=== SYNC COMPLETE ✅ ===
+
+=== BIZSTASH SYNC ENGINE 5.0 ===
+[2026-02-10 20:44:19] [INFO] Data Directory: C:\Projects\Bizstash\tally_data\xml\SBEM_Malkangiri
+
+=== PRE-SYNC DASHBOARD ===
+[2026-02-10 20:44:20] [INFO] Fetching Masters (Groups & Ledgers)...
+[2026-02-10 20:44:21] [SUCCESS] Fetched Masters successfully.
+[2026-02-10 20:44:21] [INFO] Fetching Profit & Loss Report...
+[2026-02-10 20:44:21] [SUCCESS] Fetched Profit & Loss successfully.
+
+=== PHASE 1: FETCH DATA ===
+[2026-02-10 20:44:21] [INFO] Force Fetching all vouchers to capture any modifications...
+[2026-02-10 20:44:21] [INFO] Fetching ALL vouchers from Tally (single request)...
+[2026-02-10 20:44:22] [SUCCESS] Fetched 1.3 MB in 0.7s → vouchers.xml
+
+=== PHASE 2: PROCESS ===
+[2026-02-10 20:44:22] [INFO] Processing data for SBEM_Malkangiri...
+[2026-02-10 20:44:22] [INFO] Parsed 46 Ledgers, 29 Groups.
+[2026-02-10 20:44:22] [INFO] Parsing vouchers.xml...
+[2026-02-10 20:44:22] [INFO] Loaded 1.3 MB. Parsing XML...
+[2026-02-10 20:44:22] [INFO] Parsed 172 vouchers in 0.1s.
+[2026-02-10 20:44:22] [INFO] L: PARAGON POLYMER PRODUCTS PRIVATE LIMITED , CUTTACK | RG: 'Sundry Creditors' | P: 'Sundry Creditors'
+[2026-02-10 20:44:22] [INFO] L: CGST | RG: 'Duties & Taxes' | P: 'Duties & Taxes'
+[2026-02-10 20:44:22] [INFO] L: SGST | RG: 'Duties & Taxes' | P: 'Duties & Taxes'
+[2026-02-10 20:44:22] [INFO] L: ROUND OFF-SALE | RG: 'Indirect Expenses' | P: 'Indirect Expenses'
+[2026-02-10 20:44:22] [INFO] L: SHRI RAMDUT ENTRPRISES , HARYAN | RG: 'Sundry Creditors' | P: 'Sundry Creditors'
+[2026-02-10 20:44:22] [INFO] L: IGST | RG: 'Duties & Taxes' | P: 'Duties & Taxes'
+[2026-02-10 20:44:22] [INFO] L: ROUND-OF PURCHASE | RG: 'Indirect Expenses' | P: 'Indirect Expenses'
+[2026-02-10 20:44:22] [INFO] L: Miscellaneous Expenses | RG: 'Indirect Expenses' | P: 'Indirect Expenses'
+[2026-02-10 20:44:22] [INFO] L: Cash | RG: 'Cash-in-Hand' | P: 'Cash-in-Hand'
+[2026-02-10 20:44:22] [INFO] L: Miscellaneous Expenses | RG: 'Indirect Expenses' | P: 'Indirect Expenses'
+[2026-02-10 20:44:22] [INFO] L: Cash | RG: 'Cash-in-Hand' | P: 'Cash-in-Hand'
+[2026-02-10 20:44:22] [INFO] L: Travelling Expenses | RG: 'Indirect Expenses' | P: 'Indirect Expenses'
+[2026-02-10 20:44:22] [INFO] L: Cash | RG: 'Cash-in-Hand' | P: 'Cash-in-Hand'
+[2026-02-10 20:44:22] [INFO] L: TEA,SNACKS,MEALS | RG: 'Indirect Expenses' | P: 'Indirect Expenses'
+[2026-02-10 20:44:22] [INFO] L: Cash | RG: 'Cash-in-Hand' | P: 'Cash-in-Hand'
+[2026-02-10 20:44:22] [INFO] L: TEA,SNACKS,MEALS | RG: 'Indirect Expenses' | P: 'Indirect Expenses'
+[2026-02-10 20:44:22] [INFO] L: Cash | RG: 'Cash-in-Hand' | P: 'Cash-in-Hand'
+[2026-02-10 20:44:22] [INFO] L: LOADING AND UNLONDING | RG: 'Indirect Expenses' | P: 'Indirect Expenses'
+[2026-02-10 20:44:22] [INFO] L: Cash | RG: 'Cash-in-Hand' | P: 'Cash-in-Hand'
+[2026-02-10 20:44:22] [INFO] L: Miscellaneous Expenses | RG: 'Indirect Expenses' | P: 'Indirect Expenses'
+[2026-02-10 20:44:22] [INFO] Analysis: 172 transactions, 17 debtors, 11 creditors, 162 stock items.
+[2026-02-10 20:44:22] [INFO] P&L Groups Found: Sundry Creditors, Duties & Taxes, Indirect Expenses, Cash-in-Hand, Sundry Debtors, Current Liabilities, Bank Accounts
+[2026-02-10 20:44:22] [SUCCESS] Data saved to C:\Projects\Bizstash\dashboard\public\data\SBEM_Malkangiri\data.json
+[2026-02-10 20:44:22] [SUCCESS] Data Processing Complete.
+
+=== SYNC COMPLETE ✅ ===
+
+=== BIZSTASH SYNC ENGINE 5.0 ===
+[2026-02-10 20:44:59] [INFO] Data Directory: C:\Projects\Bizstash\tally_data\xml\SBEM_Malkangiri
+
+=== PRE-SYNC DASHBOARD ===
+[2026-02-10 20:45:00] [INFO] Fetching Masters (Groups & Ledgers)...
+[2026-02-10 20:45:01] [SUCCESS] Fetched Masters successfully.
+[2026-02-10 20:45:01] [INFO] Fetching Profit & Loss Report...
+[2026-02-10 20:45:01] [SUCCESS] Fetched Profit & Loss successfully.
+
+=== PHASE 1: FETCH DATA ===
+[2026-02-10 20:45:01] [INFO] Force Fetching all vouchers to capture any modifications...
+[2026-02-10 20:45:01] [INFO] Fetching ALL vouchers from Tally (single request)...
+[2026-02-10 20:45:02] [SUCCESS] Fetched 1.3 MB in 0.7s → vouchers.xml
+
+=== PHASE 2: PROCESS ===
+[2026-02-10 20:45:02] [INFO] Processing data for SBEM_Malkangiri...
+[2026-02-10 20:45:02] [INFO] Parsed 46 Ledgers, 29 Groups.
+[2026-02-10 20:45:02] [INFO] Parsing vouchers.xml...
+[2026-02-10 20:45:02] [INFO] Loaded 1.3 MB. Parsing XML...
+[2026-02-10 20:45:02] [INFO] Parsed 172 vouchers in 0.1s.
+[2026-02-10 20:45:02] [INFO] L: PARAGON POLYMER PRODUCTS PRIVATE LIMITED , CUTTACK | RG: 'Sundry Creditors' | P: 'Sundry Creditors'
+[2026-02-10 20:45:02] [INFO] L: CGST | RG: 'Duties & Taxes' | P: 'Duties & Taxes'
+[2026-02-10 20:45:02] [INFO] L: SGST | RG: 'Duties & Taxes' | P: 'Duties & Taxes'
+[2026-02-10 20:45:02] [INFO] L: ROUND OFF-SALE | RG: 'Indirect Expenses' | P: 'Indirect Expenses'
+[2026-02-10 20:45:02] [INFO] L: PURCHASE A\C | RG: 'PURCHASE ACOUNTS' | P: 'PURCHASE ACOUNTS'
+[2026-02-10 20:45:02] [INFO] L: PURCHASE A\C | RG: 'PURCHASE ACOUNTS' | P: 'PURCHASE ACOUNTS'
+[2026-02-10 20:45:02] [INFO] L: PURCHASE A\C | RG: 'PURCHASE ACOUNTS' | P: 'PURCHASE ACOUNTS'
+[2026-02-10 20:45:02] [INFO] L: PURCHASE A\C | RG: 'PURCHASE ACOUNTS' | P: 'PURCHASE ACOUNTS'
+[2026-02-10 20:45:02] [INFO] L: PURCHASE A\C | RG: 'PURCHASE ACOUNTS' | P: 'PURCHASE ACOUNTS'
+[2026-02-10 20:45:02] [INFO] L: PURCHASE A\C | RG: 'PURCHASE ACOUNTS' | P: 'PURCHASE ACOUNTS'
+[2026-02-10 20:45:02] [INFO] L: PURCHASE A\C | RG: 'PURCHASE ACOUNTS' | P: 'PURCHASE ACOUNTS'
+[2026-02-10 20:45:02] [INFO] L: PURCHASE A\C | RG: 'PURCHASE ACOUNTS' | P: 'PURCHASE ACOUNTS'
+[2026-02-10 20:45:02] [INFO] L: PURCHASE A\C | RG: 'PURCHASE ACOUNTS' | P: 'PURCHASE ACOUNTS'
+[2026-02-10 20:45:02] [INFO] L: PURCHASE A\C | RG: 'PURCHASE ACOUNTS' | P: 'PURCHASE ACOUNTS'
+[2026-02-10 20:45:02] [INFO] L: PURCHASE A\C | RG: 'PURCHASE ACOUNTS' | P: 'PURCHASE ACOUNTS'
+[2026-02-10 20:45:02] [INFO] L: PURCHASE A\C | RG: 'PURCHASE ACOUNTS' | P: 'PURCHASE ACOUNTS'
+[2026-02-10 20:45:02] [INFO] L: PURCHASE A\C | RG: 'PURCHASE ACOUNTS' | P: 'PURCHASE ACOUNTS'
+[2026-02-10 20:45:02] [INFO] L: PURCHASE A\C | RG: 'PURCHASE ACOUNTS' | P: 'PURCHASE ACOUNTS'
+[2026-02-10 20:45:02] [INFO] L: PURCHASE A\C | RG: 'PURCHASE ACOUNTS' | P: 'PURCHASE ACOUNTS'
+[2026-02-10 20:45:02] [INFO] L: PURCHASE A\C | RG: 'PURCHASE ACOUNTS' | P: 'PURCHASE ACOUNTS'
+[2026-02-10 20:45:02] [INFO] Analysis: 172 transactions, 17 debtors, 11 creditors, 162 stock items.
+[2026-02-10 20:45:02] [INFO] P&L Groups Found: Sundry Creditors, Duties & Taxes, Indirect Expenses, PURCHASE ACOUNTS, Cash-in-Hand, Sundry Debtors, Sales Accounts, Current Liabilities, Bank Accounts
+[2026-02-10 20:45:02] [SUCCESS] Data saved to C:\Projects\Bizstash\dashboard\public\data\SBEM_Malkangiri\data.json
+[2026-02-10 20:45:02] [SUCCESS] Data Processing Complete.
+
+=== SYNC COMPLETE ✅ ===
+
+=== BIZSTASH SYNC ENGINE 5.0 ===
+[2026-02-10 20:46:40] [INFO] Data Directory: C:\Projects\Bizstash\tally_data\xml\SBEM_Malkangiri
+
+=== PRE-SYNC DASHBOARD ===
+[2026-02-10 20:46:41] [INFO] Fetching Masters (Groups & Ledgers)...
+[2026-02-10 20:46:42] [SUCCESS] Fetched Masters successfully.
+[2026-02-10 20:46:42] [INFO] Fetching Profit & Loss Report...
+[2026-02-10 20:46:43] [SUCCESS] Fetched Profit & Loss successfully.
+
+=== PHASE 1: FETCH DATA ===
+[2026-02-10 20:46:43] [INFO] Force Fetching all vouchers to capture any modifications...
+[2026-02-10 20:46:43] [INFO] Fetching ALL vouchers from Tally (single request)...
+[2026-02-10 20:46:44] [SUCCESS] Fetched 1.3 MB in 0.7s → vouchers.xml
+
+=== PHASE 2: PROCESS ===
+[2026-02-10 20:46:44] [INFO] Processing data for SBEM_Malkangiri...
+[2026-02-10 20:46:44] [INFO] Parsed 46 Ledgers, 29 Groups.
+[2026-02-10 20:46:44] [INFO] Parsing vouchers.xml...
+[2026-02-10 20:46:44] [INFO] Loaded 1.3 MB. Parsing XML...
+[2026-02-10 20:46:44] [INFO] Parsed 172 vouchers in 0.1s.
+[2026-02-10 20:46:44] [INFO] L: PARAGON POLYMER PRODUCTS PRIVATE LIMITED , CUTTACK | RG: 'Sundry Creditors' | P: 'Sundry Creditors'
+[2026-02-10 20:46:44] [INFO] L: CGST | RG: 'Duties & Taxes' | P: 'Duties & Taxes'
+[2026-02-10 20:46:44] [INFO] L: SGST | RG: 'Duties & Taxes' | P: 'Duties & Taxes'
+[2026-02-10 20:46:44] [INFO] L: ROUND OFF-SALE | RG: 'Indirect Expenses' | P: 'Indirect Expenses'
+[2026-02-10 20:46:44] [INFO] L: PURCHASE A\C | RG: 'Purchase Accounts' | P: 'PURCHASE ACOUNTS'
+[2026-02-10 20:46:44] [INFO] L: PURCHASE A\C | RG: 'Purchase Accounts' | P: 'PURCHASE ACOUNTS'
+[2026-02-10 20:46:44] [INFO] L: PURCHASE A\C | RG: 'Purchase Accounts' | P: 'PURCHASE ACOUNTS'
+[2026-02-10 20:46:44] [INFO] L: PURCHASE A\C | RG: 'Purchase Accounts' | P: 'PURCHASE ACOUNTS'
+[2026-02-10 20:46:44] [INFO] L: PURCHASE A\C | RG: 'Purchase Accounts' | P: 'PURCHASE ACOUNTS'
+[2026-02-10 20:46:44] [INFO] L: PURCHASE A\C | RG: 'Purchase Accounts' | P: 'PURCHASE ACOUNTS'
+[2026-02-10 20:46:44] [INFO] L: PURCHASE A\C | RG: 'Purchase Accounts' | P: 'PURCHASE ACOUNTS'
+[2026-02-10 20:46:44] [INFO] L: PURCHASE A\C | RG: 'Purchase Accounts' | P: 'PURCHASE ACOUNTS'
+[2026-02-10 20:46:44] [INFO] L: PURCHASE A\C | RG: 'Purchase Accounts' | P: 'PURCHASE ACOUNTS'
+[2026-02-10 20:46:44] [INFO] L: PURCHASE A\C | RG: 'Purchase Accounts' | P: 'PURCHASE ACOUNTS'
+[2026-02-10 20:46:44] [INFO] L: PURCHASE A\C | RG: 'Purchase Accounts' | P: 'PURCHASE ACOUNTS'
+[2026-02-10 20:46:44] [INFO] L: PURCHASE A\C | RG: 'Purchase Accounts' | P: 'PURCHASE ACOUNTS'
+[2026-02-10 20:46:44] [INFO] L: PURCHASE A\C | RG: 'Purchase Accounts' | P: 'PURCHASE ACOUNTS'
+[2026-02-10 20:46:44] [INFO] L: PURCHASE A\C | RG: 'Purchase Accounts' | P: 'PURCHASE ACOUNTS'
+[2026-02-10 20:46:44] [INFO] L: PURCHASE A\C | RG: 'Purchase Accounts' | P: 'PURCHASE ACOUNTS'
+[2026-02-10 20:46:44] [INFO] L: PURCHASE A\C | RG: 'Purchase Accounts' | P: 'PURCHASE ACOUNTS'
+[2026-02-10 20:46:44] [INFO] Analysis: 172 transactions, 17 debtors, 11 creditors, 162 stock items.
+[2026-02-10 20:46:44] [INFO] P&L Groups Found: Sundry Creditors, Duties & Taxes, Indirect Expenses, Purchase Accounts, Cash-in-Hand, Sundry Debtors, Sales Accounts, Current Liabilities, Bank Accounts
+[2026-02-10 20:46:44] [SUCCESS] Data saved to C:\Projects\Bizstash\dashboard\public\data\SBEM_Malkangiri\data.json
+[2026-02-10 20:46:44] [SUCCESS] Data Processing Complete.
+
+=== SYNC COMPLETE ✅ ===
+
+=== BIZSTASH SYNC ENGINE 5.0 ===
+[2026-02-10 20:50:32] [INFO] Data Directory: C:\Projects\Bizstash\tally_data\xml\SBEM_Malkangiri
+
+=== PRE-SYNC DASHBOARD ===
+[2026-02-10 20:50:33] [INFO] Fetching Masters (Groups & Ledgers)...
+[2026-02-10 20:50:34] [SUCCESS] Fetched Masters successfully.
+[2026-02-10 20:50:34] [INFO] Fetching Profit & Loss Report...
+[2026-02-10 20:50:35] [SUCCESS] Fetched Profit & Loss successfully.
+
+=== PHASE 1: FETCH DATA ===
+[2026-02-10 20:50:35] [INFO] Force Fetching all vouchers to capture any modifications...
+[2026-02-10 20:50:35] [INFO] Fetching ALL vouchers from Tally (single request)...
+[2026-02-10 20:50:35] [SUCCESS] Fetched 1.3 MB in 0.8s → vouchers.xml
+
+=== PHASE 2: PROCESS ===
+[2026-02-10 20:50:35] [INFO] Processing data for SBEM_Malkangiri...
+[2026-02-10 20:50:35] [INFO] Parsed 46 Ledgers, 29 Groups.
+[2026-02-10 20:50:35] [INFO] Parsing vouchers.xml...
+[2026-02-10 20:50:35] [INFO] Loaded 1.3 MB. Parsing XML...
+[2026-02-10 20:50:36] [INFO] Parsed 172 vouchers in 0.1s.
+[2026-02-10 20:50:36] [INFO] L: PARAGON POLYMER PRODUCTS PRIVATE LIMITED , CUTTACK | RG: 'Sundry Creditors' | P: 'Sundry Creditors'
+[2026-02-10 20:50:36] [INFO] L: CGST | RG: 'Duties & Taxes' | P: 'Duties & Taxes'
+[2026-02-10 20:50:36] [INFO] L: SGST | RG: 'Duties & Taxes' | P: 'Duties & Taxes'
+[2026-02-10 20:50:36] [INFO] L: ROUND OFF-SALE | RG: 'Indirect Expenses' | P: 'Indirect Expenses'
+[2026-02-10 20:50:36] [INFO] L: PURCHASE A\C | RG: 'Purchase Accounts' | P: 'PURCHASE ACOUNTS'
+[2026-02-10 20:50:36] [INFO] L: PURCHASE A\C | RG: 'Purchase Accounts' | P: 'PURCHASE ACOUNTS'
+[2026-02-10 20:50:36] [INFO] L: PURCHASE A\C | RG: 'Purchase Accounts' | P: 'PURCHASE ACOUNTS'
+[2026-02-10 20:50:36] [INFO] L: PURCHASE A\C | RG: 'Purchase Accounts' | P: 'PURCHASE ACOUNTS'
+[2026-02-10 20:50:36] [INFO] L: PURCHASE A\C | RG: 'Purchase Accounts' | P: 'PURCHASE ACOUNTS'
+[2026-02-10 20:50:36] [INFO] L: PURCHASE A\C | RG: 'Purchase Accounts' | P: 'PURCHASE ACOUNTS'
+[2026-02-10 20:50:36] [INFO] L: PURCHASE A\C | RG: 'Purchase Accounts' | P: 'PURCHASE ACOUNTS'
+[2026-02-10 20:50:36] [INFO] L: PURCHASE A\C | RG: 'Purchase Accounts' | P: 'PURCHASE ACOUNTS'
+[2026-02-10 20:50:36] [INFO] L: PURCHASE A\C | RG: 'Purchase Accounts' | P: 'PURCHASE ACOUNTS'
+[2026-02-10 20:50:36] [INFO] L: PURCHASE A\C | RG: 'Purchase Accounts' | P: 'PURCHASE ACOUNTS'
+[2026-02-10 20:50:36] [INFO] L: PURCHASE A\C | RG: 'Purchase Accounts' | P: 'PURCHASE ACOUNTS'
+[2026-02-10 20:50:36] [INFO] L: PURCHASE A\C | RG: 'Purchase Accounts' | P: 'PURCHASE ACOUNTS'
+[2026-02-10 20:50:36] [INFO] L: PURCHASE A\C | RG: 'Purchase Accounts' | P: 'PURCHASE ACOUNTS'
+[2026-02-10 20:50:36] [INFO] L: PURCHASE A\C | RG: 'Purchase Accounts' | P: 'PURCHASE ACOUNTS'
+[2026-02-10 20:50:36] [INFO] L: PURCHASE A\C | RG: 'Purchase Accounts' | P: 'PURCHASE ACOUNTS'
+[2026-02-10 20:50:36] [INFO] L: PURCHASE A\C | RG: 'Purchase Accounts' | P: 'PURCHASE ACOUNTS'
+[2026-02-10 20:50:36] [INFO] Analysis: 172 transactions, 17 debtors, 11 creditors, 162 stock items.
+[2026-02-10 20:50:36] [INFO] P&L Groups Found: Sundry Creditors, Duties & Taxes, Indirect Expenses, Purchase Accounts, Cash-in-Hand, Sundry Debtors, Sales Accounts, Current Liabilities, Bank Accounts
+[2026-02-10 20:50:36] [SUCCESS] Data saved to C:\Projects\Bizstash\dashboard\public\data\SBEM_Malkangiri\data.json
+[2026-02-10 20:50:36] [SUCCESS] Data Processing Complete.
+
+=== SYNC COMPLETE ✅ ===
+
+=== BIZSTASH SYNC ENGINE 5.0 ===
+[2026-02-10 20:54:01] [INFO] Data Directory: C:\Projects\Bizstash\tally_data\xml\SF_SKLM
+
+=== PRE-SYNC DASHBOARD ===
+[2026-02-10 20:54:04] [INFO] Fetching Masters (Groups & Ledgers)...
+[2026-02-10 20:54:05] [SUCCESS] Fetched Masters successfully.
+[2026-02-10 20:54:05] [INFO] Fetching Profit & Loss Report...
+[2026-02-10 20:54:06] [SUCCESS] Fetched Profit & Loss successfully.
+
+=== PHASE 1: FETCH DATA ===
+[2026-02-10 20:54:06] [INFO] Force Fetching all vouchers to capture any modifications...
+[2026-02-10 20:54:06] [INFO] Fetching ALL vouchers from Tally (single request)...
+[2026-02-10 20:54:15] [SUCCESS] Fetched 30.7 MB in 8.7s → vouchers.xml
+
+=== PHASE 2: PROCESS ===
+[2026-02-10 20:54:15] [INFO] Processing data for SF_SKLM...
+[2026-02-10 20:54:15] [INFO] Parsed 700 Ledgers, 39 Groups.
+[2026-02-10 20:54:15] [INFO] Parsing vouchers.xml...
+[2026-02-10 20:54:15] [INFO] Loaded 30.7 MB. Parsing XML...
+[2026-02-10 20:54:16] [INFO] Parsed 3,969 vouchers in 1.7s.
+[2026-02-10 20:54:16] [INFO] L: OMKAR FOOTWEAR,SKLM | RG: 'Sundry Debtors' | P: 'SKLM LOCAL LINE'
+[2026-02-10 20:54:16] [INFO] L: BASHIR SARIFF , SRIKAKULAM | RG: 'Sundry Debtors' | P: 'SKLM LOCAL LINE'
+[2026-02-10 20:54:16] [INFO] L: PEOPLE SHOE MART, SRIKAKULAM | RG: 'Sundry Debtors' | P: 'SKLM LOCAL LINE'
+[2026-02-10 20:54:16] [INFO] L: SURYA FOOTWEAR,SKLM | RG: 'Sundry Debtors' | P: 'SKLM LOCAL LINE'
+[2026-02-10 20:54:16] [INFO] L: SRI CHANDRA GENERALS STORES,SINGIDI | RG: 'Sundry Debtors' | P: 'SKLM-PLKD-BATILI'
+[2026-02-10 20:54:16] [INFO] L: Cash | RG: 'Cash-in-Hand' | P: 'Cash-in-Hand'
+[2026-02-10 20:54:16] [INFO] L: TIRUMALA SHOE MART,RAJAM | RG: 'Sundry Debtors' | P: 'SKLM-RJM-RANNASTHALAM'
+[2026-02-10 20:54:16] [INFO] L: NEW METRO SHOES , RAJAM | RG: 'Sundry Debtors' | P: 'SKLM-RJM-RANNASTHALAM'
+[2026-02-10 20:54:16] [INFO] L: GOURI SANKAR SHOEMART,RAJAM | RG: 'Sundry Debtors' | P: 'SKLM-RJM-RANNASTHALAM'
+[2026-02-10 20:54:16] [INFO] L: BALAJI FOOTWEAR,PONDURU | RG: 'Sundry Debtors' | P: 'SKLM-RJM-RANNASTHALAM'
+[2026-02-10 20:54:16] [INFO] L: BHAGYA LAKSHMI F/W,PONDURU | RG: 'Sundry Debtors' | P: 'SKLM-RJM-RANNASTHALAM'
+[2026-02-10 20:54:16] [INFO] L: Cash | RG: 'Cash-in-Hand' | P: 'Cash-in-Hand'
+[2026-02-10 20:54:16] [INFO] L: DISCOUNT | RG: 'Indirect Expenses' | P: 'Indirect Expenses'
+[2026-02-10 20:54:16] [INFO] L: TIRUMALA SHOE MART,RAJAM | RG: 'Sundry Debtors' | P: 'SKLM-RJM-RANNASTHALAM'
+[2026-02-10 20:54:16] [INFO] L: DISCOUNT | RG: 'Indirect Expenses' | P: 'Indirect Expenses'
+[2026-02-10 20:54:16] [INFO] L: GOURI SANKAR SHOEMART,RAJAM | RG: 'Sundry Debtors' | P: 'SKLM-RJM-RANNASTHALAM'
+[2026-02-10 20:54:16] [INFO] L: NEW DIAMOND SHOE MART,SKLM | RG: 'Sundry Debtors' | P: 'SKLM LOCAL LINE'
+[2026-02-10 20:54:16] [INFO] L: NEW FRIENDS SHOES MART,SKLM | RG: 'Sundry Debtors' | P: 'SKLM LOCAL LINE'
+[2026-02-10 20:54:16] [INFO] L: VANI FOOTWEAR,SRIKAKULAM | RG: 'Sundry Debtors' | P: 'SKLM LOCAL LINE'
+[2026-02-10 20:54:16] [INFO] L: OMKAR FOOTWEAR,SKLM | RG: 'Sundry Debtors' | P: 'SKLM LOCAL LINE'
+[2026-02-10 20:54:16] [INFO] Analysis: 3969 transactions, 519 debtors, 36 creditors, 709 stock items.
+[2026-02-10 20:54:16] [INFO] P&L Groups Found: Sundry Debtors, Cash-in-Hand, Indirect Expenses, Bank Accounts, Current Liabilities, Bank OD A/c, Sundry Creditors, Duties & Taxes, Purchase Accounts, Sales Accounts, Indirect Incomes, Capital Account
+[2026-02-10 20:54:16] [SUCCESS] Data saved to C:\Projects\Bizstash\dashboard\public\data\SF_SKLM\data.json
+[2026-02-10 20:54:16] [SUCCESS] Data Processing Complete.
+
+=== SYNC COMPLETE ✅ ===

@@ -148,6 +148,19 @@ class DataFetcher {
             throw e;
         }
     }
+
+
+    // --- PROFIT & LOSS FETCH ---
+    async fetchProfitLoss() {
+        Logger.info('Fetching Profit & Loss Report...');
+        try {
+            const xml = await TallyConnection.send(TdlBuilder.getProfitLossRequest());
+            await fs.writeFile(path.join(this.mastersDir, 'profit_loss.xml'), xml);
+            Logger.success('Fetched Profit & Loss successfully.');
+        } catch (e) {
+            Logger.error('Failed to fetch Profit & Loss', e);
+        }
+    }
 }
 
 module.exports = DataFetcher;

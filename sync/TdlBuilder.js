@@ -167,6 +167,27 @@ class TdlBuilder {
             </BODY>
         </ENVELOPE>`;
     }
+
+    // --- Profit & Loss Report (for Gross/Net Profit) ---
+    static getProfitLossRequest() {
+        return `
+        <ENVELOPE>
+            <HEADER>
+                <VERSION>1</VERSION>
+                <TALLYREQUEST>Export Data</TALLYREQUEST>
+                <TYPE>Report</TYPE>
+                <ID>Profit and Loss</ID>
+            </HEADER>
+            <BODY>
+                <DESC>
+                    <STATICVARIABLES>
+                        <SVEXPORTFORMAT>$$SysName:XML</SVEXPORTFORMAT>
+                        <EXPLODEFLAG>No</EXPLODEFLAG>
+                    </STATICVARIABLES>
+                </DESC>
+            </BODY>
+        </ENVELOPE>`;
+    }
 }
 
 module.exports = TdlBuilder;
