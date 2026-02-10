@@ -400,3 +400,27 @@
 [2026-02-10 18:44:59] [SUCCESS] Data Processing Complete.
 
 === SYNC COMPLETE ✅ ===
+
+=== BIZSTASH SYNC ENGINE 5.0 ===
+[2026-02-10 18:47:23] [INFO] Data Directory: C:\Projects\Bizstash\tally_data\xml\Admin_Test_PC
+
+=== PRE-SYNC DASHBOARD ===
+[2026-02-10 18:47:27] [INFO] Fetching Masters (Groups & Ledgers)...
+[2026-02-10 18:47:28] [SUCCESS] Fetched Masters successfully.
+
+=== PHASE 1: FETCH DATA ===
+[2026-02-10 18:47:28] [INFO] Force Fetching all vouchers to capture any modifications...
+[2026-02-10 18:47:28] [INFO] Fetching ALL vouchers from Tally (single request)...
+[2026-02-10 18:47:43] [SUCCESS] Fetched 49.6 MB in 14.6s → vouchers.xml
+
+=== PHASE 2: PROCESS ===
+[2026-02-10 18:47:43] [INFO] Processing data for Admin_Test_PC...
+[2026-02-10 18:47:43] [INFO] Parsed 1071 Ledgers, 66 Groups.
+[2026-02-10 18:47:43] [INFO] Parsing vouchers.xml...
+[2026-02-10 18:47:43] [INFO] Loaded 49.6 MB. Parsing XML...
+[2026-02-10 18:47:45] [INFO] Parsed 4,591 vouchers in 2.6s.
+[2026-02-10 18:47:45] [INFO] Analysis: 4591 transactions, 817 debtors, 115 creditors, 2128 stock items.
+[2026-02-10 18:47:45] [SUCCESS] Data saved to C:\Projects\Bizstash\dashboard\public\data\Admin_Test_PC\data.json
+[2026-02-10 18:47:45] [SUCCESS] Data Processing Complete.
+
+=== SYNC COMPLETE ✅ ===
