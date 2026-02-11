@@ -42,7 +42,7 @@ class SyncEngine {
             // ════════════════════════════════════════
             // CHECK FOR DELTA SYNC
             // ════════════════════════════════════════
-            const stateFile = path.join(fetcher.baseDir, '..', 'sync_state.json');
+            const stateFile = fetcher.stateFile;
             let syncState = null;
             try {
                 if (await fs.pathExists(stateFile)) {
