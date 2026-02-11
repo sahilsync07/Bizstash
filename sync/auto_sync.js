@@ -11,8 +11,8 @@ const CompanyRegistry = require('./utils/CompanyRegistry');
 function generateId(fullname) {
     // 1. Remove track info like "(2024-25)"
     let clean = fullname.replace(/\(.*\)/g, '').trim();
-    // 2. Remove "M/S" or similar prefixes
-    clean = clean.replace(/^(M\/S\s*|SRI\s*|SHREE\s*)/i, '').trim();
+    // 2. Remove "M/S" only (keep SHREE/SRI as they are distinctive)
+    clean = clean.replace(/^(M\/S|M\/s|Ms)\.?\s*/i, '').trim();
     // 3. Keep only alphanumeric and spaces, then replace spaces with underscores
     return clean.replace(/[^a-zA-Z0-9\s]/g, '')
         .replace(/\s+/g, '_')
