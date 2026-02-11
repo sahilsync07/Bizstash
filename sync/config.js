@@ -28,12 +28,12 @@ const CONFIG = {
         // 'FOLDER_ID': 'TALLY_NAME_SUBSTRING',
     },
 
-    // Sync Settings
+    // Sync Settings — tuned for Tally stability
     SETTINGS: {
-        REQUEST_TIMEOUT: 120000,  // 120 seconds - single 52MB fetch needs time
+        REQUEST_TIMEOUT: 300000,  // 5 minutes — heavy months need time
         RETRY_ATTEMPTS: 3,
-        COOLDOWN_MS: 500, // 500ms delay between requests - give Tally time to breathe
-        MONTH_CHUNKS: 1
+        COOLDOWN_MS: 1000,
+        BATCH_DELAY: 2000 // 2s breathing room between monthly chunks
     }
 };
 

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Search, Filter, ChevronRight, Eye, FileText, X, Calendar, Hash, Type } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { Search, Filter, ChevronRight, Eye, FileText, X, Calendar, Hash, Type, Activity } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const VOUCHER_TYPES = [
   'Tax Invoice', 'Purchase', 'Receipt', 'Payment',

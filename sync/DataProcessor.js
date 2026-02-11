@@ -25,14 +25,313 @@ class DataProcessor {
         await fs.ensureDir(this.outputDir);
 
         const masters = await this._parseMasters();
-        // const profitLoss = await this._parseProfitLoss(); // Deprecated
         const analysis = await this._parseVouchers(masters);
-        // analysis.profitLoss = profitLoss; // Deprecated
 
         await this._saveData(masters, analysis);
         await this._updateCompanyIndex();
 
         Logger.success('Data Processing Complete.');
+    }
+
+    // ============================================================
+    // PUBLIC INCREMENTAL API — Used by SyncEngine for chunk-parse-accumulate
+    // ============================================================
+
+    /** Parse masters from XML files on disk. Public wrapper for _parseMasters. */
+    async parseMastersPublic() {
+        await fs.ensureDir(this.outputDir);
+        return this._parseMasters();
+    }
+
+    /** Create empty accumulators for incremental voucher processing. */
+    initAccumulators(masters) {
+        const monthlyStats = {};
+        const stockStats = {};
+        const ledgerBalances = {};
+        const groupTotals = {};
+        const allTransactions = [];
+
+        // Init ledger balances from masters
+        Object.values(masters.ledgers).forEach(l => {
+            if (l.rootGroup === 'Sundry Debtors' || l.rootGroup === 'Sundry Creditors') {
+                ledgerBalances[l.name] = {
+                    balance: l.openingBalance || 0,
+                    billRefs: [],
+                    group: l.rootGroup,
+                    parent: l.parent
+                };
+            }
+        });
+
+        return { monthlyStats, stockStats, ledgerBalances, groupTotals, allTransactions };
+    }
+
+    /** Process a batch of parsed voucher objects into the accumulators. */
+    processVoucherBatch(vouchers, acc, masters) {
+        const today = new Date();
+
+        vouchers.forEach((v) => {
+            if (this._getText(v.ISCANCELLED) === 'Yes' || this._getText(v.ISOPTIONAL) === 'Yes') return;
+
+            const dateStr = this._getText(v.DATE);
+            if (!dateStr) return;
+
+            const month = dateStr.substring(0, 6);
+            const voucherDate = parse(dateStr, 'yyyyMMdd', new Date());
+            const vType = (v.$ && v.$.VCHTYPE || this._getText(v.VOUCHERTYPENAME) || this._getText(v.VOUCHERTYPE) || 'Unknown').trim();
+            const vTypeLower = vType.toLowerCase();
+
+            const masterId = this._getText(v.MASTERID) || '';
+            const alterId = parseInt(this._getText(v.ALTERID) || '0', 10);
+
+            const transaction = {
+                masterId,
+                alterId,
+                date: dateStr,
+                type: vType,
+                referenceNumber: (this._getText(v.VOUCHERNUMBER) || this._getText(v.REFERENCE) || '').trim(),
+                party: this._getText(v.PARTYLEDGERNAME),
+                amount: parseFloat(this._getText(v.AMOUNT) || 0),
+                narration: this._getText(v.NARRATION) || '',
+                ledgers: [],
+                details: [],
+                inventory: []
+            };
+
+            const voucherTotal = Math.abs(parseFloat(this._getText(v.AMOUNT) || 0));
+
+            if (vTypeLower.includes('sales') || vTypeLower.includes('tax invoice')) {
+                if (!acc.monthlyStats[month]) acc.monthlyStats[month] = { sales: 0, purchase: 0 };
+                acc.monthlyStats[month].sales += voucherTotal;
+            } else if (vTypeLower.includes('purchase')) {
+                if (!acc.monthlyStats[month]) acc.monthlyStats[month] = { sales: 0, purchase: 0 };
+                acc.monthlyStats[month].purchase += voucherTotal;
+            }
+
+            // Inventory Entries
+            let invEntries = v['ALLINVENTORYENTRIES.LIST'];
+            if (invEntries && !Array.isArray(invEntries)) invEntries = [invEntries];
+
+            if (invEntries) {
+                invEntries.forEach(item => {
+                    const amt = Math.abs(parseFloat(this._getText(item.AMOUNT) || 0));
+                    const qty = Math.abs(parseFloat(this._getText(item.BILLEDQTY) || this._getText(item.ACTUALQTY) || 0));
+                    const stockName = this._getText(item.STOCKITEMNAME);
+                    if (!stockName) return;
+
+                    if (vTypeLower.includes('sales') || vTypeLower.includes('tax invoice')) {
+                        if (!acc.stockStats[stockName]) acc.stockStats[stockName] = { qty: 0, revenue: 0, lastSaleDate: voucherDate, inwardQty: 0, outwardQty: 0, inwardVal: 0, outwardVal: 0 };
+                        acc.stockStats[stockName].outwardQty += qty;
+                        acc.stockStats[stockName].outwardVal += amt;
+                        acc.stockStats[stockName].revenue += amt;
+                        if (voucherDate > acc.stockStats[stockName].lastSaleDate) acc.stockStats[stockName].lastSaleDate = voucherDate;
+                    } else if (vTypeLower.includes('credit note')) {
+                        if (!acc.stockStats[stockName]) acc.stockStats[stockName] = { qty: 0, revenue: 0, lastSaleDate: voucherDate, inwardQty: 0, outwardQty: 0, inwardVal: 0, outwardVal: 0 };
+                        acc.stockStats[stockName].inwardQty += qty;
+                        acc.stockStats[stockName].revenue -= amt;
+                    } else if (vTypeLower.includes('purchase')) {
+                        if (!acc.stockStats[stockName]) acc.stockStats[stockName] = { qty: 0, revenue: 0, lastSaleDate: voucherDate, inwardQty: 0, outwardQty: 0, inwardVal: 0, outwardVal: 0 };
+                        acc.stockStats[stockName].inwardQty += qty;
+                        acc.stockStats[stockName].inwardVal += amt;
+                    } else if (vTypeLower.includes('debit note')) {
+                        if (!acc.stockStats[stockName]) acc.stockStats[stockName] = { qty: 0, revenue: 0, lastSaleDate: voucherDate, inwardQty: 0, outwardQty: 0, inwardVal: 0, outwardVal: 0 };
+                        acc.stockStats[stockName].outwardQty += qty;
+                    }
+
+                    transaction.inventory.push({ name: stockName, qty, amount: amt, rate: amt / (qty || 1) });
+                });
+            }
+
+            // Ledger Entries
+            let ledEntries = [];
+            let directLedgers = v['ALLLEDGERENTRIES.LIST'] || v['LEDGERENTRIES.LIST'] || [];
+            if (!Array.isArray(directLedgers)) directLedgers = [directLedgers];
+            ledEntries.push(...directLedgers);
+
+            let invItems = v['ALLINVENTORYENTRIES.LIST'] || v['INVENTORYENTRIES.LIST'] || [];
+            if (!Array.isArray(invItems)) invItems = [invItems];
+            invItems.forEach(inv => {
+                let allocations = inv['ACCOUNTINGALLOCATIONS.LIST'] || [];
+                if (!Array.isArray(allocations)) allocations = [allocations];
+                ledEntries.push(...allocations);
+            });
+
+            if (ledEntries.length > 0) {
+                ledEntries.forEach(entry => {
+                    const ledgerName = this._getText(entry.LEDGERNAME);
+                    if (!ledgerName) return;
+                    const amount = parseFloat(this._getText(entry.AMOUNT) || 0);
+                    const isDebit = this._getText(entry.ISDEEMEDPOSITIVE) === 'Yes';
+                    const ledgerEntry = { ledger: ledgerName, amount: Math.abs(amount) };
+                    if (isDebit) ledgerEntry.debit = Math.abs(amount);
+                    else ledgerEntry.credit = Math.abs(amount);
+
+                    transaction.ledgers.push({ name: ledgerName, amount });
+                    transaction.details.push(ledgerEntry);
+
+                    if (masters.ledgers[ledgerName]) {
+                        let rootGroup = (masters.ledgers[ledgerName].rootGroup || 'Unknown').trim().replace(/[^\x20-\x7E]/g, '');
+                        if (rootGroup === 'Primary' || rootGroup === 'Unknown') {
+                            const lowerN = ledgerName.toLowerCase();
+                            if (lowerN.includes('sales')) rootGroup = 'Sales Accounts';
+                            else if (lowerN.includes('purchase')) rootGroup = 'Purchase Accounts';
+                        }
+                        if (!acc.groupTotals[rootGroup]) acc.groupTotals[rootGroup] = 0;
+                        acc.groupTotals[rootGroup] += amount;
+
+                        if (!acc.monthlyStats[month]) acc.monthlyStats[month] = { sales: 0, purchase: 0, groupTotals: {} };
+                        if (!acc.monthlyStats[month].groupTotals) acc.monthlyStats[month].groupTotals = {};
+                        if (!acc.monthlyStats[month].groupTotals[rootGroup]) acc.monthlyStats[month].groupTotals[rootGroup] = 0;
+                        acc.monthlyStats[month].groupTotals[rootGroup] += amount;
+
+                        if (rootGroup === 'Sundry Debtors' || rootGroup === 'Sundry Creditors') {
+                            if (!acc.ledgerBalances[ledgerName]) {
+                                acc.ledgerBalances[ledgerName] = { balance: 0, billRefs: [], group: rootGroup, parent: masters.ledgers[ledgerName].parent };
+                            }
+                            acc.ledgerBalances[ledgerName].balance += amount;
+                        }
+                    }
+
+                    let bills = entry['BILLALLOCATIONS.LIST'];
+                    if (bills && !Array.isArray(bills)) bills = [bills];
+                    if (bills && acc.ledgerBalances[ledgerName]) {
+                        bills.forEach(b => {
+                            acc.ledgerBalances[ledgerName].billRefs.push({
+                                date: voucherDate,
+                                amount: parseFloat(this._getText(b.AMOUNT) || 0),
+                                type: this._getText(b.BILLTYPE),
+                                name: this._getText(b.NAME)
+                            });
+                        });
+                    }
+                });
+            }
+
+            acc.allTransactions.push(transaction);
+        });
+
+        return vouchers.length;
+    }
+
+    /** Finalize accumulated data and save to data.json. */
+    async finalizeAndSave(acc, masters) {
+        Logger.info(`Finalizing: ${acc.allTransactions.length} transactions accumulated.`);
+        const analysis = this._finalizeAnalysis(
+            acc.monthlyStats, acc.stockStats, acc.ledgerBalances,
+            acc.allTransactions, masters, new Date(), acc.groupTotals
+        );
+        await this._saveData(masters, analysis);
+        await this._updateCompanyIndex();
+        return analysis;
+    }
+
+    /**
+     * DELTA SYNC: Merge delta vouchers into existing data and reprocess.
+     * 1. Load existing data.json transactions
+     * 2. Replace matching masterIds, append new ones
+     * 3. Re-run full analysis on merged set
+     * 4. Save updated data.json
+     */
+    async mergeAndReprocess(deltaTransactions, masters) {
+        const dataFile = path.join(this.outputDir, 'data.json');
+        let existingTransactions = [];
+
+        if (await fs.pathExists(dataFile)) {
+            const existing = await fs.readJson(dataFile);
+            existingTransactions = existing.analysis?.transactions || [];
+        }
+
+        // Build a map of existing transactions by masterId
+        const txMap = new Map();
+        existingTransactions.forEach(tx => {
+            if (tx.masterId) txMap.set(tx.masterId, tx);
+        });
+
+        // Merge: replace existing, add new
+        let updated = 0, added = 0;
+        deltaTransactions.forEach(tx => {
+            if (tx.masterId && txMap.has(tx.masterId)) {
+                txMap.set(tx.masterId, tx); // Replace
+                updated++;
+            } else {
+                txMap.set(tx.masterId || `new_${Date.now()}_${added}`, tx); // Add
+                added++;
+            }
+        });
+
+        // Also include transactions without masterId (legacy data)
+        const noIdTransactions = existingTransactions.filter(tx => !tx.masterId);
+        const mergedTransactions = [...noIdTransactions, ...txMap.values()];
+
+        Logger.info(`Delta merge: ${updated} updated, ${added} added. Total: ${mergedTransactions.length}`);
+
+        // Re-run full analysis on merged dataset
+        const acc = this.initAccumulators(masters);
+        // We can't re-parse from XML, so we rebuild from clean transactions
+        // Just copy all transactions directly (they're already processed)
+        acc.allTransactions.push(...mergedTransactions);
+
+        // Rebuild stats from transactions
+        mergedTransactions.forEach(tx => {
+            if (!tx.date) return;
+            const month = tx.date.substring(0, 6);
+            const voucherTotal = Math.abs(tx.amount || 0);
+            const vTypeLower = (tx.type || '').toLowerCase();
+
+            if (vTypeLower.includes('sales') || vTypeLower.includes('tax invoice')) {
+                if (!acc.monthlyStats[month]) acc.monthlyStats[month] = { sales: 0, purchase: 0 };
+                acc.monthlyStats[month].sales += voucherTotal;
+            } else if (vTypeLower.includes('purchase')) {
+                if (!acc.monthlyStats[month]) acc.monthlyStats[month] = { sales: 0, purchase: 0 };
+                acc.monthlyStats[month].purchase += voucherTotal;
+            }
+
+            // Rebuild inventory stats
+            if (tx.inventory) {
+                tx.inventory.forEach(item => {
+                    const stockName = item.name;
+                    if (!stockName) return;
+                    if (!acc.stockStats[stockName]) acc.stockStats[stockName] = { qty: 0, revenue: 0, lastSaleDate: new Date(0), inwardQty: 0, outwardQty: 0, inwardVal: 0, outwardVal: 0 };
+
+                    if (vTypeLower.includes('sales') || vTypeLower.includes('tax invoice')) {
+                        acc.stockStats[stockName].outwardQty += item.qty || 0;
+                        acc.stockStats[stockName].outwardVal += item.amount || 0;
+                        acc.stockStats[stockName].revenue += item.amount || 0;
+                    } else if (vTypeLower.includes('purchase')) {
+                        acc.stockStats[stockName].inwardQty += item.qty || 0;
+                        acc.stockStats[stockName].inwardVal += item.amount || 0;
+                    }
+                });
+            }
+
+            // Rebuild ledger/group stats from details
+            if (tx.details) {
+                tx.details.forEach(entry => {
+                    const ledgerName = entry.ledger;
+                    if (!ledgerName || !masters.ledgers[ledgerName]) return;
+                    const amount = entry.debit ? entry.amount : -entry.amount;
+                    const rootGroup = masters.ledgers[ledgerName].rootGroup || 'Unknown';
+
+                    if (!acc.groupTotals[rootGroup]) acc.groupTotals[rootGroup] = 0;
+                    acc.groupTotals[rootGroup] += amount;
+
+                    if (rootGroup === 'Sundry Debtors' || rootGroup === 'Sundry Creditors') {
+                        if (!acc.ledgerBalances[ledgerName]) {
+                            acc.ledgerBalances[ledgerName] = { balance: masters.ledgers[ledgerName].openingBalance || 0, billRefs: [], group: rootGroup, parent: masters.ledgers[ledgerName].parent };
+                        }
+                        acc.ledgerBalances[ledgerName].balance += amount;
+                    }
+                });
+            }
+        });
+
+        const analysis = this._finalizeAnalysis(
+            acc.monthlyStats, acc.stockStats, acc.ledgerBalances,
+            acc.allTransactions, masters, new Date(), acc.groupTotals
+        );
+        await this._saveData(masters, analysis);
+        await this._updateCompanyIndex();
+        return analysis;
     }
 
     // --- MASTERS (from groups.xml and ledgers.xml) ---

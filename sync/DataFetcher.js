@@ -111,35 +111,31 @@ class DataFetcher {
         return info;
     }
 
-    // --- SINGLE FETCH ---
-    async fetchAllVouchers() {
-        Logger.header('PHASE 1: FETCH DATA');
-
-        const vouchersFile = path.join(this.vouchersDir, 'vouchers.xml');
-
-        // Smart skip REMOVED by user request. Always fetch fresh data.
-        Logger.info('Force Fetching all vouchers to capture any modifications...');
-
-        // Fetch ALL vouchers in one request
-        Logger.info('Fetching ALL vouchers from Tally (single request)...');
-        const startTime = Date.now();
-
+    // --- RANGE FETCH ---
+    async fetchVoucherRange(fromDate, toDate) {
         try {
-            const xmlData = await TallyConnection.send(TdlBuilder.getAllVouchers());
-
-            await fs.writeFile(vouchersFile, xmlData);
-            const sizeMB = (xmlData.length / 1024 / 1024).toFixed(1);
-            const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
-            Logger.success(`Fetched ${sizeMB} MB in ${elapsed}s → vouchers.xml`);
-
+            return await TallyConnection.send(TdlBuilder.getAllVouchers(fromDate, toDate));
         } catch (e) {
-            Logger.error('Failed to fetch vouchers', e);
+            Logger.debug(`Range Fetch Failed [${fromDate} - ${toDate}]: ${e.message}`);
             throw e;
         }
+    }
 
-        // Update state
-        const state = { lastSync: new Date().toISOString() };
-        await fs.writeJson(this.stateFile, state);
+    // --- DELTA FETCH (only changes since last sync) ---
+    async fetchDeltaVouchers(minAlterId) {
+        try {
+            Logger.info(`Fetching delta vouchers (ALTERID > ${minAlterId})...`);
+            return await TallyConnection.send(TdlBuilder.getDeltaVouchers(minAlterId));
+        } catch (e) {
+            Logger.debug(`Delta Fetch Failed: ${e.message}`);
+            throw e;
+        }
+    }
+
+    /** Get the active company name from Tally. */
+    async getCompanyName() {
+        const info = await this.getPreSyncInfo();
+        return info.companyName;
     }
     // --- MASTERS FETCH ---
     async fetchMasters() {

@@ -88,8 +88,15 @@ class TdlBuilder {
         </ENVELOPE>`;
     }
 
-    // --- ALL Vouchers (single fetch - PROVEN from Building Block 2) ---
-    static getAllVouchers() {
+    // --- ALL Vouchers (full sync — chunked by month) ---
+    static getAllVouchers(fromDate, toDate) {
+        let staticVars = `<SVEXPORTFORMAT>$$SysName:XML</SVEXPORTFORMAT>`;
+        if (fromDate && toDate) {
+            staticVars += `
+                        <SVFROMDATE>${fromDate}</SVFROMDATE>
+                        <SVTODATE>${toDate}</SVTODATE>`;
+        }
+
         return `
         <ENVELOPE>
             <HEADER>
@@ -101,16 +108,50 @@ class TdlBuilder {
             <BODY>
                 <DESC>
                     <STATICVARIABLES>
-                        <SVEXPORTFORMAT>$$SysName:XML</SVEXPORTFORMAT>
+                        ${staticVars}
                     </STATICVARIABLES>
                     <TDL>
                         <TDLMESSAGE>
                             <COLLECTION NAME="VoucherAllColl">
                                 <TYPE>Voucher</TYPE>
-                                <FETCH>Date, VoucherNumber, VoucherTypeName, PartyLedgerName, Amount, Reference, Narration, IsCancelled, IsOptional</FETCH>
-                                <FETCH>AllLedgerEntries.*</FETCH>
-                                <FETCH>AllInventoryEntries.*</FETCH>
+                                <FILTER>VchDateFilter</FILTER>
+                                <FETCH>Date, VoucherNumber, VoucherTypeName, PartyLedgerName, Amount, Reference, Narration, IsCancelled, IsOptional, AlterID, MasterID</FETCH>
+                                <FETCH>AllLedgerEntries.LedgerName, AllLedgerEntries.Amount, AllLedgerEntries.IsDeemedPositive, AllLedgerEntries.BillAllocations.*</FETCH>
+                                <FETCH>AllInventoryEntries.StockItemName, AllInventoryEntries.BilledQty, AllInventoryEntries.Amount, AllInventoryEntries.Rate, AllInventoryEntries.AccountingAllocations.*</FETCH>
                             </COLLECTION>
+                            <SYSTEM TYPE="Formula" NAME="VchDateFilter">($Date &gt;= ##SVFromDate) AND ($Date &lt;= ##SVToDate)</SYSTEM>
+                        </TDLMESSAGE>
+                    </TDL>
+                </DESC>
+            </BODY>
+        </ENVELOPE>`;
+    }
+
+    // --- DELTA Vouchers (fetch only changes since last sync via ALTERID) ---
+    static getDeltaVouchers(minAlterId) {
+        return `
+        <ENVELOPE>
+            <HEADER>
+                <VERSION>1</VERSION>
+                <TALLYREQUEST>Export</TALLYREQUEST>
+                <TYPE>Collection</TYPE>
+                <ID>VoucherDeltaColl</ID>
+            </HEADER>
+            <BODY>
+                <DESC>
+                    <STATICVARIABLES>
+                        <SVEXPORTFORMAT>$$SysName:XML</SVEXPORTFORMAT>
+                    </STATICVARIABLES>
+                    <TDL>
+                        <TDLMESSAGE>
+                            <COLLECTION NAME="VoucherDeltaColl">
+                                <TYPE>Voucher</TYPE>
+                                <FILTER>AlterIdFilter</FILTER>
+                                <FETCH>Date, VoucherNumber, VoucherTypeName, PartyLedgerName, Amount, Reference, Narration, IsCancelled, IsOptional, AlterID, MasterID</FETCH>
+                                <FETCH>AllLedgerEntries.LedgerName, AllLedgerEntries.Amount, AllLedgerEntries.IsDeemedPositive, AllLedgerEntries.BillAllocations.*</FETCH>
+                                <FETCH>AllInventoryEntries.StockItemName, AllInventoryEntries.BilledQty, AllInventoryEntries.Amount, AllInventoryEntries.Rate, AllInventoryEntries.AccountingAllocations.*</FETCH>
+                            </COLLECTION>
+                            <SYSTEM TYPE="Formula" NAME="AlterIdFilter">$AlterID &gt; ${minAlterId}</SYSTEM>
                         </TDLMESSAGE>
                     </TDL>
                 </DESC>
