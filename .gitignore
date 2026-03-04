@@ -4,3 +4,5 @@ dist
 .DS_Store
 coverage
 tally_data/xml/**
+dashboard/public/data/*/data.json
+nul
