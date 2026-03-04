@@ -1191,3 +1191,32 @@
 [2026-02-11 20:33:13] [SUCCESS] Next sync will use delta mode (ALTERID > 273).
 [2026-02-11 20:33:13] [SUCCESS] Registered company: M/S SRI BRUNDABAN ENTERPRISES, MALKANGIRI (SRI_BRUNDABAN_ENTERPRISES_MALKANGIRI)
 [2026-02-11 20:33:13] [SUCCESS] Auto-Sync Complete.
+
+=== BIZSTASH SMART LAUNCHER ===
+[2026-03-04 07:58:04] [SUCCESS] Code is up-to-date.
+[2026-03-04 07:58:05] [SUCCESS] Tally is running.
+
+=== BIZSTASH DYNAMIC AUTO-SYNC ===
+[2026-03-04 07:58:06] [INFO] Detected Tally Company: "M/S.SRI BRUNDABANA ENTERPRISES - (2024-25)"
+[2026-03-04 07:58:06] [INFO] Generated Dynamic ID: SRI_BRUNDABANA_ENTERPRISES_
+[2026-03-04 07:58:06] [SUCCESS] Ready to sync to project: SRI_BRUNDABANA_ENTERPRISES_
+
+=== BIZSTASH SYNC ENGINE 7.0 — Delta + Chunk-Parse-Accumulate ===
+[2026-03-04 07:58:06] [INFO] Data Directory: C:\Projects\Bizstash\tally_data\xml\SRI_BRUNDABANA_ENTERPRISES_
+
+=== PRE-SYNC DASHBOARD ===
+
+=== PHASE 1: FETCH MASTERS ===
+[2026-03-04 07:58:10] [INFO] Fetching Masters (Groups & Ledgers)...
+[2026-03-04 07:58:12] [SUCCESS] Fetched Masters successfully.
+[2026-03-04 07:58:12] [INFO] Fetching Profit & Loss Report...
+[2026-03-04 07:58:13] [SUCCESS] Fetched Profit & Loss successfully.
+[2026-03-04 07:58:14] [INFO] Parsed 1071 Ledgers, 66 Groups.
+[2026-03-04 07:58:14] [SUCCESS] Loaded 1071 ledgers, 66 groups.
+
+=== PHASE 2: DELTA SYNC (ALTERID) ===
+[2026-03-04 07:58:14] [INFO] Previous maxAlterId: 100592
+[2026-03-04 07:58:14] [INFO] Fetching delta vouchers (ALTERID > 100592)...
+[2026-03-04 07:58:16] [SUCCESS] ✅ No changes detected since last sync. Data is up-to-date!
+[2026-03-04 07:58:16] [SUCCESS] Registered company: M/S.SRI BRUNDABANA ENTERPRISES - (2024-25) (SRI_BRUNDABANA_ENTERPRISES_)
+[2026-03-04 07:58:16] [SUCCESS] Auto-Sync Complete.
