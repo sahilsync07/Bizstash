@@ -1,7 +1,7 @@
 const path = require('path');
 const fs = require('fs-extra');
 const xml2js = require('xml2js');
-const { parse, eachMonthOfInterval, startOfMonth, endOfMonth, format } = require('date-fns');
+const { parse, format } = require('date-fns');
 const cliProgress = require('cli-progress');
 const DataFetcher = require('./DataFetcher');
 const DataProcessor = require('./DataProcessor');
@@ -133,7 +133,7 @@ class SyncEngine {
     // FULL SYNC — Chunk-parse-accumulate (first run or forced)
     // ════════════════════════════════════════
     async _runFullSync(fetcher, processor, masters, stateFile) {
-        Logger.header('PHASE 2: FULL CHUNKED SYNC');
+        Logger.header('PHASE 2: FULL CHUNKED SYNC (7-DAY WEEKS)');
 
         const info = await fetcher.getPreSyncInfo();
         if (!info.startingFrom || !info.lastVoucherDate) {
@@ -142,67 +142,116 @@ class SyncEngine {
 
         const startDate = parse(info.startingFrom, 'yyyyMMdd', new Date());
         const endDate = parse(info.lastVoucherDate, 'yyyyMMdd', new Date());
-        const months = eachMonthOfInterval({ start: startDate, end: endDate });
 
-        Logger.info(`Date range: ${format(startDate, 'dd-MMM-yyyy')} → ${format(endDate, 'dd-MMM-yyyy')}`);
-        Logger.info(`Splitting into ${months.length} monthly chunks...`);
+        // Build weekly (7-day) chunks
+        const chunks = [];
+        let cursor = new Date(startDate);
+        while (cursor <= endDate) {
+            const chunkEnd = new Date(cursor);
+            chunkEnd.setDate(chunkEnd.getDate() + 6); // 7-day window
+            const actualEnd = chunkEnd > endDate ? endDate : chunkEnd;
+            chunks.push({ from: new Date(cursor), to: actualEnd });
+            cursor = new Date(actualEnd);
+            cursor.setDate(cursor.getDate() + 1);
+        }
+
+        Logger.info(`Date range : ${format(startDate, 'dd-MMM-yyyy')} → ${format(endDate, 'dd-MMM-yyyy')}`);
+        Logger.info(`Strategy   : ${chunks.length} weekly chunks (7-day windows)`);
+        Logger.info(`Estimated  : ~${info.voucherCount || '?'} total vouchers across range`);
+        console.log('');
+
+        // Warm-up delay — let Tally breathe after heavy masters/voucher-count queries
+        Logger.info('⏳ Giving Tally 3s warm-up before starting chunked fetch...');
+        await new Promise(r => setTimeout(r, 3000));
 
         const acc = processor.initAccumulators(masters);
         let totalVouchersProcessed = 0;
         let maxAlterId = 0;
         let failedChunks = [];
+        let chunksWithData = 0;
+        let emptyChunks = 0;
+        const syncStartTime = Date.now();
 
         const progressBar = new cliProgress.SingleBar({
-            format: ' {bar} | {percentage}% | {value}/{total} Chunks | {vouchers} vouchers | {status}',
+            format: ' {bar} | {percentage}% | Week {value}/{total} | {vouchers} vouchers | {status}',
             barCompleteChar: '\u2588',
             barIncompleteChar: '\u2591',
             hideCursor: true
         });
-        progressBar.start(months.length, 0, { status: 'Starting...', vouchers: 0 });
+        progressBar.start(chunks.length, 0, { status: 'Starting...', vouchers: 0 });
 
         const xmlParser = new xml2js.Parser({ explicitArray: false, attrkey: '$' });
 
-        for (let i = 0; i < months.length; i++) {
-            const chunkStart = startOfMonth(months[i]);
-            const chunkEnd = endOfMonth(months[i]);
-            const fromStr = format(chunkStart, 'yyyyMMdd');
-            const toStr = format(chunkEnd, 'yyyyMMdd');
-            const monthLabel = format(chunkStart, 'MMM yyyy');
+        for (let i = 0; i < chunks.length; i++) {
+            const chunk = chunks[i];
+            const fromStr = format(chunk.from, 'yyyyMMdd');
+            const toStr = format(chunk.to, 'yyyyMMdd');
+            const rangeLabel = `${format(chunk.from, 'dd MMM')} – ${format(chunk.to, 'dd MMM')}`;
+            const chunkStartMs = Date.now();
 
-            progressBar.update(i, { status: `Fetching ${monthLabel}...`, vouchers: totalVouchersProcessed });
+            progressBar.update(i, { status: `Fetching ${rangeLabel}...`, vouchers: totalVouchersProcessed });
 
             try {
                 const rawXml = await fetcher.fetchVoucherRange(fromStr, toStr);
-                progressBar.update(i, { status: `Parsing ${monthLabel}...`, vouchers: totalVouchersProcessed });
                 const parsed = await xmlParser.parseStringPromise(rawXml);
 
                 let vouchers = parsed?.ENVELOPE?.BODY?.DATA?.COLLECTION?.VOUCHER || [];
                 if (!Array.isArray(vouchers)) vouchers = [vouchers];
                 vouchers = vouchers.filter(v => v && typeof v === 'object' && v.$);
 
+                const chunkMs = Date.now() - chunkStartMs;
+
                 if (vouchers.length > 0) {
-                    progressBar.update(i, { status: `Processing ${monthLabel} (${vouchers.length})...`, vouchers: totalVouchersProcessed });
                     processor.processVoucherBatch(vouchers, acc, masters);
                     totalVouchersProcessed += vouchers.length;
+                    chunksWithData++;
+
+                    progressBar.update(i + 1, {
+                        status: `✓ ${rangeLabel}: ${vouchers.length} vouchers (${(chunkMs / 1000).toFixed(1)}s)`,
+                        vouchers: totalVouchersProcessed
+                    });
+                } else {
+                    emptyChunks++;
+                    progressBar.update(i + 1, {
+                        status: `· ${rangeLabel}: empty (${chunkMs}ms)`,
+                        vouchers: totalVouchersProcessed
+                    });
                 }
 
-                if (i < months.length - 1) {
-                    await new Promise(r => setTimeout(r, CONFIG.SETTINGS.BATCH_DELAY || 2000));
+                // Periodic verbose summary every 10 weeks
+                if ((i + 1) % 10 === 0) {
+                    progressBar.stop();
+                    const elapsed = ((Date.now() - syncStartTime) / 1000).toFixed(1);
+                    const memMB = (process.memoryUsage().heapUsed / 1024 / 1024).toFixed(0);
+                    const pct = ((i + 1) / chunks.length * 100).toFixed(0);
+                    console.log(`   📊 [${pct}%] ${i + 1}/${chunks.length} weeks | ${totalVouchersProcessed.toLocaleString()} vouchers | ${chunksWithData} active / ${emptyChunks} empty | ${elapsed}s | ${memMB} MB`);
+                    progressBar.start(chunks.length, i + 1, {
+                        status: 'Continuing...',
+                        vouchers: totalVouchersProcessed
+                    });
+                }
+
+                // Breathing room between requests — critical for Tally stability
+                if (i < chunks.length - 1) {
+                    await new Promise(r => setTimeout(r, CONFIG.SETTINGS.BATCH_DELAY || 1500));
                 }
 
             } catch (e) {
-                Logger.warn(`Chunk ${monthLabel} failed: ${e.message}. Attempting half-month split...`);
-                try {
-                    await this._fetchHalfMonth(fetcher, processor, xmlParser, acc, masters, chunkStart, chunkEnd, progressBar, i);
-                    totalVouchersProcessed = acc.allTransactions.length;
-                } catch (halfErr) {
-                    Logger.error(`Half-month fallback also failed for ${monthLabel}: ${halfErr.message}`);
-                    failedChunks.push(monthLabel);
-                }
+                const chunkMs = Date.now() - chunkStartMs;
+                progressBar.update(i + 1, {
+                    status: `✗ ${rangeLabel}: FAILED (${(chunkMs / 1000).toFixed(1)}s)`,
+                    vouchers: totalVouchersProcessed
+                });
+                Logger.warn(`Week ${rangeLabel} failed: ${e.message}`);
+                failedChunks.push(rangeLabel);
+
+                // Longer cooldown after a failure before continuing
+                Logger.info('   Cooling down 5s before next chunk...');
+                await new Promise(r => setTimeout(r, 5000));
             }
         }
 
-        progressBar.update(months.length, { status: '✅ Complete!', vouchers: totalVouchersProcessed });
+        progressBar.update(chunks.length, { status: '✅ All weeks fetched!', vouchers: totalVouchersProcessed });
         progressBar.stop();
 
         // Track max ALTERID from all transactions
@@ -210,13 +259,26 @@ class SyncEngine {
             if (tx.alterId > maxAlterId) maxAlterId = tx.alterId;
         });
 
+        // ─── VERBOSE FINAL SUMMARY ───
+        const totalElapsed = ((Date.now() - syncStartTime) / 1000).toFixed(1);
         const memUsage = process.memoryUsage();
-        Logger.success(`Fetched & processed ${totalVouchersProcessed.toLocaleString()} vouchers.`);
-        Logger.info(`Memory: ${(memUsage.heapUsed / 1024 / 1024).toFixed(0)} MB heap used.`);
-        Logger.info(`Max ALTERID: ${maxAlterId} (next sync will be delta from here)`);
+        console.log('');
+        console.log('  ┌─────────────────────────────────────────┐');
+        console.log('  │          FULL SYNC SUMMARY               │');
+        console.log('  ├─────────────────────────────────────────┤');
+        console.log(`  │  Weekly Chunks    : ${chunks.length.toString().padStart(8)}           │`);
+        console.log(`  │  Weeks with Data  : ${chunksWithData.toString().padStart(8)}           │`);
+        console.log(`  │  Empty Weeks      : ${emptyChunks.toString().padStart(8)}           │`);
+        console.log(`  │  Failed Weeks     : ${failedChunks.length.toString().padStart(8)}           │`);
+        console.log(`  │  Total Vouchers   : ${totalVouchersProcessed.toLocaleString().padStart(8)}           │`);
+        console.log(`  │  Max ALTERID      : ${maxAlterId.toString().padStart(8)}           │`);
+        console.log(`  │  Elapsed Time     : ${totalElapsed.padStart(7)}s           │`);
+        console.log(`  │  Memory Used      : ${(memUsage.heapUsed / 1024 / 1024).toFixed(0).padStart(6)} MB           │`);
+        console.log('  └─────────────────────────────────────────┘');
+        console.log('');
 
         if (failedChunks.length > 0) {
-            Logger.warn(`⚠ Failed chunks (data may be incomplete): ${failedChunks.join(', ')}`);
+            Logger.warn(`⚠ Failed weeks (data may be incomplete): ${failedChunks.join(', ')}`);
         }
 
         // ════════════════════════════════════════
@@ -237,36 +299,6 @@ class SyncEngine {
         Logger.header('FULL SYNC COMPLETE ✅');
         Logger.success(`Next sync will use delta mode (ALTERID > ${maxAlterId}).`);
         return true;
-    }
-
-    async _fetchHalfMonth(fetcher, processor, xmlParser, acc, masters, monthStart, monthEnd, progressBar, idx) {
-        const midDay = new Date(monthStart);
-        midDay.setDate(15);
-
-        const halves = [
-            { from: monthStart, to: midDay, label: `1-15 ${format(monthStart, 'MMM yyyy')}` },
-            { from: new Date(midDay.getTime() + 86400000), to: monthEnd, label: `16-${format(monthEnd, 'dd')} ${format(monthStart, 'MMM yyyy')}` }
-        ];
-
-        for (const half of halves) {
-            const fromStr = format(half.from, 'yyyyMMdd');
-            const toStr = format(half.to, 'yyyyMMdd');
-
-            progressBar.update(idx, { status: `Retry: ${half.label}...`, vouchers: acc.allTransactions.length });
-            await new Promise(r => setTimeout(r, CONFIG.SETTINGS.BATCH_DELAY || 2000));
-
-            const rawXml = await fetcher.fetchVoucherRange(fromStr, toStr);
-            const parsed = await xmlParser.parseStringPromise(rawXml);
-
-            let vouchers = parsed?.ENVELOPE?.BODY?.DATA?.COLLECTION?.VOUCHER || [];
-            if (!Array.isArray(vouchers)) vouchers = [vouchers];
-            vouchers = vouchers.filter(v => v && typeof v === 'object' && v.$);
-
-            if (vouchers.length > 0) {
-                processor.processVoucherBatch(vouchers, acc, masters);
-            }
-            await new Promise(r => setTimeout(r, CONFIG.SETTINGS.BATCH_DELAY || 2000));
-        }
     }
 
     async _showDashboard(fetcher, companyName) {

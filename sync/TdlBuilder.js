@@ -60,7 +60,7 @@ class TdlBuilder {
         </ENVELOPE>`;
     }
 
-    // --- Voucher Count (lightweight, for dashboard) ---
+    // --- Voucher Count (ultra-lightweight — COMPUTE only, no data fetch) ---
     static getVoucherCount() {
         return `
         <ENVELOPE>
@@ -68,7 +68,7 @@ class TdlBuilder {
                 <VERSION>1</VERSION>
                 <TALLYREQUEST>Export</TALLYREQUEST>
                 <TYPE>Collection</TYPE>
-                <ID>VoucherCountColl</ID>
+                <ID>VoucherCountResult</ID>
             </HEADER>
             <BODY>
                 <DESC>
@@ -77,9 +77,13 @@ class TdlBuilder {
                     </STATICVARIABLES>
                     <TDL>
                         <TDLMESSAGE>
-                            <COLLECTION NAME="VoucherCountColl">
+                            <COLLECTION NAME="AllVouchersForCount">
                                 <TYPE>Voucher</TYPE>
-                                <FETCH>VoucherNumber</FETCH>
+                            </COLLECTION>
+                            <COLLECTION NAME="VoucherCountResult">
+                                <TYPE>Company</TYPE>
+                                <COMPUTE>VchCount : $$NumItems:AllVouchersForCount</COMPUTE>
+                                <FETCH>Name</FETCH>
                             </COLLECTION>
                         </TDLMESSAGE>
                     </TDL>
@@ -93,8 +97,8 @@ class TdlBuilder {
         let staticVars = `<SVEXPORTFORMAT>$$SysName:XML</SVEXPORTFORMAT>`;
         if (fromDate && toDate) {
             staticVars += `
-                        <SVFROMDATE>${fromDate}</SVFROMDATE>
-                        <SVTODATE>${toDate}</SVTODATE>`;
+                        <SVFROMDATE TYPE="Date">${fromDate}</SVFROMDATE>
+                        <SVTODATE TYPE="Date">${toDate}</SVTODATE>`;
         }
 
         return `
@@ -116,8 +120,10 @@ class TdlBuilder {
                                 <TYPE>Voucher</TYPE>
                                 <FILTER>VchDateFilter</FILTER>
                                 <FETCH>Date, VoucherNumber, VoucherTypeName, PartyLedgerName, Amount, Reference, Narration, IsCancelled, IsOptional, AlterID, MasterID</FETCH>
-                                <FETCH>AllLedgerEntries.LedgerName, AllLedgerEntries.Amount, AllLedgerEntries.IsDeemedPositive, AllLedgerEntries.BillAllocations.*</FETCH>
-                                <FETCH>AllInventoryEntries.StockItemName, AllInventoryEntries.BilledQty, AllInventoryEntries.Amount, AllInventoryEntries.Rate, AllInventoryEntries.AccountingAllocations.*</FETCH>
+                                <FETCH>AllLedgerEntries.LedgerName, AllLedgerEntries.Amount, AllLedgerEntries.IsDeemedPositive</FETCH>
+                                <FETCH>AllLedgerEntries.BillAllocations.Name, AllLedgerEntries.BillAllocations.Amount, AllLedgerEntries.BillAllocations.BillType</FETCH>
+                                <FETCH>AllInventoryEntries.StockItemName, AllInventoryEntries.BilledQty, AllInventoryEntries.Amount, AllInventoryEntries.Rate</FETCH>
+                                <FETCH>AllInventoryEntries.AccountingAllocations.LedgerName, AllInventoryEntries.AccountingAllocations.Amount, AllInventoryEntries.AccountingAllocations.IsDeemedPositive</FETCH>
                             </COLLECTION>
                             <SYSTEM TYPE="Formula" NAME="VchDateFilter">($Date &gt;= ##SVFromDate) AND ($Date &lt;= ##SVToDate)</SYSTEM>
                         </TDLMESSAGE>
@@ -148,8 +154,10 @@ class TdlBuilder {
                                 <TYPE>Voucher</TYPE>
                                 <FILTER>AlterIdFilter</FILTER>
                                 <FETCH>Date, VoucherNumber, VoucherTypeName, PartyLedgerName, Amount, Reference, Narration, IsCancelled, IsOptional, AlterID, MasterID</FETCH>
-                                <FETCH>AllLedgerEntries.LedgerName, AllLedgerEntries.Amount, AllLedgerEntries.IsDeemedPositive, AllLedgerEntries.BillAllocations.*</FETCH>
-                                <FETCH>AllInventoryEntries.StockItemName, AllInventoryEntries.BilledQty, AllInventoryEntries.Amount, AllInventoryEntries.Rate, AllInventoryEntries.AccountingAllocations.*</FETCH>
+                                <FETCH>AllLedgerEntries.LedgerName, AllLedgerEntries.Amount, AllLedgerEntries.IsDeemedPositive</FETCH>
+                                <FETCH>AllLedgerEntries.BillAllocations.Name, AllLedgerEntries.BillAllocations.Amount, AllLedgerEntries.BillAllocations.BillType</FETCH>
+                                <FETCH>AllInventoryEntries.StockItemName, AllInventoryEntries.BilledQty, AllInventoryEntries.Amount, AllInventoryEntries.Rate</FETCH>
+                                <FETCH>AllInventoryEntries.AccountingAllocations.LedgerName, AllInventoryEntries.AccountingAllocations.Amount, AllInventoryEntries.AccountingAllocations.IsDeemedPositive</FETCH>
                             </COLLECTION>
                             <SYSTEM TYPE="Formula" NAME="AlterIdFilter">$AlterID &gt; ${minAlterId}</SYSTEM>
                         </TDLMESSAGE>

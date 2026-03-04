@@ -76,13 +76,19 @@ class DataFetcher {
             info.tallyOnline = false;
         }
 
-        // 2. Count vouchers (if Tally is online)
+        // 2. Count vouchers (if Tally is online) — uses lightweight COMPUTE
         if (info.tallyOnline) {
             try {
                 const countXml = await TallyConnection.send(TdlBuilder.getVoucherCount());
-                // Count VOUCHER tags
-                const matches = countXml.match(/<VOUCHER /g);
-                info.voucherCount = matches ? matches.length : 0;
+                // New format: COMPUTE returns <VCHCOUNT>6729</VCHCOUNT>
+                const countMatch = countXml.match(/<VCHCOUNT[^>]*>([^<]+)<\/VCHCOUNT>/i);
+                if (countMatch) {
+                    info.voucherCount = parseInt(countMatch[1], 10) || 0;
+                } else {
+                    // Fallback: count VOUCHER tags if format changed
+                    const matches = countXml.match(/<VOUCHER /g);
+                    info.voucherCount = matches ? matches.length : 0;
+                }
             } catch (e) {
                 // Non-critical, continue
             }
